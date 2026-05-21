@@ -5,120 +5,141 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <title>Milano</title>
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-  <link rel="stylesheet" href="style.css?v=3" />
+  <link rel="stylesheet" href="style.css?v=4" />
 </head>
 <body>
-<div id="app">
 
-  <!-- SCOPRI -->
-  <div id="screen-scopri" class="screen active">
-    <div class="nav-bar">
-      <span class="nav-wordmark">Milano<span class="dot">.</span></span>
-      <button class="icon-btn" id="btn-filter">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
-          <line x1="4" y1="6" x2="20" y2="6"/><line x1="8" y1="12" x2="16" y2="12"/><line x1="11" y1="18" x2="13" y2="18"/>
-        </svg>
-      </button>
-    </div>
-    <div class="search-wrap">
-      <div class="search-bar">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="color:var(--label3);flex-shrink:0">
-          <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
-        </svg>
-        <input type="text" id="search-input" placeholder="Cerca locale, zona, tag…" />
-      </div>
-    </div>
-    <div class="cat-scroll" id="cat-bar"></div>
-    <div class="zone-grid" id="zone-grid"></div>
-  </div>
+  <!-- iPhone frame (visible only on desktop) -->
+  <div id="phone-wrap">
+    <div class="phone-shell">
+      <!-- Dynamic Island -->
+      <div class="dynamic-island"></div>
+      <!-- Side buttons -->
+      <div class="btn-vol-up"></div>
+      <div class="btn-vol-dn"></div>
+      <div class="btn-power"></div>
+      <!-- Screen -->
+      <div class="phone-screen">
 
-  <!-- ZONA -->
-  <div id="screen-zona" class="screen">
-    <div class="nav-bar">
-      <button class="back-btn" id="back-from-zona">
-        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
-        Scopri
-      </button>
-      <h1 class="nav-title" id="zona-title"></h1>
-    </div>
-    <div class="locale-list" id="zona-list"></div>
-  </div>
+        <div id="app">
 
-  <!-- DETAIL -->
-  <div id="screen-detail" class="screen">
-    <div class="detail-map-wrap">
-      <div id="detail-map"></div>
-      <button class="detail-back" id="back-from-detail">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
-      </button>
-    </div>
-    <div class="detail-body" id="detail-body"></div>
-  </div>
+          <!-- SCOPRI -->
+          <div id="screen-scopri" class="screen active">
+            <div class="nav-bar">
+              <span class="nav-wordmark">Milano<span class="dot">.</span></span>
+              <button class="icon-btn" id="btn-filter">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                  <line x1="4" y1="6" x2="20" y2="6"/><line x1="8" y1="12" x2="16" y2="12"/><line x1="11" y1="18" x2="13" y2="18"/>
+                </svg>
+              </button>
+            </div>
+            <div class="search-wrap">
+              <div class="search-bar">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="color:var(--label3);flex-shrink:0">
+                  <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+                </svg>
+                <input type="text" id="search-input" placeholder="Cerca locale, zona, tag…" />
+              </div>
+            </div>
+            <div class="cat-scroll" id="cat-bar"></div>
+            <div class="zone-grid" id="zone-grid"></div>
+          </div>
 
-  <!-- MAPPA -->
-  <div id="screen-mappa" class="screen">
-    <div class="nav-bar">
-      <span class="nav-wordmark">Milano<span class="dot">.</span></span>
-      <span class="nav-subtitle">Mappa</span>
-    </div>
-    <div id="main-map"></div>
-    <div id="map-sheet" class="map-sheet hidden">
-      <div class="sheet-handle"></div>
-      <div id="map-sheet-content"></div>
-    </div>
-  </div>
+          <!-- ZONA -->
+          <div id="screen-zona" class="screen">
+            <div class="nav-bar">
+              <button class="back-btn" id="back-from-zona">
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+                Scopri
+              </button>
+              <h1 class="nav-title" id="zona-title"></h1>
+            </div>
+            <div class="locale-list" id="zona-list"></div>
+          </div>
 
-  <!-- PREFERITI -->
-  <div id="screen-preferiti" class="screen">
-    <div class="nav-bar">
-      <span class="nav-wordmark">Milano<span class="dot">.</span></span>
-      <span class="nav-subtitle">Preferiti</span>
-    </div>
-    <div class="locale-list" id="fav-list"></div>
-    <div id="fav-empty" class="empty-state hidden">
-      <div class="empty-icon">
-        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-          <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
-        </svg>
-      </div>
-      <p class="empty-title">Nessun preferito</p>
-      <p class="empty-sub">Premi il cuore su un locale per salvarlo qui.</p>
-    </div>
-  </div>
+          <!-- DETAIL -->
+          <div id="screen-detail" class="screen">
+            <div class="detail-map-wrap">
+              <div id="detail-map"></div>
+              <button class="detail-back" id="back-from-detail">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+              </button>
+            </div>
+            <div class="detail-body" id="detail-body"></div>
+          </div>
 
-  <!-- TAB BAR -->
-  <nav class="tab-bar">
-    <button class="tab active" data-tab="scopri">
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
-        <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
-      </svg>
-      <span>Scopri</span>
-    </button>
-    <button class="tab" data-tab="mappa">
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
-        <polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"/>
-        <line x1="8" y1="2" x2="8" y2="18"/><line x1="16" y1="6" x2="16" y2="22"/>
-      </svg>
-      <span>Mappa</span>
-    </button>
-    <button class="tab" data-tab="preferiti">
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
-        <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
-      </svg>
-      <span>Preferiti</span>
-    </button>
-  </nav>
+          <!-- MAPPA -->
+          <div id="screen-mappa" class="screen">
+            <div class="nav-bar">
+              <span class="nav-wordmark">Milano<span class="dot">.</span></span>
+              <span class="nav-subtitle">Mappa</span>
+            </div>
+            <div id="main-map"></div>
+            <div id="map-sheet" class="map-sheet hidden">
+              <div class="sheet-handle"></div>
+              <div id="map-sheet-content"></div>
+            </div>
+          </div>
 
-  <!-- FILTER DRAWER -->
-  <div id="filter-overlay" class="overlay hidden"></div>
-  <div id="filter-drawer" class="drawer hidden">
-    <div class="drawer-handle"></div>
-    <p class="drawer-title">Zona</p>
-    <div class="drawer-list" id="drawer-zone-list"></div>
-  </div>
+          <!-- PREFERITI -->
+          <div id="screen-preferiti" class="screen">
+            <div class="nav-bar">
+              <span class="nav-wordmark">Milano<span class="dot">.</span></span>
+              <span class="nav-subtitle">Preferiti</span>
+            </div>
+            <div class="locale-list" id="fav-list"></div>
+            <div id="fav-empty" class="empty-state hidden">
+              <div class="empty-icon">
+                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                  <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+                </svg>
+              </div>
+              <p class="empty-title">Nessun preferito</p>
+              <p class="empty-sub">Premi il cuore su un locale per salvarlo qui.</p>
+            </div>
+          </div>
 
-</div>
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-<script src="app.js?v=3"></script>
+          <!-- TAB BAR -->
+          <nav class="tab-bar">
+            <button class="tab active" data-tab="scopri">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+              </svg>
+              <span>Scopri</span>
+            </button>
+            <button class="tab" data-tab="mappa">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                <polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"/>
+                <line x1="8" y1="2" x2="8" y2="18"/><line x1="16" y1="6" x2="16" y2="22"/>
+              </svg>
+              <span>Mappa</span>
+            </button>
+            <button class="tab" data-tab="preferiti">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+              </svg>
+              <span>Preferiti</span>
+            </button>
+          </nav>
+
+          <!-- FILTER DRAWER -->
+          <div id="filter-overlay" class="overlay hidden"></div>
+          <div id="filter-drawer" class="drawer hidden">
+            <div class="drawer-handle"></div>
+            <p class="drawer-title">Zona</p>
+            <div class="drawer-list" id="drawer-zone-list"></div>
+          </div>
+
+        </div><!-- #app -->
+
+      </div><!-- .phone-screen -->
+
+      <!-- Home indicator -->
+      <div class="home-indicator"></div>
+    </div><!-- .phone-shell -->
+  </div><!-- #phone-wrap -->
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="app.js?v=4"></script>
 </body>
 </html>

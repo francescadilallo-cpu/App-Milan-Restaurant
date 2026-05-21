@@ -577,3 +577,152 @@ html, body {
 .leaflet-control-zoom { border: none !important; box-shadow: var(--shadow-md) !important; border-radius: 10px !important; overflow: hidden; }
 .leaflet-control-zoom-in { border-radius: 10px 10px 0 0 !important; }
 .leaflet-control-zoom-out { border-radius: 0 0 10px 10px !important; }
+
+/* ══════════════════════════════════════════
+   iPhone frame — desktop only
+   ══════════════════════════════════════════ */
+
+/* Mobile: phone-wrap è trasparente, #app è full screen */
+#phone-wrap { width: 100%; height: 100%; }
+.phone-shell { width: 100%; height: 100%; }
+.phone-screen { width: 100%; height: 100%; overflow: hidden; }
+.dynamic-island, .btn-vol-up, .btn-vol-dn, .btn-power, .home-indicator { display: none; }
+
+@media (min-width: 700px) {
+  html, body {
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #E8E8ED;
+    background-image:
+      radial-gradient(ellipse at 30% 20%, rgba(255,255,255,.6) 0%, transparent 60%),
+      radial-gradient(ellipse at 80% 80%, rgba(200,200,210,.5) 0%, transparent 60%);
+  }
+
+  #phone-wrap {
+    width: auto;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .phone-shell {
+    position: relative;
+    width: 375px;
+    height: 812px;
+    background: #1C1C1E;
+    border-radius: 54px;
+    box-shadow:
+      0 0 0 1.5px #3A3A3C,
+      0 0 0 3px #1C1C1E,
+      0 40px 100px rgba(0,0,0,.45),
+      0 8px 30px rgba(0,0,0,.3),
+      inset 0 0 0 1px rgba(255,255,255,.08);
+    padding: 14px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Dynamic Island */
+  .dynamic-island {
+    display: block;
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 124px;
+    height: 36px;
+    background: #000;
+    border-radius: 20px;
+    z-index: 1000;
+    box-shadow: 0 0 0 1px rgba(255,255,255,.06);
+  }
+
+  /* Volume up */
+  .btn-vol-up {
+    display: block;
+    position: absolute;
+    left: -4px;
+    top: 132px;
+    width: 4px;
+    height: 36px;
+    background: #3A3A3C;
+    border-radius: 2px 0 0 2px;
+    box-shadow: -1px 0 0 rgba(255,255,255,.05);
+  }
+
+  /* Volume down */
+  .btn-vol-dn {
+    display: block;
+    position: absolute;
+    left: -4px;
+    top: 182px;
+    width: 4px;
+    height: 36px;
+    background: #3A3A3C;
+    border-radius: 2px 0 0 2px;
+    box-shadow: -1px 0 0 rgba(255,255,255,.05);
+  }
+
+  /* Power */
+  .btn-power {
+    display: block;
+    position: absolute;
+    right: -4px;
+    top: 160px;
+    width: 4px;
+    height: 64px;
+    background: #3A3A3C;
+    border-radius: 0 2px 2px 0;
+    box-shadow: 1px 0 0 rgba(255,255,255,.05);
+  }
+
+  /* Screen */
+  .phone-screen {
+    flex: 1;
+    border-radius: 42px;
+    overflow: hidden;
+    position: relative;
+    background: var(--bg);
+  }
+
+  /* Subtle screen glare */
+  .phone-screen::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 50%;
+    background: linear-gradient(180deg, rgba(255,255,255,.04) 0%, transparent 100%);
+    pointer-events: none;
+    z-index: 999;
+    border-radius: 42px 42px 0 0;
+  }
+
+  /* Home indicator */
+  .home-indicator {
+    display: block;
+    width: 120px;
+    height: 4px;
+    background: rgba(255,255,255,.25);
+    border-radius: 3px;
+    margin: 10px auto 4px;
+    flex-shrink: 0;
+  }
+
+  /* App inside screen */
+  .phone-screen #app {
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    overflow: hidden;
+  }
+
+  /* Drawers/overlays confined inside the phone */
+  .phone-screen .overlay,
+  .phone-screen .drawer {
+    position: absolute;
+    border-radius: 42px 42px 0 0;
+  }
+}
