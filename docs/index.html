@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <title>Milano</title>
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-  <link rel="stylesheet" href="style.css?v=4" />
+  <link rel="stylesheet" href="style.css?v=5" />
 </head>
 <body>
 
@@ -59,10 +59,17 @@
 
           <!-- DETAIL -->
           <div id="screen-detail" class="screen">
-            <div class="detail-map-wrap">
-              <div id="detail-map"></div>
+            <div class="detail-hero" id="detail-hero">
+              <img class="detail-hero-img" id="detail-hero-img" src="" alt="" />
+              <div class="detail-hero-gradient"></div>
+              <div class="detail-hero-overlay" id="detail-hero-overlay"></div>
               <button class="detail-back" id="back-from-detail">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+              </button>
+              <button class="detail-fav-floating" id="detail-fav-floating">
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                  <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+                </svg>
               </button>
             </div>
             <div class="detail-body" id="detail-body"></div>
@@ -140,6 +147,6 @@
   </div><!-- #phone-wrap -->
 
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-  <script src="app.js?v=4"></script>
+  <script src="app.js?v=5"></script>
 </body>
 </html>

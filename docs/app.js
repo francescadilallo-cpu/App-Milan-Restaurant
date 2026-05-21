@@ -132,8 +132,15 @@ function makeLocaleItem(locale, onClick) {
   const isFav = favorites.has(locale.id);
   const div = document.createElement('div');
   div.className = 'locale-item';
+  const thumb = locale.imageURL
+    ? `<img class="locale-thumb" src="${locale.imageURL}" alt="${locale.name}" loading="lazy" />`
+    : `<div class="locale-icon-wrap" style="background:${meta.color}18">${meta.icon.replace('currentColor', meta.color)}</div>`;
+  const ratingHtml = locale.rating
+    ? `<span class="meta-sep">·</span><span style="font-size:11px;color:#FF9F0A;font-weight:700">★ ${locale.rating}</span>`
+    : '';
+
   div.innerHTML = `
-    <div class="locale-icon-wrap" style="background:${meta.color}18">${meta.icon.replace('currentColor', meta.color)}</div>
+    ${thumb}
     <div class="locale-body">
       <div class="locale-top">
         <span class="locale-name">${locale.name}</span>
@@ -144,6 +151,7 @@ function makeLocaleItem(locale, onClick) {
         <span class="cat-text">${locale.categoria}</span>
         <span class="meta-sep">·</span>
         <span class="price-text">${PRICE[locale.priceRange]||''}</span>
+        ${ratingHtml}
       </div>
       <div class="locale-address">${locale.address}</div>
     </div>
@@ -156,7 +164,8 @@ function makeLocaleItem(locale, onClick) {
       <svg class="chevron-icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
     </div>`;
   div.querySelector('.locale-body').addEventListener('click', onClick);
-  div.querySelector('.locale-icon-wrap').addEventListener('click', onClick);
+  const clickable = div.querySelector('.locale-thumb') || div.querySelector('.locale-icon-wrap');
+  if (clickable) clickable.addEventListener('click', onClick);
   div.querySelector('.fav-btn').addEventListener('click', e => { e.stopPropagation(); toggleFav(locale, e.currentTarget); });
   return div;
 }
@@ -167,56 +176,123 @@ function showDetail(locale, from) {
   const meta = CAT_META[locale.categoria] || { color:'#888', icon:'' };
   const isFav = favorites.has(locale.id);
 
+  // Hero photo
+  const heroImg = document.getElementById('detail-hero-img');
+  if (locale.imageURL) {
+    heroImg.src = locale.imageURL;
+    heroImg.style.display = 'block';
+  } else {
+    heroImg.src = '';
+    heroImg.style.display = 'none';
+    document.getElementById('detail-hero').style.background = `${meta.color}22`;
+  }
+
+  // Hero overlay text
+  document.getElementById('detail-hero-overlay').innerHTML = `
+    <div class="detail-hero-name">${locale.name}</div>
+    <div class="detail-hero-sub">
+      <span class="detail-hero-zona">${locale.zona}</span>
+      <span style="color:rgba(255,255,255,.5)">·</span>
+      <span class="detail-hero-price">${PRICE[locale.priceRange]||''}</span>
+      ${locale.rating ? `<span style="color:rgba(255,255,255,.5)">·</span><span style="color:#FFD60A;font-size:13px;font-weight:700">★ ${locale.rating}</span>` : ''}
+    </div>`;
+
+  // Floating fav button
+  const favBtn = document.getElementById('detail-fav-floating');
+  favBtn.classList.toggle('active', isFav);
+  favBtn.querySelector('svg').setAttribute('fill', isFav ? 'currentColor' : 'none');
+  favBtn.onclick = () => toggleFav(locale, favBtn);
+
+  // Stars helper
+  function starsHtml(rating) {
+    const full = Math.floor(rating);
+    const half = rating % 1 >= 0.5;
+    let s = '';
+    for (let i = 0; i < 5; i++) {
+      if (i < full) s += '<span class="star" style="color:#FF9F0A">★</span>';
+      else if (i === full && half) s += '<span class="star" style="color:#FF9F0A">½</span>';
+      else s += '<span class="star" style="color:#E5E5EA">★</span>';
+    }
+    return s;
+  }
+
   document.getElementById('detail-body').innerHTML = `
-    <div class="detail-header">
-      <div style="flex:1">
-        <div class="detail-name">${locale.name}</div>
-        <div class="detail-meta">
-          <span class="cat-dot" style="background:${meta.color}"></span>
-          <span class="detail-zona">${locale.zona}</span>
-          <span class="meta-sep">·</span>
-          <span class="detail-price">${PRICE[locale.priceRange]||''}</span>
-        </div>
-      </div>
-      <button class="detail-fav-btn${isFav?' active':''}" id="d-fav">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="${isFav?'currentColor':'none'}" stroke="currentColor" stroke-width="2">
-          <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
-        </svg>
-      </button>
-    </div>
-    ${(locale.tags||[]).length?`<div class="tag-row">${locale.tags.map(t=>`<span class="tag-chip">${t}</span>`).join('')}</div>`:''}
+    ${locale.rating ? `
+    <div class="rating-row">
+      <div class="stars">${starsHtml(locale.rating)}</div>
+      <span class="rating-score">${locale.rating}</span>
+      <span class="rating-count">${locale.reviewCount ? `(${locale.reviewCount.toLocaleString('it')} recensioni)` : ''}</span>
+    </div>` : ''}
+
+    ${(locale.tags||[]).length ? `<div class="tag-row">${locale.tags.map(t=>`<span class="tag-chip">${t}</span>`).join('')}</div>` : ''}
+
     <p class="detail-desc">${locale.description}</p>
+
+    ${locale.instagramHandle ? `
+    <a class="ig-card" href="https://instagram.com/${locale.instagramHandle}" target="_blank">
+      <div class="ig-icon">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+          <rect x="2" y="2" width="20" height="20" rx="5"/>
+          <circle cx="12" cy="12" r="4"/>
+          <circle cx="17.5" cy="6.5" r="1.2" fill="white" stroke="none"/>
+        </svg>
+      </div>
+      <div class="ig-info">
+        <div class="ig-handle">@${locale.instagramHandle}</div>
+        <div class="ig-sub">Vedi su Instagram</div>
+      </div>
+      <svg class="info-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+    </a>` : ''}
+
     <div class="detail-card">
       <div class="info-row">
         <span class="info-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></span>
         <span class="info-text">${locale.address}</span>
       </div>
-      ${locale.instagramHandle?`<div class="info-row">
-        <span class="info-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></span>
-        <span class="info-text"><a href="https://instagram.com/${locale.instagramHandle}" target="_blank">@${locale.instagramHandle}</a></span>
-      </div>`:''}
-      ${locale.websiteURL?`<div class="info-row">
+      ${locale.websiteURL ? `
+      <a class="info-row" href="${locale.websiteURL}" target="_blank">
         <span class="info-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></span>
-        <span class="info-text"><a href="${locale.websiteURL}" target="_blank">${locale.websiteURL.replace(/^https?:\/\//,'')}</a></span>
-      </div>`:''}
+        <span class="info-text">${locale.websiteURL.replace(/^https?:\/\//,'')}</span>
+        <svg class="info-chevron" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+      </a>` : ''}
     </div>
+
+    <button class="map-toggle-btn" id="d-map-toggle">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"/><line x1="8" y1="2" x2="8" y2="18"/><line x1="16" y1="6" x2="16" y2="22"/></svg>
+      Mostra sulla mappa
+    </button>
+    <div class="map-collapsible" id="d-map-wrap">
+      <div id="detail-map"></div>
+    </div>
+
     <button class="detail-maps-btn" id="d-maps">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"/><line x1="8" y1="2" x2="8" y2="18"/><line x1="16" y1="6" x2="16" y2="22"/></svg>
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"/></svg>
       Apri in Maps
     </button>`;
 
-  document.getElementById('d-fav').addEventListener('click', e => toggleFav(locale, e.currentTarget));
-  document.getElementById('d-maps').addEventListener('click', () => window.open(`https://maps.apple.com/?q=${encodeURIComponent(locale.name)}&ll=${locale.latitude},${locale.longitude}`,'_blank'));
+  // Map toggle
+  let mapOpen = false;
+  document.getElementById('d-map-toggle').addEventListener('click', () => {
+    mapOpen = !mapOpen;
+    const wrap = document.getElementById('d-map-wrap');
+    wrap.classList.toggle('open', mapOpen);
+    document.getElementById('d-map-toggle').textContent = mapOpen ? '▲ Nascondi mappa' : '🗺 Mostra sulla mappa';
+    if (mapOpen) {
+      setTimeout(() => {
+        if (detailMap) { detailMap.remove(); detailMap = null; }
+        detailMap = L.map('detail-map', { zoomControl:false, attributionControl:false, dragging:false, scrollWheelZoom:false, touchZoom:false })
+          .setView([locale.latitude, locale.longitude], 15);
+        L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png').addTo(detailMap);
+        const icon = L.divIcon({ className:'', html: makePin(meta.color), iconSize:[32,40], iconAnchor:[16,40] });
+        L.marker([locale.latitude, locale.longitude], { icon }).addTo(detailMap);
+        detailMap.invalidateSize();
+      }, 60);
+    }
+  });
 
-  setTimeout(() => {
-    if (detailMap) { detailMap.remove(); detailMap = null; }
-    detailMap = L.map('detail-map', { zoomControl:false, attributionControl:false, dragging:false, scrollWheelZoom:false, touchZoom:false })
-      .setView([locale.latitude, locale.longitude], 15);
-    L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png').addTo(detailMap);
-    const icon = L.divIcon({ className:'', html: makePin(meta.color), iconSize:[32,40], iconAnchor:[16,40] });
-    L.marker([locale.latitude, locale.longitude], { icon }).addTo(detailMap);
-    detailMap.invalidateSize();
-  }, 60);
+  document.getElementById('d-maps').addEventListener('click', () =>
+    window.open(`https://maps.apple.com/?q=${encodeURIComponent(locale.name)}&ll=${locale.latitude},${locale.longitude}`,'_blank')
+  );
 
   showScreen('detail');
 }
