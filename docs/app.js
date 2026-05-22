@@ -1,20 +1,62 @@
 const DATA_URL = 'https://raw.githubusercontent.com/francescadilallo-cpu/App-Milan-Restaurant/main/MilanoLocali/Resources/locali.json';
 
 /* ── Zone config ── */
+/* `wiki` = Wikipedia page whose main image represents the zone.
+   Photos are fetched at runtime via the MediaWiki API (CORS-enabled). */
 const ZONE_META = {
-  'Navigli':       { color: '#4A9EBF', photo: 'https://commons.wikimedia.org/wiki/Special:FilePath/Naviglio_Grande_di_sera.jpg?width=800', desc: 'Il quartiere dei canali, cuore della movida milanese. Aperitivi sul Naviglio Grande, cocktail bar storici e osterie autentiche.' },
-  'Brera':         { color: '#C4813A', photo: 'https://commons.wikimedia.org/wiki/Special:FilePath/Pinacoteca_di_Brera_-_Cortile_interno.jpg?width=800', desc: 'Il quartiere degli artisti. Gallerie, boutique e ristoranti raffinati in strade acciottolate. La Milano bohémienne.' },
-  'Porta Venezia': { color: '#5B9E6B', photo: 'https://commons.wikimedia.org/wiki/Special:FilePath/Giardini_di_Porta_Venezia_(Milan).jpg?width=800', desc: 'Quartiere multiculturale e vivace. Wine bar naturali, caffè indipendenti e una scena gastronomica in continua evoluzione.' },
-  'Isola':         { color: '#3A7DC4', photo: 'https://commons.wikimedia.org/wiki/Special:FilePath/Bosco_Verticale,_Porta_Nuova,_Milan_(Italy).jpg?width=800', desc: 'Il quartiere creativo per eccellenza. Dal Ceresio 7 ai cortili nascosti, Isola mescola design e autenticità.' },
-  'Tortona':       { color: '#8B5E9E', photo: 'https://commons.wikimedia.org/wiki/Special:FilePath/MUDEC_-_Museo_delle_Culture,_Milan.jpg?width=800', desc: 'Ex zona industriale diventata capitale del design. Spazi creativi, ristoranti stellati e cocktail bar botanici.' },
-  'NoLo':          { color: '#D4607A', photo: 'https://commons.wikimedia.org/wiki/Special:FilePath/Viale_Monza,_Milano.jpg?width=800', desc: 'North of Loreto: il quartiere più trendy di Milano. Pasticcerie di design, pescherie informali e locali indipendenti.' },
-  'Centrale':      { color: '#5E7A9E', photo: 'https://commons.wikimedia.org/wiki/Special:FilePath/Milano_Centrale_Station.jpg?width=800', desc: 'Intorno alla maestosa stazione. Osterie autentiche, bar storici e una cucina popolare milanese rimasta intatta.' },
-  'Duomo':         { color: '#B8963C', photo: 'https://commons.wikimedia.org/wiki/Special:FilePath/Milan_Cathedral_from_Piazza_del_Duomo.jpg?width=800', desc: 'Il cuore di Milano. Dalla Galleria Vittorio Emanuele alle trattorie nascoste nei vicoli del centro storico.' },
-  'Moscova':       { color: '#4E9E7A', photo: 'https://commons.wikimedia.org/wiki/Special:FilePath/ATM_4900_-_Milano_tram.jpg?width=800', desc: 'Quartiere elegante e residenziale. Ristoranti stellati, bar raffinati e una clientela che sa cosa vuole.' },
-  'Lambrate':      { color: '#C4783A', photo: 'https://commons.wikimedia.org/wiki/Special:FilePath/Birrificio_Lambrate,_Milan.jpg?width=800', desc: 'Quartiere east side in piena trasformazione. Il birrificio storico, spazi industriali e una vibe autentica.' },
-  'Città Studi':   { color: '#7A5EC4', photo: 'https://commons.wikimedia.org/wiki/Special:FilePath/Universit%C3%A0_degli_Studi_di_Milano_-_Cortile.jpg?width=800', desc: 'Il quartiere universitario di Milano. Pizzerie economiche, gastronomie di qualità e caffè da mattina a notte.' },
-  'Loreto':        { color: '#3A9EC4', photo: 'https://commons.wikimedia.org/wiki/Special:FilePath/Piazza_Loreto,_Milan.jpg?width=800', desc: 'Crocevia tra NoLo e Porta Venezia. Pizza al taglio gourmet, bar di quartiere moderni e una scena in rapida crescita.' },
+  'Navigli':       { color: '#4A9EBF', wiki: 'Navigli',                          photo: '', desc: 'Il quartiere dei canali, cuore della movida milanese. Aperitivi sul Naviglio Grande, cocktail bar storici e osterie autentiche.' },
+  'Brera':         { color: '#C4813A', wiki: 'Pinacoteca_di_Brera',              photo: '', desc: 'Il quartiere degli artisti. Gallerie, boutique e ristoranti raffinati in strade acciottolate. La Milano bohémienne.' },
+  'Porta Venezia': { color: '#5B9E6B', wiki: 'Porta_Venezia',                    photo: '', desc: 'Quartiere multiculturale e vivace. Wine bar naturali, caffè indipendenti e una scena gastronomica in continua evoluzione.' },
+  'Isola':         { color: '#3A7DC4', wiki: 'Bosco_Verticale',                  photo: '', desc: 'Il quartiere creativo per eccellenza. Dal Ceresio 7 ai cortili nascosti, Isola mescola design e autenticità.' },
+  'Tortona':       { color: '#8B5E9E', wiki: 'Museo_delle_Culture',              photo: '', desc: 'Ex zona industriale diventata capitale del design. Spazi creativi, ristoranti stellati e cocktail bar botanici.' },
+  'NoLo':          { color: '#D4607A', wiki: 'Piazzale_Loreto',                  photo: '', desc: 'North of Loreto: il quartiere più trendy di Milano. Pasticcerie di design, pescherie informali e locali indipendenti.' },
+  'Centrale':      { color: '#5E7A9E', wiki: 'Milano_Centrale_railway_station',  photo: '', desc: 'Intorno alla maestosa stazione. Osterie autentiche, bar storici e una cucina popolare milanese rimasta intatta.' },
+  'Duomo':         { color: '#B8963C', wiki: 'Milan_Cathedral',                  photo: '', desc: 'Il cuore di Milano. Dalla Galleria Vittorio Emanuele alle trattorie nascoste nei vicoli del centro storico.' },
+  'Moscova':       { color: '#4E9E7A', wiki: 'Moscova_(Milan_Metro)',            photo: '', desc: 'Quartiere elegante e residenziale. Ristoranti stellati, bar raffinati e una clientela che sa cosa vuole.' },
+  'Lambrate':      { color: '#C4783A', wiki: 'Lambrate',                         photo: '', desc: 'Quartiere east side in piena trasformazione. Il birrificio storico, spazi industriali e una vibe autentica.' },
+  'Città Studi':   { color: '#7A5EC4', wiki: 'University_of_Milan',              photo: '', desc: 'Il quartiere universitario di Milano. Pizzerie economiche, gastronomie di qualità e caffè da mattina a notte.' },
+  'Loreto':        { color: '#3A9EC4', wiki: 'Loreto_(Milan_Metro)',             photo: '', desc: 'Crocevia tra NoLo e Porta Venezia. Pizza al taglio gourmet, bar di quartiere moderni e una scena in rapida crescita.' },
 };
+
+/* Fetch zone hero images from Wikipedia at runtime (CORS-enabled).
+   Cached in localStorage for 7 days. */
+async function loadZonePhotos() {
+  const CACHE_KEY = 'mlZonePhotos_v2';
+  const CACHE_TIME_KEY = 'mlZonePhotosTime_v2';
+  const FRESH_MS = 7 * 24 * 60 * 60 * 1000;
+  const cached = JSON.parse(localStorage.getItem(CACHE_KEY) || '{}');
+  const cachedAt = parseInt(localStorage.getItem(CACHE_TIME_KEY) || '0', 10);
+  const fresh = Date.now() - cachedAt < FRESH_MS;
+
+  // Apply cached values immediately if present
+  for (const zona in cached) {
+    if (ZONE_META[zona]) ZONE_META[zona].photo = cached[zona];
+  }
+  if (fresh && Object.keys(cached).length === Object.keys(ZONE_META).length) return;
+
+  // Fetch missing/stale from Wikipedia
+  const updated = { ...cached };
+  await Promise.all(Object.entries(ZONE_META).map(async ([zona, meta]) => {
+    if (!meta.wiki) return;
+    if (fresh && cached[zona]) return;
+    try {
+      const url = `https://en.wikipedia.org/w/api.php?action=query&titles=${encodeURIComponent(meta.wiki)}&prop=pageimages&format=json&pithumbsize=800&origin=*`;
+      const r = await fetch(url);
+      if (!r.ok) return;
+      const data = await r.json();
+      const pages = data.query && data.query.pages;
+      if (!pages) return;
+      const page = Object.values(pages)[0];
+      const src = page && page.thumbnail && page.thumbnail.source;
+      if (src) {
+        ZONE_META[zona].photo = src;
+        updated[zona] = src;
+      }
+    } catch (e) { /* ignore network errors */ }
+  }));
+  localStorage.setItem(CACHE_KEY, JSON.stringify(updated));
+  localStorage.setItem(CACHE_TIME_KEY, String(Date.now()));
+}
 
 /* ── Category config — SVG icons, no emoji ── */
 const CAT_META = {
@@ -107,6 +149,10 @@ document.addEventListener('DOMContentLoaded', async () => {
     const r = await fetch(DATA_URL);
     if (r.ok) allLocali = await r.json(); else throw 0;
   } catch { allLocali = FALLBACK; }
+
+  // Fetch neighborhood photos from Wikipedia (uses localStorage cache).
+  // Don't block first paint: render now, re-render once photos resolve.
+  loadZonePhotos().then(() => renderScopri());
 
   buildCatBar();
   renderScopri();
