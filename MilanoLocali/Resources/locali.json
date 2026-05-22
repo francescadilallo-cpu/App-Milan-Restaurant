@@ -15,7 +15,8 @@
     "imageURL": "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=800&h=500&fit=crop&auto=format",
     "rating": 4.4,
     "reviewCount": 312,
-    "isNew": false
+    "isNew": false,
+    "hours": ["12:00-23:00", "12:00-23:00", "12:00-23:00", "12:00-23:00", "12:00-23:00", "12:00-23:00", null]
   },
   {
     "id": "mag-cafe",
@@ -33,7 +34,8 @@
     "imageURL": "https://images.unsplash.com/photo-1470337458703-46ad1756a187?w=800&h=500&fit=crop&auto=format",
     "rating": 4.6,
     "reviewCount": 541,
-    "isNew": false
+    "isNew": false,
+    "hours": [null, "18:00-01:00", "18:00-01:00", "18:00-01:00", "18:00-02:00", "18:00-02:00", "17:00-00:00"]
   },
   {
     "id": "upcycle",
@@ -51,7 +53,8 @@
     "imageURL": "https://images.unsplash.com/photo-1551538827-9c037cb4f32a?w=800&h=500&fit=crop&auto=format",
     "rating": 4.5,
     "reviewCount": 198,
-    "isNew": false
+    "isNew": false,
+    "hours": [null, "18:00-01:00", "18:00-01:00", "18:00-01:00", "18:00-02:00", "18:00-02:00", "17:00-00:00"]
   },
   {
     "id": "pisacco",
@@ -69,7 +72,8 @@
     "imageURL": "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800&h=500&fit=crop&auto=format",
     "rating": 4.3,
     "reviewCount": 287,
-    "isNew": false
+    "isNew": false,
+    "hours": [null, "12:00-23:00", "12:00-23:00", "12:00-23:00", "12:00-23:00", "12:00-23:00", "12:00-22:00"]
   },
   {
     "id": "bar-brera",
@@ -87,7 +91,8 @@
     "imageURL": "https://images.unsplash.com/photo-1447933601403-0c6688de566e?w=800&h=500&fit=crop&auto=format",
     "rating": 4.1,
     "reviewCount": 156,
-    "isNew": false
+    "isNew": false,
+    "hours": ["07:30-20:00", "07:30-20:00", "07:30-20:00", "07:30-20:00", "07:30-20:00", "08:00-20:00", "09:00-19:00"]
   },
   {
     "id": "dry-milano",
@@ -105,7 +110,8 @@
     "imageURL": "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=800&h=500&fit=crop&auto=format",
     "rating": 4.7,
     "reviewCount": 892,
-    "isNew": false
+    "isNew": false,
+    "hours": [null, "12:00-23:30", "12:00-23:30", "12:00-23:30", "12:00-23:30", "12:00-23:30", "12:00-22:30"]
   },
   {
     "id": "ceresio7",
@@ -123,7 +129,8 @@
     "imageURL": "https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?w=800&h=500&fit=crop&auto=format",
     "rating": 4.5,
     "reviewCount": 1204,
-    "isNew": false
+    "isNew": false,
+    "hours": [null, null, "19:00-02:00", "19:00-02:00", "19:00-02:00", "19:00-02:00", "19:00-02:00"]
   },
   {
     "id": "lacerba",
@@ -141,7 +148,8 @@
     "imageURL": "https://images.unsplash.com/photo-1574096079513-d8259312b785?w=800&h=500&fit=crop&auto=format",
     "rating": 4.6,
     "reviewCount": 334,
-    "isNew": false
+    "isNew": false,
+    "hours": [null, "18:00-01:00", "18:00-01:00", "18:00-01:00", "18:00-02:00", "18:00-02:00", "17:00-00:00"]
   },
   {
     "id": "erba-brusca",
@@ -159,7 +167,8 @@
     "imageURL": "https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=800&h=500&fit=crop&auto=format",
     "rating": 4.8,
     "reviewCount": 478,
-    "isNew": false
+    "isNew": false,
+    "hours": [null, "12:00-23:00", "12:00-23:00", "12:00-23:00", "12:00-23:00", "12:00-23:00", "12:00-22:00"]
   },
   {
     "id": "champagne-socialist",
@@ -177,7 +186,8 @@
     "imageURL": "https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?w=800&h=500&fit=crop&auto=format",
     "rating": 4.4,
     "reviewCount": 167,
-    "isNew": true
+    "isNew": true,
+    "hours": [null, "17:00-00:00", "17:00-00:00", "17:00-00:00", "17:00-01:00", "17:00-01:00", "16:00-00:00"]
   },
   {
     "id": "radetzky",
@@ -195,7 +205,8 @@
     "imageURL": "https://images.unsplash.com/photo-1559925393-8be0ec4767c8?w=800&h=500&fit=crop&auto=format",
     "rating": 4.2,
     "reviewCount": 223,
-    "isNew": false
+    "isNew": false,
+    "hours": ["07:30-20:00", "07:30-20:00", "07:30-20:00", "07:30-20:00", "07:30-20:00", "08:00-20:00", "09:00-19:00"]
   },
   {
     "id": "frida",
@@ -213,7 +224,8 @@
     "imageURL": "https://images.unsplash.com/photo-1543007630-9710e4a00a20?w=800&h=500&fit=crop&auto=format",
     "rating": 4.3,
     "reviewCount": 389,
-    "isNew": false
+    "isNew": false,
+    "hours": [null, "17:00-00:00", "17:00-00:00", "17:00-00:00", "17:00-01:00", "17:00-01:00", "16:00-00:00"]
   },
   {
     "id": "savini-tartufi",
@@ -231,7 +243,8 @@
     "imageURL": "https://images.unsplash.com/photo-1592417817098-8fd3d9eb14a5?w=800&h=500&fit=crop&auto=format",
     "rating": 4.5,
     "reviewCount": 621,
-    "isNew": false
+    "isNew": false,
+    "hours": [null, "12:00-23:00", "12:00-23:00", "12:00-23:00", "12:00-23:00", "12:00-23:00", "12:00-22:00"]
   },
   {
     "id": "luini",
@@ -249,7 +262,8 @@
     "imageURL": "https://images.unsplash.com/photo-1565299507177-b0ac66763828?w=800&h=500&fit=crop&auto=format",
     "rating": 4.7,
     "reviewCount": 2341,
-    "isNew": false
+    "isNew": false,
+    "hours": ["11:00-21:00", "11:00-21:00", "11:00-21:00", "11:00-21:00", "11:00-21:00", "11:00-21:00", null]
   },
   {
     "id": "tokuyoshi",
@@ -267,7 +281,8 @@
     "imageURL": "https://images.unsplash.com/photo-1579871494447-9811cf80d66c?w=800&h=500&fit=crop&auto=format",
     "rating": 4.8,
     "reviewCount": 445,
-    "isNew": false
+    "isNew": false,
+    "hours": [null, "12:00-14:30", "12:00-14:30", "12:00-14:30", "12:00-23:00", "12:00-23:00", null]
   },
   {
     "id": "botanical-club",
@@ -285,7 +300,8 @@
     "imageURL": "https://images.unsplash.com/photo-1517701604599-bb29b565090c?w=800&h=500&fit=crop&auto=format",
     "rating": 4.6,
     "reviewCount": 278,
-    "isNew": false
+    "isNew": false,
+    "hours": [null, "18:00-01:00", "18:00-01:00", "18:00-01:00", "18:00-02:00", "18:00-02:00", "17:00-00:00"]
   },
   {
     "id": "lume",
@@ -303,7 +319,8 @@
     "imageURL": "https://images.unsplash.com/photo-1550966871-3ed3cdb5ed0c?w=800&h=500&fit=crop&auto=format",
     "rating": 4.9,
     "reviewCount": 389,
-    "isNew": false
+    "isNew": false,
+    "hours": [null, "19:30-23:00", "19:30-23:00", "19:30-23:00", "19:30-23:00", "19:30-23:00", null]
   },
   {
     "id": "pave",
@@ -321,7 +338,8 @@
     "imageURL": "https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=800&h=500&fit=crop&auto=format",
     "rating": 4.7,
     "reviewCount": 567,
-    "isNew": false
+    "isNew": false,
+    "hours": ["07:30-20:00", "07:30-20:00", "07:30-20:00", "07:30-20:00", "07:30-20:00", "08:00-20:00", null]
   },
   {
     "id": "pescheria-claudio",
@@ -339,7 +357,8 @@
     "imageURL": "https://images.unsplash.com/photo-1534482421-64566f976cfa?w=800&h=500&fit=crop&auto=format",
     "rating": 4.5,
     "reviewCount": 213,
-    "isNew": false
+    "isNew": false,
+    "hours": [null, "12:00-22:00", "12:00-22:00", "12:00-22:00", "12:00-22:00", "12:00-23:00", "12:00-22:00"]
   },
   {
     "id": "birrificio-lambrate",
@@ -357,7 +376,8 @@
     "imageURL": "https://images.unsplash.com/photo-1559526324-4b87b5e36e44?w=800&h=500&fit=crop&auto=format",
     "rating": 4.4,
     "reviewCount": 631,
-    "isNew": false
+    "isNew": false,
+    "hours": [null, "17:00-00:00", "17:00-00:00", "17:00-00:00", "17:00-01:00", "17:00-01:00", "16:00-00:00"]
   },
   {
     "id": "trattoria-milanese",
@@ -375,7 +395,8 @@
     "imageURL": "https://images.unsplash.com/photo-1424847651672-bf20a4b0982b?w=800&h=500&fit=crop&auto=format",
     "rating": 4.3,
     "reviewCount": 445,
-    "isNew": false
+    "isNew": false,
+    "hours": [null, "12:00-23:00", "12:00-23:00", "12:00-23:00", "12:00-23:00", "12:00-23:00", "12:00-22:00"]
   },
   {
     "id": "sushi-b",
@@ -393,7 +414,8 @@
     "imageURL": "https://images.unsplash.com/photo-1553621042-f6e147245754?w=800&h=500&fit=crop&auto=format",
     "rating": 4.9,
     "reviewCount": 198,
-    "isNew": false
+    "isNew": false,
+    "hours": [null, "12:00-14:30", "12:00-14:30", "12:00-14:30", "12:00-23:00", "12:00-23:00", null]
   },
   {
     "id": "moscova-bar",
@@ -411,7 +433,8 @@
     "imageURL": "https://images.unsplash.com/photo-1566417713940-fe7c737a9ef2?w=800&h=500&fit=crop&auto=format",
     "rating": 4.0,
     "reviewCount": 178,
-    "isNew": false
+    "isNew": false,
+    "hours": [null, "17:00-00:00", "17:00-00:00", "17:00-00:00", "17:00-01:00", "17:00-01:00", "16:00-00:00"]
   },
   {
     "id": "pizza-zio",
@@ -429,7 +452,8 @@
     "imageURL": "https://images.unsplash.com/photo-1571997478779-2adcbbe9ab2f?w=800&h=500&fit=crop&auto=format",
     "rating": 4.5,
     "reviewCount": 334,
-    "isNew": false
+    "isNew": false,
+    "hours": [null, "12:00-23:30", "12:00-23:30", "12:00-23:30", "12:00-23:30", "12:00-23:30", "12:00-22:30"]
   },
   {
     "id": "osteria-acquabella",
@@ -447,6 +471,197 @@
     "imageURL": "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=800&h=500&fit=crop&auto=format",
     "rating": 4.1,
     "reviewCount": 89,
-    "isNew": false
+    "isNew": false,
+    "hours": ["12:00-22:00", "12:00-22:00", "12:00-22:00", "12:00-22:00", "12:00-22:00", "12:00-22:00", null]
+  },
+  {
+    "id": "bar-basso",
+    "name": "Bar Basso",
+    "zona": "Porta Venezia",
+    "categoria": "Cocktail Bar",
+    "address": "Via Plinio, 39",
+    "description": "Storico cocktail bar milanese, inventore del Negroni Sbagliato. Dal 1947, un'istituzione.",
+    "latitude": 45.4730,
+    "longitude": 9.2089,
+    "priceRange": 2,
+    "tags": ["negroni", "storico", "cocktail"],
+    "instagramHandle": "barbassomilano",
+    "websiteURL": null,
+    "imageURL": "https://images.unsplash.com/photo-1470337458703-46ad1756a187?w=800&h=500&fit=crop&auto=format",
+    "rating": 4.7,
+    "reviewCount": 1892,
+    "isNew": false,
+    "hours": ["18:30-02:00", "18:30-02:00", "18:30-02:00", "18:30-02:00", "18:30-02:00", "18:30-02:00", null]
+  },
+  {
+    "id": "ugo",
+    "name": "Ugo",
+    "zona": "Loreto",
+    "categoria": "Aperitivo",
+    "address": "Via Felice Cavallotti, 5",
+    "description": "Bar di quartiere moderno nel cuore di Loreto. Aperitivo informale con ottimi spritz e musica.",
+    "latitude": 45.4863,
+    "longitude": 9.2098,
+    "priceRange": 1,
+    "tags": ["aperitivo", "spritz", "loreto"],
+    "instagramHandle": "ugomilano",
+    "websiteURL": null,
+    "imageURL": "https://images.unsplash.com/photo-1551538827-9c037cb4f32a?w=800&h=500&fit=crop&auto=format",
+    "rating": 4.2,
+    "reviewCount": 234,
+    "isNew": false,
+    "hours": [null, "17:00-01:00", "17:00-01:00", "17:00-01:00", "17:00-01:00", "17:00-01:00", "17:00-01:00"]
+  },
+  {
+    "id": "sorbillo-milano",
+    "name": "Sorbillo Milano",
+    "zona": "Duomo",
+    "categoria": "Pizza",
+    "address": "Largo Corsia dei Servi, 11",
+    "description": "L'iconico pizzaiolo napoletano sbarca a Milano. Impasto perfetto, forno a legna, ingredienti DOP.",
+    "latitude": 45.4641,
+    "longitude": 9.1956,
+    "priceRange": 2,
+    "tags": ["napoletana", "forno a legna", "DOP"],
+    "instagramHandle": "sorbillomilano",
+    "websiteURL": null,
+    "imageURL": "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=800&h=500&fit=crop&auto=format",
+    "rating": 4.6,
+    "reviewCount": 1204,
+    "isNew": false,
+    "hours": ["12:00-23:00", "12:00-23:00", "12:00-23:00", "12:00-23:00", "12:00-23:00", "12:00-23:00", "12:00-23:00"]
+  },
+  {
+    "id": "vun-andrea-aprea",
+    "name": "Vun Andrea Aprea",
+    "zona": "Moscova",
+    "categoria": "Ristorante",
+    "address": "Via Gerolamo Silvio Fantoni, 7",
+    "description": "Una stella Michelin. Cucina partenopea reinterpretata in chiave contemporanea. Vista giardino.",
+    "latitude": 45.4785,
+    "longitude": 9.1915,
+    "priceRange": 4,
+    "tags": ["michelin", "napoletano", "fine dining"],
+    "instagramHandle": "vunrestaurant",
+    "websiteURL": null,
+    "imageURL": "https://images.unsplash.com/photo-1550966871-3ed3cdb5ed0c?w=800&h=500&fit=crop&auto=format",
+    "rating": 4.8,
+    "reviewCount": 312,
+    "isNew": false,
+    "hours": [null, "12:30-22:30", "12:30-22:30", "12:30-22:30", "12:30-22:30", "12:30-22:30", null]
+  },
+  {
+    "id": "fratelli-figurato",
+    "name": "Fratelli Figurato",
+    "zona": "Città Studi",
+    "categoria": "Ristorante",
+    "address": "Viale Abruzzi, 46",
+    "description": "Gastronomia e ristorante con una delle migliori selezioni di salumi e formaggi di Milano.",
+    "latitude": 45.4791,
+    "longitude": 9.2284,
+    "priceRange": 3,
+    "tags": ["salumi", "formaggi", "gastronomia"],
+    "instagramHandle": "fratelli_figurato",
+    "websiteURL": null,
+    "imageURL": "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800&h=500&fit=crop&auto=format",
+    "rating": 4.5,
+    "reviewCount": 445,
+    "isNew": false,
+    "hours": ["08:00-21:00", "08:00-21:00", "08:00-21:00", "08:00-21:00", "08:00-21:00", "08:00-21:00", null]
+  },
+  {
+    "id": "taglio",
+    "name": "Taglio",
+    "zona": "Loreto",
+    "categoria": "Pizza",
+    "address": "Via Vigevano, 10",
+    "description": "Pizza al taglio gourmet. Impasto ad alta idratazione con farciture creative che cambiano ogni giorno.",
+    "latitude": 45.4858,
+    "longitude": 9.2071,
+    "priceRange": 1,
+    "tags": ["pizza al taglio", "gourmet", "creative"],
+    "instagramHandle": "tagliomilano",
+    "websiteURL": null,
+    "imageURL": "https://images.unsplash.com/photo-1571997478779-2adcbbe9ab2f?w=800&h=500&fit=crop&auto=format",
+    "rating": 4.4,
+    "reviewCount": 567,
+    "isNew": true,
+    "hours": ["11:30-22:00", "11:30-22:00", "11:30-22:00", "11:30-22:00", "11:30-22:00", "11:30-22:00", null]
+  },
+  {
+    "id": "ceresio7-pool-bar",
+    "name": "Ceresio 7 Pool Bar",
+    "zona": "Isola",
+    "categoria": "Cocktail Bar",
+    "address": "Via Ceresio, 7",
+    "description": "Il rooftop più iconico di Milano diventa cocktail bar al tramonto. Vista sullo skyline, musica e drink.",
+    "latitude": 45.4840,
+    "longitude": 9.1860,
+    "priceRange": 3,
+    "tags": ["rooftop", "skyline", "cocktail"],
+    "instagramHandle": "ceresio7",
+    "websiteURL": null,
+    "imageURL": "https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?w=800&h=500&fit=crop&auto=format",
+    "rating": 4.4,
+    "reviewCount": 678,
+    "isNew": false,
+    "hours": [null, null, "19:00-02:00", "19:00-02:00", "19:00-02:00", "19:00-02:00", "19:00-02:00"]
+  },
+  {
+    "id": "drogheria-milanese",
+    "name": "Drogheria Milanese",
+    "zona": "Navigli",
+    "categoria": "Vineria",
+    "address": "Via Cola di Rienzo, 7",
+    "description": "Vineria informale sui Navigli con selezione di vini naturali e piccola cucina. Tavolini sul marciapiede.",
+    "latitude": 45.4547,
+    "longitude": 9.1712,
+    "priceRange": 2,
+    "tags": ["vino", "naturale", "navigli"],
+    "instagramHandle": "drogheriamianese",
+    "websiteURL": null,
+    "imageURL": "https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?w=800&h=500&fit=crop&auto=format",
+    "rating": 4.3,
+    "reviewCount": 189,
+    "isNew": false,
+    "hours": ["18:00-01:00", "18:00-01:00", "18:00-01:00", "18:00-01:00", "18:00-01:00", "18:00-01:00", null]
+  },
+  {
+    "id": "stazione-centrale-lounge",
+    "name": "Stazione Centrale Lounge",
+    "zona": "Centrale",
+    "categoria": "Caffè",
+    "address": "Piazza Duca d'Aosta, 1",
+    "description": "Bar nella storica Stazione Centrale. Colazione veloce, spritz e panini. Ottima posizione per chi viaggia.",
+    "latitude": 45.4862,
+    "longitude": 9.2045,
+    "priceRange": 2,
+    "tags": ["stazione", "colazione", "comodo"],
+    "instagramHandle": null,
+    "websiteURL": null,
+    "imageURL": "https://images.unsplash.com/photo-1447933601403-0c6688de566e?w=800&h=500&fit=crop&auto=format",
+    "rating": 3.9,
+    "reviewCount": 156,
+    "isNew": false,
+    "hours": ["05:30-22:00", "05:30-22:00", "05:30-22:00", "05:30-22:00", "05:30-22:00", "05:30-22:00", "05:30-22:00"]
+  },
+  {
+    "id": "tano-passami-lolio",
+    "name": "Tano Passami l'Olio",
+    "zona": "Moscova",
+    "categoria": "Ristorante",
+    "address": "Via Villoresi, 16",
+    "description": "Ristorante stellato dedicato all'olio extravergine. Ogni piatto esalta un olio di produttore diverso.",
+    "latitude": 45.4779,
+    "longitude": 9.1908,
+    "priceRange": 4,
+    "tags": ["michelin", "olio", "innovativo"],
+    "instagramHandle": "tanopassamilolio",
+    "websiteURL": null,
+    "imageURL": "https://images.unsplash.com/photo-1592417817098-8fd3d9eb14a5?w=800&h=500&fit=crop&auto=format",
+    "rating": 4.7,
+    "reviewCount": 289,
+    "isNew": false,
+    "hours": [null, "19:30-23:00", "19:30-23:00", "19:30-23:00", "19:30-23:00", "19:30-23:00", null]
   }
 ]

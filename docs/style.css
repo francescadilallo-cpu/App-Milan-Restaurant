@@ -650,6 +650,53 @@ html, body {
 .leaflet-control-zoom-in { border-radius: 10px 10px 0 0 !important; }
 .leaflet-control-zoom-out { border-radius: 0 0 10px 10px !important; }
 
+/* ── Onboarding ── */
+.onboarding-screen {
+  position: fixed; inset: 0; z-index: 999;
+  background: #fff;
+  display: flex; align-items: center; justify-content: center;
+  padding: 40px 32px;
+  transition: opacity .4s ease, transform .4s ease;
+}
+.onboarding-screen.hidden { opacity: 0; pointer-events: none; transform: scale(.98); }
+.ob-content { max-width: 340px; width: 100%; }
+.ob-logo { font-size: 48px; font-weight: 800; letter-spacing: -2px; color: #1D1D1F; margin-bottom: 12px; }
+.ob-logo span { color: #007AFF; }
+.ob-tagline { font-size: 17px; color: #6E6E73; line-height: 1.5; margin-bottom: 36px; letter-spacing: -.2px; }
+.ob-features { display: flex; flex-direction: column; gap: 16px; margin-bottom: 40px; }
+.ob-feature { display: flex; align-items: center; gap: 14px; }
+.ob-feature-icon { width: 36px; height: 36px; border-radius: 10px; background: #F2F2F7; display: flex; align-items: center; justify-content: center; color: #007AFF; flex-shrink: 0; }
+.ob-feature span { font-size: 15px; font-weight: 500; color: #1D1D1F; letter-spacing: -.15px; }
+.ob-cta { width: 100%; padding: 15px; background: #1D1D1F; color: #fff; border: none; border-radius: 14px; font-size: 16px; font-weight: 700; cursor: pointer; font-family: inherit; letter-spacing: -.2px; margin-bottom: 12px; transition: opacity .15s; }
+.ob-cta:active { opacity: .8; }
+.ob-skip { background: none; border: none; font-size: 14px; color: #AEAEB2; cursor: pointer; font-family: inherit; width: 100%; }
+
+/* ── Open Now chip ── */
+.open-now-chip { background: #34C75910 !important; color: #34C759 !important; border: 1.5px solid #34C75930 !important; }
+.open-now-chip.active { background: #34C759 !important; color: #fff !important; border-color: #34C759 !important; }
+.open-badge { display: inline-block; width: 7px; height: 7px; border-radius: 50%; background: #34C759; margin-right: 4px; animation: pulse-green 2s infinite; vertical-align: middle; }
+@keyframes pulse-green { 0%,100% { opacity: 1; } 50% { opacity: .4; } }
+
+/* ── Zona hero ── */
+.zona-hero { position: relative; height: 160px; flex-shrink: 0; overflow: hidden; background: var(--surface3); }
+.zona-hero-img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.zona-hero-overlay { position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(0,0,0,.1) 0%, rgba(0,0,0,.6) 100%); display: flex; align-items: flex-end; padding: 16px 18px; }
+.zona-hero-desc { font-size: 13px; color: rgba(255,255,255,.85); line-height: 1.5; letter-spacing: -.05px; }
+
+/* ── Share button ── */
+.share-btn { background: var(--surface2); border: none; border-radius: 50%; width: 34px; height: 34px; display: flex; align-items: center; justify-content: center; cursor: pointer; color: var(--label2); box-shadow: var(--shadow); transition: background .12s; position: absolute; top: 14px; right: 56px; z-index: 20; }
+.share-btn:active { background: var(--surface3); }
+
+/* ── Toast ── */
+.toast { position: fixed; bottom: calc(var(--tab-h) + var(--safe-b) + 16px); left: 50%; transform: translateX(-50%) translateY(20px); background: rgba(0,0,0,.82); color: #fff; font-size: 14px; font-weight: 500; padding: 10px 20px; border-radius: 20px; white-space: nowrap; opacity: 0; transition: opacity .22s ease, transform .22s ease; z-index: 500; pointer-events: none; backdrop-filter: blur(10px); }
+.toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+/* ── Orario badge ── */
+.hours-badge { display: inline-flex; align-items: center; gap: 4px; font-size: 11px; font-weight: 600; padding: 2px 7px; border-radius: 6px; }
+.hours-badge.open { background: #34C75915; color: #34C759; }
+.hours-badge.closed { background: #FF3B3015; color: #FF3B30; }
+.hours-badge.unknown { background: var(--surface2); color: var(--label3); }
+
 /* ══════════════════════════════════════════
    iPhone frame — desktop only
    ══════════════════════════════════════════ */

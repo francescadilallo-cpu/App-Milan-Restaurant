@@ -1,19 +1,19 @@
 const DATA_URL = 'https://raw.githubusercontent.com/francescadilallo-cpu/App-Milan-Restaurant/main/MilanoLocali/Resources/locali.json';
 
-/* ── Zone config — color only, no emoji ── */
+/* ── Zone config ── */
 const ZONE_META = {
-  'Navigli':       { color: '#4A9EBF' },
-  'Brera':         { color: '#C4813A' },
-  'Porta Venezia': { color: '#5B9E6B' },
-  'Isola':         { color: '#3A7DC4' },
-  'Tortona':       { color: '#8B5E9E' },
-  'NoLo':          { color: '#D4607A' },
-  'Centrale':      { color: '#5E7A9E' },
-  'Duomo':         { color: '#B8963C' },
-  'Moscova':       { color: '#4E9E7A' },
-  'Lambrate':      { color: '#C4783A' },
-  'Città Studi':   { color: '#7A5EC4' },
-  'Loreto':        { color: '#3A9EC4' },
+  'Navigli':       { color: '#4A9EBF', photo: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&h=400&fit=crop&auto=format', desc: 'Il quartiere dei canali, cuore della movida milanese. Aperitivi sul Naviglio Grande, cocktail bar storici e osterie autentiche.' },
+  'Brera':         { color: '#C4813A', photo: 'https://images.unsplash.com/photo-1543007630-9710e4a00a20?w=800&h=400&fit=crop&auto=format', desc: 'Il quartiere degli artisti. Gallerie, boutique e ristoranti raffinati in strade acciottolate. La Milano bohémienne.' },
+  'Porta Venezia': { color: '#5B9E6B', photo: 'https://images.unsplash.com/photo-1534430480872-3498386e7856?w=800&h=400&fit=crop&auto=format', desc: 'Quartiere multiculturale e vivace. Wine bar naturali, caffè indipendenti e una scena gastronomica in continua evoluzione.' },
+  'Isola':         { color: '#3A7DC4', photo: 'https://images.unsplash.com/photo-1486325212027-8081e485255e?w=800&h=400&fit=crop&auto=format', desc: 'Il quartiere creativo per eccellenza. Dal Ceresio 7 ai cortili nascosti, Isola mescola design e autenticità.' },
+  'Tortona':       { color: '#8B5E9E', photo: 'https://images.unsplash.com/photo-1558618047-f4e6f90a6d90?w=800&h=400&fit=crop&auto=format', desc: 'Ex zona industriale diventata capitale del design. Spazi creativi, ristoranti stellati e cocktail bar botanici.' },
+  'NoLo':          { color: '#D4607A', photo: 'https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=800&h=400&fit=crop&auto=format', desc: 'North of Loreto: il quartiere più trendy di Milano. Pasticcerie di design, pescherie informali e locali indipendenti.' },
+  'Centrale':      { color: '#5E7A9E', photo: 'https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?w=800&h=400&fit=crop&auto=format', desc: 'Intorno alla maestosa stazione. Osterie autentiche, bar storici e una cucina popolare milanese rimasta intatta.' },
+  'Duomo':         { color: '#B8963C', photo: 'https://images.unsplash.com/photo-1515542622106-78bda8ba0e5b?w=800&h=400&fit=crop&auto=format', desc: 'Il cuore di Milano. Dalla Galleria Vittorio Emanuele alle trattorie nascoste nei vicoli del centro storico.' },
+  'Moscova':       { color: '#4E9E7A', photo: 'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=800&h=400&fit=crop&auto=format', desc: 'Quartiere elegante e residenziale. Ristoranti stellati, bar raffinati e una clientela che sa cosa vuole.' },
+  'Lambrate':      { color: '#C4783A', photo: 'https://images.unsplash.com/photo-1559526324-4b87b5e36e44?w=800&h=400&fit=crop&auto=format', desc: 'Quartiere east side in piena trasformazione. Il birrificio storico, spazi industriali e una vibe autentica.' },
+  'Città Studi':   { color: '#7A5EC4', photo: 'https://images.unsplash.com/photo-1541339907198-e08756dedf3f?w=800&h=400&fit=crop&auto=format', desc: 'Il quartiere universitario di Milano. Pizzerie economiche, gastronomie di qualità e caffè da mattina a notte.' },
+  'Loreto':        { color: '#3A9EC4', photo: 'https://images.unsplash.com/photo-1534430480872-3498386e7856?w=800&h=400&fit=crop&auto=format', desc: 'Crocevia tra NoLo e Porta Venezia. Pizza al taglio gourmet, bar di quartiere moderni e una scena in rapida crescita.' },
 };
 
 /* ── Category config — SVG icons, no emoji ── */
@@ -36,6 +36,7 @@ const PRICE = ['', '€', '€€', '€€€', '€€€€'];
 let allLocali = [];
 let filterZona = null;
 let filterCat  = null;
+let filterOpenNow = false;
 let searchQuery = '';
 let favorites = new Set(JSON.parse(localStorage.getItem('mlFav') || '[]'));
 let detailMap = null;
@@ -43,8 +44,65 @@ let mainMap   = null;
 let mainMarkers = [];
 let previousScreen = 'scopri';
 
+/* ── Hours helpers ── */
+function isOpenNow(locale) {
+  if (!locale.hours || !Array.isArray(locale.hours)) return null;
+  const now = new Date();
+  const dayIdx = (now.getDay() + 6) % 7; // 0=Mon...6=Sun
+  const todayStr = locale.hours[dayIdx];
+  if (checkHours(todayStr, now, false)) return true;
+  const yestStr = locale.hours[(dayIdx + 6) % 7];
+  return checkHours(yestStr, now, true);
+}
+
+function checkHours(str, now, yesterday) {
+  if (!str) return false;
+  const parts = str.split('-');
+  if (parts.length < 2) return false;
+  const openStr = parts[0];
+  const closeStr = parts[1];
+  const openParts = openStr.split(':').map(Number);
+  const closeParts = closeStr.split(':').map(Number);
+  if (openParts.length < 2 || closeParts.length < 2) return false;
+  const oh = openParts[0], om = openParts[1];
+  const ch = closeParts[0], cm = closeParts[1];
+  const curMin = now.getHours() * 60 + now.getMinutes();
+  const openMin = oh * 60 + om;
+  const closeMin = ch * 60 + cm;
+  const overnight = closeMin < openMin; // crosses midnight
+  if (!yesterday) {
+    if (!overnight) return curMin >= openMin && curMin < closeMin;
+    return curMin >= openMin; // open side of overnight
+  } else {
+    if (!overnight) return false; // yesterday didn't go overnight
+    return curMin < closeMin; // we're in the early-morning tail
+  }
+}
+
+function formatHoursToday(locale) {
+  if (!locale.hours || !Array.isArray(locale.hours)) return null;
+  const dayIdx = (new Date().getDay() + 6) % 7;
+  const str = locale.hours[dayIdx];
+  return str || null; // null = chiuso oggi
+}
+
 /* ── Boot ── */
 document.addEventListener('DOMContentLoaded', async () => {
+  // Onboarding
+  const obSeen = localStorage.getItem('mlObSeen');
+  if (!obSeen) {
+    document.getElementById('onboarding').classList.remove('hidden');
+  } else {
+    document.getElementById('onboarding').classList.add('hidden');
+  }
+  document.getElementById('ob-start').addEventListener('click', () => dismissOnboarding(false));
+  document.getElementById('ob-skip').addEventListener('click', () => dismissOnboarding(true));
+
+  function dismissOnboarding(permanent) {
+    if (permanent) localStorage.setItem('mlObSeen', '1');
+    document.getElementById('onboarding').classList.add('hidden');
+  }
+
   try {
     const r = await fetch(DATA_URL);
     if (r.ok) allLocali = await r.json(); else throw 0;
@@ -66,6 +124,7 @@ function filtered() {
   return allLocali.filter(l => {
     if (filterZona && l.zona !== filterZona) return false;
     if (filterCat  && l.categoria !== filterCat) return false;
+    if (filterOpenNow && isOpenNow(l) !== true) return false;
     if (searchQuery) {
       const q = searchQuery.toLowerCase();
       if (!l.name.toLowerCase().includes(q) && !l.description.toLowerCase().includes(q) &&
@@ -102,6 +161,20 @@ function renderScopri() {
 /* ── Category bar ── */
 function buildCatBar() {
   const bar = document.getElementById('cat-bar');
+
+  // "Aperto ora" chip first
+  const openChip = document.createElement('button');
+  openChip.className = 'cat-chip open-now-chip';
+  openChip.id = 'open-now-chip';
+  openChip.innerHTML = '<span class="open-badge"></span> Aperto ora';
+  openChip.addEventListener('click', () => {
+    filterOpenNow = !filterOpenNow;
+    openChip.classList.toggle('active', filterOpenNow);
+    renderScopri();
+    if (document.getElementById('screen-mappa').classList.contains('active')) renderMapMarkers();
+  });
+  bar.appendChild(openChip);
+
   Object.entries(CAT_META).forEach(([name, meta]) => {
     const chip = document.createElement('button');
     chip.className = 'cat-chip';
@@ -109,7 +182,7 @@ function buildCatBar() {
     chip.textContent = name;
     chip.addEventListener('click', () => {
       filterCat = filterCat === name ? null : name;
-      document.querySelectorAll('.cat-chip').forEach(c => c.classList.toggle('active', c.dataset.cat === filterCat));
+      document.querySelectorAll('.cat-chip[data-cat]').forEach(c => c.classList.toggle('active', c.dataset.cat === filterCat));
       renderScopri();
       if (document.getElementById('screen-mappa').classList.contains('active')) renderMapMarkers();
     });
@@ -121,6 +194,21 @@ function buildCatBar() {
 function showZona(zona) {
   previousScreen = 'scopri';
   document.getElementById('zona-title').textContent = zona;
+
+  // Populate zona hero
+  const zonaMeta = ZONE_META[zona] || {};
+  const heroImg = document.getElementById('zona-hero-img');
+  const heroDesc = document.getElementById('zona-hero-desc');
+  if (zonaMeta.photo) {
+    heroImg.src = zonaMeta.photo;
+    heroImg.alt = zona;
+    heroImg.style.display = 'block';
+    document.getElementById('zona-hero').style.display = 'block';
+  } else {
+    document.getElementById('zona-hero').style.display = 'none';
+  }
+  heroDesc.textContent = zonaMeta.desc || '';
+
   const list = document.getElementById('zona-list');
   list.innerHTML = '';
   filtered().filter(l=>l.zona===zona).forEach(l => list.appendChild(makeLocaleItem(l, ()=>showDetail(l,'zona'))));
@@ -139,6 +227,13 @@ function makeLocaleItem(locale, onClick) {
     ? `<span class="meta-sep">·</span><span style="font-size:11px;color:#FF9F0A;font-weight:700">★ ${locale.rating}</span>`
     : '';
 
+  const openStatus = isOpenNow(locale);
+  const hoursBadge = openStatus === true
+    ? '<span class="hours-badge open" style="margin-left:4px"><span class="open-badge"></span>Aperto</span>'
+    : openStatus === false
+    ? '<span class="hours-badge closed" style="margin-left:4px">Chiuso</span>'
+    : '';
+
   div.innerHTML = `
     ${thumb}
     <div class="locale-body">
@@ -152,6 +247,7 @@ function makeLocaleItem(locale, onClick) {
         <span class="meta-sep">·</span>
         <span class="price-text">${PRICE[locale.priceRange]||''}</span>
         ${ratingHtml}
+        ${hoursBadge}
       </div>
       <div class="locale-address">${locale.address}</div>
     </div>
@@ -168,6 +264,29 @@ function makeLocaleItem(locale, onClick) {
   if (clickable) clickable.addEventListener('click', onClick);
   div.querySelector('.fav-btn').addEventListener('click', e => { e.stopPropagation(); toggleFav(locale, e.currentTarget); });
   return div;
+}
+
+/* ── Share ── */
+async function shareLocale(locale) {
+  const text = `${locale.name} — ${locale.zona}, Milano\n${locale.address}`;
+  try {
+    if (navigator.share) {
+      await navigator.share({ title: locale.name, text, url: window.location.href });
+    } else {
+      await navigator.clipboard.writeText(text);
+      showToast('Copiato negli appunti!');
+    }
+  } catch (e) {
+    if (e.name !== 'AbortError') showToast('Copiato negli appunti!');
+  }
+}
+
+function showToast(msg) {
+  let t = document.getElementById('toast');
+  if (!t) { t = document.createElement('div'); t.id = 'toast'; t.className = 'toast'; document.body.appendChild(t); }
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2500);
 }
 
 /* ── Detail ── */
@@ -203,6 +322,9 @@ function showDetail(locale, from) {
   favBtn.querySelector('svg').setAttribute('fill', isFav ? 'currentColor' : 'none');
   favBtn.onclick = () => toggleFav(locale, favBtn);
 
+  // Share button
+  document.getElementById('detail-share-btn').addEventListener('click', () => shareLocale(locale));
+
   // Stars helper
   function starsHtml(rating) {
     const full = Math.floor(rating);
@@ -216,6 +338,19 @@ function showDetail(locale, from) {
     return s;
   }
 
+  // Hours line
+  const todayHours = formatHoursToday(locale);
+  const openNow = isOpenNow(locale);
+  let hoursLine = '';
+  if (todayHours) {
+    hoursLine = `<div style="margin-bottom:14px;display:flex;align-items:center;gap:8px">
+      ${openNow ? '<span class="hours-badge open"><span class="open-badge"></span>Aperto ora</span>' : '<span class="hours-badge closed">Chiuso ora</span>'}
+      <span style="font-size:13px;color:var(--label3)">Oggi ${todayHours}</span>
+    </div>`;
+  } else if (locale.hours && Array.isArray(locale.hours)) {
+    hoursLine = `<div style="margin-bottom:14px"><span class="hours-badge closed">Chiuso oggi</span></div>`;
+  }
+
   document.getElementById('detail-body').innerHTML = `
     ${locale.rating ? `
     <div class="rating-row">
@@ -223,6 +358,8 @@ function showDetail(locale, from) {
       <span class="rating-score">${locale.rating}</span>
       <span class="rating-count">${locale.reviewCount ? `(${locale.reviewCount.toLocaleString('it')} recensioni)` : ''}</span>
     </div>` : ''}
+
+    ${hoursLine}
 
     ${(locale.tags||[]).length ? `<div class="tag-row">${locale.tags.map(t=>`<span class="tag-chip">${t}</span>`).join('')}</div>` : ''}
 
@@ -424,8 +561,10 @@ function openDrawer() {
   clear.className = 'drawer-clear';
   clear.textContent = 'Azzera filtri';
   clear.addEventListener('click', () => {
-    filterZona = null; filterCat = null;
-    document.querySelectorAll('.cat-chip').forEach(c => c.classList.remove('active'));
+    filterZona = null; filterCat = null; filterOpenNow = false;
+    document.querySelectorAll('.cat-chip[data-cat]').forEach(c => c.classList.remove('active'));
+    const openChip = document.getElementById('open-now-chip');
+    if (openChip) openChip.classList.remove('active');
     closeDrawer(); renderScopri();
   });
   list.appendChild(clear);
@@ -455,19 +594,19 @@ function closeDrawer() {
 
 /* ── Fallback data ── */
 const FALLBACK = [
-  { id:"el-brellin", name:"El Brellin", zona:"Navigli", categoria:"Osteria", address:"Vicolo dei Lavandai, 14", description:"Osteria storica milanese affacciata sul Naviglio Grande. Cucina tradizionale con risotto alla milanese e cotoletta.", latitude:45.4551, longitude:9.1730, priceRange:3, tags:["milanese","tradizionale","risotto"], instagramHandle:"elbrellin", websiteURL:"https://www.elbrellin.it", isNew:false },
-  { id:"mag-cafe", name:"Mag Café", zona:"Navigli", categoria:"Cocktail Bar", address:"Ripa di Porta Ticinese, 43", description:"Uno dei cocktail bar più amati dei Navigli. Ottimo per l'aperitivo e il dopocena.", latitude:45.4540, longitude:9.1721, priceRange:2, tags:["cocktail","gin","aperitivo"], instagramHandle:"magcafemilano", websiteURL:null, isNew:false },
-  { id:"dry-milano", name:"Dry Milano", zona:"Brera", categoria:"Pizza", address:"Via Solferino, 33", description:"Cocktail bar e pizzeria gourmet che ha rivoluzionato Milano.", latitude:45.4737, longitude:9.1862, priceRange:2, tags:["pizza","cocktail","gourmet"], instagramHandle:"drymilano", websiteURL:"https://www.drymilano.it", isNew:false },
-  { id:"ceresio7", name:"Ceresio 7", zona:"Isola", categoria:"Rooftop", address:"Via Ceresio, 7", description:"Ristorante e piscina rooftop con vista panoramica su Milano.", latitude:45.4839, longitude:9.1857, priceRange:4, tags:["rooftop","piscina","vista"], instagramHandle:"ceresio7", websiteURL:"https://www.ceresio7.com", isNew:false },
-  { id:"pave", name:"Pavé", zona:"NoLo", categoria:"Caffè", address:"Via Felice Casati, 27", description:"Pasticceria e caffetteria dal design curato. Croissant tra i migliori di Milano.", latitude:45.4802, longitude:9.2061, priceRange:2, tags:["pasticceria","colazione","design"], instagramHandle:"pavemilano", websiteURL:"https://www.pavemilano.com", isNew:false },
-  { id:"luini", name:"Luini", zona:"Duomo", categoria:"Street Food", address:"Via Santa Radegonda, 16", description:"Dal 1888 il panzerotto più famoso di Milano. Un must.", latitude:45.4662, longitude:9.1889, priceRange:1, tags:["panzerotto","storico","must"], instagramHandle:"luinimilano", websiteURL:"https://www.luini.it", isNew:false },
-  { id:"botanical-club", name:"The Botanical Club", zona:"Tortona", categoria:"Cocktail Bar", address:"Via Tortona, 33", description:"Distilleria e cocktail bar botanico. Gin artigianale prodotto in loco.", latitude:45.4560, longitude:9.1697, priceRange:3, tags:["gin","artigianale","botanico"], instagramHandle:"thebotanicalclub", websiteURL:null, isNew:false },
-  { id:"birrificio-lambrate", name:"Birrificio Lambrate", zona:"Lambrate", categoria:"Aperitivo", address:"Via Adelchi, 5", description:"Il birrificio artigianale più storico di Milano, fondato nel 1996.", latitude:45.4787, longitude:9.2385, priceRange:1, tags:["birra","pub","storico"], instagramHandle:"birrificio_lambrate", websiteURL:null, isNew:false },
-  { id:"champagne-socialist", name:"Champagne Socialist", zona:"Porta Venezia", categoria:"Vineria", address:"Via Lecco, 3", description:"Wine bar naturale e informale. Selezione di vini da piccoli produttori.", latitude:45.4757, longitude:9.2068, priceRange:2, tags:["vino naturale","informale"], instagramHandle:"champagnesocialistmilano", websiteURL:null, isNew:true },
-  { id:"pisacco", name:"Pisacco", zona:"Brera", categoria:"Ristorante", address:"Via Solferino, 48", description:"Wine bar e ristorante nel cuore di Brera con oltre 300 etichette.", latitude:45.4740, longitude:9.1870, priceRange:3, tags:["wine","mediterraneo"], instagramHandle:"pisaccomilano", websiteURL:null, isNew:false },
-  { id:"lume", name:"LUME Milano", zona:"Tortona", categoria:"Ristorante", address:"Via Watt, 37", description:"Due stelle Michelin. Una delle esperienze gastronomiche più straordinarie di Milano.", latitude:45.4534, longitude:9.1673, priceRange:4, tags:["michelin","fine dining"], instagramHandle:"lumemilano", websiteURL:"https://www.lumemilano.com", isNew:false },
-  { id:"trattoria-milanese", name:"Trattoria Milanese", zona:"Duomo", categoria:"Osteria", address:"Via Santa Marta, 11", description:"Dal 1933, la trattoria più autentica del centro. Casoeula e ossobuco tradizionali.", latitude:45.4636, longitude:9.1856, priceRange:3, tags:["tradizionale","storico"], instagramHandle:null, websiteURL:null, isNew:false },
-  { id:"frida", name:"Frida", zona:"Isola", categoria:"Aperitivo", address:"Via Antonio Pollaiuolo, 3", description:"Locale cult con cortile estivo. Aperitivo ricco e birra artigianale.", latitude:45.4855, longitude:9.1902, priceRange:1, tags:["aperitivo","cortile"], instagramHandle:"fridaisola", websiteURL:null, isNew:false },
-  { id:"ceresio-bar", name:"Bar Brera", zona:"Brera", categoria:"Caffè", address:"Via Brera, 23", description:"Caffè storico frequentato da artisti. Colazioni e aperitivi nell'atmosfera di Brera.", latitude:45.4733, longitude:9.1880, priceRange:2, tags:["storico","arte","aperitivo"], instagramHandle:null, websiteURL:null, isNew:false },
-  { id:"moscova-bar", name:"Bar Moscova", zona:"Moscova", categoria:"Aperitivo", address:"Via Moscova, 32", description:"Classico bar milanese con dehors. Aperitivo con buffet generoso.", latitude:45.4769, longitude:9.1922, priceRange:2, tags:["aperitivo","dehors","buffet"], instagramHandle:null, websiteURL:null, isNew:false }
+  { id:"el-brellin", name:"El Brellin", zona:"Navigli", categoria:"Osteria", address:"Vicolo dei Lavandai, 14", description:"Osteria storica milanese affacciata sul Naviglio Grande. Cucina tradizionale con risotto alla milanese e cotoletta.", latitude:45.4551, longitude:9.1730, priceRange:3, tags:["milanese","tradizionale","risotto"], instagramHandle:"elbrellin", websiteURL:"https://www.elbrellin.it", isNew:false, hours:["12:00-23:00","12:00-23:00","12:00-23:00","12:00-23:00","12:00-23:00","12:00-23:00",null] },
+  { id:"mag-cafe", name:"Mag Café", zona:"Navigli", categoria:"Cocktail Bar", address:"Ripa di Porta Ticinese, 43", description:"Uno dei cocktail bar più amati dei Navigli. Ottimo per l'aperitivo e il dopocena.", latitude:45.4540, longitude:9.1721, priceRange:2, tags:["cocktail","gin","aperitivo"], instagramHandle:"magcafemilano", websiteURL:null, isNew:false, hours:[null,"18:00-01:00","18:00-01:00","18:00-01:00","18:00-02:00","18:00-02:00","17:00-00:00"] },
+  { id:"dry-milano", name:"Dry Milano", zona:"Brera", categoria:"Pizza", address:"Via Solferino, 33", description:"Cocktail bar e pizzeria gourmet che ha rivoluzionato Milano.", latitude:45.4737, longitude:9.1862, priceRange:2, tags:["pizza","cocktail","gourmet"], instagramHandle:"drymilano", websiteURL:"https://www.drymilano.it", isNew:false, hours:[null,"12:00-23:30","12:00-23:30","12:00-23:30","12:00-23:30","12:00-23:30","12:00-22:30"] },
+  { id:"ceresio7", name:"Ceresio 7", zona:"Isola", categoria:"Rooftop", address:"Via Ceresio, 7", description:"Ristorante e piscina rooftop con vista panoramica su Milano.", latitude:45.4839, longitude:9.1857, priceRange:4, tags:["rooftop","piscina","vista"], instagramHandle:"ceresio7", websiteURL:"https://www.ceresio7.com", isNew:false, hours:[null,null,"19:00-02:00","19:00-02:00","19:00-02:00","19:00-02:00","19:00-02:00"] },
+  { id:"pave", name:"Pavé", zona:"NoLo", categoria:"Caffè", address:"Via Felice Casati, 27", description:"Pasticceria e caffetteria dal design curato. Croissant tra i migliori di Milano.", latitude:45.4802, longitude:9.2061, priceRange:2, tags:["pasticceria","colazione","design"], instagramHandle:"pavemilano", websiteURL:"https://www.pavemilano.com", isNew:false, hours:["07:30-20:00","07:30-20:00","07:30-20:00","07:30-20:00","07:30-20:00","08:00-20:00",null] },
+  { id:"luini", name:"Luini", zona:"Duomo", categoria:"Street Food", address:"Via Santa Radegonda, 16", description:"Dal 1888 il panzerotto più famoso di Milano. Un must.", latitude:45.4662, longitude:9.1889, priceRange:1, tags:["panzerotto","storico","must"], instagramHandle:"luinimilano", websiteURL:"https://www.luini.it", isNew:false, hours:["11:00-21:00","11:00-21:00","11:00-21:00","11:00-21:00","11:00-21:00","11:00-21:00",null] },
+  { id:"botanical-club", name:"The Botanical Club", zona:"Tortona", categoria:"Cocktail Bar", address:"Via Tortona, 33", description:"Distilleria e cocktail bar botanico. Gin artigianale prodotto in loco.", latitude:45.4560, longitude:9.1697, priceRange:3, tags:["gin","artigianale","botanico"], instagramHandle:"thebotanicalclub", websiteURL:null, isNew:false, hours:[null,"18:00-01:00","18:00-01:00","18:00-01:00","18:00-02:00","18:00-02:00","17:00-00:00"] },
+  { id:"birrificio-lambrate", name:"Birrificio Lambrate", zona:"Lambrate", categoria:"Aperitivo", address:"Via Adelchi, 5", description:"Il birrificio artigianale più storico di Milano, fondato nel 1996.", latitude:45.4787, longitude:9.2385, priceRange:1, tags:["birra","pub","storico"], instagramHandle:"birrificio_lambrate", websiteURL:null, isNew:false, hours:[null,"17:00-00:00","17:00-00:00","17:00-00:00","17:00-01:00","17:00-01:00","16:00-00:00"] },
+  { id:"champagne-socialist", name:"Champagne Socialist", zona:"Porta Venezia", categoria:"Vineria", address:"Via Lecco, 3", description:"Wine bar naturale e informale. Selezione di vini da piccoli produttori.", latitude:45.4757, longitude:9.2068, priceRange:2, tags:["vino naturale","informale"], instagramHandle:"champagnesocialistmilano", websiteURL:null, isNew:true, hours:[null,"17:00-00:00","17:00-00:00","17:00-00:00","17:00-01:00","17:00-01:00","16:00-00:00"] },
+  { id:"pisacco", name:"Pisacco", zona:"Brera", categoria:"Ristorante", address:"Via Solferino, 48", description:"Wine bar e ristorante nel cuore di Brera con oltre 300 etichette.", latitude:45.4740, longitude:9.1870, priceRange:3, tags:["wine","mediterraneo"], instagramHandle:"pisaccomilano", websiteURL:null, isNew:false, hours:[null,"12:00-23:00","12:00-23:00","12:00-23:00","12:00-23:00","12:00-23:00","12:00-22:00"] },
+  { id:"lume", name:"LUME Milano", zona:"Tortona", categoria:"Ristorante", address:"Via Watt, 37", description:"Due stelle Michelin. Una delle esperienze gastronomiche più straordinarie di Milano.", latitude:45.4534, longitude:9.1673, priceRange:4, tags:["michelin","fine dining"], instagramHandle:"lumemilano", websiteURL:"https://www.lumemilano.com", isNew:false, hours:[null,"19:30-23:00","19:30-23:00","19:30-23:00","19:30-23:00","19:30-23:00",null] },
+  { id:"trattoria-milanese", name:"Trattoria Milanese", zona:"Duomo", categoria:"Osteria", address:"Via Santa Marta, 11", description:"Dal 1933, la trattoria più autentica del centro. Casoeula e ossobuco tradizionali.", latitude:45.4636, longitude:9.1856, priceRange:3, tags:["tradizionale","storico"], instagramHandle:null, websiteURL:null, isNew:false, hours:[null,"12:00-23:00","12:00-23:00","12:00-23:00","12:00-23:00","12:00-23:00","12:00-22:00"] },
+  { id:"frida", name:"Frida", zona:"Isola", categoria:"Aperitivo", address:"Via Antonio Pollaiuolo, 3", description:"Locale cult con cortile estivo. Aperitivo ricco e birra artigianale.", latitude:45.4855, longitude:9.1902, priceRange:1, tags:["aperitivo","cortile"], instagramHandle:"fridaisola", websiteURL:null, isNew:false, hours:[null,"17:00-00:00","17:00-00:00","17:00-00:00","17:00-01:00","17:00-01:00","16:00-00:00"] },
+  { id:"bar-brera", name:"Bar Brera", zona:"Brera", categoria:"Caffè", address:"Via Brera, 23", description:"Caffè storico frequentato da artisti. Colazioni e aperitivi nell'atmosfera di Brera.", latitude:45.4733, longitude:9.1880, priceRange:2, tags:["storico","arte","aperitivo"], instagramHandle:null, websiteURL:null, isNew:false, hours:["07:30-20:00","07:30-20:00","07:30-20:00","07:30-20:00","07:30-20:00","08:00-20:00","09:00-19:00"] },
+  { id:"moscova-bar", name:"Bar Moscova", zona:"Moscova", categoria:"Aperitivo", address:"Via Moscova, 32", description:"Classico bar milanese con dehors. Aperitivo con buffet generoso.", latitude:45.4769, longitude:9.1922, priceRange:2, tags:["aperitivo","dehors","buffet"], instagramHandle:null, websiteURL:null, isNew:false, hours:[null,"17:00-00:00","17:00-00:00","17:00-00:00","17:00-01:00","17:00-01:00","16:00-00:00"] }
 ];
