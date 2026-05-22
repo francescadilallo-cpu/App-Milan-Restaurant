@@ -143,15 +143,20 @@ function renderScopri() {
   const zones = Object.entries(byZona).sort((a,b)=>a[0].localeCompare(b[0]));
   if (!zones.length) { grid.innerHTML = '<p style="grid-column:1/-1;text-align:center;color:var(--label3);padding:48px 0;font-size:15px">Nessun risultato</p>'; return; }
   zones.forEach(([zona, items]) => {
-    const color = (ZONE_META[zona]||{}).color || '#888';
-    const card = document.createElement('div');
+    const meta  = ZONE_META[zona] || {};
+    const color = meta.color || '#888';
+    const photo = meta.photo || '';
+    const card  = document.createElement('div');
     card.className = 'zone-card';
+    card.style.setProperty('--zone-color', color);
     card.innerHTML = `
-      <div class="zone-color-bar" style="background:${color}"></div>
-      <div class="zone-name">${zona}</div>
-      <div class="zone-count">
-        <span class="zone-count-pill">${items.length}</span>
-        ${items.length === 1 ? 'locale' : 'locali'}
+      ${photo ? `<img class="zone-card-img" src="${photo}" alt="${zona}" loading="lazy" />` : `<div class="zone-card-img-placeholder" style="background:${color}"></div>`}
+      <div class="zone-card-overlay">
+        <div class="zone-name">${zona}</div>
+        <div class="zone-count">
+          <span class="zone-count-pill">${items.length}</span>
+          ${items.length === 1 ? 'locale' : 'locali'}
+        </div>
       </div>`;
     card.addEventListener('click', () => showZona(zona));
     grid.appendChild(card);
