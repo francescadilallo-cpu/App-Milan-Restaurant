@@ -2,18 +2,18 @@ const DATA_URL = 'https://raw.githubusercontent.com/francescadilallo-cpu/App-Mil
 
 /* ── Zone config ── */
 const ZONE_META = {
-  'Navigli':       { color: '#4A9EBF', photo: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&h=400&fit=crop&auto=format', desc: 'Il quartiere dei canali, cuore della movida milanese. Aperitivi sul Naviglio Grande, cocktail bar storici e osterie autentiche.' },
-  'Brera':         { color: '#C4813A', photo: 'https://images.unsplash.com/photo-1543007630-9710e4a00a20?w=800&h=400&fit=crop&auto=format', desc: 'Il quartiere degli artisti. Gallerie, boutique e ristoranti raffinati in strade acciottolate. La Milano bohémienne.' },
-  'Porta Venezia': { color: '#5B9E6B', photo: 'https://images.unsplash.com/photo-1534430480872-3498386e7856?w=800&h=400&fit=crop&auto=format', desc: 'Quartiere multiculturale e vivace. Wine bar naturali, caffè indipendenti e una scena gastronomica in continua evoluzione.' },
-  'Isola':         { color: '#3A7DC4', photo: 'https://images.unsplash.com/photo-1486325212027-8081e485255e?w=800&h=400&fit=crop&auto=format', desc: 'Il quartiere creativo per eccellenza. Dal Ceresio 7 ai cortili nascosti, Isola mescola design e autenticità.' },
-  'Tortona':       { color: '#8B5E9E', photo: 'https://images.unsplash.com/photo-1558618047-f4e6f90a6d90?w=800&h=400&fit=crop&auto=format', desc: 'Ex zona industriale diventata capitale del design. Spazi creativi, ristoranti stellati e cocktail bar botanici.' },
-  'NoLo':          { color: '#D4607A', photo: 'https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=800&h=400&fit=crop&auto=format', desc: 'North of Loreto: il quartiere più trendy di Milano. Pasticcerie di design, pescherie informali e locali indipendenti.' },
-  'Centrale':      { color: '#5E7A9E', photo: 'https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?w=800&h=400&fit=crop&auto=format', desc: 'Intorno alla maestosa stazione. Osterie autentiche, bar storici e una cucina popolare milanese rimasta intatta.' },
-  'Duomo':         { color: '#B8963C', photo: 'https://images.unsplash.com/photo-1515542622106-78bda8ba0e5b?w=800&h=400&fit=crop&auto=format', desc: 'Il cuore di Milano. Dalla Galleria Vittorio Emanuele alle trattorie nascoste nei vicoli del centro storico.' },
-  'Moscova':       { color: '#4E9E7A', photo: 'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=800&h=400&fit=crop&auto=format', desc: 'Quartiere elegante e residenziale. Ristoranti stellati, bar raffinati e una clientela che sa cosa vuole.' },
-  'Lambrate':      { color: '#C4783A', photo: 'https://images.unsplash.com/photo-1559526324-4b87b5e36e44?w=800&h=400&fit=crop&auto=format', desc: 'Quartiere east side in piena trasformazione. Il birrificio storico, spazi industriali e una vibe autentica.' },
-  'Città Studi':   { color: '#7A5EC4', photo: 'https://images.unsplash.com/photo-1541339907198-e08756dedf3f?w=800&h=400&fit=crop&auto=format', desc: 'Il quartiere universitario di Milano. Pizzerie economiche, gastronomie di qualità e caffè da mattina a notte.' },
-  'Loreto':        { color: '#3A9EC4', photo: 'https://images.unsplash.com/photo-1534430480872-3498386e7856?w=800&h=400&fit=crop&auto=format', desc: 'Crocevia tra NoLo e Porta Venezia. Pizza al taglio gourmet, bar di quartiere moderni e una scena in rapida crescita.' },
+  'Navigli':       { color: '#4A9EBF', photo: 'https://commons.wikimedia.org/wiki/Special:FilePath/Naviglio_Grande_di_sera.jpg?width=800', desc: 'Il quartiere dei canali, cuore della movida milanese. Aperitivi sul Naviglio Grande, cocktail bar storici e osterie autentiche.' },
+  'Brera':         { color: '#C4813A', photo: 'https://commons.wikimedia.org/wiki/Special:FilePath/Pinacoteca_di_Brera_-_Cortile_interno.jpg?width=800', desc: 'Il quartiere degli artisti. Gallerie, boutique e ristoranti raffinati in strade acciottolate. La Milano bohémienne.' },
+  'Porta Venezia': { color: '#5B9E6B', photo: 'https://commons.wikimedia.org/wiki/Special:FilePath/Giardini_di_Porta_Venezia_(Milan).jpg?width=800', desc: 'Quartiere multiculturale e vivace. Wine bar naturali, caffè indipendenti e una scena gastronomica in continua evoluzione.' },
+  'Isola':         { color: '#3A7DC4', photo: 'https://commons.wikimedia.org/wiki/Special:FilePath/Bosco_Verticale,_Porta_Nuova,_Milan_(Italy).jpg?width=800', desc: 'Il quartiere creativo per eccellenza. Dal Ceresio 7 ai cortili nascosti, Isola mescola design e autenticità.' },
+  'Tortona':       { color: '#8B5E9E', photo: 'https://commons.wikimedia.org/wiki/Special:FilePath/MUDEC_-_Museo_delle_Culture,_Milan.jpg?width=800', desc: 'Ex zona industriale diventata capitale del design. Spazi creativi, ristoranti stellati e cocktail bar botanici.' },
+  'NoLo':          { color: '#D4607A', photo: 'https://commons.wikimedia.org/wiki/Special:FilePath/Viale_Monza,_Milano.jpg?width=800', desc: 'North of Loreto: il quartiere più trendy di Milano. Pasticcerie di design, pescherie informali e locali indipendenti.' },
+  'Centrale':      { color: '#5E7A9E', photo: 'https://commons.wikimedia.org/wiki/Special:FilePath/Milano_Centrale_Station.jpg?width=800', desc: 'Intorno alla maestosa stazione. Osterie autentiche, bar storici e una cucina popolare milanese rimasta intatta.' },
+  'Duomo':         { color: '#B8963C', photo: 'https://commons.wikimedia.org/wiki/Special:FilePath/Milan_Cathedral_from_Piazza_del_Duomo.jpg?width=800', desc: 'Il cuore di Milano. Dalla Galleria Vittorio Emanuele alle trattorie nascoste nei vicoli del centro storico.' },
+  'Moscova':       { color: '#4E9E7A', photo: 'https://commons.wikimedia.org/wiki/Special:FilePath/ATM_4900_-_Milano_tram.jpg?width=800', desc: 'Quartiere elegante e residenziale. Ristoranti stellati, bar raffinati e una clientela che sa cosa vuole.' },
+  'Lambrate':      { color: '#C4783A', photo: 'https://commons.wikimedia.org/wiki/Special:FilePath/Birrificio_Lambrate,_Milan.jpg?width=800', desc: 'Quartiere east side in piena trasformazione. Il birrificio storico, spazi industriali e una vibe autentica.' },
+  'Città Studi':   { color: '#7A5EC4', photo: 'https://commons.wikimedia.org/wiki/Special:FilePath/Universit%C3%A0_degli_Studi_di_Milano_-_Cortile.jpg?width=800', desc: 'Il quartiere universitario di Milano. Pizzerie economiche, gastronomie di qualità e caffè da mattina a notte.' },
+  'Loreto':        { color: '#3A9EC4', photo: 'https://commons.wikimedia.org/wiki/Special:FilePath/Piazza_Loreto,_Milan.jpg?width=800', desc: 'Crocevia tra NoLo e Porta Venezia. Pizza al taglio gourmet, bar di quartiere moderni e una scena in rapida crescita.' },
 };
 
 /* ── Category config — SVG icons, no emoji ── */
@@ -150,7 +150,7 @@ function renderScopri() {
     card.className = 'zone-card';
     card.style.setProperty('--zone-color', color);
     card.innerHTML = `
-      ${photo ? `<img class="zone-card-img" src="${photo}" alt="${zona}" loading="lazy" />` : `<div class="zone-card-img-placeholder" style="background:${color}"></div>`}
+      ${photo ? `<img class="zone-card-img" src="${photo}" alt="${zona}" loading="lazy" onerror="this.parentElement.style.background='linear-gradient(145deg,${color}e0,${color}88)';this.remove()" />` : `<div class="zone-card-img-placeholder" style="background:${color}"></div>`}
       <div class="zone-card-overlay">
         <div class="zone-name">${zona}</div>
         <div class="zone-count">
