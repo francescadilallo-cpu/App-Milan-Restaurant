@@ -19,21 +19,16 @@ jobs:
         run: xcodebuild -version
 
       - name: Inject Foursquare API key
-        if: ${{ secrets.FOURSQUARE_API_KEY != '' }}
         env:
           FSQ_KEY: ${{ secrets.FOURSQUARE_API_KEY }}
         run: |
-          python3 - <<'EOF'
-import os
-key = os.environ["FSQ_KEY"]
-path = "MilanoLocali/Services/FoursquareConfig.swift"
-with open(path) as f:
-    src = f.read()
-src = src.replace('static let apiKey = ""', f'static let apiKey = "{key}"')
-with open(path, "w") as f:
-    f.write(src)
-print("API key injected.")
-EOF
+          if [ -n "$FSQ_KEY" ]; then
+            sed -i '' "s/static let apiKey = \"\"/static let apiKey = \"${FSQ_KEY}\"/" \
+              MilanoLocali/Services/FoursquareConfig.swift
+            echo "Foursquare API key injected."
+          else
+            echo "FOURSQUARE_API_KEY not set, skipping."
+          fi
 
       - name: Install XcodeGen
         run: brew install xcodegen
