@@ -2,7 +2,7 @@ name: Build
 
 on:
   push:
-    branches: [main, "claude/**"]
+    branches: [main, "claude/**", "fix/**"]
   pull_request:
     branches: [main]
 
@@ -18,14 +18,23 @@ jobs:
       - name: Xcode version
         run: xcodebuild -version
 
+      - name: Available simulators
+        run: xcrun simctl list devices available --json | python3 -c "
+import json,sys
+d=json.load(sys.stdin)['devices']
+iphones=[s for v in d.values() for s in v if 'iPhone' in s.get('name','') and s.get('isAvailable')]
+[print(s['name'], s.get('runtimeIdentifier','')) for s in iphones[:10]]
+"
+
       - name: Install XcodeGen
         run: brew install xcodegen
 
       - name: Generate Xcode project
-        run: xcodegen generate
+        run: xcodegen generate --spec project.yml
 
       - name: Build for simulator
         run: |
+          set -o pipefail
           xcodebuild \
             -project MilanoLocali.xcodeproj \
             -scheme MilanoLocali \
@@ -33,4 +42,4 @@ jobs:
             -configuration Debug \
             CODE_SIGNING_ALLOWED=NO \
             ONLY_ACTIVE_ARCH=NO \
-            build
+            build 2>&1

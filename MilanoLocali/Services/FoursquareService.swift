@@ -84,16 +84,17 @@ final class FoursquareService {
     var isConfigured: Bool { !FoursquareConfig.apiKey.isEmpty }
 
     func fetchAllZones() async throws -> [LocaleDTO] {
-        var all: [LocaleDTO] = []
-        await withTaskGroup(of: [LocaleDTO].self) { group in
+        let all = await withTaskGroup(of: [LocaleDTO].self) { group -> [LocaleDTO] in
             for center in zoneCenters {
                 group.addTask {
                     (try? await self.fetchZone(center.zona, lat: center.lat, lng: center.lng)) ?? []
                 }
             }
+            var results: [LocaleDTO] = []
             for await batch in group {
-                all.append(contentsOf: batch)
+                results.append(contentsOf: batch)
             }
+            return results
         }
         // Deduplica per fsq_id
         var seen = Set<String>()
