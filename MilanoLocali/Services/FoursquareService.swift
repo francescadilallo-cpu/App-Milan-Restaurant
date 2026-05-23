@@ -2,11 +2,11 @@ import Foundation
 
 // MARK: - Foursquare response models
 
-private struct FSQResponse: Codable {
+struct FSQResponse: Codable {
     let results: [FSQPlace]
 }
 
-private struct FSQPlace: Codable {
+struct FSQPlace: Codable {
     let fsqId: String
     let name: String
     let categories: [FSQCategory]
@@ -22,21 +22,21 @@ private struct FSQPlace: Codable {
     }
 }
 
-private struct FSQCategory: Codable {
+struct FSQCategory: Codable {
     let id: Int
     let name: String
 }
 
-private struct FSQGeocodes: Codable {
+struct FSQGeocodes: Codable {
     let main: FSQCoordinate
 }
 
-private struct FSQCoordinate: Codable {
+struct FSQCoordinate: Codable {
     let latitude: Double
     let longitude: Double
 }
 
-private struct FSQLocation: Codable {
+struct FSQLocation: Codable {
     let address: String?
     let formattedAddress: String?
     let neighborhood: [String]?
@@ -47,7 +47,7 @@ private struct FSQLocation: Codable {
     }
 }
 
-private struct FSQPhoto: Codable {
+struct FSQPhoto: Codable {
     let prefix: String
     let suffix: String
 
