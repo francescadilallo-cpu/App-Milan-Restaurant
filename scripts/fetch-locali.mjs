@@ -230,5 +230,11 @@ for (const [zona, { lat, lon, radius }] of Object.entries(ZONES)) {
   await sleep(SLEEP_MS);
 }
 
+if (allLocali.length === 0) {
+  console.error('\n✗  Nessun locale trovato — locali.json NON sovrascritto.');
+  console.error('   Controlla la connessione o riprova tra qualche minuto.');
+  process.exit(1);
+}
+
 writeFileSync(OUT, JSON.stringify(allLocali, null, 2), 'utf8');
 console.log(`\n✅  Salvati ${allLocali.length} locali → ${OUT}`);
