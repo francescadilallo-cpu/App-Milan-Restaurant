@@ -2,7 +2,7 @@ name: Build
 
 on:
   push:
-    branches: [main, "claude/**", "fix/**"]
+    branches: [main, "claude/**", "fix/**", "feat/**"]
   pull_request:
     branches: [main]
 
@@ -17,6 +17,23 @@ jobs:
 
       - name: Xcode version
         run: xcodebuild -version
+
+      - name: Inject Foursquare API key
+        if: ${{ secrets.FOURSQUARE_API_KEY != '' }}
+        env:
+          FSQ_KEY: ${{ secrets.FOURSQUARE_API_KEY }}
+        run: |
+          python3 - <<'EOF'
+import os
+key = os.environ["FSQ_KEY"]
+path = "MilanoLocali/Services/FoursquareConfig.swift"
+with open(path) as f:
+    src = f.read()
+src = src.replace('static let apiKey = ""', f'static let apiKey = "{key}"')
+with open(path, "w") as f:
+    f.write(src)
+print("API key injected.")
+EOF
 
       - name: Install XcodeGen
         run: brew install xcodegen
@@ -54,7 +71,7 @@ print(phones[0]['udid'] if phones else '')
         run: |
           echo "## Build log (errors + last 60 lines)" >> $GITHUB_STEP_SUMMARY
           echo '```' >> $GITHUB_STEP_SUMMARY
-          grep -E "error:|Build FAILED|warning:" /tmp/build.log | head -40 >> $GITHUB_STEP_SUMMARY || true
+          grep -E "error:|Build FAILED" /tmp/build.log | head -40 >> $GITHUB_STEP_SUMMARY || true
           echo "---" >> $GITHUB_STEP_SUMMARY
           tail -60 /tmp/build.log >> $GITHUB_STEP_SUMMARY || echo "(no build log)" >> $GITHUB_STEP_SUMMARY
           echo '```' >> $GITHUB_STEP_SUMMARY
