@@ -56,13 +56,14 @@ final class DataService {
         // Usa la cache se ancora valida
         if let cached = loadCache(), !isCacheStale() { return cached }
 
-        // Altrimenti recupera dalla rete
-        if let fresh = try? await FoursquareService.shared.fetchAllZones() {
+        // Altrimenti recupera dalla rete (fetchAllZones gestisce internamente gli errori)
+        let fresh = await FoursquareService.shared.fetchAllZones()
+        if !fresh.isEmpty {
             saveCache(fresh)
             return fresh
         }
 
-        // Se la rete fallisce, restituisce la cache scaduta piuttosto che nulla
+        // Se la rete non restituisce nulla, usa la cache scaduta
         return loadCache() ?? []
     }
 
