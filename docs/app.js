@@ -18,6 +18,16 @@ const ZONE_META = {
   'Città Studi':   { color: '#7A5EC4', wiki: 'University_of_Milan',              photo: '', desc: 'Il quartiere universitario di Milano. Pizzerie economiche, gastronomie di qualità e caffè da mattina a notte.' },
   'Loreto':        { color: '#3A9EC4', wiki: 'Piazzale_Loreto',                  photo: '', desc: 'Crocevia tra NoLo e Porta Venezia. Pizza al taglio gourmet, bar di quartiere moderni e una scena in rapida crescita.' },
   'Chinatown':     { color: '#C0392B', wiki: 'Via_Paolo_Sarpi',                  photo: '', desc: 'Il quartiere cinese di Milano lungo Via Paolo Sarpi. Ristoranti autentici, dim sum, pasticcerie e una vivace scena gastronomica asiatica.' },
+  // Secondary zones
+  'Sempione':      { color: '#2ECC71', wiki: 'Parco_Sempione',                  photo: '', desc: 'Il polmone verde di Milano. Bar e ristoranti intorno al Parco Sempione, tra l\'Arco della Pace e il Castello Sforzesco.' },
+  'Porta Romana':  { color: '#E67E22', wiki: 'Porta_Romana,_Milan',             photo: '', desc: 'Quartiere residenziale e gastronomico. Ristoranti di qualità, wine bar e caffè nel cuore della Milano borghese.' },
+  'Ticinese':      { color: '#16A085', wiki: 'Colonne_di_San_Lorenzo',          photo: '', desc: 'Tra le Colonne di San Lorenzo e i Navigli. Aperitivo al tramonto, osterie storiche e locali bohémien.' },
+  'Repubblica':    { color: '#8E44AD', wiki: 'Piazza_della_Repubblica,_Milan',  photo: '', desc: 'Centro business e hotel di lusso. Ristoranti di qualità, cocktail bar e una gastronomia internazionale.' },
+  'Corvetto':      { color: '#27AE60', wiki: 'Corvetto',                        photo: '', desc: 'Quartiere multiculturale in trasformazione. Cucine del mondo, locali di quartiere e una scena gastronomica autentica.' },
+  'Bovisa':        { color: '#2980B9', wiki: 'Politecnico_di_Milano',           photo: '', desc: 'Il quartiere del Politecnico. Pizzerie, bar universitari e una vibrante scena giovane intorno al campus.' },
+  'Washington':    { color: '#D35400', wiki: 'Fieramilanocity',                 photo: '', desc: 'Quartiere residenziale vicino alla Fiera. Ristoranti di quartiere, enoteche e una gastronomia autentica milanese.' },
+  'Niguarda':      { color: '#1ABC9C', wiki: 'Niguarda',                        photo: '', desc: 'Quartiere nord di Milano in crescita. Bar di quartiere, pizzerie e una scena locale genuina lontana dai turisti.' },
+  'Greco':         { color: '#7F8C8D', wiki: 'Greco,_Milan',                   photo: '', desc: 'Quartiere operaio con carattere. Trattorie popolari, bar storici e un\'autenticità milanese difficile da trovare altrove.' },
 };
 
 /* Fetch zone hero images from Wikipedia at runtime (CORS-enabled).

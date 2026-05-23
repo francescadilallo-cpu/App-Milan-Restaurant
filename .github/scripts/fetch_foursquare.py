@@ -30,6 +30,16 @@ ZONES = [
     ("Città Studi",   45.4753, 9.2259, 700),
     ("Loreto",        45.4861, 9.2143, 650),
     ("Chinatown",     45.4790, 9.1745, 550),
+    # Secondary zones
+    ("Sempione",      45.4745, 9.1705, 600),
+    ("Porta Romana",  45.4540, 9.2000, 600),
+    ("Ticinese",      45.4595, 9.1840, 500),
+    ("Repubblica",    45.4760, 9.2020, 500),
+    ("Corvetto",      45.4440, 9.2100, 650),
+    ("Bovisa",        45.5030, 9.1590, 600),
+    ("Washington",    45.4650, 9.1630, 550),
+    ("Niguarda",      45.5080, 9.1980, 650),
+    ("Greco",         45.5000, 9.2100, 600),
 ]
 
 AMENITIES = ["restaurant", "bar", "cafe", "pub", "fast_food", "food_court"]

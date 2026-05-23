@@ -32,6 +32,16 @@ const ZONES = {
   'Città Studi':   { lat: 45.4753, lon: 9.2259, radius: 700 },
   'Loreto':        { lat: 45.4861, lon: 9.2143, radius: 650 },
   'Chinatown':     { lat: 45.4790, lon: 9.1745, radius: 550 },
+  // Secondary zones
+  'Sempione':      { lat: 45.4745, lon: 9.1705, radius: 600 },
+  'Porta Romana':  { lat: 45.4540, lon: 9.2000, radius: 600 },
+  'Ticinese':      { lat: 45.4595, lon: 9.1840, radius: 500 },
+  'Repubblica':    { lat: 45.4760, lon: 9.2020, radius: 500 },
+  'Corvetto':      { lat: 45.4440, lon: 9.2100, radius: 650 },
+  'Bovisa':        { lat: 45.5030, lon: 9.1590, radius: 600 },
+  'Washington':    { lat: 45.4650, lon: 9.1630, radius: 550 },
+  'Niguarda':      { lat: 45.5080, lon: 9.1980, radius: 650 },
+  'Greco':         { lat: 45.5000, lon: 9.2100, radius: 600 },
 };
 
 // ── OSM amenity/cuisine → nostra categoria ──────────────────────────────────

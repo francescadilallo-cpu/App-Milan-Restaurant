@@ -70,8 +70,12 @@ struct HomeView: View {
 
     private var zoneGrid: some View {
         let columns = [GridItem(.flexible()), GridItem(.flexible())]
+        let altriCount = Zona.allCases
+            .filter { !$0.isMain }
+            .flatMap { vm.locali(for: $0) }
+            .count
         return LazyVGrid(columns: columns, spacing: 12) {
-            ForEach(Zona.allCases) { zona in
+            ForEach(Zona.allCases.filter { $0.isMain }) { zona in
                 let count = vm.locali(for: zona).count
                 if count > 0 {
                     NavigationLink(destination: ZonaListView(zona: zona)) {
@@ -79,6 +83,12 @@ struct HomeView: View {
                     }
                     .buttonStyle(.plain)
                 }
+            }
+            if altriCount > 0 {
+                NavigationLink(destination: AltriQuartieriView().environment(vm)) {
+                    AltriZoneCard(count: altriCount)
+                }
+                .buttonStyle(.plain)
             }
         }
         .padding(.horizontal)
@@ -106,6 +116,54 @@ struct ZonaCard: View {
         .padding()
         .background(Color(.systemGray6))
         .clipShape(RoundedRectangle(cornerRadius: 16))
+    }
+}
+
+// MARK: - AltriZoneCard
+
+struct AltriZoneCard: View {
+    let count: Int
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 6) {
+            Text("🗺️")
+                .font(.system(size: 36))
+            Text("Altri quartieri")
+                .font(.headline)
+            Text("\(count) \(count == 1 ? "locale" : "locali")")
+                .font(.caption)
+                .foregroundStyle(.secondary)
+        }
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .padding()
+        .background(Color(.systemGray6))
+        .clipShape(RoundedRectangle(cornerRadius: 16))
+    }
+}
+
+// MARK: - AltriQuartieriView
+
+struct AltriQuartieriView: View {
+    @Environment(LocaliViewModel.self) private var vm
+
+    var body: some View {
+        let columns = [GridItem(.flexible()), GridItem(.flexible())]
+        ScrollView {
+            LazyVGrid(columns: columns, spacing: 12) {
+                ForEach(Zona.allCases.filter { !$0.isMain }) { zona in
+                    let count = vm.locali(for: zona).count
+                    if count > 0 {
+                        NavigationLink(destination: ZonaListView(zona: zona)) {
+                            ZonaCard(zona: zona, count: count)
+                        }
+                        .buttonStyle(.plain)
+                    }
+                }
+            }
+            .padding()
+        }
+        .navigationTitle("Altri quartieri")
+        .navigationBarTitleDisplayMode(.large)
     }
 }
 

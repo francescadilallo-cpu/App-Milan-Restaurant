@@ -64,8 +64,28 @@ enum Zona: String, CaseIterable, Identifiable {
     case citaStudy = "Città Studi"
     case loreto = "Loreto"
     case chinatown = "Chinatown"
+    // Secondary zones
+    case sempione = "Sempione"
+    case portaRomana = "Porta Romana"
+    case ticinese = "Ticinese"
+    case repubblica = "Repubblica"
+    case corvetto = "Corvetto"
+    case bovisa = "Bovisa"
+    case washington = "Washington"
+    case niguarda = "Niguarda"
+    case greco = "Greco"
 
     var id: String { rawValue }
+
+    var isMain: Bool {
+        switch self {
+        case .navigli, .brera, .portaVenezia, .isola, .tortona, .nolo,
+             .centrale, .duomo, .moscova, .lambrate, .citaStudy, .loreto, .chinatown:
+            return true
+        default:
+            return false
+        }
+    }
 
     var emoji: String {
         switch self {
@@ -82,6 +102,15 @@ enum Zona: String, CaseIterable, Identifiable {
         case .citaStudy: return "📚"
         case .loreto: return "🎯"
         case .chinatown: return "🏮"
+        case .sempione: return "🌲"
+        case .portaRomana: return "🏛️"
+        case .ticinese: return "⚓"
+        case .repubblica: return "🏢"
+        case .corvetto: return "🌱"
+        case .bovisa: return "🎓"
+        case .washington: return "🎡"
+        case .niguarda: return "🏘️"
+        case .greco: return "🚂"
         }
     }
 }
