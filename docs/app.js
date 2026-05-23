@@ -9,14 +9,14 @@ const ZONE_META = {
   'Brera':         { color: '#C4813A', wiki: 'Pinacoteca_di_Brera',              photo: '', desc: 'Il quartiere degli artisti. Gallerie, boutique e ristoranti raffinati in strade acciottolate. La Milano bohémienne.' },
   'Porta Venezia': { color: '#5B9E6B', wiki: 'Porta_Venezia',                    photo: '', desc: 'Quartiere multiculturale e vivace. Wine bar naturali, caffè indipendenti e una scena gastronomica in continua evoluzione.' },
   'Isola':         { color: '#3A7DC4', wiki: 'Bosco_Verticale',                  photo: '', desc: 'Il quartiere creativo per eccellenza. Dal Ceresio 7 ai cortili nascosti, Isola mescola design e autenticità.' },
-  'Tortona':       { color: '#8B5E9E', wiki: 'Museo_delle_Culture',              photo: '', desc: 'Ex zona industriale diventata capitale del design. Spazi creativi, ristoranti stellati e cocktail bar botanici.' },
-  'NoLo':          { color: '#D4607A', wiki: 'Piazzale_Loreto',                  photo: '', desc: 'North of Loreto: il quartiere più trendy di Milano. Pasticcerie di design, pescherie informali e locali indipendenti.' },
+  'Tortona':       { color: '#8B5E9E', wiki: 'Fondazione_Prada',                 photo: '', desc: 'Ex zona industriale diventata capitale del design. Spazi creativi, ristoranti stellati e cocktail bar botanici.' },
+  'NoLo':          { color: '#D4607A', wiki: 'Via_Padova',                       photo: '', desc: 'North of Loreto: il quartiere più trendy di Milano. Pasticcerie di design, pescherie informali e locali indipendenti.' },
   'Centrale':      { color: '#5E7A9E', wiki: 'Milano_Centrale_railway_station',  photo: '', desc: 'Intorno alla maestosa stazione. Osterie autentiche, bar storici e una cucina popolare milanese rimasta intatta.' },
   'Duomo':         { color: '#B8963C', wiki: 'Milan_Cathedral',                  photo: '', desc: 'Il cuore di Milano. Dalla Galleria Vittorio Emanuele alle trattorie nascoste nei vicoli del centro storico.' },
-  'Moscova':       { color: '#4E9E7A', wiki: 'Moscova_(Milan_Metro)',            photo: '', desc: 'Quartiere elegante e residenziale. Ristoranti stellati, bar raffinati e una clientela che sa cosa vuole.' },
-  'Lambrate':      { color: '#C4783A', wiki: 'Lambrate',                         photo: '', desc: 'Quartiere east side in piena trasformazione. Il birrificio storico, spazi industriali e una vibe autentica.' },
+  'Moscova':       { color: '#4E9E7A', wiki: 'Giardini_Pubblici_Indro_Montanelli', photo: '', desc: 'Quartiere elegante e residenziale. Ristoranti stellati, bar raffinati e una clientela che sa cosa vuole.' },
+  'Lambrate':      { color: '#C4783A', wiki: 'Parco_Lambro',                    photo: '', desc: 'Quartiere east side in piena trasformazione. Il birrificio storico, spazi industriali e una vibe autentica.' },
   'Città Studi':   { color: '#7A5EC4', wiki: 'University_of_Milan',              photo: '', desc: 'Il quartiere universitario di Milano. Pizzerie economiche, gastronomie di qualità e caffè da mattina a notte.' },
-  'Loreto':        { color: '#3A9EC4', wiki: 'Loreto_(Milan_Metro)',             photo: '', desc: 'Crocevia tra NoLo e Porta Venezia. Pizza al taglio gourmet, bar di quartiere moderni e una scena in rapida crescita.' },
+  'Loreto':        { color: '#3A9EC4', wiki: 'Piazzale_Loreto',                  photo: '', desc: 'Crocevia tra NoLo e Porta Venezia. Pizza al taglio gourmet, bar di quartiere moderni e una scena in rapida crescita.' },
 };
 
 /* Fetch zone hero images from Wikipedia at runtime (CORS-enabled).
