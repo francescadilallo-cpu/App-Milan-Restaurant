@@ -1,0 +1,23 @@
+# Progetto Xcode - generato da XcodeGen, non versionare
+*.xcodeproj/
+*.xcworkspace/
+xcuserdata/
+
+# Build
+DerivedData/
+build/
+*.ipa
+*.dSYM.zip
+*.dSYM
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Swift Package Manager (se aggiunto in futuro)
+.build/
+.swiftpm/
+
+# Secrets locali (non committare mai)
+MilanoLocali/Services/FoursquareConfig.local.swift
