@@ -1,20 +1,20 @@
-name: Fetch Foursquare data
+name: Fetch OpenStreetMap data
 
 on:
   workflow_dispatch:
   push:
     branches: [main]
-    paths: ['.github/workflows/fetch-foursquare.yml']
+    paths: ['.github/workflows/fetch-foursquare.yml', '.github/scripts/fetch_foursquare.py']
   schedule:
     - cron: '0 4 * * 1'  # ogni lunedì alle 04:00 UTC
 
 concurrency:
-  group: fetch-foursquare
+  group: fetch-locali
   cancel-in-progress: false
 
 jobs:
   fetch:
-    name: Fetch e salva dati Foursquare
+    name: Fetch e salva dati OpenStreetMap
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -26,23 +26,17 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           ref: main
 
-      - name: Fetch dati da Foursquare
-        env:
-          FSQ_KEY: ${{ secrets.FOURSQUARE_API_KEY }}
+      - name: Fetch dati da OpenStreetMap (Overpass API)
         run: python3 .github/scripts/fetch_foursquare.py
 
-      - name: Commit e push dati aggiornati
+      - name: Commit dati aggiornati
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           git config user.name  "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git remote set-url origin "https://x-access-token:${GITHUB_TOKEN}@github.com/${{ github.repository }}"
+          git remote set-url origin https://x-access-token:${GITHUB_TOKEN}@github.com/${{ github.repository }}
           git add docs/foursquare-data.json
-          if git diff --cached --quiet; then
-            echo "Nessuna modifica ai dati, skip."
-            exit 0
-          fi
-          git commit -m "chore: aggiorna dati Foursquare [skip ci]"
+          git diff --cached --quiet || git commit -m "chore: aggiorna dati OpenStreetMap [skip ci]"
           git pull --rebase origin main
           git push --force-with-lease origin main
