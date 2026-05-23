@@ -2,11 +2,11 @@ import Foundation
 
 // MARK: - Foursquare response models
 
-private struct FSQResponse: Codable {
+struct FSQResponse: Codable {
     let results: [FSQPlace]
 }
 
-private struct FSQPlace: Codable {
+struct FSQPlace: Codable {
     let fsqId: String
     let name: String
     let categories: [FSQCategory]
@@ -22,21 +22,21 @@ private struct FSQPlace: Codable {
     }
 }
 
-private struct FSQCategory: Codable {
+struct FSQCategory: Codable {
     let id: Int
     let name: String
 }
 
-private struct FSQGeocodes: Codable {
+struct FSQGeocodes: Codable {
     let main: FSQCoordinate
 }
 
-private struct FSQCoordinate: Codable {
+struct FSQCoordinate: Codable {
     let latitude: Double
     let longitude: Double
 }
 
-private struct FSQLocation: Codable {
+struct FSQLocation: Codable {
     let address: String?
     let formattedAddress: String?
     let neighborhood: [String]?
@@ -47,7 +47,7 @@ private struct FSQLocation: Codable {
     }
 }
 
-private struct FSQPhoto: Codable {
+struct FSQPhoto: Codable {
     let prefix: String
     let suffix: String
 
@@ -56,11 +56,27 @@ private struct FSQPhoto: Codable {
 
 // MARK: - Service
 
-final class FoursquareService {
+// @unchecked Sendable: tutte le stored properties sono let immutabili
+final class FoursquareService: @unchecked Sendable {
     static let shared = FoursquareService()
-    private init() {}
 
+    private let session: URLSession
     private let baseURL = "https://api.foursquare.com/v3/places/search"
+    private let categoryFilter = "13000,13003,13032,13065"
+
+    private init() {
+        // Headers fissi configurati una volta sola nella URLSession,
+        // così fetchZone non ha bisogno di mutare URLRequest
+        let config = URLSessionConfiguration.default
+        config.httpAdditionalHeaders = [
+            "Authorization": "Bearer \(FoursquareConfig.apiKey)",
+            "Accept": "application/json"
+        ]
+        config.timeoutIntervalForRequest = 15
+        session = URLSession(configuration: config)
+    }
+
+    var isConfigured: Bool { !FoursquareConfig.apiKey.isEmpty }
 
     // Centro approssimativo di ogni quartiere di Milano
     private let zoneCenters: [(zona: Zona, lat: Double, lng: Double)] = [
@@ -78,24 +94,12 @@ final class FoursquareService {
         (.loreto,       45.4822, 9.2131)
     ]
 
-    // Categorie Foursquare: Food (13000), Bar (13003), Café (13032), Restaurant (13065), etc.
-    private let categoryFilter = "13000,13003,13032,13065"
-
-    var isConfigured: Bool { !FoursquareConfig.apiKey.isEmpty }
-
-    func fetchAllZones() async throws -> [LocaleDTO] {
+    func fetchAllZones() async -> [LocaleDTO] {
         var all: [LocaleDTO] = []
-        await withTaskGroup(of: [LocaleDTO].self) { group in
-            for center in zoneCenters {
-                group.addTask {
-                    (try? await self.fetchZone(center.zona, lat: center.lat, lng: center.lng)) ?? []
-                }
-            }
-            for await batch in group {
-                all.append(contentsOf: batch)
-            }
+        for center in zoneCenters {
+            let batch = (try? await fetchZone(center.zona, lat: center.lat, lng: center.lng)) ?? []
+            all.append(contentsOf: batch)
         }
-        // Deduplica per fsq_id
         var seen = Set<String>()
         return all.filter { seen.insert($0.id).inserted }
     }
@@ -110,13 +114,9 @@ final class FoursquareService {
             URLQueryItem(name: "fields",     value: "fsq_id,name,categories,geocodes,location,rating,price,photos"),
             URLQueryItem(name: "sort",       value: "RATING")
         ]
+        guard let url = components.url else { throw URLError(.badURL) }
 
-        var request = URLRequest(url: components.url!)
-        request.setValue("Bearer \(FoursquareConfig.apiKey)", forHTTPHeaderField: "Authorization")
-        request.setValue("application/json", forHTTPHeaderField: "Accept")
-        request.timeoutInterval = 15
-
-        let (data, response) = try await URLSession.shared.data(for: request)
+        let (data, response) = try await session.data(from: url)
         guard let http = response as? HTTPURLResponse, http.statusCode == 200 else {
             throw URLError(.badServerResponse)
         }
@@ -158,30 +158,19 @@ final class FoursquareService {
         return parts.joined(separator: " · ")
     }
 
-    // Mappa gli ID categoria Foursquare ai nostri tipi
     private func resolveCategoria(_ categoryId: Int?) -> Categoria {
         guard let id = categoryId else { return .ristorante }
         switch id {
-        case 13003, 13006, 13007, 13008, 13009, 13010:
-            return .cocktailBar
-        case 13032, 13033, 13034, 13035, 13052:
-            return .caffe
-        case 13064, 13245:
-            return .pizza
-        case 13072, 13073, 13074, 13075:
-            return .sushi
-        case 13025, 13240, 13241:
-            return .osteria
-        case 13046, 13047, 13313:
-            return .vineria
-        case 13045:
-            return .rooftop
-        case 13304, 13305, 13352:
-            return .streetFood
-        case 13040, 13041, 13042, 13043:
-            return .aperitivo
-        default:
-            return .ristorante
+        case 13003, 13006, 13007, 13008, 13009, 13010: return .cocktailBar
+        case 13032, 13033, 13034, 13035, 13052:         return .caffe
+        case 13064, 13245:                              return .pizza
+        case 13072, 13073, 13074, 13075:                return .sushi
+        case 13025, 13240, 13241:                       return .osteria
+        case 13046, 13047, 13313:                       return .vineria
+        case 13045:                                     return .rooftop
+        case 13304, 13305, 13352:                       return .streetFood
+        case 13040, 13041, 13042, 13043:                return .aperitivo
+        default:                                        return .ristorante
         }
     }
 }

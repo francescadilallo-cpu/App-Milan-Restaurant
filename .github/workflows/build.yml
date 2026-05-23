@@ -2,7 +2,7 @@ name: Build
 
 on:
   push:
-    branches: [main, "claude/**"]
+    branches: [main, "claude/**", "fix/**", "feat/**"]
   pull_request:
     branches: [main]
 
@@ -18,19 +18,59 @@ jobs:
       - name: Xcode version
         run: xcodebuild -version
 
+      - name: Inject Foursquare API key
+        env:
+          FSQ_KEY: ${{ secrets.FOURSQUARE_API_KEY }}
+        run: |
+          if [ -n "$FSQ_KEY" ]; then
+            sed -i '' "s/static let apiKey = \"\"/static let apiKey = \"${FSQ_KEY}\"/" \
+              MilanoLocali/Services/FoursquareConfig.swift
+            echo "Foursquare API key injected."
+          else
+            echo "FOURSQUARE_API_KEY not set, skipping."
+          fi
+
       - name: Install XcodeGen
         run: brew install xcodegen
 
       - name: Generate Xcode project
-        run: xcodegen generate
+        run: xcodegen generate --spec project.yml
+
+      - name: List schemes
+        run: xcodebuild -project MilanoLocali.xcodeproj -list
 
       - name: Build for simulator
+        id: build
+        continue-on-error: true
         run: |
+          UDID=$(xcrun simctl list devices available -j \
+            | python3 -c "
+import json,sys
+d=json.load(sys.stdin)['devices']
+phones=[s for v in d.values() for s in v
+        if 'iPhone' in s.get('name','') and s.get('isAvailable')]
+print(phones[0]['udid'] if phones else '')
+")
+          echo "Simulator UDID: $UDID"
           xcodebuild \
             -project MilanoLocali.xcodeproj \
             -scheme MilanoLocali \
-            -destination 'platform=iOS Simulator,name=iPhone 16' \
+            -destination "platform=iOS Simulator,id=$UDID" \
             -configuration Debug \
             CODE_SIGNING_ALLOWED=NO \
             ONLY_ACTIVE_ARCH=NO \
-            build
+            build 2>&1 | tee /tmp/build.log
+
+      - name: Write errors to summary
+        if: always()
+        run: |
+          echo "## Build log (errors + last 60 lines)" >> $GITHUB_STEP_SUMMARY
+          echo '```' >> $GITHUB_STEP_SUMMARY
+          grep -E "error:|Build FAILED" /tmp/build.log | head -40 >> $GITHUB_STEP_SUMMARY || true
+          echo "---" >> $GITHUB_STEP_SUMMARY
+          tail -60 /tmp/build.log >> $GITHUB_STEP_SUMMARY || echo "(no build log)" >> $GITHUB_STEP_SUMMARY
+          echo '```' >> $GITHUB_STEP_SUMMARY
+
+      - name: Fail if build failed
+        if: steps.build.outcome == 'failure'
+        run: exit 1

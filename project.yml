@@ -10,30 +10,20 @@ targets:
     platform: iOS
     deploymentTarget: "17.0"
 
-    # XcodeGen auto-scopre tutti i .swift come sorgenti
-    # e i .json/.xcassets/etc. come risorse
     sources:
       - path: MilanoLocali
-
-    # Info.plist generato da XcodeGen (niente file separato)
-    info:
-      path: MilanoLocali/Info.plist
-      properties:
-        CFBundleDisplayName: Milano Locali
-        CFBundleShortVersionString: "$(MARKETING_VERSION)"
-        CFBundleVersion: "$(CURRENT_PROJECT_VERSION)"
-        UILaunchScreen: {}
-        UISupportedInterfaceOrientations:
-          - UIInterfaceOrientationPortrait
-        UIApplicationSceneManifest:
-          UIApplicationSupportsMultipleScenes: false
+        excludes:
+          - Info.plist
 
     settings:
       base:
-        SWIFT_VERSION: "5.9"
-        TARGETED_DEVICE_FAMILY: "1"          # iPhone
+        SWIFT_VERSION: "5.0"
+        TARGETED_DEVICE_FAMILY: "1"
         PRODUCT_BUNDLE_IDENTIFIER: com.francescadilallo.milanolocali
         IPHONEOS_DEPLOYMENT_TARGET: "17.0"
         MARKETING_VERSION: "1.0.0"
         CURRENT_PROJECT_VERSION: "1"
-        SWIFT_EMIT_LOC_STRINGS: YES
+        GENERATE_INFOPLIST_FILE: YES
+        INFOPLIST_KEY_CFBundleDisplayName: "Milano Locali"
+        INFOPLIST_KEY_UILaunchScreen_Generation: YES
+        INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone: "UIInterfaceOrientationPortrait"
