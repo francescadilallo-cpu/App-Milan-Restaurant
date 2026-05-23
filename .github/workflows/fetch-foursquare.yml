@@ -19,6 +19,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Fetch dati da Foursquare
         env:
@@ -26,9 +28,13 @@ jobs:
         run: python3 .github/scripts/fetch_foursquare.py
 
       - name: Commit e push dati aggiornati
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           git config user.name  "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
+          git remote set-url origin "https://x-access-token:${GITHUB_TOKEN}@github.com/${{ github.repository }}"
+          git pull --rebase origin main
           git add docs/foursquare-data.json
           if git diff --cached --quiet; then
             echo "Nessuna modifica ai dati, skip."
