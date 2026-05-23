@@ -127,11 +127,14 @@ def build_query(lat, lon, radius):
 
 def fetch_zone(zona, lat, lon, radius):
     query = build_query(lat, lon, radius)
-    payload = ("data=" + urllib.parse.quote(query)).encode()
+    payload = urllib.parse.urlencode({"data": query}).encode()
     req = urllib.request.Request(
         OVERPASS,
         data=payload,
-        headers={"Content-Type": "application/x-www-form-urlencoded"},
+        headers={
+            "Content-Type": "application/x-www-form-urlencoded",
+            "User-Agent": "MilanoLocali/1.0 (milan-restaurant-app)",
+        },
         method="POST",
     )
     with urllib.request.urlopen(req, timeout=35) as resp:
