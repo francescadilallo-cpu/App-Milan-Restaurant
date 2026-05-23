@@ -13,7 +13,7 @@ targets:
     sources:
       - path: MilanoLocali
         excludes:
-          - Info.plist   # generato da Xcode, non da includere come risorsa
+          - Info.plist
 
     settings:
       base:
@@ -23,7 +23,6 @@ targets:
         IPHONEOS_DEPLOYMENT_TARGET: "17.0"
         MARKETING_VERSION: "1.0.0"
         CURRENT_PROJECT_VERSION: "1"
-        # Xcode genera Info.plist automaticamente dai INFOPLIST_KEY_* settings
         GENERATE_INFOPLIST_FILE: YES
         INFOPLIST_KEY_CFBundleDisplayName: "Milano Locali"
         INFOPLIST_KEY_UILaunchScreen_Generation: YES
