@@ -126,6 +126,9 @@ enum Categoria: String, CaseIterable, Identifiable {
     case streetFood = "Street Food"
     case rooftop = "Rooftop"
     case vineria = "Vineria"
+    case gelateria = "Gelateria"
+    case pasticceria = "Pasticceria"
+    case hamburgheria = "Hamburgheria"
 
     var id: String { rawValue }
 
@@ -141,6 +144,9 @@ enum Categoria: String, CaseIterable, Identifiable {
         case .streetFood: return "🌮"
         case .rooftop: return "🌆"
         case .vineria: return "🍷"
+        case .gelateria: return "🍦"
+        case .pasticceria: return "🥐"
+        case .hamburgheria: return "🍔"
         }
     }
 }

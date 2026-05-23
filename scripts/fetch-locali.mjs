@@ -50,18 +50,23 @@ function categorize(tags) {
   const cuisine  = (tags.cuisine || '').toLowerCase();
   const name     = (tags.name    || '').toLowerCase();
 
-  if (cuisine.includes('sushi') || cuisine.includes('japanese')) return 'Sushi';
-  if (cuisine.includes('pizza'))                                  return 'Pizza';
-  if (amenity === 'cafe' || cuisine.includes('coffee'))           return 'Caffè';
-  if (amenity === 'fast_food')                                    return 'Street Food';
+  if (amenity === 'ice_cream')                                     return 'Gelateria';
+  if (amenity === 'bakery' || cuisine.includes('pastry') ||
+      name.includes('pasticcer') || name.includes('dolceria'))     return 'Pasticceria';
+  if (cuisine.includes('burger') || cuisine.includes('hamburger') ||
+      name.includes('burger') || name.includes('hamburgher'))      return 'Hamburgheria';
+  if (cuisine.includes('sushi') || cuisine.includes('japanese'))   return 'Sushi';
+  if (cuisine.includes('pizza'))                                   return 'Pizza';
+  if (amenity === 'cafe' || cuisine.includes('coffee'))            return 'Caffè';
+  if (amenity === 'fast_food')                                     return 'Street Food';
   if (amenity === 'bar' || amenity === 'pub') {
-    if (name.includes('aperitiv') || name.includes('spritz'))     return 'Aperitivo';
+    if (name.includes('aperitiv') || name.includes('spritz'))      return 'Aperitivo';
     if (name.includes('wine') || name.includes('vino') || name.includes('vineri')) return 'Vineria';
     return 'Cocktail Bar';
   }
-  if (cuisine.includes('wine') || tags['craft'] === 'winery')     return 'Vineria';
+  if (cuisine.includes('wine') || tags['craft'] === 'winery')      return 'Vineria';
   if (cuisine.includes('italian') || cuisine.includes('regional') ||
-      name.includes('osteria') || name.includes('trattoria'))     return 'Osteria';
+      name.includes('osteria') || name.includes('trattoria'))      return 'Osteria';
   return 'Ristorante';
 }
 

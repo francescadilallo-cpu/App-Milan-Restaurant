@@ -82,6 +82,9 @@ const CAT_META = {
   'Street Food':  { color: '#F39C12', icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 11l19-9-9 19-2-8-8-2z"/></svg>' },
   'Rooftop':      { color: '#3498DB', icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>' },
   'Vineria':      { color: '#8E44AD', icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 22h8"/><path d="M7 10h10"/><path d="M12 15v7"/><path d="M12 3 8 10h8z"/></svg>' },
+  'Gelateria':    { color: '#00BCD4', icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22c-4 0-7-3.5-7-8a7 7 0 0 1 14 0c0 4.5-3 8-7 8z"/><path d="M12 22v-8"/><path d="M9 13l3-3 3 3"/></svg>' },
+  'Pasticceria':  { color: '#FF9800', icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 11l19-9"/><path d="M3 11l9 9 9-9"/><path d="M12 20v-9"/></svg>' },
+  'Hamburgheria': { color: '#8D4E1A', icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 11h18"/><path d="M3 7a9 9 0 0 1 18 0"/><path d="M5 11v4a7 7 0 0 0 14 0v-4"/></svg>' },
 };
 
 const PRICE = ['', '€', '€€', '€€€', '€€€€'];

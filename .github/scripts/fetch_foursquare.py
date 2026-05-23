@@ -42,19 +42,22 @@ ZONES = [
     ("Greco",         45.5000, 9.2100, 600),
 ]
 
-AMENITIES = ["restaurant", "bar", "cafe", "pub", "fast_food", "food_court"]
+AMENITIES = ["restaurant", "bar", "cafe", "pub", "fast_food", "food_court", "ice_cream", "bakery"]
 
 DESCRIPTIONS = {
-    "Ristorante":   lambda cuisine, zona: f"Ristorante{f' di cucina {cuisine}' if cuisine else ''} nel cuore di {zona}.",
-    "Osteria":      lambda _, zona: f"Osteria tradizionale con cucina del territorio a {zona}.",
-    "Pizza":        lambda _, zona: f"Pizzeria a {zona}, impasto artigianale e ingredienti selezionati.",
-    "Sushi":        lambda _, zona: f"Ristorante giapponese a {zona}, sushi e specialità orientali.",
-    "Caffè":        lambda _, zona: f"Caffetteria storica a {zona}, colazioni e pause caffè.",
-    "Cocktail Bar": lambda _, zona: f"Cocktail bar a {zona}, selezione di drink classici e signatures.",
-    "Aperitivo":    lambda _, zona: f"Il posto giusto per l'aperitivo a {zona}, Spritz e stuzzichini.",
-    "Vineria":      lambda _, zona: f"Vineria a {zona}, selezione di vini naturali e biodynamici.",
-    "Street Food":  lambda _, zona: f"Street food a {zona}, piatti veloci e ingredienti freschi.",
-    "Rooftop":      lambda _, zona: f"Rooftop bar a {zona} con vista sulla città.",
+    "Ristorante":    lambda cuisine, zona: f"Ristorante{f' di cucina {cuisine}' if cuisine else ''} nel cuore di {zona}.",
+    "Osteria":       lambda _, zona: f"Osteria tradizionale con cucina del territorio a {zona}.",
+    "Pizza":         lambda _, zona: f"Pizzeria a {zona}, impasto artigianale e ingredienti selezionati.",
+    "Sushi":         lambda _, zona: f"Ristorante giapponese a {zona}, sushi e specialità orientali.",
+    "Caffè":         lambda _, zona: f"Caffetteria storica a {zona}, colazioni e pause caffè.",
+    "Cocktail Bar":  lambda _, zona: f"Cocktail bar a {zona}, selezione di drink classici e signatures.",
+    "Aperitivo":     lambda _, zona: f"Il posto giusto per l'aperitivo a {zona}, Spritz e stuzzichini.",
+    "Vineria":       lambda _, zona: f"Vineria a {zona}, selezione di vini naturali e biodynamici.",
+    "Street Food":   lambda _, zona: f"Street food a {zona}, piatti veloci e ingredienti freschi.",
+    "Rooftop":       lambda _, zona: f"Rooftop bar a {zona} con vista sulla città.",
+    "Gelateria":     lambda _, zona: f"Gelateria artigianale a {zona}, gusti stagionali e ingredienti selezionati.",
+    "Pasticceria":   lambda _, zona: f"Pasticceria artigianale a {zona}, dolci e colazioni di qualità.",
+    "Hamburgheria":  lambda _, zona: f"Hamburgheria a {zona}, carne selezionata e ingredienti freschi.",
 }
 
 
@@ -63,17 +66,22 @@ def categorize(tags):
     cuisine = tags.get("cuisine", "").lower()
     name    = tags.get("name", "").lower()
 
-    if "sushi" in cuisine or "japanese" in cuisine:  return "Sushi"
-    if "pizza" in cuisine:                           return "Pizza"
-    if amenity == "cafe" or "coffee" in cuisine:     return "Caffè"
-    if amenity == "fast_food":                       return "Street Food"
+    if amenity == "ice_cream":                           return "Gelateria"
+    if amenity == "bakery" or "pastry" in cuisine or \
+       "pasticcer" in name or "dolceria" in name:        return "Pasticceria"
+    if "burger" in cuisine or "hamburger" in cuisine or \
+       "burger" in name or "hamburgher" in name:         return "Hamburgheria"
+    if "sushi" in cuisine or "japanese" in cuisine:      return "Sushi"
+    if "pizza" in cuisine:                               return "Pizza"
+    if amenity == "cafe" or "coffee" in cuisine:         return "Caffè"
+    if amenity == "fast_food":                           return "Street Food"
     if amenity in ("bar", "pub"):
-        if "aperitiv" in name or "spritz" in name:  return "Aperitivo"
+        if "aperitiv" in name or "spritz" in name:       return "Aperitivo"
         if "wine" in name or "vino" in name or "vineri" in name: return "Vineria"
         return "Cocktail Bar"
     if "wine" in cuisine or tags.get("craft") == "winery": return "Vineria"
     if "italian" in cuisine or "regional" in cuisine or \
-       "osteria" in name or "trattoria" in name:    return "Osteria"
+       "osteria" in name or "trattoria" in name:         return "Osteria"
     return "Ristorante"
 
 
