@@ -12,6 +12,8 @@ jobs:
   fetch:
     name: Fetch e salva dati Foursquare
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
 
     steps:
       - name: Checkout
