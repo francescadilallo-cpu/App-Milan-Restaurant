@@ -17,6 +17,7 @@ const ZONE_META = {
   'Lambrate':      { color: '#C4783A', wiki: 'Parco_Lambro',                    photo: '', desc: 'Quartiere east side in piena trasformazione. Il birrificio storico, spazi industriali e una vibe autentica.' },
   'Città Studi':   { color: '#7A5EC4', wiki: 'University_of_Milan',              photo: '', desc: 'Il quartiere universitario di Milano. Pizzerie economiche, gastronomie di qualità e caffè da mattina a notte.' },
   'Loreto':        { color: '#3A9EC4', wiki: 'Piazzale_Loreto',                  photo: '', desc: 'Crocevia tra NoLo e Porta Venezia. Pizza al taglio gourmet, bar di quartiere moderni e una scena in rapida crescita.' },
+  'Chinatown':     { color: '#C0392B', wiki: 'Via_Paolo_Sarpi',                  photo: '', desc: 'Il quartiere cinese di Milano lungo Via Paolo Sarpi. Ristoranti autentici, dim sum, pasticcerie e una vivace scena gastronomica asiatica.' },
 };
 
 /* Fetch zone hero images from Wikipedia at runtime (CORS-enabled).

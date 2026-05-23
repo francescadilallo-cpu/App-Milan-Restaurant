@@ -19,18 +19,19 @@ const OUT = join(__dir, '../MilanoLocali/Resources/locali.json');
 
 // ── Zone centers + search radius (meters) ───────────────────────────────────
 const ZONES = {
-  'Navigli':       { lat: 45.4506, lon: 9.1700, radius: 650 },
-  'Brera':         { lat: 45.4728, lon: 9.1869, radius: 500 },
-  'Porta Venezia': { lat: 45.4740, lon: 9.2025, radius: 600 },
-  'Isola':         { lat: 45.4883, lon: 9.1889, radius: 500 },
-  'Tortona':       { lat: 45.4597, lon: 9.1631, radius: 500 },
-  'NoLo':          { lat: 45.4847, lon: 9.2089, radius: 600 },
-  'Centrale':      { lat: 45.4862, lon: 9.2046, radius: 600 },
-  'Duomo':         { lat: 45.4641, lon: 9.1919, radius: 550 },
-  'Moscova':       { lat: 45.4796, lon: 9.1894, radius: 500 },
-  'Lambrate':      { lat: 45.4793, lon: 9.2380, radius: 600 },
-  'Città Studi':   { lat: 45.4753, lon: 9.2259, radius: 650 },
-  'Loreto':        { lat: 45.4861, lon: 9.2143, radius: 500 },
+  'Navigli':       { lat: 45.4506, lon: 9.1700, radius: 700 },
+  'Brera':         { lat: 45.4728, lon: 9.1869, radius: 650 },
+  'Porta Venezia': { lat: 45.4740, lon: 9.2025, radius: 650 },
+  'Isola':         { lat: 45.4883, lon: 9.1889, radius: 650 },
+  'Tortona':       { lat: 45.4597, lon: 9.1631, radius: 650 },
+  'NoLo':          { lat: 45.4847, lon: 9.2089, radius: 650 },
+  'Centrale':      { lat: 45.4862, lon: 9.2046, radius: 650 },
+  'Duomo':         { lat: 45.4641, lon: 9.1919, radius: 600 },
+  'Moscova':       { lat: 45.4796, lon: 9.1894, radius: 650 },
+  'Lambrate':      { lat: 45.4793, lon: 9.2380, radius: 700 },
+  'Città Studi':   { lat: 45.4753, lon: 9.2259, radius: 700 },
+  'Loreto':        { lat: 45.4861, lon: 9.2143, radius: 650 },
+  'Chinatown':     { lat: 45.4790, lon: 9.1745, radius: 550 },
 };
 
 // ── OSM amenity/cuisine → nostra categoria ──────────────────────────────────

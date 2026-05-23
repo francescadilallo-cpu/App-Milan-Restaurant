@@ -63,6 +63,7 @@ enum Zona: String, CaseIterable, Identifiable {
     case lambrate = "Lambrate"
     case citaStudy = "Città Studi"
     case loreto = "Loreto"
+    case chinatown = "Chinatown"
 
     var id: String { rawValue }
 
@@ -79,7 +80,8 @@ enum Zona: String, CaseIterable, Identifiable {
         case .moscova: return "🌿"
         case .lambrate: return "🍺"
         case .citaStudy: return "📚"
-        case .loreto: return "🔵"
+        case .loreto: return "🎯"
+        case .chinatown: return "🏮"
         }
     }
 }
