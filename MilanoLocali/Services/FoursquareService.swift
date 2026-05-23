@@ -112,10 +112,14 @@ final class FoursquareService {
             URLQueryItem(name: "sort",       value: "RATING")
         ]
 
-        var request = URLRequest(url: components.url!)
-        request.setValue("Bearer \(FoursquareConfig.apiKey)", forHTTPHeaderField: "Authorization")
-        request.setValue("application/json", forHTTPHeaderField: "Accept")
-        request.timeoutInterval = 15
+        // Costruito in una closure sincrona per evitare falsi positivi
+        // del compilatore Swift 6 su URLRequest mutation in async context
+        let request: URLRequest = {
+            var r = URLRequest(url: components.url!, cachePolicy: .useProtocolCachePolicy, timeoutInterval: 15)
+            r.setValue("Bearer \(FoursquareConfig.apiKey)", forHTTPHeaderField: "Authorization")
+            r.setValue("application/json", forHTTPHeaderField: "Accept")
+            return r
+        }()
 
         let (data, response) = try await URLSession.shared.data(for: request)
         guard let http = response as? HTTPURLResponse, http.statusCode == 200 else {
