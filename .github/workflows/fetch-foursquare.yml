@@ -6,7 +6,7 @@ on:
     branches: [main]
     paths: ['.github/workflows/fetch-foursquare.yml', '.github/scripts/fetch_foursquare.py']
   schedule:
-    - cron: '0 4 * * 1'  # ogni lunedì alle 04:00 UTC
+    - cron: '0 4 * * 1'  # ogni lunedì alle 04:00 UTC (Europe/Rome = 06:00)
 
 concurrency:
   group: fetch-locali
