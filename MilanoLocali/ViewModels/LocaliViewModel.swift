@@ -51,6 +51,11 @@ final class LocaliViewModel {
         isLoading = false
     }
 
+    func refresh() async {
+        DataService.shared.invalidateFoursquareCache()
+        await load()
+    }
+
     func isFavorite(id: String, context: ModelContext) -> Bool {
         let descriptor = FetchDescriptor<FavoriteLocale>(
             predicate: #Predicate { $0.id == id }

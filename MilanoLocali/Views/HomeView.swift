@@ -12,12 +12,12 @@ struct HomeView: View {
                         .frame(maxWidth: .infinity, maxHeight: .infinity)
                 } else {
                     ScrollView {
-                        // Search + active filters
                         VStack(spacing: 0) {
                             categoryFilterBar
                             zoneGrid
                         }
                     }
+                    .refreshable { await vm.refresh() }
                 }
             }
             .navigationTitle("Milano Locali")
