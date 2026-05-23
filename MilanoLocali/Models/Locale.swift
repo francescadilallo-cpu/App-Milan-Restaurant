@@ -19,6 +19,9 @@ struct LocaleDTO: Codable, Identifiable, Hashable {
     let websiteURL: String?
     let imageURL: String?
     let isNew: Bool
+    let rating: Double?
+    let reviewCount: Int?
+    let hours: [String?]?      // 7 slots Mon–Sun, null = closed
 
     var coordinate: CLLocationCoordinate2D {
         CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
@@ -26,6 +29,29 @@ struct LocaleDTO: Codable, Identifiable, Hashable {
 
     var priceSymbol: String {
         String(repeating: "€", count: priceRange)
+    }
+
+    // Returns nil if hours data missing, true/false otherwise
+    var isOpenNow: Bool? {
+        guard let hours else { return nil }
+        let cal = Calendar.current
+        let now = Date()
+        let weekday = cal.component(.weekday, from: now)
+        let dayIndex = (weekday + 5) % 7          // 0=Mon … 6=Sun
+        guard dayIndex < hours.count else { return nil }
+        guard let slot = hours[dayIndex] else { return false } // null = closed today
+        let parts = slot.split(separator: "-").map(String.init)
+        guard parts.count == 2,
+              let open  = minutes(parts[0]),
+              let close = minutes(parts[1]) else { return nil }
+        let cur = cal.component(.hour, from: now) * 60 + cal.component(.minute, from: now)
+        return close < open ? (cur >= open || cur < close) : (cur >= open && cur < close)
+    }
+
+    private func minutes(_ s: String) -> Int? {
+        let p = s.split(separator: ":").compactMap { Int($0) }
+        guard p.count == 2 else { return nil }
+        return p[0] * 60 + p[1]
     }
 }
 

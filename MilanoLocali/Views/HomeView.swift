@@ -25,7 +25,8 @@ struct HomeView: View {
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
                     Button { showFilters.toggle() } label: {
-                        Image(systemName: vm.selectedZona != nil ? "line.3.horizontal.decrease.circle.fill" : "line.3.horizontal.decrease.circle")
+                        let active = vm.selectedZona != nil || vm.selectedCategoria != nil || vm.filterOpenNow
+                    Image(systemName: active ? "line.3.horizontal.decrease.circle.fill" : "line.3.horizontal.decrease.circle")
                     }
                 }
             }
@@ -176,6 +177,10 @@ struct FilterSheet: View {
     var body: some View {
         NavigationStack {
             List {
+                Section {
+                    Toggle("Aperto adesso", isOn: Bindable(vm).filterOpenNow)
+                }
+
                 Section("Zona") {
                     Button("Tutte le zone") {
                         vm.selectedZona = nil
