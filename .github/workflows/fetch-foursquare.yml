@@ -42,7 +42,13 @@ jobs:
           fi
           git commit -m "chore: aggiorna dati Foursquare [skip ci]"
           for i in 1 2 3; do
-            git pull --rebase origin main && git push && break
-            echo "Push tentativo $i fallito, retry in 10s..."
+            echo "Push tentativo $i..."
+            if git pull --rebase origin main && git push origin main; then
+              echo "Push riuscito."
+              exit 0
+            fi
+            echo "Tentativo $i fallito, retry in 10s..."
             sleep 10
           done
+          echo "Push fallito dopo 3 tentativi."
+          exit 1
