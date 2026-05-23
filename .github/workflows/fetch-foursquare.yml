@@ -1,0 +1,123 @@
+name: Fetch Foursquare data
+
+on:
+  workflow_dispatch:   # avvio manuale da GitHub Actions tab
+  schedule:
+    - cron: '0 4 * * 1'  # ogni lunedì alle 04:00 UTC
+
+jobs:
+  fetch:
+    name: Fetch e salva dati Foursquare
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Fetch dati da Foursquare
+        env:
+          FSQ_KEY: ${{ secrets.FOURSQUARE_API_KEY }}
+        run: |
+          python3 - <<'PYEOF'
+import urllib.request, urllib.parse, json, os, time
+
+API_KEY = os.environ["FSQ_KEY"]
+BASE = "https://api.foursquare.com/v3/places/search"
+CATEGORIES = "13000,13003,13032,13065"
+FIELDS = "fsq_id,name,categories,geocodes,location,rating,price,photos"
+
+ZONE_CENTERS = [
+    ("Navigli",      45.4502, 9.1680),
+    ("Brera",        45.4716, 9.1869),
+    ("Porta Venezia",45.4731, 9.2013),
+    ("Isola",        45.4872, 9.1853),
+    ("Tortona",      45.4587, 9.1628),
+    ("NoLo",         45.4870, 9.2073),
+    ("Centrale",     45.4849, 9.2022),
+    ("Duomo",        45.4641, 9.1919),
+    ("Moscova",      45.4773, 9.1863),
+    ("Lambrate",     45.4803, 9.2293),
+    ("Città Studi",  45.4650, 9.2258),
+    ("Loreto",       45.4822, 9.2131),
+]
+
+CAT_MAP = {
+    **{k: "Cocktail Bar" for k in [13003,13006,13007,13008,13009,13010]},
+    **{k: "Caffè"        for k in [13032,13033,13034,13035,13052]},
+    **{k: "Pizza"        for k in [13064,13245]},
+    **{k: "Sushi"        for k in [13072,13073,13074,13075]},
+    **{k: "Osteria"      for k in [13025,13240,13241]},
+    **{k: "Vineria"      for k in [13046,13047,13313]},
+    13045: "Rooftop",
+    **{k: "Street Food"  for k in [13304,13305,13352]},
+    **{k: "Aperitivo"    for k in [13040,13041,13042,13043]},
+}
+
+def map_place(place, zona):
+    cats = place.get("categories", [])
+    cat_id = cats[0]["id"] if cats else None
+    categoria = CAT_MAP.get(cat_id, "Ristorante")
+    loc = place.get("location", {})
+    address = loc.get("formatted_address") or loc.get("address") or ""
+    photos = place.get("photos", [])
+    image_url = f"{photos[0]['prefix']}original{photos[0]['suffix']}" if photos else None
+    price = max(1, min(4, place.get("price") or 2))
+    rating = place.get("rating")
+    desc = f"{categoria} nel quartiere {zona}"
+    if rating:
+        desc += f" · Valutazione Foursquare: {rating:.1f}/10"
+    return {
+        "id":             place["fsq_id"],
+        "name":           place["name"],
+        "zona":           zona,
+        "categoria":      categoria,
+        "address":        address,
+        "description":    desc,
+        "latitude":       place["geocodes"]["main"]["latitude"],
+        "longitude":      place["geocodes"]["main"]["longitude"],
+        "priceRange":     price,
+        "tags":           list({c["name"] for c in cats}),
+        "instagramHandle": None,
+        "websiteURL":     None,
+        "imageURL":       image_url,
+        "isNew":          False,
+    }
+
+results = []
+seen_ids = set()
+
+for zona, lat, lng in ZONE_CENTERS:
+    params = urllib.parse.urlencode({
+        "ll": f"{lat},{lng}", "radius": "650",
+        "categories": CATEGORIES, "limit": "50",
+        "fields": FIELDS, "sort": "RATING",
+    })
+    req = urllib.request.Request(
+        f"{BASE}?{params}",
+        headers={"Authorization": f"Bearer {API_KEY}", "Accept": "application/json"}
+    )
+    try:
+        with urllib.request.urlopen(req, timeout=15) as resp:
+            data = json.loads(resp.read())
+        for p in data.get("results", []):
+            if p["fsq_id"] not in seen_ids:
+                seen_ids.add(p["fsq_id"])
+                results.append(map_place(p, zona))
+        print(f"  {zona}: {len(data.get('results', []))} locali")
+    except Exception as e:
+        print(f"  {zona}: ERRORE - {e}")
+    time.sleep(0.3)
+
+print(f"\nTotale: {len(results)} locali unici")
+
+with open("docs/foursquare-data.json", "w", encoding="utf-8") as f:
+    json.dump(results, f, ensure_ascii=False, indent=2)
+PYEOF
+
+      - name: Commit dati aggiornati
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add docs/foursquare-data.json
+          git diff --cached --quiet || git commit -m "chore: aggiorna dati Foursquare [skip ci]"
+          git push

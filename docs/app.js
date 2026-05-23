@@ -1,4 +1,5 @@
 const DATA_URL = 'https://raw.githubusercontent.com/francescadilallo-cpu/App-Milan-Restaurant/main/MilanoLocali/Resources/locali.json';
+const FSQ_URL  = 'https://raw.githubusercontent.com/francescadilallo-cpu/App-Milan-Restaurant/main/docs/foursquare-data.json';
 
 /* ── Zone config ── */
 /* `wiki` = Wikipedia page whose main image represents the zone.
@@ -146,8 +147,14 @@ document.addEventListener('DOMContentLoaded', async () => {
   }
 
   try {
-    const r = await fetch(DATA_URL);
-    if (r.ok) allLocali = await r.json(); else throw 0;
+    const [r, fsqR] = await Promise.all([
+      fetch(DATA_URL),
+      fetch(FSQ_URL).catch(() => null),
+    ]);
+    const curated = r.ok ? await r.json() : FALLBACK;
+    const fsq     = (fsqR && fsqR.ok) ? await fsqR.json() : [];
+    const names   = new Set(curated.map(l => l.name.toLowerCase()));
+    allLocali = [...curated, ...fsq.filter(l => !names.has(l.name.toLowerCase()))];
   } catch { allLocali = FALLBACK; }
 
   // Fetch neighborhood photos from Wikipedia (uses localStorage cache).
