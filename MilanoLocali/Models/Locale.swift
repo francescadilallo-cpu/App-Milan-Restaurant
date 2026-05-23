@@ -4,7 +4,7 @@ import SwiftData
 
 // MARK: - Remote data model (decoded from JSON)
 
-struct LocaleDTO: Codable, Identifiable {
+struct LocaleDTO: Codable, Identifiable, Hashable {
     let id: String
     let name: String
     let zona: String
