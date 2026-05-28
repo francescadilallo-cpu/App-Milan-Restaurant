@@ -1,5 +1,4 @@
 const DATA_URL = 'https://raw.githubusercontent.com/francescadilallo-cpu/App-Milan-Restaurant/main/MilanoLocali/Resources/locali.json';
-const FSQ_URL  = 'https://raw.githubusercontent.com/francescadilallo-cpu/App-Milan-Restaurant/main/docs/foursquare-data.json';
 
 /* ── Zone config ── */
 /* `wiki` = Wikipedia page whose main image represents the zone.
