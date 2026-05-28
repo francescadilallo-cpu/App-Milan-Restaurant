@@ -8,24 +8,37 @@ struct MapaView: View {
         center: CLLocationCoordinate2D(latitude: 45.4654, longitude: 9.1859),
         span: MKCoordinateSpan(latitudeDelta: 0.08, longitudeDelta: 0.08)
     ))
+    @State private var visibleRegion = MKCoordinateRegion(
+        center: CLLocationCoordinate2D(latitude: 45.4654, longitude: 9.1859),
+        span: MKCoordinateSpan(latitudeDelta: 0.08, longitudeDelta: 0.08)
+    )
+
+    // Only render pins inside the current viewport (+ 30% padding) to avoid
+    // rebuilding thousands of annotation views when panning or filtering.
+    private var visibleLocali: [LocaleDTO] {
+        let latHalf = visibleRegion.span.latitudeDelta / 2 * 1.3
+        let lonHalf = visibleRegion.span.longitudeDelta / 2 * 1.3
+        let minLat = visibleRegion.center.latitude - latHalf
+        let maxLat = visibleRegion.center.latitude + latHalf
+        let minLon = visibleRegion.center.longitude - lonHalf
+        let maxLon = visibleRegion.center.longitude + lonHalf
+        return vm.filteredLocali.filter {
+            $0.latitude >= minLat && $0.latitude <= maxLat &&
+            $0.longitude >= minLon && $0.longitude <= maxLon
+        }
+    }
 
     var body: some View {
         NavigationStack {
             Map(position: $position, selection: $selectedLocale) {
-                ForEach(vm.filteredLocali) { locale in
-                    let categoria = Categoria.allCases.first { $0.rawValue == locale.categoria }
-                    Annotation(locale.name, coordinate: locale.coordinate, anchor: .bottom) {
-                        ZStack {
-                            Circle()
-                                .fill(Color.accentColor)
-                                .frame(width: 36, height: 36)
-                            Text(categoria?.emoji ?? "📍")
-                                .font(.system(size: 18))
-                        }
-                        .shadow(radius: 3)
-                        .onTapGesture { selectedLocale = locale }
-                    }
+                ForEach(visibleLocali) { locale in
+                    Marker(locale.name, coordinate: locale.coordinate)
+                        .tint(markerTint(locale.categoria))
+                        .tag(locale)
                 }
+            }
+            .onMapCameraChange(frequency: .onEnd) { context in
+                visibleRegion = context.region
             }
             .mapControls {
                 MapUserLocationButton()
@@ -40,6 +53,25 @@ struct MapaView: View {
                     .presentationDetents([.medium])
                     .presentationDragIndicator(.visible)
             }
+        }
+    }
+
+    private func markerTint(_ categoria: String) -> Color {
+        switch Categoria(rawValue: categoria) {
+        case .ristorante:    return .red
+        case .cocktailBar:   return .purple
+        case .aperitivo:     return .orange
+        case .caffe:         return .brown
+        case .pizza:         return .red
+        case .osteria:       return Color(red: 0.2, green: 0.6, blue: 0.2)
+        case .sushi:         return .indigo
+        case .streetFood:    return Color(red: 0.8, green: 0.6, blue: 0)
+        case .rooftop:       return .cyan
+        case .vineria:       return Color(red: 0.5, green: 0.1, blue: 0.5)
+        case .gelateria:     return .mint
+        case .pasticceria:   return .pink
+        case .hamburgheria:  return Color(red: 0.55, green: 0.27, blue: 0.07)
+        case nil:            return .accentColor
         }
     }
 }
