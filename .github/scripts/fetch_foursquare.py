@@ -14,7 +14,7 @@ import urllib.request
 
 OVERPASS = "https://overpass-api.de/api/interpreter"
 SLEEP_S  = 1.5
-OUT_FILE = "docs/foursquare-data.json"
+OUT_FILE = "docs/osm-data.json"
 
 ZONES = [
     ("Navigli",       45.4506, 9.1700, 700),

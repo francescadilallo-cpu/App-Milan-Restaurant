@@ -1,4 +1,5 @@
 const DATA_URL = 'https://raw.githubusercontent.com/francescadilallo-cpu/App-Milan-Restaurant/main/MilanoLocali/Resources/locali.json';
+const OSM_URL  = './osm-data.json';
 
 /* ── Zone config ── */
 /* `wiki` = Wikipedia page whose main image represents the zone.
@@ -176,7 +177,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   initMainMap();
 
   // Load OSM data in background after first paint — merges without blocking UI
-  fetch(FSQ_URL).then(r => r.ok ? r.json() : []).then(fsq => {
+  fetch(OSM_URL).then(r => r.ok ? r.json() : []).then(fsq => {
     if (!fsq.length) return;
     const names = new Set(allLocali.map(l => l.name.toLowerCase()));
     const extras = fsq.filter(l => !names.has(l.name.toLowerCase()));
