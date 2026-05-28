@@ -11,18 +11,20 @@ final class LocaliViewModel {
     var selectedZona: Zona?
     var selectedCategoria: Categoria?
     var searchText = ""
+    var filterOpenNow = false
 
     // MARK: - Computed
 
     var filteredLocali: [LocaleDTO] {
         locali.filter { locale in
-            let matchZona = selectedZona == nil || locale.zona == selectedZona?.rawValue
-            let matchCat = selectedCategoria == nil || locale.categoria == selectedCategoria?.rawValue
-            let matchSearch = searchText.isEmpty ||
+            let matchZona     = selectedZona == nil || locale.zona == selectedZona?.rawValue
+            let matchCat      = selectedCategoria == nil || locale.categoria == selectedCategoria?.rawValue
+            let matchSearch   = searchText.isEmpty ||
                 locale.name.localizedCaseInsensitiveContains(searchText) ||
                 locale.description.localizedCaseInsensitiveContains(searchText) ||
                 locale.tags.contains { $0.localizedCaseInsensitiveContains(searchText) }
-            return matchZona && matchCat && matchSearch
+            let matchOpenNow  = !filterOpenNow || (locale.isOpenNow == true)
+            return matchZona && matchCat && matchSearch && matchOpenNow
         }
     }
 

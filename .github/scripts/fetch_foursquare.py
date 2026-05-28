@@ -17,33 +17,47 @@ SLEEP_S  = 1.5
 OUT_FILE = "docs/foursquare-data.json"
 
 ZONES = [
-    ("Navigli",       45.4506, 9.1700, 650),
-    ("Brera",         45.4728, 9.1869, 500),
-    ("Porta Venezia", 45.4740, 9.2025, 600),
-    ("Isola",         45.4883, 9.1889, 500),
-    ("Tortona",       45.4597, 9.1631, 500),
-    ("NoLo",          45.4847, 9.2089, 600),
-    ("Centrale",      45.4862, 9.2046, 600),
-    ("Duomo",         45.4641, 9.1919, 550),
-    ("Moscova",       45.4796, 9.1894, 500),
-    ("Lambrate",      45.4793, 9.2380, 600),
-    ("Città Studi",   45.4753, 9.2259, 650),
-    ("Loreto",        45.4861, 9.2143, 500),
+    ("Navigli",       45.4506, 9.1700, 700),
+    ("Brera",         45.4728, 9.1869, 650),
+    ("Porta Venezia", 45.4740, 9.2025, 650),
+    ("Isola",         45.4883, 9.1889, 650),
+    ("Tortona",       45.4597, 9.1631, 650),
+    ("NoLo",          45.4847, 9.2089, 650),
+    ("Centrale",      45.4862, 9.2046, 650),
+    ("Duomo",         45.4641, 9.1919, 600),
+    ("Moscova",       45.4796, 9.1894, 650),
+    ("Lambrate",      45.4793, 9.2380, 700),
+    ("Città Studi",   45.4753, 9.2259, 700),
+    ("Loreto",        45.4861, 9.2143, 650),
+    ("Chinatown",     45.4790, 9.1745, 550),
+    # Secondary zones
+    ("Sempione",      45.4745, 9.1705, 600),
+    ("Porta Romana",  45.4540, 9.2000, 600),
+    ("Ticinese",      45.4595, 9.1840, 500),
+    ("Repubblica",    45.4760, 9.2020, 500),
+    ("Corvetto",      45.4440, 9.2100, 650),
+    ("Bovisa",        45.5030, 9.1590, 600),
+    ("Washington",    45.4650, 9.1630, 550),
+    ("Niguarda",      45.5080, 9.1980, 650),
+    ("Greco",         45.5000, 9.2100, 600),
 ]
 
-AMENITIES = ["restaurant", "bar", "cafe", "pub", "fast_food", "food_court"]
+AMENITIES = ["restaurant", "bar", "cafe", "pub", "fast_food", "food_court", "ice_cream", "bakery"]
 
 DESCRIPTIONS = {
-    "Ristorante":   lambda cuisine, zona: f"Ristorante{f' di cucina {cuisine}' if cuisine else ''} nel cuore di {zona}.",
-    "Osteria":      lambda _, zona: f"Osteria tradizionale con cucina del territorio a {zona}.",
-    "Pizza":        lambda _, zona: f"Pizzeria a {zona}, impasto artigianale e ingredienti selezionati.",
-    "Sushi":        lambda _, zona: f"Ristorante giapponese a {zona}, sushi e specialità orientali.",
-    "Caffè":        lambda _, zona: f"Caffetteria storica a {zona}, colazioni e pause caffè.",
-    "Cocktail Bar": lambda _, zona: f"Cocktail bar a {zona}, selezione di drink classici e signatures.",
-    "Aperitivo":    lambda _, zona: f"Il posto giusto per l'aperitivo a {zona}, Spritz e stuzzichini.",
-    "Vineria":      lambda _, zona: f"Vineria a {zona}, selezione di vini naturali e biodynamici.",
-    "Street Food":  lambda _, zona: f"Street food a {zona}, piatti veloci e ingredienti freschi.",
-    "Rooftop":      lambda _, zona: f"Rooftop bar a {zona} con vista sulla città.",
+    "Ristorante":    lambda cuisine, zona: f"Ristorante{f' di cucina {cuisine}' if cuisine else ''} nel cuore di {zona}.",
+    "Osteria":       lambda _, zona: f"Osteria tradizionale con cucina del territorio a {zona}.",
+    "Pizza":         lambda _, zona: f"Pizzeria a {zona}, impasto artigianale e ingredienti selezionati.",
+    "Sushi":         lambda _, zona: f"Ristorante giapponese a {zona}, sushi e specialità orientali.",
+    "Caffè":         lambda _, zona: f"Caffetteria storica a {zona}, colazioni e pause caffè.",
+    "Cocktail Bar":  lambda _, zona: f"Cocktail bar a {zona}, selezione di drink classici e signatures.",
+    "Aperitivo":     lambda _, zona: f"Il posto giusto per l'aperitivo a {zona}, Spritz e stuzzichini.",
+    "Vineria":       lambda _, zona: f"Vineria a {zona}, selezione di vini naturali e biodynamici.",
+    "Street Food":   lambda _, zona: f"Street food a {zona}, piatti veloci e ingredienti freschi.",
+    "Rooftop":       lambda _, zona: f"Rooftop bar a {zona} con vista sulla città.",
+    "Gelateria":     lambda _, zona: f"Gelateria artigianale a {zona}, gusti stagionali e ingredienti selezionati.",
+    "Pasticceria":   lambda _, zona: f"Pasticceria artigianale a {zona}, dolci e colazioni di qualità.",
+    "Hamburgheria":  lambda _, zona: f"Hamburgheria a {zona}, carne selezionata e ingredienti freschi.",
 }
 
 
@@ -52,17 +66,22 @@ def categorize(tags):
     cuisine = tags.get("cuisine", "").lower()
     name    = tags.get("name", "").lower()
 
-    if "sushi" in cuisine or "japanese" in cuisine:  return "Sushi"
-    if "pizza" in cuisine:                           return "Pizza"
-    if amenity == "cafe" or "coffee" in cuisine:     return "Caffè"
-    if amenity == "fast_food":                       return "Street Food"
+    if amenity == "ice_cream":                           return "Gelateria"
+    if amenity == "bakery" or "pastry" in cuisine or \
+       "pasticcer" in name or "dolceria" in name:        return "Pasticceria"
+    if "burger" in cuisine or "hamburger" in cuisine or \
+       "burger" in name or "hamburgher" in name:         return "Hamburgheria"
+    if "sushi" in cuisine or "japanese" in cuisine:      return "Sushi"
+    if "pizza" in cuisine:                               return "Pizza"
+    if amenity == "cafe" or "coffee" in cuisine:         return "Caffè"
+    if amenity == "fast_food":                           return "Street Food"
     if amenity in ("bar", "pub"):
-        if "aperitiv" in name or "spritz" in name:  return "Aperitivo"
+        if "aperitiv" in name or "spritz" in name:       return "Aperitivo"
         if "wine" in name or "vino" in name or "vineri" in name: return "Vineria"
         return "Cocktail Bar"
     if "wine" in cuisine or tags.get("craft") == "winery": return "Vineria"
     if "italian" in cuisine or "regional" in cuisine or \
-       "osteria" in name or "trattoria" in name:    return "Osteria"
+       "osteria" in name or "trattoria" in name:         return "Osteria"
     return "Ristorante"
 
 
@@ -127,11 +146,14 @@ def build_query(lat, lon, radius):
 
 def fetch_zone(zona, lat, lon, radius):
     query = build_query(lat, lon, radius)
-    payload = ("data=" + urllib.parse.quote(query)).encode()
+    payload = urllib.parse.urlencode({"data": query}).encode()
     req = urllib.request.Request(
         OVERPASS,
         data=payload,
-        headers={"Content-Type": "application/x-www-form-urlencoded"},
+        headers={
+            "Content-Type": "application/x-www-form-urlencoded",
+            "User-Agent": "MilanoLocali/1.0 (milan-restaurant-app)",
+        },
         method="POST",
     )
     with urllib.request.urlopen(req, timeout=35) as resp:

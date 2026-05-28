@@ -19,6 +19,9 @@ struct LocaleDTO: Codable, Identifiable, Hashable {
     let websiteURL: String?
     let imageURL: String?
     let isNew: Bool
+    let rating: Double?
+    let reviewCount: Int?
+    let hours: [String?]?      // 7 slots Mon–Sun, null = closed
 
     var coordinate: CLLocationCoordinate2D {
         CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
@@ -26,6 +29,29 @@ struct LocaleDTO: Codable, Identifiable, Hashable {
 
     var priceSymbol: String {
         String(repeating: "€", count: priceRange)
+    }
+
+    // Returns nil if hours data missing, true/false otherwise
+    var isOpenNow: Bool? {
+        guard let hours else { return nil }
+        let cal = Calendar.current
+        let now = Date()
+        let weekday = cal.component(.weekday, from: now)
+        let dayIndex = (weekday + 5) % 7          // 0=Mon … 6=Sun
+        guard dayIndex < hours.count else { return nil }
+        guard let slot = hours[dayIndex] else { return false } // null = closed today
+        let parts = slot.split(separator: "-").map(String.init)
+        guard parts.count == 2,
+              let open  = minutes(parts[0]),
+              let close = minutes(parts[1]) else { return nil }
+        let cur = cal.component(.hour, from: now) * 60 + cal.component(.minute, from: now)
+        return close < open ? (cur >= open || cur < close) : (cur >= open && cur < close)
+    }
+
+    private func minutes(_ s: String) -> Int? {
+        let p = s.split(separator: ":").compactMap { Int($0) }
+        guard p.count == 2 else { return nil }
+        return p[0] * 60 + p[1]
     }
 }
 
@@ -63,8 +89,29 @@ enum Zona: String, CaseIterable, Identifiable {
     case lambrate = "Lambrate"
     case citaStudy = "Città Studi"
     case loreto = "Loreto"
+    case chinatown = "Chinatown"
+    // Secondary zones
+    case sempione = "Sempione"
+    case portaRomana = "Porta Romana"
+    case ticinese = "Ticinese"
+    case repubblica = "Repubblica"
+    case corvetto = "Corvetto"
+    case bovisa = "Bovisa"
+    case washington = "Washington"
+    case niguarda = "Niguarda"
+    case greco = "Greco"
 
     var id: String { rawValue }
+
+    var isMain: Bool {
+        switch self {
+        case .navigli, .brera, .portaVenezia, .isola, .tortona, .nolo,
+             .centrale, .duomo, .moscova, .lambrate, .citaStudy, .loreto, .chinatown:
+            return true
+        default:
+            return false
+        }
+    }
 
     var emoji: String {
         switch self {
@@ -79,7 +126,17 @@ enum Zona: String, CaseIterable, Identifiable {
         case .moscova: return "🌿"
         case .lambrate: return "🍺"
         case .citaStudy: return "📚"
-        case .loreto: return "🔵"
+        case .loreto: return "🎯"
+        case .chinatown: return "🏮"
+        case .sempione: return "🌲"
+        case .portaRomana: return "🏛️"
+        case .ticinese: return "⚓"
+        case .repubblica: return "🏢"
+        case .corvetto: return "🌱"
+        case .bovisa: return "🎓"
+        case .washington: return "🎡"
+        case .niguarda: return "🏘️"
+        case .greco: return "🚂"
         }
     }
 }
@@ -95,6 +152,9 @@ enum Categoria: String, CaseIterable, Identifiable {
     case streetFood = "Street Food"
     case rooftop = "Rooftop"
     case vineria = "Vineria"
+    case gelateria = "Gelateria"
+    case pasticceria = "Pasticceria"
+    case hamburgheria = "Hamburgheria"
 
     var id: String { rawValue }
 
@@ -110,6 +170,9 @@ enum Categoria: String, CaseIterable, Identifiable {
         case .streetFood: return "🌮"
         case .rooftop: return "🌆"
         case .vineria: return "🍷"
+        case .gelateria: return "🍦"
+        case .pasticceria: return "🥐"
+        case .hamburgheria: return "🍔"
         }
     }
 }

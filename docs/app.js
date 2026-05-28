@@ -9,14 +9,25 @@ const ZONE_META = {
   'Brera':         { color: '#C4813A', wiki: 'Pinacoteca_di_Brera',              photo: '', desc: 'Il quartiere degli artisti. Gallerie, boutique e ristoranti raffinati in strade acciottolate. La Milano bohémienne.' },
   'Porta Venezia': { color: '#5B9E6B', wiki: 'Porta_Venezia',                    photo: '', desc: 'Quartiere multiculturale e vivace. Wine bar naturali, caffè indipendenti e una scena gastronomica in continua evoluzione.' },
   'Isola':         { color: '#3A7DC4', wiki: 'Bosco_Verticale',                  photo: '', desc: 'Il quartiere creativo per eccellenza. Dal Ceresio 7 ai cortili nascosti, Isola mescola design e autenticità.' },
-  'Tortona':       { color: '#8B5E9E', wiki: 'Museo_delle_Culture',              photo: '', desc: 'Ex zona industriale diventata capitale del design. Spazi creativi, ristoranti stellati e cocktail bar botanici.' },
-  'NoLo':          { color: '#D4607A', wiki: 'Piazzale_Loreto',                  photo: '', desc: 'North of Loreto: il quartiere più trendy di Milano. Pasticcerie di design, pescherie informali e locali indipendenti.' },
+  'Tortona':       { color: '#8B5E9E', wiki: 'Fondazione_Prada',                 photo: '', desc: 'Ex zona industriale diventata capitale del design. Spazi creativi, ristoranti stellati e cocktail bar botanici.' },
+  'NoLo':          { color: '#D4607A', wiki: 'Via_Padova',                       photo: '', desc: 'North of Loreto: il quartiere più trendy di Milano. Pasticcerie di design, pescherie informali e locali indipendenti.' },
   'Centrale':      { color: '#5E7A9E', wiki: 'Milano_Centrale_railway_station',  photo: '', desc: 'Intorno alla maestosa stazione. Osterie autentiche, bar storici e una cucina popolare milanese rimasta intatta.' },
   'Duomo':         { color: '#B8963C', wiki: 'Milan_Cathedral',                  photo: '', desc: 'Il cuore di Milano. Dalla Galleria Vittorio Emanuele alle trattorie nascoste nei vicoli del centro storico.' },
-  'Moscova':       { color: '#4E9E7A', wiki: 'Moscova_(Milan_Metro)',            photo: '', desc: 'Quartiere elegante e residenziale. Ristoranti stellati, bar raffinati e una clientela che sa cosa vuole.' },
-  'Lambrate':      { color: '#C4783A', wiki: 'Lambrate',                         photo: '', desc: 'Quartiere east side in piena trasformazione. Il birrificio storico, spazi industriali e una vibe autentica.' },
+  'Moscova':       { color: '#4E9E7A', wiki: 'Giardini_Pubblici_Indro_Montanelli', photo: '', desc: 'Quartiere elegante e residenziale. Ristoranti stellati, bar raffinati e una clientela che sa cosa vuole.' },
+  'Lambrate':      { color: '#C4783A', wiki: 'Parco_Lambro',                    photo: '', desc: 'Quartiere east side in piena trasformazione. Il birrificio storico, spazi industriali e una vibe autentica.' },
   'Città Studi':   { color: '#7A5EC4', wiki: 'University_of_Milan',              photo: '', desc: 'Il quartiere universitario di Milano. Pizzerie economiche, gastronomie di qualità e caffè da mattina a notte.' },
-  'Loreto':        { color: '#3A9EC4', wiki: 'Loreto_(Milan_Metro)',             photo: '', desc: 'Crocevia tra NoLo e Porta Venezia. Pizza al taglio gourmet, bar di quartiere moderni e una scena in rapida crescita.' },
+  'Loreto':        { color: '#3A9EC4', wiki: 'Piazzale_Loreto',                  photo: '', desc: 'Crocevia tra NoLo e Porta Venezia. Pizza al taglio gourmet, bar di quartiere moderni e una scena in rapida crescita.' },
+  'Chinatown':     { color: '#C0392B', wiki: 'Via_Paolo_Sarpi',                  photo: '', desc: 'Il quartiere cinese di Milano lungo Via Paolo Sarpi. Ristoranti autentici, dim sum, pasticcerie e una vivace scena gastronomica asiatica.' },
+  // Secondary zones
+  'Sempione':      { color: '#2ECC71', wiki: 'Parco_Sempione',                  photo: '', desc: 'Il polmone verde di Milano. Bar e ristoranti intorno al Parco Sempione, tra l\'Arco della Pace e il Castello Sforzesco.' },
+  'Porta Romana':  { color: '#E67E22', wiki: 'Porta_Romana,_Milan',             photo: '', desc: 'Quartiere residenziale e gastronomico. Ristoranti di qualità, wine bar e caffè nel cuore della Milano borghese.' },
+  'Ticinese':      { color: '#16A085', wiki: 'Colonne_di_San_Lorenzo',          photo: '', desc: 'Tra le Colonne di San Lorenzo e i Navigli. Aperitivo al tramonto, osterie storiche e locali bohémien.' },
+  'Repubblica':    { color: '#8E44AD', wiki: 'Piazza_della_Repubblica,_Milan',  photo: '', desc: 'Centro business e hotel di lusso. Ristoranti di qualità, cocktail bar e una gastronomia internazionale.' },
+  'Corvetto':      { color: '#27AE60', wiki: 'Corvetto',                        photo: '', desc: 'Quartiere multiculturale in trasformazione. Cucine del mondo, locali di quartiere e una scena gastronomica autentica.' },
+  'Bovisa':        { color: '#2980B9', wiki: 'Politecnico_di_Milano',           photo: '', desc: 'Il quartiere del Politecnico. Pizzerie, bar universitari e una vibrante scena giovane intorno al campus.' },
+  'Washington':    { color: '#D35400', wiki: 'Fieramilanocity',                 photo: '', desc: 'Quartiere residenziale vicino alla Fiera. Ristoranti di quartiere, enoteche e una gastronomia autentica milanese.' },
+  'Niguarda':      { color: '#1ABC9C', wiki: 'Niguarda',                        photo: '', desc: 'Quartiere nord di Milano in crescita. Bar di quartiere, pizzerie e una scena locale genuina lontana dai turisti.' },
+  'Greco':         { color: '#7F8C8D', wiki: 'Greco,_Milan',                   photo: '', desc: 'Quartiere operaio con carattere. Trattorie popolari, bar storici e un\'autenticità milanese difficile da trovare altrove.' },
 };
 
 /* Fetch zone hero images from Wikipedia at runtime (CORS-enabled).
@@ -71,6 +82,9 @@ const CAT_META = {
   'Street Food':  { color: '#F39C12', icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 11l19-9-9 19-2-8-8-2z"/></svg>' },
   'Rooftop':      { color: '#3498DB', icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>' },
   'Vineria':      { color: '#8E44AD', icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 22h8"/><path d="M7 10h10"/><path d="M12 15v7"/><path d="M12 3 8 10h8z"/></svg>' },
+  'Gelateria':    { color: '#00BCD4', icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22c-4 0-7-3.5-7-8a7 7 0 0 1 14 0c0 4.5-3 8-7 8z"/><path d="M12 22v-8"/><path d="M9 13l3-3 3 3"/></svg>' },
+  'Pasticceria':  { color: '#FF9800', icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 11l19-9"/><path d="M3 11l9 9 9-9"/><path d="M12 20v-9"/></svg>' },
+  'Hamburgheria': { color: '#8D4E1A', icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 11h18"/><path d="M3 7a9 9 0 0 1 18 0"/><path d="M5 11v4a7 7 0 0 0 14 0v-4"/></svg>' },
 };
 
 const PRICE = ['', '€', '€€', '€€€', '€€€€'];

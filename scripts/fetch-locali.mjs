@@ -19,18 +19,29 @@ const OUT = join(__dir, '../MilanoLocali/Resources/locali.json');
 
 // ── Zone centers + search radius (meters) ───────────────────────────────────
 const ZONES = {
-  'Navigli':       { lat: 45.4506, lon: 9.1700, radius: 650 },
-  'Brera':         { lat: 45.4728, lon: 9.1869, radius: 500 },
-  'Porta Venezia': { lat: 45.4740, lon: 9.2025, radius: 600 },
-  'Isola':         { lat: 45.4883, lon: 9.1889, radius: 500 },
-  'Tortona':       { lat: 45.4597, lon: 9.1631, radius: 500 },
-  'NoLo':          { lat: 45.4847, lon: 9.2089, radius: 600 },
-  'Centrale':      { lat: 45.4862, lon: 9.2046, radius: 600 },
-  'Duomo':         { lat: 45.4641, lon: 9.1919, radius: 550 },
-  'Moscova':       { lat: 45.4796, lon: 9.1894, radius: 500 },
-  'Lambrate':      { lat: 45.4793, lon: 9.2380, radius: 600 },
-  'Città Studi':   { lat: 45.4753, lon: 9.2259, radius: 650 },
-  'Loreto':        { lat: 45.4861, lon: 9.2143, radius: 500 },
+  'Navigli':       { lat: 45.4506, lon: 9.1700, radius: 700 },
+  'Brera':         { lat: 45.4728, lon: 9.1869, radius: 650 },
+  'Porta Venezia': { lat: 45.4740, lon: 9.2025, radius: 650 },
+  'Isola':         { lat: 45.4883, lon: 9.1889, radius: 650 },
+  'Tortona':       { lat: 45.4597, lon: 9.1631, radius: 650 },
+  'NoLo':          { lat: 45.4847, lon: 9.2089, radius: 650 },
+  'Centrale':      { lat: 45.4862, lon: 9.2046, radius: 650 },
+  'Duomo':         { lat: 45.4641, lon: 9.1919, radius: 600 },
+  'Moscova':       { lat: 45.4796, lon: 9.1894, radius: 650 },
+  'Lambrate':      { lat: 45.4793, lon: 9.2380, radius: 700 },
+  'Città Studi':   { lat: 45.4753, lon: 9.2259, radius: 700 },
+  'Loreto':        { lat: 45.4861, lon: 9.2143, radius: 650 },
+  'Chinatown':     { lat: 45.4790, lon: 9.1745, radius: 550 },
+  // Secondary zones
+  'Sempione':      { lat: 45.4745, lon: 9.1705, radius: 600 },
+  'Porta Romana':  { lat: 45.4540, lon: 9.2000, radius: 600 },
+  'Ticinese':      { lat: 45.4595, lon: 9.1840, radius: 500 },
+  'Repubblica':    { lat: 45.4760, lon: 9.2020, radius: 500 },
+  'Corvetto':      { lat: 45.4440, lon: 9.2100, radius: 650 },
+  'Bovisa':        { lat: 45.5030, lon: 9.1590, radius: 600 },
+  'Washington':    { lat: 45.4650, lon: 9.1630, radius: 550 },
+  'Niguarda':      { lat: 45.5080, lon: 9.1980, radius: 650 },
+  'Greco':         { lat: 45.5000, lon: 9.2100, radius: 600 },
 };
 
 // ── OSM amenity/cuisine → nostra categoria ──────────────────────────────────
@@ -39,18 +50,23 @@ function categorize(tags) {
   const cuisine  = (tags.cuisine || '').toLowerCase();
   const name     = (tags.name    || '').toLowerCase();
 
-  if (cuisine.includes('sushi') || cuisine.includes('japanese')) return 'Sushi';
-  if (cuisine.includes('pizza'))                                  return 'Pizza';
-  if (amenity === 'cafe' || cuisine.includes('coffee'))           return 'Caffè';
-  if (amenity === 'fast_food')                                    return 'Street Food';
+  if (amenity === 'ice_cream')                                     return 'Gelateria';
+  if (amenity === 'bakery' || cuisine.includes('pastry') ||
+      name.includes('pasticcer') || name.includes('dolceria'))     return 'Pasticceria';
+  if (cuisine.includes('burger') || cuisine.includes('hamburger') ||
+      name.includes('burger') || name.includes('hamburgher'))      return 'Hamburgheria';
+  if (cuisine.includes('sushi') || cuisine.includes('japanese'))   return 'Sushi';
+  if (cuisine.includes('pizza'))                                   return 'Pizza';
+  if (amenity === 'cafe' || cuisine.includes('coffee'))            return 'Caffè';
+  if (amenity === 'fast_food')                                     return 'Street Food';
   if (amenity === 'bar' || amenity === 'pub') {
-    if (name.includes('aperitiv') || name.includes('spritz'))     return 'Aperitivo';
+    if (name.includes('aperitiv') || name.includes('spritz'))      return 'Aperitivo';
     if (name.includes('wine') || name.includes('vino') || name.includes('vineri')) return 'Vineria';
     return 'Cocktail Bar';
   }
-  if (cuisine.includes('wine') || tags['craft'] === 'winery')     return 'Vineria';
+  if (cuisine.includes('wine') || tags['craft'] === 'winery')      return 'Vineria';
   if (cuisine.includes('italian') || cuisine.includes('regional') ||
-      name.includes('osteria') || name.includes('trattoria'))     return 'Osteria';
+      name.includes('osteria') || name.includes('trattoria'))      return 'Osteria';
   return 'Ristorante';
 }
 
