@@ -5473,8 +5473,8 @@
     "isNew": false
   },
   {
-    "id": "navigli-settantavoltesette",
-    "name": "Settantavoltesette",
+    "id": "navigli-sgrano",
+    "name": "Sgrano",
     "zona": "Navigli",
     "categoria": "Ristorante",
     "address": "Alzaia Naviglio Grande 2",
@@ -5485,8 +5485,8 @@
     "tags": [
       "navigli"
     ],
-    "instagramHandle": "70volte_7",
-    "websiteURL": "https://linktr.ee/70volte7",
+    "instagramHandle": null,
+    "websiteURL": null,
     "imageURL": null,
     "isNew": false
   },
@@ -9767,7 +9767,7 @@
       "brera"
     ],
     "instagramHandle": null,
-    "websiteURL": "http://lughino.it/",
+    "websiteURL": "https://lughino.it/",
     "imageURL": null,
     "isNew": false
   },
@@ -24105,24 +24105,6 @@
     "isNew": false
   },
   {
-    "id": "nolo-verace-pizza-burger",
-    "name": "Verace pizza burger",
-    "zona": "NoLo",
-    "categoria": "Hamburgheria",
-    "address": "",
-    "description": "Hamburgheria a NoLo, carne selezionata e ingredienti freschi.",
-    "latitude": 45.4854708,
-    "longitude": 9.2162326,
-    "priceRange": 2,
-    "tags": [
-      "nolo"
-    ],
-    "instagramHandle": null,
-    "websiteURL": null,
-    "imageURL": null,
-    "isNew": false
-  },
-  {
     "id": "nolo-afterline",
     "name": "Afterline",
     "zona": "NoLo",
@@ -26965,6 +26947,42 @@
       "takeaway",
       "accessibile",
       "vegetariano"
+    ],
+    "instagramHandle": null,
+    "websiteURL": null,
+    "imageURL": null,
+    "isNew": false
+  },
+  {
+    "id": "nolo-lucky-bar",
+    "name": "Lucky Bar",
+    "zona": "NoLo",
+    "categoria": "Caffè",
+    "address": "",
+    "description": "Caffetteria storica a NoLo, colazioni e pause caffè.",
+    "latitude": 45.4842777,
+    "longitude": 9.2159575,
+    "priceRange": 2,
+    "tags": [
+      "nolo"
+    ],
+    "instagramHandle": null,
+    "websiteURL": null,
+    "imageURL": null,
+    "isNew": false
+  },
+  {
+    "id": "nolo-bar-stop",
+    "name": "Bar Stop",
+    "zona": "NoLo",
+    "categoria": "Caffè",
+    "address": "",
+    "description": "Caffetteria storica a NoLo, colazioni e pause caffè.",
+    "latitude": 45.485009,
+    "longitude": 9.2107979,
+    "priceRange": 2,
+    "tags": [
+      "nolo"
     ],
     "instagramHandle": null,
     "websiteURL": null,
@@ -34248,7 +34266,7 @@
       "dehor"
     ],
     "instagramHandle": null,
-    "websiteURL": "http://www.danielcanzian.it/",
+    "websiteURL": "https://www.danielcanzian.it/",
     "imageURL": null,
     "isNew": false
   },
@@ -37153,6 +37171,25 @@
     "priceRange": 2,
     "tags": [
       "moscova"
+    ],
+    "instagramHandle": null,
+    "websiteURL": null,
+    "imageURL": null,
+    "isNew": false
+  },
+  {
+    "id": "moscova-il-retrobottega",
+    "name": "Il retrobottega",
+    "zona": "Moscova",
+    "categoria": "Osteria",
+    "address": "Viale Monte Grappa 6a",
+    "description": "Osteria tradizionale con cucina del territorio a Moscova.",
+    "latitude": 45.4809342,
+    "longitude": 9.1916774,
+    "priceRange": 2,
+    "tags": [
+      "moscova",
+      "dehor"
     ],
     "instagramHandle": null,
     "websiteURL": null,
@@ -40987,12 +41024,12 @@
     "isNew": false
   },
   {
-    "id": "loreto-regina-piadina",
-    "name": "Regina Piadina",
+    "id": "loreto-buonvento",
+    "name": "buonvento",
     "zona": "Loreto",
-    "categoria": "Street Food",
+    "categoria": "Ristorante",
     "address": "Via Padova 38",
-    "description": "Street food a Loreto, piatti veloci e ingredienti freschi.",
+    "description": "Ristorante nel cuore di Loreto.",
     "latitude": 45.489153,
     "longitude": 9.2208449,
     "priceRange": 2,
@@ -41431,18 +41468,17 @@
     "isNew": false
   },
   {
-    "id": "loreto-ni-jia",
-    "name": "Ni Jia",
+    "id": "loreto-criollo-ii",
+    "name": "criollo II",
     "zona": "Loreto",
     "categoria": "Ristorante",
     "address": "Via Padova",
-    "description": "Ristorante di cucina chinese nel cuore di Loreto.",
+    "description": "Ristorante nel cuore di Loreto.",
     "latitude": 45.4893512,
     "longitude": 9.2207835,
     "priceRange": 2,
     "tags": [
-      "loreto",
-      "chinese"
+      "loreto"
     ],
     "instagramHandle": null,
     "websiteURL": null,
@@ -41450,8 +41486,8 @@
     "isNew": false
   },
   {
-    "id": "loreto-na-tazzulella-e-cafe",
-    "name": "Na tazzulella e cafè",
+    "id": "loreto-suenos-de-cocktail",
+    "name": "Suenos de Cocktail",
     "zona": "Loreto",
     "categoria": "Caffè",
     "address": "",
@@ -41468,8 +41504,8 @@
     "isNew": false
   },
   {
-    "id": "loreto-virgen-de-la-puerta",
-    "name": "Virgen de la Puerta",
+    "id": "loreto-mananero-huaralino",
+    "name": "Mananero huaralino",
     "zona": "Loreto",
     "categoria": "Ristorante",
     "address": "",
@@ -42206,6 +42242,114 @@
     "description": "Caffetteria storica a Loreto, colazioni e pause caffè.",
     "latitude": 45.4858846,
     "longitude": 9.218653,
+    "priceRange": 2,
+    "tags": [
+      "loreto"
+    ],
+    "instagramHandle": null,
+    "websiteURL": null,
+    "imageURL": null,
+    "isNew": false
+  },
+  {
+    "id": "loreto-oro-pizza",
+    "name": "Oro Pizza",
+    "zona": "Loreto",
+    "categoria": "Street Food",
+    "address": "",
+    "description": "Street food a Loreto, piatti veloci e ingredienti freschi.",
+    "latitude": 45.4889379,
+    "longitude": 9.2205554,
+    "priceRange": 2,
+    "tags": [
+      "loreto"
+    ],
+    "instagramHandle": null,
+    "websiteURL": null,
+    "imageURL": null,
+    "isNew": false
+  },
+  {
+    "id": "loreto-el-aji-seco-del-puma",
+    "name": "El Aji Seco del Puma",
+    "zona": "Loreto",
+    "categoria": "Ristorante",
+    "address": "",
+    "description": "Ristorante nel cuore di Loreto.",
+    "latitude": 45.4887289,
+    "longitude": 9.2202962,
+    "priceRange": 2,
+    "tags": [
+      "loreto"
+    ],
+    "instagramHandle": null,
+    "websiteURL": null,
+    "imageURL": null,
+    "isNew": false
+  },
+  {
+    "id": "loreto-new-sigirilanka",
+    "name": "New Sigirilanka",
+    "zona": "Loreto",
+    "categoria": "Ristorante",
+    "address": "",
+    "description": "Ristorante nel cuore di Loreto.",
+    "latitude": 45.4876197,
+    "longitude": 9.2188493,
+    "priceRange": 2,
+    "tags": [
+      "loreto"
+    ],
+    "instagramHandle": null,
+    "websiteURL": null,
+    "imageURL": null,
+    "isNew": false
+  },
+  {
+    "id": "loreto-la-tavola-criolla",
+    "name": "La Tavola Criolla",
+    "zona": "Loreto",
+    "categoria": "Ristorante",
+    "address": "",
+    "description": "Ristorante nel cuore di Loreto.",
+    "latitude": 45.487361,
+    "longitude": 9.2185532,
+    "priceRange": 2,
+    "tags": [
+      "loreto"
+    ],
+    "instagramHandle": null,
+    "websiteURL": null,
+    "imageURL": null,
+    "isNew": false
+  },
+  {
+    "id": "loreto-asian-fusion",
+    "name": "Asian Fusion",
+    "zona": "Loreto",
+    "categoria": "Ristorante",
+    "address": "",
+    "description": "Ristorante nel cuore di Loreto.",
+    "latitude": 45.4880269,
+    "longitude": 9.2194061,
+    "priceRange": 2,
+    "tags": [
+      "loreto"
+    ],
+    "instagramHandle": null,
+    "websiteURL": null,
+    "imageURL": null,
+    "isNew": false
+  },
+  {
+    "id": "loreto-padova-10-cafe",
+    "name": "Padova 10 Cafè",
+    "zona": "Loreto",
+    "categoria": "Caffè",
+    "address": "",
+    "description": "Caffetteria storica a Loreto, colazioni e pause caffè.",
+    "latitude": 45.487089,
+    "longitude": 9.2181789,
     "priceRange": 2,
     "tags": [
       "loreto"
@@ -53698,18 +53842,18 @@
     "isNew": false
   },
   {
-    "id": "bovisa-turkish-kebap-pizza",
-    "name": "Turkish Kebap-Pizza",
+    "id": "bovisa-polibov-istanbul-kebap",
+    "name": "PoliBov Istanbul Kebap",
     "zona": "Bovisa",
-    "categoria": "Street Food",
-    "address": "Via Raffaele Lambruschini",
-    "description": "Street food a Bovisa, piatti veloci e ingredienti freschi.",
+    "categoria": "Pizza",
+    "address": "Via Raffaele Lambruschini 29",
+    "description": "Pizzeria a Bovisa, impasto artigianale e ingredienti selezionati.",
     "latitude": 45.5023842,
     "longitude": 9.1538688,
     "priceRange": 2,
     "tags": [
       "bovisa",
-      "kebab"
+      "kebab;pizza"
     ],
     "instagramHandle": null,
     "websiteURL": null,
