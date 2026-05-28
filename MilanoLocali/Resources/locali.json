@@ -7,16 +7,29 @@
     "address": "Vicolo dei Lavandai, 14",
     "description": "Osteria storica milanese affacciata sul Naviglio Grande. Cucina tradizionale con risotto alla milanese e cotoletta. Atmosfera autentica in uno dei vicoli più caratteristici dei Navigli.",
     "latitude": 45.4551,
-    "longitude": 9.1730,
+    "longitude": 9.173,
     "priceRange": 3,
-    "tags": ["milanese", "tradizionale", "risotto", "storico"],
+    "tags": [
+      "milanese",
+      "tradizionale",
+      "risotto",
+      "storico"
+    ],
     "instagramHandle": "elbrellin",
     "websiteURL": "https://www.elbrellin.it",
     "imageURL": "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=800&h=500&fit=crop&auto=format",
     "rating": 4.4,
     "reviewCount": 312,
     "isNew": false,
-    "hours": ["12:00-23:00", "12:00-23:00", "12:00-23:00", "12:00-23:00", "12:00-23:00", "12:00-23:00", null]
+    "hours": [
+      "12:00-23:00",
+      "12:00-23:00",
+      "12:00-23:00",
+      "12:00-23:00",
+      "12:00-23:00",
+      "12:00-23:00",
+      null
+    ]
   },
   {
     "id": "mag-cafe",
@@ -25,17 +38,29 @@
     "categoria": "Cocktail Bar",
     "address": "Ripa di Porta Ticinese, 43",
     "description": "Uno dei cocktail bar più amati dei Navigli. Famoso per i gin tonic artigianali e l'atmosfera rilassata. Ottimo per l'aperitivo e il dopocena.",
-    "latitude": 45.4540,
+    "latitude": 45.454,
     "longitude": 9.1721,
     "priceRange": 2,
-    "tags": ["cocktail", "gin", "aperitivo"],
+    "tags": [
+      "cocktail",
+      "gin",
+      "aperitivo"
+    ],
     "instagramHandle": "magcafemilano",
     "websiteURL": null,
     "imageURL": "https://images.unsplash.com/photo-1470337458703-46ad1756a187?w=800&h=500&fit=crop&auto=format",
     "rating": 4.6,
     "reviewCount": 541,
     "isNew": false,
-    "hours": [null, "18:00-01:00", "18:00-01:00", "18:00-01:00", "18:00-02:00", "18:00-02:00", "17:00-00:00"]
+    "hours": [
+      null,
+      "18:00-01:00",
+      "18:00-01:00",
+      "18:00-01:00",
+      "18:00-02:00",
+      "18:00-02:00",
+      "17:00-00:00"
+    ]
   },
   {
     "id": "upcycle",
@@ -45,16 +70,29 @@
     "address": "Via Corsico, 8",
     "description": "Cocktail bar dalla vocazione sostenibile: ingredienti stagionali e zero sprechi. Cocktail creativi con verdure fermentate, agrumi e distillati artigianali. Uno dei preferiti degli insider.",
     "latitude": 45.4555,
-    "longitude": 9.1740,
+    "longitude": 9.174,
     "priceRange": 2,
-    "tags": ["sustainable", "cocktail", "creative", "insider"],
+    "tags": [
+      "sustainable",
+      "cocktail",
+      "creative",
+      "insider"
+    ],
     "instagramHandle": "upcyclemilano",
     "websiteURL": null,
     "imageURL": "https://images.unsplash.com/photo-1551538827-9c037cb4f32a?w=800&h=500&fit=crop&auto=format",
     "rating": 4.5,
     "reviewCount": 198,
     "isNew": false,
-    "hours": [null, "18:00-01:00", "18:00-01:00", "18:00-01:00", "18:00-02:00", "18:00-02:00", "17:00-00:00"]
+    "hours": [
+      null,
+      "18:00-01:00",
+      "18:00-01:00",
+      "18:00-01:00",
+      "18:00-02:00",
+      "18:00-02:00",
+      "17:00-00:00"
+    ]
   },
   {
     "id": "drogheria-milanese",
@@ -66,14 +104,26 @@
     "latitude": 45.4547,
     "longitude": 9.1712,
     "priceRange": 2,
-    "tags": ["vino naturale", "navigli", "informale"],
+    "tags": [
+      "vino naturale",
+      "navigli",
+      "informale"
+    ],
     "instagramHandle": "drogheramilanese",
     "websiteURL": null,
     "imageURL": "https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?w=800&h=500&fit=crop&auto=format",
     "rating": 4.3,
     "reviewCount": 189,
     "isNew": false,
-    "hours": ["18:00-01:00", "18:00-01:00", "18:00-01:00", "18:00-01:00", "18:00-01:00", "18:00-01:00", null]
+    "hours": [
+      "18:00-01:00",
+      "18:00-01:00",
+      "18:00-01:00",
+      "18:00-01:00",
+      "18:00-01:00",
+      "18:00-01:00",
+      null
+    ]
   },
   {
     "id": "rita-navigli",
@@ -85,14 +135,27 @@
     "latitude": 45.4557,
     "longitude": 9.1732,
     "priceRange": 2,
-    "tags": ["vermouth", "cocktail", "classici", "culto"],
+    "tags": [
+      "vermouth",
+      "cocktail",
+      "classici",
+      "culto"
+    ],
     "instagramHandle": "ritamilano",
     "websiteURL": null,
     "imageURL": "https://images.unsplash.com/photo-1574096079513-d8259312b785?w=800&h=500&fit=crop&auto=format",
     "rating": 4.8,
     "reviewCount": 834,
     "isNew": false,
-    "hours": [null, "18:30-01:30", "18:30-01:30", "18:30-01:30", "18:30-02:00", "18:30-02:00", "17:30-01:00"]
+    "hours": [
+      null,
+      "18:30-01:30",
+      "18:30-01:30",
+      "18:30-01:30",
+      "18:30-02:00",
+      "18:30-02:00",
+      "17:30-01:00"
+    ]
   },
   {
     "id": "carlo-e-camilla",
@@ -104,14 +167,27 @@
     "latitude": 45.4547,
     "longitude": 9.1767,
     "priceRange": 3,
-    "tags": ["cracco", "design", "italiano", "tavolate"],
+    "tags": [
+      "cracco",
+      "design",
+      "italiano",
+      "tavolate"
+    ],
     "instagramHandle": "carloecamilla",
     "websiteURL": "https://www.carloecamillainsegheria.it",
     "imageURL": "https://images.unsplash.com/photo-1533777857889-4be7c70b33f7?w=800&h=500&fit=crop&auto=format",
     "rating": 4.5,
     "reviewCount": 623,
     "isNew": false,
-    "hours": [null, "12:30-14:30", "12:30-14:30", "12:30-14:30", "12:30-23:30", "12:30-23:30", "12:30-22:30"]
+    "hours": [
+      null,
+      "12:30-14:30",
+      "12:30-14:30",
+      "12:30-14:30",
+      "12:30-23:30",
+      "12:30-23:30",
+      "12:30-22:30"
+    ]
   },
   {
     "id": "al-pont-de-ferr",
@@ -123,14 +199,27 @@
     "latitude": 45.4553,
     "longitude": 9.1718,
     "priceRange": 3,
-    "tags": ["michelin", "milanese", "canale", "raffinato"],
+    "tags": [
+      "michelin",
+      "milanese",
+      "canale",
+      "raffinato"
+    ],
     "instagramHandle": "alpontdeferr",
     "websiteURL": "https://www.alpontdeferr.it",
     "imageURL": "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800&h=500&fit=crop&auto=format",
     "rating": 4.7,
     "reviewCount": 478,
     "isNew": false,
-    "hours": [null, "12:30-14:00", null, "12:30-14:00", "12:30-23:00", "12:30-23:00", "12:30-22:00"]
+    "hours": [
+      null,
+      "12:30-14:00",
+      null,
+      "12:30-14:00",
+      "12:30-23:00",
+      "12:30-23:00",
+      "12:30-22:00"
+    ]
   },
   {
     "id": "contraste",
@@ -142,14 +231,27 @@
     "latitude": 45.4544,
     "longitude": 9.1764,
     "priceRange": 4,
-    "tags": ["michelin", "creativo", "fine dining", "sorpresa"],
+    "tags": [
+      "michelin",
+      "creativo",
+      "fine dining",
+      "sorpresa"
+    ],
     "instagramHandle": "contrastemilano",
     "websiteURL": "https://www.contrastemilano.it",
     "imageURL": "https://images.unsplash.com/photo-1550966871-3ed3cdb5ed0c?w=800&h=500&fit=crop&auto=format",
     "rating": 4.9,
     "reviewCount": 312,
     "isNew": false,
-    "hours": [null, null, "19:30-22:30", "19:30-22:30", "19:30-22:30", "12:30-14:00", "12:30-22:30"]
+    "hours": [
+      null,
+      null,
+      "19:30-22:30",
+      "19:30-22:30",
+      "19:30-22:30",
+      "12:30-14:00",
+      "12:30-22:30"
+    ]
   },
   {
     "id": "28-posti",
@@ -161,14 +263,27 @@
     "latitude": 45.4556,
     "longitude": 9.1742,
     "priceRange": 3,
-    "tags": ["creativo", "piccolo", "prenotazione", "intimo"],
+    "tags": [
+      "creativo",
+      "piccolo",
+      "prenotazione",
+      "intimo"
+    ],
     "instagramHandle": "28postimilano",
     "websiteURL": null,
     "imageURL": "https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=800&h=500&fit=crop&auto=format",
     "rating": 4.7,
     "reviewCount": 389,
     "isNew": false,
-    "hours": [null, "12:30-14:30", "12:30-14:30", "12:30-14:30", "12:30-23:00", "12:30-23:00", null]
+    "hours": [
+      null,
+      "12:30-14:30",
+      "12:30-14:30",
+      "12:30-14:30",
+      "12:30-23:00",
+      "12:30-23:00",
+      null
+    ]
   },
   {
     "id": "pisacco",
@@ -177,17 +292,29 @@
     "categoria": "Ristorante",
     "address": "Via Solferino, 48",
     "description": "Wine bar e ristorante nel cuore di Brera. La carta vini è una delle più complete di Milano con oltre 300 etichette. Cucina mediterranea raffinata con ingredienti di stagione.",
-    "latitude": 45.4740,
-    "longitude": 9.1870,
+    "latitude": 45.474,
+    "longitude": 9.187,
     "priceRange": 3,
-    "tags": ["wine", "mediterraneo", "raffinato"],
+    "tags": [
+      "wine",
+      "mediterraneo",
+      "raffinato"
+    ],
     "instagramHandle": "pisaccomilano",
     "websiteURL": "https://www.pisacco.it",
     "imageURL": "https://images.unsplash.com/photo-1543007631-283153e3d1f4?w=800&h=500&fit=crop&auto=format",
     "rating": 4.3,
     "reviewCount": 287,
     "isNew": false,
-    "hours": [null, "12:00-23:00", "12:00-23:00", "12:00-23:00", "12:00-23:00", "12:00-23:00", "12:00-22:00"]
+    "hours": [
+      null,
+      "12:00-23:00",
+      "12:00-23:00",
+      "12:00-23:00",
+      "12:00-23:00",
+      "12:00-23:00",
+      "12:00-22:00"
+    ]
   },
   {
     "id": "bar-brera",
@@ -197,16 +324,29 @@
     "address": "Via Brera, 23",
     "description": "Caffè storico frequentato da artisti e intellettuali. Colazioni con cornetto e cappuccino, aperitivi con Negroni. Il luogo perfetto per assorbire l'atmosfera bohémienne di Brera.",
     "latitude": 45.4733,
-    "longitude": 9.1880,
+    "longitude": 9.188,
     "priceRange": 2,
-    "tags": ["storico", "aperitivo", "arte", "caffè"],
+    "tags": [
+      "storico",
+      "aperitivo",
+      "arte",
+      "caffè"
+    ],
     "instagramHandle": null,
     "websiteURL": null,
     "imageURL": "https://images.unsplash.com/photo-1447933601403-0c6688de566e?w=800&h=500&fit=crop&auto=format",
     "rating": 4.1,
     "reviewCount": 156,
     "isNew": false,
-    "hours": ["07:30-20:00", "07:30-20:00", "07:30-20:00", "07:30-20:00", "07:30-20:00", "08:00-20:00", "09:00-19:00"]
+    "hours": [
+      "07:30-20:00",
+      "07:30-20:00",
+      "07:30-20:00",
+      "07:30-20:00",
+      "07:30-20:00",
+      "08:00-20:00",
+      "09:00-19:00"
+    ]
   },
   {
     "id": "dry-milano",
@@ -218,14 +358,27 @@
     "latitude": 45.4737,
     "longitude": 9.1862,
     "priceRange": 2,
-    "tags": ["pizza", "cocktail", "gourmet", "trendy"],
+    "tags": [
+      "pizza",
+      "cocktail",
+      "gourmet",
+      "trendy"
+    ],
     "instagramHandle": "drymilano",
     "websiteURL": "https://www.drymilano.it",
     "imageURL": "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=800&h=500&fit=crop&auto=format",
     "rating": 4.7,
     "reviewCount": 892,
     "isNew": false,
-    "hours": [null, "12:00-23:30", "12:00-23:30", "12:00-23:30", "12:00-23:30", "12:00-23:30", "12:00-22:30"]
+    "hours": [
+      null,
+      "12:00-23:30",
+      "12:00-23:30",
+      "12:00-23:30",
+      "12:00-23:30",
+      "12:00-23:30",
+      "12:00-22:30"
+    ]
   },
   {
     "id": "sushi-b",
@@ -234,17 +387,30 @@
     "categoria": "Sushi",
     "address": "Via Luca Beltrami, 1",
     "description": "Omakase giapponese nel cuore di Brera. Solo 8 posti al bancone davanti allo chef. Pesce importato direttamente dal Giappone. Una delle esperienze sushi più autentiche d'Italia.",
-    "latitude": 45.4720,
+    "latitude": 45.472,
     "longitude": 9.1871,
     "priceRange": 4,
-    "tags": ["omakase", "giapponese", "esclusivo", "sushi"],
+    "tags": [
+      "omakase",
+      "giapponese",
+      "esclusivo",
+      "sushi"
+    ],
     "instagramHandle": "sushibmilano",
     "websiteURL": "https://www.sushib.it",
     "imageURL": "https://images.unsplash.com/photo-1553621042-f6e147245754?w=800&h=500&fit=crop&auto=format",
     "rating": 4.9,
     "reviewCount": 198,
     "isNew": false,
-    "hours": [null, "12:00-14:30", "12:00-14:30", "12:00-14:30", "12:00-23:00", "12:00-23:00", null]
+    "hours": [
+      null,
+      "12:00-14:30",
+      "12:00-14:30",
+      "12:00-14:30",
+      "12:00-23:00",
+      "12:00-23:00",
+      null
+    ]
   },
   {
     "id": "nombra-de-vin",
@@ -256,14 +422,27 @@
     "latitude": 45.4741,
     "longitude": 9.1882,
     "priceRange": 2,
-    "tags": ["storico", "enoteca", "atmosfera", "vini"],
+    "tags": [
+      "storico",
+      "enoteca",
+      "atmosfera",
+      "vini"
+    ],
     "instagramHandle": "nombradevin",
     "websiteURL": null,
     "imageURL": "https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?w=800&h=500&fit=crop&auto=format",
     "rating": 4.5,
     "reviewCount": 534,
     "isNew": false,
-    "hours": ["12:00-20:00", "12:00-22:00", "12:00-22:00", "12:00-22:00", "12:00-22:00", "12:00-23:00", "12:00-20:00"]
+    "hours": [
+      "12:00-20:00",
+      "12:00-22:00",
+      "12:00-22:00",
+      "12:00-22:00",
+      "12:00-22:00",
+      "12:00-23:00",
+      "12:00-20:00"
+    ]
   },
   {
     "id": "latteria-san-marco",
@@ -275,14 +454,27 @@
     "latitude": 45.4743,
     "longitude": 9.1886,
     "priceRange": 2,
-    "tags": ["tradizionale", "culto", "brera", "casalingo"],
+    "tags": [
+      "tradizionale",
+      "culto",
+      "brera",
+      "casalingo"
+    ],
     "instagramHandle": null,
     "websiteURL": null,
     "imageURL": "https://images.unsplash.com/photo-1424847651672-bf20a4b0982b?w=800&h=500&fit=crop&auto=format",
     "rating": 4.6,
     "reviewCount": 412,
     "isNew": false,
-    "hours": ["12:00-14:30", "12:00-22:00", "12:00-22:00", "12:00-22:00", "12:00-22:00", "12:00-22:00", null]
+    "hours": [
+      "12:00-14:30",
+      "12:00-22:00",
+      "12:00-22:00",
+      "12:00-22:00",
+      "12:00-22:00",
+      "12:00-22:00",
+      null
+    ]
   },
   {
     "id": "fioraio-bianchi",
@@ -294,14 +486,27 @@
     "latitude": 45.4756,
     "longitude": 9.1895,
     "priceRange": 2,
-    "tags": ["romantico", "brunch", "fiori", "instagrammabile"],
+    "tags": [
+      "romantico",
+      "brunch",
+      "fiori",
+      "instagrammabile"
+    ],
     "instagramHandle": "fioraiobianchicaffe",
     "websiteURL": null,
     "imageURL": "https://images.unsplash.com/photo-1559925393-8be0ec4767c8?w=800&h=500&fit=crop&auto=format",
     "rating": 4.4,
     "reviewCount": 378,
     "isNew": false,
-    "hours": ["09:00-18:00", "09:00-22:00", "09:00-22:00", "09:00-22:00", "09:00-22:00", "09:00-22:00", "10:00-18:00"]
+    "hours": [
+      "09:00-18:00",
+      "09:00-22:00",
+      "09:00-22:00",
+      "09:00-22:00",
+      "09:00-22:00",
+      "09:00-22:00",
+      "10:00-18:00"
+    ]
   },
   {
     "id": "erba-brusca",
@@ -313,14 +518,27 @@
     "latitude": 45.4458,
     "longitude": 9.1792,
     "priceRange": 3,
-    "tags": ["vegetale", "orto", "giardino", "romantico"],
+    "tags": [
+      "vegetale",
+      "orto",
+      "giardino",
+      "romantico"
+    ],
     "instagramHandle": "erbabrusca",
     "websiteURL": "https://www.erbabrusca.it",
     "imageURL": "https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=800&h=500&fit=crop&auto=format",
     "rating": 4.8,
     "reviewCount": 478,
     "isNew": false,
-    "hours": [null, "12:00-23:00", "12:00-23:00", "12:00-23:00", "12:00-23:00", "12:00-23:00", "12:00-22:00"]
+    "hours": [
+      null,
+      "12:00-23:00",
+      "12:00-23:00",
+      "12:00-23:00",
+      "12:00-23:00",
+      "12:00-23:00",
+      "12:00-22:00"
+    ]
   },
   {
     "id": "champagne-socialist",
@@ -332,14 +550,26 @@
     "latitude": 45.4757,
     "longitude": 9.2068,
     "priceRange": 2,
-    "tags": ["vino naturale", "informale", "conviviale"],
+    "tags": [
+      "vino naturale",
+      "informale",
+      "conviviale"
+    ],
     "instagramHandle": "champagnesocialistmilano",
     "websiteURL": null,
     "imageURL": "https://images.unsplash.com/photo-1566417713940-fe7c737a9ef2?w=800&h=500&fit=crop&auto=format",
     "rating": 4.4,
     "reviewCount": 167,
     "isNew": true,
-    "hours": [null, "17:00-00:00", "17:00-00:00", "17:00-00:00", "17:00-01:00", "17:00-01:00", "16:00-00:00"]
+    "hours": [
+      null,
+      "17:00-00:00",
+      "17:00-00:00",
+      "17:00-00:00",
+      "17:00-01:00",
+      "17:00-01:00",
+      "16:00-00:00"
+    ]
   },
   {
     "id": "radetzky",
@@ -351,14 +581,27 @@
     "latitude": 45.4773,
     "longitude": 9.1916,
     "priceRange": 2,
-    "tags": ["storico", "dehors", "aperitivo", "colazione"],
+    "tags": [
+      "storico",
+      "dehors",
+      "aperitivo",
+      "colazione"
+    ],
     "instagramHandle": null,
     "websiteURL": null,
     "imageURL": "https://images.unsplash.com/photo-1559925393-8be0ec4767c8?w=800&h=500&fit=crop&auto=format",
     "rating": 4.2,
     "reviewCount": 223,
     "isNew": false,
-    "hours": ["07:30-20:00", "07:30-20:00", "07:30-20:00", "07:30-20:00", "07:30-20:00", "08:00-20:00", "09:00-19:00"]
+    "hours": [
+      "07:30-20:00",
+      "07:30-20:00",
+      "07:30-20:00",
+      "07:30-20:00",
+      "07:30-20:00",
+      "08:00-20:00",
+      "09:00-19:00"
+    ]
   },
   {
     "id": "bar-basso",
@@ -367,17 +610,30 @@
     "categoria": "Cocktail Bar",
     "address": "Via Plinio, 39",
     "description": "Storico cocktail bar milanese, inventore del Negroni Sbagliato. Dal 1947 un'istituzione assoluta: bicchieri enormi, atmosfera autentica e un posto nella storia dei cocktail.",
-    "latitude": 45.4730,
+    "latitude": 45.473,
     "longitude": 9.2089,
     "priceRange": 2,
-    "tags": ["negroni", "storico", "cocktail", "istituzione"],
+    "tags": [
+      "negroni",
+      "storico",
+      "cocktail",
+      "istituzione"
+    ],
     "instagramHandle": "barbassomilano",
     "websiteURL": null,
     "imageURL": "https://images.unsplash.com/photo-1543007630-9710e4a00a20?w=800&h=500&fit=crop&auto=format",
     "rating": 4.7,
     "reviewCount": 1892,
     "isNew": false,
-    "hours": ["18:30-02:00", "18:30-02:00", "18:30-02:00", "18:30-02:00", "18:30-02:00", "18:30-02:00", null]
+    "hours": [
+      "18:30-02:00",
+      "18:30-02:00",
+      "18:30-02:00",
+      "18:30-02:00",
+      "18:30-02:00",
+      "18:30-02:00",
+      null
+    ]
   },
   {
     "id": "joia",
@@ -389,14 +645,27 @@
     "latitude": 45.4773,
     "longitude": 9.2063,
     "priceRange": 4,
-    "tags": ["vegetariano", "michelin", "innovativo", "vegetale"],
+    "tags": [
+      "vegetariano",
+      "michelin",
+      "innovativo",
+      "vegetale"
+    ],
     "instagramHandle": "joiamilan",
     "websiteURL": "https://www.joia.it",
     "imageURL": "https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=800&h=500&fit=crop&auto=format",
     "rating": 4.7,
     "reviewCount": 445,
     "isNew": false,
-    "hours": [null, "12:30-14:00", "12:30-14:00", "12:30-14:00", "12:30-23:00", "12:30-23:00", null]
+    "hours": [
+      null,
+      "12:30-14:00",
+      "12:30-14:00",
+      "12:30-14:00",
+      "12:30-23:00",
+      "12:30-23:00",
+      null
+    ]
   },
   {
     "id": "elita",
@@ -408,14 +677,27 @@
     "latitude": 45.4743,
     "longitude": 9.2077,
     "priceRange": 2,
-    "tags": ["cocktail", "naturale", "DJ", "trendy"],
+    "tags": [
+      "cocktail",
+      "naturale",
+      "DJ",
+      "trendy"
+    ],
     "instagramHandle": "elitamilano",
     "websiteURL": null,
     "imageURL": "https://images.unsplash.com/photo-1574096079513-d8259312b785?w=800&h=500&fit=crop&auto=format",
     "rating": 4.3,
     "reviewCount": 234,
     "isNew": true,
-    "hours": [null, "18:00-01:00", "18:00-01:00", "18:00-01:00", "18:00-02:00", "18:00-02:00", "17:00-00:00"]
+    "hours": [
+      null,
+      "18:00-01:00",
+      "18:00-01:00",
+      "18:00-01:00",
+      "18:00-02:00",
+      "18:00-02:00",
+      "17:00-00:00"
+    ]
   },
   {
     "id": "spaccanapoli",
@@ -427,14 +709,27 @@
     "latitude": 45.4782,
     "longitude": 9.2084,
     "priceRange": 1,
-    "tags": ["napoletana", "forno a legna", "bufala", "autentico"],
+    "tags": [
+      "napoletana",
+      "forno a legna",
+      "bufala",
+      "autentico"
+    ],
     "instagramHandle": "spaccanapolimilano",
     "websiteURL": null,
     "imageURL": "https://images.unsplash.com/photo-1571997478779-2adcbbe9ab2f?w=800&h=500&fit=crop&auto=format",
     "rating": 4.5,
     "reviewCount": 567,
     "isNew": false,
-    "hours": ["12:00-23:30", "12:00-23:30", "12:00-23:30", "12:00-23:30", "12:00-23:30", "12:00-23:30", "12:00-23:00"]
+    "hours": [
+      "12:00-23:30",
+      "12:00-23:30",
+      "12:00-23:30",
+      "12:00-23:30",
+      "12:00-23:30",
+      "12:00-23:30",
+      "12:00-23:00"
+    ]
   },
   {
     "id": "ceresio7",
@@ -446,14 +741,27 @@
     "latitude": 45.4839,
     "longitude": 9.1857,
     "priceRange": 4,
-    "tags": ["rooftop", "piscina", "vista", "fashion"],
+    "tags": [
+      "rooftop",
+      "piscina",
+      "vista",
+      "fashion"
+    ],
     "instagramHandle": "ceresio7",
     "websiteURL": "https://www.ceresio7.com",
     "imageURL": "https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?w=800&h=500&fit=crop&auto=format",
     "rating": 4.5,
     "reviewCount": 1204,
     "isNew": false,
-    "hours": [null, null, "19:00-02:00", "19:00-02:00", "19:00-02:00", "19:00-02:00", "19:00-02:00"]
+    "hours": [
+      null,
+      null,
+      "19:00-02:00",
+      "19:00-02:00",
+      "19:00-02:00",
+      "19:00-02:00",
+      "19:00-02:00"
+    ]
   },
   {
     "id": "lacerba",
@@ -465,14 +773,27 @@
     "latitude": 45.4851,
     "longitude": 9.1888,
     "priceRange": 2,
-    "tags": ["gin", "whisky", "dark", "isola"],
+    "tags": [
+      "gin",
+      "whisky",
+      "dark",
+      "isola"
+    ],
     "instagramHandle": "lacerbamilano",
     "websiteURL": null,
     "imageURL": "https://images.unsplash.com/photo-1485921325833-c519f76c4927?w=800&h=500&fit=crop&auto=format",
     "rating": 4.6,
     "reviewCount": 334,
     "isNew": false,
-    "hours": [null, "18:00-01:00", "18:00-01:00", "18:00-01:00", "18:00-02:00", "18:00-02:00", "17:00-00:00"]
+    "hours": [
+      null,
+      "18:00-01:00",
+      "18:00-01:00",
+      "18:00-01:00",
+      "18:00-02:00",
+      "18:00-02:00",
+      "17:00-00:00"
+    ]
   },
   {
     "id": "frida",
@@ -484,14 +805,27 @@
     "latitude": 45.4855,
     "longitude": 9.1902,
     "priceRange": 1,
-    "tags": ["aperitivo", "cortile", "birra artigianale", "isola"],
+    "tags": [
+      "aperitivo",
+      "cortile",
+      "birra artigianale",
+      "isola"
+    ],
     "instagramHandle": "fridaisola",
     "websiteURL": null,
     "imageURL": "https://images.unsplash.com/photo-1543007630-9710e4a00a20?w=800&h=500&fit=crop&auto=format",
     "rating": 4.3,
     "reviewCount": 389,
     "isNew": false,
-    "hours": [null, "17:00-00:00", "17:00-00:00", "17:00-00:00", "17:00-01:00", "17:00-01:00", "16:00-00:00"]
+    "hours": [
+      null,
+      "17:00-00:00",
+      "17:00-00:00",
+      "17:00-00:00",
+      "17:00-01:00",
+      "17:00-01:00",
+      "16:00-00:00"
+    ]
   },
   {
     "id": "ceresio7-pool-bar",
@@ -500,17 +834,30 @@
     "categoria": "Cocktail Bar",
     "address": "Via Ceresio, 7",
     "description": "Il rooftop più iconico di Milano: cocktail bar con piscina e vista sullo skyline. Drink eccellenti, musica ambient, tramonto indimenticabile. Solo su prenotazione in estate.",
-    "latitude": 45.4840,
-    "longitude": 9.1860,
+    "latitude": 45.484,
+    "longitude": 9.186,
     "priceRange": 3,
-    "tags": ["rooftop", "skyline", "cocktail", "piscina"],
+    "tags": [
+      "rooftop",
+      "skyline",
+      "cocktail",
+      "piscina"
+    ],
     "instagramHandle": "ceresio7",
     "websiteURL": "https://www.ceresio7.com",
     "imageURL": "https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?w=800&h=500&fit=crop&auto=format",
     "rating": 4.4,
     "reviewCount": 678,
     "isNew": false,
-    "hours": [null, null, "19:00-02:00", "19:00-02:00", "19:00-02:00", "19:00-02:00", "19:00-02:00"]
+    "hours": [
+      null,
+      null,
+      "19:00-02:00",
+      "19:00-02:00",
+      "19:00-02:00",
+      "19:00-02:00",
+      "19:00-02:00"
+    ]
   },
   {
     "id": "ratana",
@@ -522,14 +869,27 @@
     "latitude": 45.4858,
     "longitude": 9.1896,
     "priceRange": 2,
-    "tags": ["lombardo", "stagionale", "bib gourmand", "terrazza"],
+    "tags": [
+      "lombardo",
+      "stagionale",
+      "bib gourmand",
+      "terrazza"
+    ],
     "instagramHandle": "ratana_ristorante",
     "websiteURL": "https://www.ratana.it",
     "imageURL": "https://images.unsplash.com/photo-1600891964599-f61ba0e24092?w=800&h=500&fit=crop&auto=format",
     "rating": 4.6,
     "reviewCount": 521,
     "isNew": false,
-    "hours": [null, "12:00-14:30", "12:00-14:30", "12:00-14:30", "12:00-23:00", "12:00-23:00", "12:00-22:00"]
+    "hours": [
+      null,
+      "12:00-14:30",
+      "12:00-14:30",
+      "12:00-14:30",
+      "12:00-23:00",
+      "12:00-23:00",
+      "12:00-22:00"
+    ]
   },
   {
     "id": "berton",
@@ -539,16 +899,29 @@
     "address": "Via Mike Bongiorno, 13",
     "description": "Una stella Michelin dello chef Andrea Berton. Cucina italiana contemporanea essenziale e precisa in un ambiente minimalista e luminoso vicino a Porta Nuova.",
     "latitude": 45.4849,
-    "longitude": 9.1880,
+    "longitude": 9.188,
     "priceRange": 4,
-    "tags": ["michelin", "contemporaneo", "minimalista", "fine dining"],
+    "tags": [
+      "michelin",
+      "contemporaneo",
+      "minimalista",
+      "fine dining"
+    ],
     "instagramHandle": "bertonmilano",
     "websiteURL": "https://www.bertonmilano.it",
     "imageURL": "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800&h=500&fit=crop&auto=format",
     "rating": 4.8,
     "reviewCount": 378,
     "isNew": false,
-    "hours": [null, "12:30-14:30", "12:30-14:30", "12:30-14:30", "12:30-23:00", "12:30-23:00", null]
+    "hours": [
+      null,
+      "12:30-14:30",
+      "12:30-14:30",
+      "12:30-14:30",
+      "12:30-23:00",
+      "12:30-23:00",
+      null
+    ]
   },
   {
     "id": "pinch-isola",
@@ -557,17 +930,30 @@
     "categoria": "Cocktail Bar",
     "address": "Via Thaon di Revel, 21",
     "description": "Piccolo cocktail bar con grandi ambizioni. Ingredienti stagionali, tecniche innovative, atmosfera rilassata. Uno dei locali emergenti più interessanti di Isola.",
-    "latitude": 45.4860,
+    "latitude": 45.486,
     "longitude": 9.1876,
     "priceRange": 2,
-    "tags": ["cocktail", "stagionale", "emergente", "isola"],
+    "tags": [
+      "cocktail",
+      "stagionale",
+      "emergente",
+      "isola"
+    ],
     "instagramHandle": "pinchmilano",
     "websiteURL": null,
     "imageURL": "https://images.unsplash.com/photo-1551538827-9c037cb4f32a?w=800&h=500&fit=crop&auto=format",
     "rating": 4.5,
     "reviewCount": 167,
     "isNew": true,
-    "hours": [null, "18:00-01:00", "18:00-01:00", "18:00-01:00", "18:00-02:00", "18:00-02:00", "17:00-00:00"]
+    "hours": [
+      null,
+      "18:00-01:00",
+      "18:00-01:00",
+      "18:00-01:00",
+      "18:00-02:00",
+      "18:00-02:00",
+      "17:00-00:00"
+    ]
   },
   {
     "id": "tokuyoshi",
@@ -579,14 +965,27 @@
     "latitude": 45.4573,
     "longitude": 9.1768,
     "priceRange": 4,
-    "tags": ["michelin", "fusion", "giapponese", "fine dining"],
+    "tags": [
+      "michelin",
+      "fusion",
+      "giapponese",
+      "fine dining"
+    ],
     "instagramHandle": "tokuyoshiristorante",
     "websiteURL": "https://www.ristorantetokuyoshi.com",
     "imageURL": "https://images.unsplash.com/photo-1579871494447-9811cf80d66c?w=800&h=500&fit=crop&auto=format",
     "rating": 4.8,
     "reviewCount": 445,
     "isNew": false,
-    "hours": [null, "12:00-14:30", "12:00-14:30", "12:00-14:30", "12:00-23:00", "12:00-23:00", null]
+    "hours": [
+      null,
+      "12:00-14:30",
+      "12:00-14:30",
+      "12:00-14:30",
+      "12:00-23:00",
+      "12:00-23:00",
+      null
+    ]
   },
   {
     "id": "botanical-club",
@@ -595,17 +994,30 @@
     "categoria": "Cocktail Bar",
     "address": "Via Tortona, 33",
     "description": "Distilleria e cocktail bar botanico. Producono gin artigianale in loco e creano cocktail con botaniche fresche del loro giardino. Visita obbligatoria per gli appassionati di gin.",
-    "latitude": 45.4560,
+    "latitude": 45.456,
     "longitude": 9.1697,
     "priceRange": 3,
-    "tags": ["gin", "artigianale", "botanico", "distilleria"],
+    "tags": [
+      "gin",
+      "artigianale",
+      "botanico",
+      "distilleria"
+    ],
     "instagramHandle": "thebotanicalclub",
     "websiteURL": "https://www.thebotanicalclub.com",
     "imageURL": "https://images.unsplash.com/photo-1517701604599-bb29b565090c?w=800&h=500&fit=crop&auto=format",
     "rating": 4.6,
     "reviewCount": 278,
     "isNew": false,
-    "hours": [null, "18:00-01:00", "18:00-01:00", "18:00-01:00", "18:00-02:00", "18:00-02:00", "17:00-00:00"]
+    "hours": [
+      null,
+      "18:00-01:00",
+      "18:00-01:00",
+      "18:00-01:00",
+      "18:00-02:00",
+      "18:00-02:00",
+      "17:00-00:00"
+    ]
   },
   {
     "id": "lume",
@@ -617,14 +1029,27 @@
     "latitude": 45.4534,
     "longitude": 9.1673,
     "priceRange": 4,
-    "tags": ["michelin", "fine dining", "italiano", "industriale"],
+    "tags": [
+      "michelin",
+      "fine dining",
+      "italiano",
+      "industriale"
+    ],
     "instagramHandle": "lumemilano",
     "websiteURL": "https://www.lumemilano.com",
     "imageURL": "https://images.unsplash.com/photo-1550966871-3ed3cdb5ed0c?w=800&h=500&fit=crop&auto=format",
     "rating": 4.9,
     "reviewCount": 389,
     "isNew": false,
-    "hours": [null, "19:30-23:00", "19:30-23:00", "19:30-23:00", "19:30-23:00", "19:30-23:00", null]
+    "hours": [
+      null,
+      "19:30-23:00",
+      "19:30-23:00",
+      "19:30-23:00",
+      "19:30-23:00",
+      "19:30-23:00",
+      null
+    ]
   },
   {
     "id": "langosteria",
@@ -634,16 +1059,29 @@
     "address": "Via Savona, 10",
     "description": "Il tempio milanese del pesce. Crudi eccezionali, astice, ricci di mare e bottarga. Ambiente elegante e molto frequentato. Prenotazione indispensabile con largo anticipo.",
     "latitude": 45.4542,
-    "longitude": 9.1660,
+    "longitude": 9.166,
     "priceRange": 4,
-    "tags": ["pesce", "crudi", "astice", "lusso"],
+    "tags": [
+      "pesce",
+      "crudi",
+      "astice",
+      "lusso"
+    ],
     "instagramHandle": "langosteria",
     "websiteURL": "https://www.langosteria.com",
     "imageURL": "https://images.unsplash.com/photo-1534482421-64566f976cfa?w=800&h=500&fit=crop&auto=format",
     "rating": 4.8,
     "reviewCount": 934,
     "isNew": false,
-    "hours": [null, "12:30-23:30", "12:30-23:30", "12:30-23:30", "12:30-23:30", "12:30-23:30", "12:30-22:30"]
+    "hours": [
+      null,
+      "12:30-23:30",
+      "12:30-23:30",
+      "12:30-23:30",
+      "12:30-23:30",
+      "12:30-23:30",
+      "12:30-22:30"
+    ]
   },
   {
     "id": "zero-milano",
@@ -655,14 +1093,27 @@
     "latitude": 45.4622,
     "longitude": 9.1672,
     "priceRange": 3,
-    "tags": ["giapponese", "kaiseki", "ramen", "minimalista"],
+    "tags": [
+      "giapponese",
+      "kaiseki",
+      "ramen",
+      "minimalista"
+    ],
     "instagramHandle": "zero_milano",
     "websiteURL": null,
     "imageURL": "https://images.unsplash.com/photo-1579871494447-9811cf80d66c?w=800&h=500&fit=crop&auto=format",
     "rating": 4.6,
     "reviewCount": 312,
     "isNew": false,
-    "hours": [null, "12:00-14:30", "12:00-14:30", "12:00-14:30", "12:00-23:00", "12:00-23:00", "12:00-22:00"]
+    "hours": [
+      null,
+      "12:00-14:30",
+      "12:00-14:30",
+      "12:00-14:30",
+      "12:00-23:00",
+      "12:00-23:00",
+      "12:00-22:00"
+    ]
   },
   {
     "id": "fingers-milan",
@@ -674,14 +1125,27 @@
     "latitude": 45.4553,
     "longitude": 9.1706,
     "priceRange": 3,
-    "tags": ["fusion", "giapponese", "moda", "glamour"],
+    "tags": [
+      "fusion",
+      "giapponese",
+      "moda",
+      "glamour"
+    ],
     "instagramHandle": "fingersmilano",
     "websiteURL": null,
     "imageURL": "https://images.unsplash.com/photo-1553621042-f6e147245754?w=800&h=500&fit=crop&auto=format",
     "rating": 4.4,
     "reviewCount": 267,
     "isNew": false,
-    "hours": [null, "12:30-14:30", "12:30-14:30", "12:30-14:30", "12:30-23:00", "12:30-23:00", "12:30-22:00"]
+    "hours": [
+      null,
+      "12:30-14:30",
+      "12:30-14:30",
+      "12:30-14:30",
+      "12:30-23:00",
+      "12:30-23:00",
+      "12:30-22:00"
+    ]
   },
   {
     "id": "pave",
@@ -693,14 +1157,27 @@
     "latitude": 45.4802,
     "longitude": 9.2061,
     "priceRange": 2,
-    "tags": ["pasticceria", "colazione", "instagrammabile", "design"],
+    "tags": [
+      "pasticceria",
+      "colazione",
+      "instagrammabile",
+      "design"
+    ],
     "instagramHandle": "pavemilano",
     "websiteURL": "https://www.pavemilano.com",
     "imageURL": "https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=800&h=500&fit=crop&auto=format",
     "rating": 4.7,
     "reviewCount": 567,
     "isNew": false,
-    "hours": ["07:30-20:00", "07:30-20:00", "07:30-20:00", "07:30-20:00", "07:30-20:00", "08:00-20:00", null]
+    "hours": [
+      "07:30-20:00",
+      "07:30-20:00",
+      "07:30-20:00",
+      "07:30-20:00",
+      "07:30-20:00",
+      "08:00-20:00",
+      null
+    ]
   },
   {
     "id": "pescheria-claudio",
@@ -712,14 +1189,27 @@
     "latitude": 45.4799,
     "longitude": 9.2065,
     "priceRange": 2,
-    "tags": ["pesce", "crudi", "fresco", "informale"],
+    "tags": [
+      "pesce",
+      "crudi",
+      "fresco",
+      "informale"
+    ],
     "instagramHandle": null,
     "websiteURL": null,
     "imageURL": "https://images.unsplash.com/photo-1534482421-64566f976cfa?w=800&h=500&fit=crop&auto=format",
     "rating": 4.5,
     "reviewCount": 213,
     "isNew": false,
-    "hours": [null, "12:00-22:00", "12:00-22:00", "12:00-22:00", "12:00-22:00", "12:00-23:00", "12:00-22:00"]
+    "hours": [
+      null,
+      "12:00-22:00",
+      "12:00-22:00",
+      "12:00-22:00",
+      "12:00-22:00",
+      "12:00-23:00",
+      "12:00-22:00"
+    ]
   },
   {
     "id": "casa-ramen-super",
@@ -731,14 +1221,27 @@
     "latitude": 45.4812,
     "longitude": 9.2054,
     "priceRange": 2,
-    "tags": ["ramen", "giapponese", "noodles", "culto"],
+    "tags": [
+      "ramen",
+      "giapponese",
+      "noodles",
+      "culto"
+    ],
     "instagramHandle": "casaramensuper",
     "websiteURL": null,
     "imageURL": "https://images.unsplash.com/photo-1493770348161-369560ae357d?w=800&h=500&fit=crop&auto=format",
     "rating": 4.7,
     "reviewCount": 623,
     "isNew": false,
-    "hours": [null, "12:00-15:00", "12:00-15:00", "12:00-15:00", "12:00-22:30", "12:00-22:30", "12:00-21:00"]
+    "hours": [
+      null,
+      "12:00-15:00",
+      "12:00-15:00",
+      "12:00-15:00",
+      "12:00-22:30",
+      "12:00-22:30",
+      "12:00-21:00"
+    ]
   },
   {
     "id": "sissi-pasticceria",
@@ -750,14 +1253,27 @@
     "latitude": 45.4815,
     "longitude": 9.2052,
     "priceRange": 2,
-    "tags": ["pasticceria", "colazione", "specialty coffee", "artigianale"],
+    "tags": [
+      "pasticceria",
+      "colazione",
+      "specialty coffee",
+      "artigianale"
+    ],
     "instagramHandle": "pasticceriasissi",
     "websiteURL": null,
     "imageURL": "https://images.unsplash.com/photo-1546833998-877b37c2e5c6?w=800&h=500&fit=crop&auto=format",
     "rating": 4.5,
     "reviewCount": 289,
     "isNew": false,
-    "hours": ["07:30-19:00", "07:30-19:00", "07:30-19:00", "07:30-19:00", "07:30-19:00", "08:00-19:00", null]
+    "hours": [
+      "07:30-19:00",
+      "07:30-19:00",
+      "07:30-19:00",
+      "07:30-19:00",
+      "07:30-19:00",
+      "08:00-19:00",
+      null
+    ]
   },
   {
     "id": "radici-wine",
@@ -766,17 +1282,30 @@
     "categoria": "Vineria",
     "address": "Via Carmagnola, 5",
     "description": "Wine bar dedicato ai vini naturali e biodinamici. Piccoli produttori, piatti semplici di qualità e atmosfera intima. Il posto giusto per scoprire il mondo del vino naturale.",
-    "latitude": 45.4820,
-    "longitude": 9.2070,
+    "latitude": 45.482,
+    "longitude": 9.207,
     "priceRange": 2,
-    "tags": ["naturale", "biodinamico", "vino", "intimo"],
+    "tags": [
+      "naturale",
+      "biodinamico",
+      "vino",
+      "intimo"
+    ],
     "instagramHandle": "radicimilano",
     "websiteURL": null,
     "imageURL": "https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?w=800&h=500&fit=crop&auto=format",
     "rating": 4.4,
     "reviewCount": 178,
     "isNew": true,
-    "hours": [null, "18:00-00:00", "18:00-00:00", "18:00-00:00", "18:00-01:00", "18:00-01:00", "16:00-00:00"]
+    "hours": [
+      null,
+      "18:00-00:00",
+      "18:00-00:00",
+      "18:00-00:00",
+      "18:00-01:00",
+      "18:00-01:00",
+      "16:00-00:00"
+    ]
   },
   {
     "id": "osteria-acquabella",
@@ -788,14 +1317,27 @@
     "latitude": 45.4855,
     "longitude": 9.2045,
     "priceRange": 1,
-    "tags": ["lombardo", "tradizionale", "pranzo", "economico"],
+    "tags": [
+      "lombardo",
+      "tradizionale",
+      "pranzo",
+      "economico"
+    ],
     "instagramHandle": null,
     "websiteURL": null,
     "imageURL": "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=800&h=500&fit=crop&auto=format",
     "rating": 4.1,
     "reviewCount": 89,
     "isNew": false,
-    "hours": ["12:00-22:00", "12:00-22:00", "12:00-22:00", "12:00-22:00", "12:00-22:00", "12:00-22:00", null]
+    "hours": [
+      "12:00-22:00",
+      "12:00-22:00",
+      "12:00-22:00",
+      "12:00-22:00",
+      "12:00-22:00",
+      "12:00-22:00",
+      null
+    ]
   },
   {
     "id": "stazione-centrale-lounge",
@@ -807,14 +1349,27 @@
     "latitude": 45.4862,
     "longitude": 9.2045,
     "priceRange": 2,
-    "tags": ["stazione", "colazione", "comodo", "storico"],
+    "tags": [
+      "stazione",
+      "colazione",
+      "comodo",
+      "storico"
+    ],
     "instagramHandle": null,
     "websiteURL": null,
     "imageURL": "https://images.unsplash.com/photo-1447933601403-0c6688de566e?w=800&h=500&fit=crop&auto=format",
     "rating": 3.9,
     "reviewCount": 156,
     "isNew": false,
-    "hours": ["05:30-22:00", "05:30-22:00", "05:30-22:00", "05:30-22:00", "05:30-22:00", "05:30-22:00", "05:30-22:00"]
+    "hours": [
+      "05:30-22:00",
+      "05:30-22:00",
+      "05:30-22:00",
+      "05:30-22:00",
+      "05:30-22:00",
+      "05:30-22:00",
+      "05:30-22:00"
+    ]
   },
   {
     "id": "giulio-pane-ojo",
@@ -826,14 +1381,27 @@
     "latitude": 45.4837,
     "longitude": 9.2032,
     "priceRange": 2,
-    "tags": ["romano", "cacio e pepe", "amatriciana", "vivace"],
+    "tags": [
+      "romano",
+      "cacio e pepe",
+      "amatriciana",
+      "vivace"
+    ],
     "instagramHandle": "giulioepaneolio",
     "websiteURL": null,
     "imageURL": "https://images.unsplash.com/photo-1600891964599-f61ba0e24092?w=800&h=500&fit=crop&auto=format",
     "rating": 4.5,
     "reviewCount": 567,
     "isNew": false,
-    "hours": [null, "12:00-23:00", "12:00-23:00", "12:00-23:00", "12:00-23:00", "12:00-23:00", "12:00-22:00"]
+    "hours": [
+      null,
+      "12:00-23:00",
+      "12:00-23:00",
+      "12:00-23:00",
+      "12:00-23:00",
+      "12:00-23:00",
+      "12:00-22:00"
+    ]
   },
   {
     "id": "da-noi-in",
@@ -845,14 +1413,27 @@
     "latitude": 45.4778,
     "longitude": 9.2059,
     "priceRange": 2,
-    "tags": ["stagionale", "creativo", "quartiere", "mercato"],
+    "tags": [
+      "stagionale",
+      "creativo",
+      "quartiere",
+      "mercato"
+    ],
     "instagramHandle": null,
     "websiteURL": null,
     "imageURL": "https://images.unsplash.com/photo-1543007631-283153e3d1f4?w=800&h=500&fit=crop&auto=format",
     "rating": 4.5,
     "reviewCount": 178,
     "isNew": false,
-    "hours": [null, "12:00-14:30", "12:00-14:30", "12:00-14:30", "12:00-23:00", "12:00-23:00", null]
+    "hours": [
+      null,
+      "12:00-14:30",
+      "12:00-14:30",
+      "12:00-14:30",
+      "12:00-23:00",
+      "12:00-23:00",
+      null
+    ]
   },
   {
     "id": "acanto-restaurant",
@@ -864,14 +1445,27 @@
     "latitude": 45.4826,
     "longitude": 9.1978,
     "priceRange": 4,
-    "tags": ["hotel", "classico", "elegante", "occasioni"],
+    "tags": [
+      "hotel",
+      "classico",
+      "elegante",
+      "occasioni"
+    ],
     "instagramHandle": "acantoristorante",
     "websiteURL": null,
     "imageURL": "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800&h=500&fit=crop&auto=format",
     "rating": 4.4,
     "reviewCount": 234,
     "isNew": false,
-    "hours": [null, "12:30-14:30", "12:30-14:30", "12:30-14:30", "12:30-23:00", "12:30-23:00", "12:30-22:00"]
+    "hours": [
+      null,
+      "12:30-14:30",
+      "12:30-14:30",
+      "12:30-14:30",
+      "12:30-23:00",
+      "12:30-23:00",
+      "12:30-22:00"
+    ]
   },
   {
     "id": "savini-tartufi",
@@ -883,14 +1477,27 @@
     "latitude": 45.4659,
     "longitude": 9.1897,
     "priceRange": 4,
-    "tags": ["tartufo", "lusso", "galleria", "storico"],
+    "tags": [
+      "tartufo",
+      "lusso",
+      "galleria",
+      "storico"
+    ],
     "instagramHandle": "savinitartufi",
     "websiteURL": "https://www.savinitartufi.it",
     "imageURL": "https://images.unsplash.com/photo-1592417817098-8fd3d9eb14a5?w=800&h=500&fit=crop&auto=format",
     "rating": 4.5,
     "reviewCount": 621,
     "isNew": false,
-    "hours": [null, "12:00-23:00", "12:00-23:00", "12:00-23:00", "12:00-23:00", "12:00-23:00", "12:00-22:00"]
+    "hours": [
+      null,
+      "12:00-23:00",
+      "12:00-23:00",
+      "12:00-23:00",
+      "12:00-23:00",
+      "12:00-23:00",
+      "12:00-22:00"
+    ]
   },
   {
     "id": "luini",
@@ -902,14 +1509,27 @@
     "latitude": 45.4662,
     "longitude": 9.1889,
     "priceRange": 1,
-    "tags": ["panzerotto", "storico", "must", "street food"],
+    "tags": [
+      "panzerotto",
+      "storico",
+      "must",
+      "street food"
+    ],
     "instagramHandle": "luinimilano",
     "websiteURL": "https://www.luini.it",
     "imageURL": "https://images.unsplash.com/photo-1565299507177-b0ac66763828?w=800&h=500&fit=crop&auto=format",
     "rating": 4.7,
     "reviewCount": 2341,
     "isNew": false,
-    "hours": ["11:00-21:00", "11:00-21:00", "11:00-21:00", "11:00-21:00", "11:00-21:00", "11:00-21:00", null]
+    "hours": [
+      "11:00-21:00",
+      "11:00-21:00",
+      "11:00-21:00",
+      "11:00-21:00",
+      "11:00-21:00",
+      "11:00-21:00",
+      null
+    ]
   },
   {
     "id": "trattoria-milanese",
@@ -921,14 +1541,27 @@
     "latitude": 45.4636,
     "longitude": 9.1856,
     "priceRange": 3,
-    "tags": ["tradizionale", "storico", "casoeula", "ossobuco"],
+    "tags": [
+      "tradizionale",
+      "storico",
+      "casoeula",
+      "ossobuco"
+    ],
     "instagramHandle": null,
     "websiteURL": null,
     "imageURL": "https://images.unsplash.com/photo-1424847651672-bf20a4b0982b?w=800&h=500&fit=crop&auto=format",
     "rating": 4.3,
     "reviewCount": 445,
     "isNew": false,
-    "hours": [null, "12:00-23:00", "12:00-23:00", "12:00-23:00", "12:00-23:00", "12:00-23:00", "12:00-22:00"]
+    "hours": [
+      null,
+      "12:00-23:00",
+      "12:00-23:00",
+      "12:00-23:00",
+      "12:00-23:00",
+      "12:00-23:00",
+      "12:00-22:00"
+    ]
   },
   {
     "id": "sorbillo-milano",
@@ -940,14 +1573,27 @@
     "latitude": 45.4641,
     "longitude": 9.1956,
     "priceRange": 2,
-    "tags": ["napoletana", "forno a legna", "DOP", "autentico"],
+    "tags": [
+      "napoletana",
+      "forno a legna",
+      "DOP",
+      "autentico"
+    ],
     "instagramHandle": "sorbillomilano",
     "websiteURL": null,
     "imageURL": "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=800&h=500&fit=crop&auto=format",
     "rating": 4.6,
     "reviewCount": 1204,
     "isNew": false,
-    "hours": ["12:00-23:00", "12:00-23:00", "12:00-23:00", "12:00-23:00", "12:00-23:00", "12:00-23:00", "12:00-23:00"]
+    "hours": [
+      "12:00-23:00",
+      "12:00-23:00",
+      "12:00-23:00",
+      "12:00-23:00",
+      "12:00-23:00",
+      "12:00-23:00",
+      "12:00-23:00"
+    ]
   },
   {
     "id": "cracco-galleria",
@@ -956,17 +1602,30 @@
     "categoria": "Ristorante",
     "address": "Galleria Vittorio Emanuele II, 8",
     "description": "Il flagship di Carlo Cracco nella Galleria Vittorio Emanuele. Café, cioccolateria, wine bar e ristorante stellato su più livelli. Una destinazione gastronomica totale.",
-    "latitude": 45.4660,
+    "latitude": 45.466,
     "longitude": 9.1896,
     "priceRange": 4,
-    "tags": ["michelin", "galleria", "cracco", "lusso"],
+    "tags": [
+      "michelin",
+      "galleria",
+      "cracco",
+      "lusso"
+    ],
     "instagramHandle": "craccoinmilan",
     "websiteURL": "https://www.ristorantecracco.it",
     "imageURL": "https://images.unsplash.com/photo-1550966871-3ed3cdb5ed0c?w=800&h=500&fit=crop&auto=format",
     "rating": 4.4,
     "reviewCount": 876,
     "isNew": false,
-    "hours": ["09:00-00:00", "09:00-00:00", "09:00-00:00", "09:00-00:00", "09:00-00:00", "09:00-00:00", "10:00-22:00"]
+    "hours": [
+      "09:00-00:00",
+      "09:00-00:00",
+      "09:00-00:00",
+      "09:00-00:00",
+      "09:00-00:00",
+      "09:00-00:00",
+      "10:00-22:00"
+    ]
   },
   {
     "id": "marchesi-duomo",
@@ -975,17 +1634,30 @@
     "categoria": "Caffè",
     "address": "Via Santa Maria alla Porta, 11",
     "description": "Pasticceria storica milanese dal 1824. Il miglior panettone, marron glacés e dolci della tradizione in un'atmosfera d'altri tempi. Un'istituzione assoluta.",
-    "latitude": 45.4640,
+    "latitude": 45.464,
     "longitude": 9.1838,
     "priceRange": 3,
-    "tags": ["storico", "panettone", "pasticceria", "istituzione"],
+    "tags": [
+      "storico",
+      "panettone",
+      "pasticceria",
+      "istituzione"
+    ],
     "instagramHandle": "pasticceriamarchesi",
     "websiteURL": "https://www.pasticceriamarchesi.com",
     "imageURL": "https://images.unsplash.com/photo-1546833998-877b37c2e5c6?w=800&h=500&fit=crop&auto=format",
     "rating": 4.7,
     "reviewCount": 789,
     "isNew": false,
-    "hours": ["09:00-20:00", "09:00-20:00", "09:00-20:00", "09:00-20:00", "09:00-20:00", "09:00-20:00", "09:00-19:00"]
+    "hours": [
+      "09:00-20:00",
+      "09:00-20:00",
+      "09:00-20:00",
+      "09:00-20:00",
+      "09:00-20:00",
+      "09:00-20:00",
+      "09:00-19:00"
+    ]
   },
   {
     "id": "princi-duomo",
@@ -995,16 +1667,29 @@
     "address": "Via Speronari, 6",
     "description": "Il forno artigianale più famoso di Milano. Pane appena sfornato, pizza al taglio, focaccia e brioche. Aperto tutto il giorno, frequentatissimo dai milanesi.",
     "latitude": 45.4642,
-    "longitude": 9.1860,
+    "longitude": 9.186,
     "priceRange": 1,
-    "tags": ["forno", "pizza al taglio", "focaccia", "artigianale"],
+    "tags": [
+      "forno",
+      "pizza al taglio",
+      "focaccia",
+      "artigianale"
+    ],
     "instagramHandle": "princimilano",
     "websiteURL": "https://www.princi.com",
     "imageURL": "https://images.unsplash.com/photo-1565299507177-b0ac66763828?w=800&h=500&fit=crop&auto=format",
     "rating": 4.3,
     "reviewCount": 1123,
     "isNew": false,
-    "hours": ["07:30-20:00", "07:30-20:00", "07:30-20:00", "07:30-20:00", "07:30-20:00", "07:30-20:00", "09:00-19:00"]
+    "hours": [
+      "07:30-20:00",
+      "07:30-20:00",
+      "07:30-20:00",
+      "07:30-20:00",
+      "07:30-20:00",
+      "07:30-20:00",
+      "09:00-19:00"
+    ]
   },
   {
     "id": "moscova-bar",
@@ -1016,14 +1701,27 @@
     "latitude": 45.4769,
     "longitude": 9.1922,
     "priceRange": 2,
-    "tags": ["aperitivo", "dehors", "classico", "buffet"],
+    "tags": [
+      "aperitivo",
+      "dehors",
+      "classico",
+      "buffet"
+    ],
     "instagramHandle": null,
     "websiteURL": null,
     "imageURL": "https://images.unsplash.com/photo-1566417713940-fe7c737a9ef2?w=800&h=500&fit=crop&auto=format",
     "rating": 4.0,
     "reviewCount": 178,
     "isNew": false,
-    "hours": [null, "17:00-00:00", "17:00-00:00", "17:00-00:00", "17:00-01:00", "17:00-01:00", "16:00-00:00"]
+    "hours": [
+      null,
+      "17:00-00:00",
+      "17:00-00:00",
+      "17:00-00:00",
+      "17:00-01:00",
+      "17:00-01:00",
+      "16:00-00:00"
+    ]
   },
   {
     "id": "vun-andrea-aprea",
@@ -1035,14 +1733,27 @@
     "latitude": 45.4785,
     "longitude": 9.1915,
     "priceRange": 4,
-    "tags": ["michelin", "napoletano", "fine dining", "hotel"],
+    "tags": [
+      "michelin",
+      "napoletano",
+      "fine dining",
+      "hotel"
+    ],
     "instagramHandle": "vunrestaurant",
     "websiteURL": null,
     "imageURL": "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800&h=500&fit=crop&auto=format",
     "rating": 4.8,
     "reviewCount": 312,
     "isNew": false,
-    "hours": [null, "12:30-22:30", "12:30-22:30", "12:30-22:30", "12:30-22:30", "12:30-22:30", null]
+    "hours": [
+      null,
+      "12:30-22:30",
+      "12:30-22:30",
+      "12:30-22:30",
+      "12:30-22:30",
+      "12:30-22:30",
+      null
+    ]
   },
   {
     "id": "tano-passami-lolio",
@@ -1054,14 +1765,27 @@
     "latitude": 45.4779,
     "longitude": 9.1908,
     "priceRange": 4,
-    "tags": ["michelin", "olio", "innovativo", "originale"],
+    "tags": [
+      "michelin",
+      "olio",
+      "innovativo",
+      "originale"
+    ],
     "instagramHandle": "tanopassamilolio",
     "websiteURL": null,
     "imageURL": "https://images.unsplash.com/photo-1592417817098-8fd3d9eb14a5?w=800&h=500&fit=crop&auto=format",
     "rating": 4.7,
     "reviewCount": 289,
     "isNew": false,
-    "hours": [null, "19:30-23:00", "19:30-23:00", "19:30-23:00", "19:30-23:00", "19:30-23:00", null]
+    "hours": [
+      null,
+      "19:30-23:00",
+      "19:30-23:00",
+      "19:30-23:00",
+      "19:30-23:00",
+      "19:30-23:00",
+      null
+    ]
   },
   {
     "id": "caffe-verdi",
@@ -1073,14 +1797,27 @@
     "latitude": 45.4755,
     "longitude": 9.1912,
     "priceRange": 2,
-    "tags": ["teatro", "classico", "aperitivo", "scala"],
+    "tags": [
+      "teatro",
+      "classico",
+      "aperitivo",
+      "scala"
+    ],
     "instagramHandle": null,
     "websiteURL": null,
     "imageURL": "https://images.unsplash.com/photo-1447933601403-0c6688de566e?w=800&h=500&fit=crop&auto=format",
     "rating": 4.2,
     "reviewCount": 145,
     "isNew": false,
-    "hours": ["07:30-21:00", "07:30-21:00", "07:30-21:00", "07:30-21:00", "07:30-21:00", "08:00-21:00", "09:00-20:00"]
+    "hours": [
+      "07:30-21:00",
+      "07:30-21:00",
+      "07:30-21:00",
+      "07:30-21:00",
+      "07:30-21:00",
+      "08:00-21:00",
+      "09:00-20:00"
+    ]
   },
   {
     "id": "princi-solferino",
@@ -1092,14 +1829,27 @@
     "latitude": 45.4748,
     "longitude": 9.1875,
     "priceRange": 1,
-    "tags": ["forno", "colazione", "pane", "artigianale"],
+    "tags": [
+      "forno",
+      "colazione",
+      "pane",
+      "artigianale"
+    ],
     "instagramHandle": "princimilano",
     "websiteURL": "https://www.princi.com",
     "imageURL": "https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=800&h=500&fit=crop&auto=format",
     "rating": 4.5,
     "reviewCount": 456,
     "isNew": false,
-    "hours": ["07:00-20:00", "07:00-20:00", "07:00-20:00", "07:00-20:00", "07:00-20:00", "07:00-20:00", null]
+    "hours": [
+      "07:00-20:00",
+      "07:00-20:00",
+      "07:00-20:00",
+      "07:00-20:00",
+      "07:00-20:00",
+      "07:00-20:00",
+      null
+    ]
   },
   {
     "id": "navigante-moscova",
@@ -1111,14 +1861,27 @@
     "latitude": 45.4762,
     "longitude": 9.1931,
     "priceRange": 2,
-    "tags": ["contemporaneo", "stagionale", "cocktail", "rilassato"],
+    "tags": [
+      "contemporaneo",
+      "stagionale",
+      "cocktail",
+      "rilassato"
+    ],
     "instagramHandle": null,
     "websiteURL": null,
     "imageURL": "https://images.unsplash.com/photo-1533777857889-4be7c70b33f7?w=800&h=500&fit=crop&auto=format",
     "rating": 4.3,
     "reviewCount": 134,
     "isNew": true,
-    "hours": [null, "12:00-23:00", "12:00-23:00", "12:00-23:00", "12:00-23:00", "12:00-23:30", "12:00-22:30"]
+    "hours": [
+      null,
+      "12:00-23:00",
+      "12:00-23:00",
+      "12:00-23:00",
+      "12:00-23:00",
+      "12:00-23:30",
+      "12:00-22:30"
+    ]
   },
   {
     "id": "birrificio-lambrate",
@@ -1130,14 +1893,27 @@
     "latitude": 45.4787,
     "longitude": 9.2385,
     "priceRange": 1,
-    "tags": ["birra artigianale", "pub", "storico", "produzione propria"],
+    "tags": [
+      "birra artigianale",
+      "pub",
+      "storico",
+      "produzione propria"
+    ],
     "instagramHandle": "birrificio_lambrate",
     "websiteURL": "https://www.birrificiolambrate.com",
     "imageURL": "https://images.unsplash.com/photo-1559526324-4b87b5e36e44?w=800&h=500&fit=crop&auto=format",
     "rating": 4.4,
     "reviewCount": 631,
     "isNew": false,
-    "hours": [null, "17:00-00:00", "17:00-00:00", "17:00-00:00", "17:00-01:00", "17:00-01:00", "16:00-00:00"]
+    "hours": [
+      null,
+      "17:00-00:00",
+      "17:00-00:00",
+      "17:00-00:00",
+      "17:00-01:00",
+      "17:00-01:00",
+      "16:00-00:00"
+    ]
   },
   {
     "id": "officina-12",
@@ -1149,14 +1925,27 @@
     "latitude": 45.4789,
     "longitude": 9.2398,
     "priceRange": 2,
-    "tags": ["cocktail", "industriale", "alternativo", "musica"],
+    "tags": [
+      "cocktail",
+      "industriale",
+      "alternativo",
+      "musica"
+    ],
     "instagramHandle": "officina12milano",
     "websiteURL": null,
     "imageURL": "https://images.unsplash.com/photo-1485921325833-c519f76c4927?w=800&h=500&fit=crop&auto=format",
     "rating": 4.4,
     "reviewCount": 267,
     "isNew": false,
-    "hours": [null, "18:00-01:00", "18:00-01:00", "18:00-01:00", "18:00-02:00", "18:00-02:00", "17:00-01:00"]
+    "hours": [
+      null,
+      "18:00-01:00",
+      "18:00-01:00",
+      "18:00-01:00",
+      "18:00-02:00",
+      "18:00-02:00",
+      "17:00-01:00"
+    ]
   },
   {
     "id": "trattoria-macello",
@@ -1165,17 +1954,30 @@
     "categoria": "Osteria",
     "address": "Via Cesare Lombroso, 20",
     "description": "Trattoria leggendaria nell'ex quartiere del macello. Cucina milanese autentica e coraggiosa: nervetti, trippa, bollito misto. Un'esperienza gastronomica vera e profonda.",
-    "latitude": 45.4770,
+    "latitude": 45.477,
     "longitude": 9.2412,
     "priceRange": 2,
-    "tags": ["tradizionale", "frattaglie", "autentico", "milanese"],
+    "tags": [
+      "tradizionale",
+      "frattaglie",
+      "autentico",
+      "milanese"
+    ],
     "instagramHandle": null,
     "websiteURL": null,
     "imageURL": "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=800&h=500&fit=crop&auto=format",
     "rating": 4.5,
     "reviewCount": 289,
     "isNew": false,
-    "hours": ["12:00-14:30", "12:00-22:00", "12:00-22:00", "12:00-22:00", "12:00-22:00", "12:00-22:00", null]
+    "hours": [
+      "12:00-14:30",
+      "12:00-22:00",
+      "12:00-22:00",
+      "12:00-22:00",
+      "12:00-22:00",
+      "12:00-22:00",
+      null
+    ]
   },
   {
     "id": "biciclette-lambrate",
@@ -1187,14 +1989,27 @@
     "latitude": 45.4793,
     "longitude": 9.2401,
     "priceRange": 2,
-    "tags": ["vino naturale", "stagionale", "quartiere", "informale"],
+    "tags": [
+      "vino naturale",
+      "stagionale",
+      "quartiere",
+      "informale"
+    ],
     "instagramHandle": "biciclettimilano",
     "websiteURL": null,
     "imageURL": "https://images.unsplash.com/photo-1424847651672-bf20a4b0982b?w=800&h=500&fit=crop&auto=format",
     "rating": 4.3,
     "reviewCount": 189,
     "isNew": false,
-    "hours": [null, "18:00-23:30", "18:00-23:30", "18:00-23:30", "12:00-23:30", "12:00-23:30", "12:00-22:30"]
+    "hours": [
+      null,
+      "18:00-23:30",
+      "18:00-23:30",
+      "18:00-23:30",
+      "12:00-23:30",
+      "12:00-23:30",
+      "12:00-22:30"
+    ]
   },
   {
     "id": "materia-cafe",
@@ -1206,14 +2021,27 @@
     "latitude": 45.4796,
     "longitude": 9.2379,
     "priceRange": 1,
-    "tags": ["specialty coffee", "co-working", "terza ondata", "filtro"],
+    "tags": [
+      "specialty coffee",
+      "co-working",
+      "terza ondata",
+      "filtro"
+    ],
     "instagramHandle": "materiacafe",
     "websiteURL": null,
     "imageURL": "https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=800&h=500&fit=crop&auto=format",
     "rating": 4.4,
     "reviewCount": 145,
     "isNew": true,
-    "hours": ["07:30-19:00", "07:30-19:00", "07:30-19:00", "07:30-19:00", "07:30-19:00", "08:00-18:00", null]
+    "hours": [
+      "07:30-19:00",
+      "07:30-19:00",
+      "07:30-19:00",
+      "07:30-19:00",
+      "07:30-19:00",
+      "08:00-18:00",
+      null
+    ]
   },
   {
     "id": "pizza-zio",
@@ -1225,14 +2053,27 @@
     "latitude": 45.4764,
     "longitude": 9.2262,
     "priceRange": 1,
-    "tags": ["napoletana", "lievito madre", "universitario", "economico"],
+    "tags": [
+      "napoletana",
+      "lievito madre",
+      "universitario",
+      "economico"
+    ],
     "instagramHandle": "pizzazio_milano",
     "websiteURL": null,
     "imageURL": "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=800&h=500&fit=crop&auto=format",
     "rating": 4.5,
     "reviewCount": 334,
     "isNew": false,
-    "hours": [null, "12:00-23:30", "12:00-23:30", "12:00-23:30", "12:00-23:30", "12:00-23:30", "12:00-22:30"]
+    "hours": [
+      null,
+      "12:00-23:30",
+      "12:00-23:30",
+      "12:00-23:30",
+      "12:00-23:30",
+      "12:00-23:30",
+      "12:00-22:30"
+    ]
   },
   {
     "id": "fratelli-figurato",
@@ -1244,14 +2085,27 @@
     "latitude": 45.4791,
     "longitude": 9.2284,
     "priceRange": 3,
-    "tags": ["salumi", "formaggi", "gastronomia", "italiano"],
+    "tags": [
+      "salumi",
+      "formaggi",
+      "gastronomia",
+      "italiano"
+    ],
     "instagramHandle": "fratelli_figurato",
     "websiteURL": null,
     "imageURL": "https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=800&h=500&fit=crop&auto=format",
     "rating": 4.5,
     "reviewCount": 445,
     "isNew": false,
-    "hours": ["08:00-21:00", "08:00-21:00", "08:00-21:00", "08:00-21:00", "08:00-21:00", "08:00-21:00", null]
+    "hours": [
+      "08:00-21:00",
+      "08:00-21:00",
+      "08:00-21:00",
+      "08:00-21:00",
+      "08:00-21:00",
+      "08:00-21:00",
+      null
+    ]
   },
   {
     "id": "spontini-cs",
@@ -1260,17 +2114,30 @@
     "categoria": "Pizza",
     "address": "Viale Abruzzi, 38",
     "description": "La pizza al taglio più famosa di Milano dal 1953. Alta, soffice, con pomodoro abbondante e mozzarella filante. Un rito milanese passato di generazione in generazione.",
-    "latitude": 45.4780,
+    "latitude": 45.478,
     "longitude": 9.2258,
     "priceRange": 1,
-    "tags": ["pizza al taglio", "storico", "milanese", "rito"],
+    "tags": [
+      "pizza al taglio",
+      "storico",
+      "milanese",
+      "rito"
+    ],
     "instagramHandle": "pizzeriaspontini",
     "websiteURL": null,
     "imageURL": "https://images.unsplash.com/photo-1571997478779-2adcbbe9ab2f?w=800&h=500&fit=crop&auto=format",
     "rating": 4.3,
     "reviewCount": 789,
     "isNew": false,
-    "hours": ["11:30-23:00", "11:30-23:00", "11:30-23:00", "11:30-23:00", "11:30-23:00", "11:30-23:00", "12:00-22:30"]
+    "hours": [
+      "11:30-23:00",
+      "11:30-23:00",
+      "11:30-23:00",
+      "11:30-23:00",
+      "11:30-23:00",
+      "11:30-23:00",
+      "12:00-22:30"
+    ]
   },
   {
     "id": "baffo-bistro",
@@ -1282,14 +2149,27 @@
     "latitude": 45.4769,
     "longitude": 9.2244,
     "priceRange": 2,
-    "tags": ["creativo", "bistrot", "vino naturale", "quartiere"],
+    "tags": [
+      "creativo",
+      "bistrot",
+      "vino naturale",
+      "quartiere"
+    ],
     "instagramHandle": "baffomilano",
     "websiteURL": null,
     "imageURL": "https://images.unsplash.com/photo-1533777857889-4be7c70b33f7?w=800&h=500&fit=crop&auto=format",
     "rating": 4.5,
     "reviewCount": 212,
     "isNew": false,
-    "hours": [null, "12:00-14:30", "12:00-14:30", "12:00-14:30", "12:00-23:00", "12:00-23:00", null]
+    "hours": [
+      null,
+      "12:00-14:30",
+      "12:00-14:30",
+      "12:00-14:30",
+      "12:00-23:00",
+      "12:00-23:00",
+      null
+    ]
   },
   {
     "id": "crota-piemunteisa",
@@ -1301,14 +2181,27 @@
     "latitude": 45.4757,
     "longitude": 9.2232,
     "priceRange": 3,
-    "tags": ["piemontese", "vitello tonnato", "nebbiolo", "cantina"],
+    "tags": [
+      "piemontese",
+      "vitello tonnato",
+      "nebbiolo",
+      "cantina"
+    ],
     "instagramHandle": null,
     "websiteURL": null,
     "imageURL": "https://images.unsplash.com/photo-1600891964599-f61ba0e24092?w=800&h=500&fit=crop&auto=format",
     "rating": 4.4,
     "reviewCount": 267,
     "isNew": false,
-    "hours": [null, "12:00-14:30", "12:00-14:30", "12:00-14:30", "12:00-23:00", "12:00-23:00", "12:00-22:00"]
+    "hours": [
+      null,
+      "12:00-14:30",
+      "12:00-14:30",
+      "12:00-14:30",
+      "12:00-23:00",
+      "12:00-23:00",
+      "12:00-22:00"
+    ]
   },
   {
     "id": "ugo",
@@ -1320,14 +2213,27 @@
     "latitude": 45.4863,
     "longitude": 9.2098,
     "priceRange": 1,
-    "tags": ["aperitivo", "spritz", "loreto", "terrazza"],
+    "tags": [
+      "aperitivo",
+      "spritz",
+      "loreto",
+      "terrazza"
+    ],
     "instagramHandle": "ugomilano",
     "websiteURL": null,
     "imageURL": "https://images.unsplash.com/photo-1543007630-9710e4a00a20?w=800&h=500&fit=crop&auto=format",
     "rating": 4.2,
     "reviewCount": 234,
     "isNew": false,
-    "hours": [null, "17:00-01:00", "17:00-01:00", "17:00-01:00", "17:00-01:00", "17:00-01:00", "17:00-01:00"]
+    "hours": [
+      null,
+      "17:00-01:00",
+      "17:00-01:00",
+      "17:00-01:00",
+      "17:00-01:00",
+      "17:00-01:00",
+      "17:00-01:00"
+    ]
   },
   {
     "id": "taglio",
@@ -1339,14 +2245,27 @@
     "latitude": 45.4858,
     "longitude": 9.2071,
     "priceRange": 1,
-    "tags": ["pizza al taglio", "gourmet", "creativo", "artigianale"],
+    "tags": [
+      "pizza al taglio",
+      "gourmet",
+      "creativo",
+      "artigianale"
+    ],
     "instagramHandle": "tagliomilano",
     "websiteURL": null,
     "imageURL": "https://images.unsplash.com/photo-1571997478779-2adcbbe9ab2f?w=800&h=500&fit=crop&auto=format",
     "rating": 4.4,
     "reviewCount": 567,
     "isNew": true,
-    "hours": ["11:30-22:00", "11:30-22:00", "11:30-22:00", "11:30-22:00", "11:30-22:00", "11:30-22:00", null]
+    "hours": [
+      "11:30-22:00",
+      "11:30-22:00",
+      "11:30-22:00",
+      "11:30-22:00",
+      "11:30-22:00",
+      "11:30-22:00",
+      null
+    ]
   },
   {
     "id": "nonostante-marisa",
@@ -1358,14 +2277,27 @@
     "latitude": 45.4867,
     "longitude": 9.2112,
     "priceRange": 2,
-    "tags": ["culto", "lombardo", "kitsch", "grappa"],
+    "tags": [
+      "culto",
+      "lombardo",
+      "kitsch",
+      "grappa"
+    ],
     "instagramHandle": "nonostantemarisa",
     "websiteURL": null,
     "imageURL": "https://images.unsplash.com/photo-1424847651672-bf20a4b0982b?w=800&h=500&fit=crop&auto=format",
     "rating": 4.7,
     "reviewCount": 489,
     "isNew": false,
-    "hours": [null, "12:30-14:30", "12:30-14:30", "12:30-14:30", "12:30-23:00", "12:30-23:00", null]
+    "hours": [
+      null,
+      "12:30-14:30",
+      "12:30-14:30",
+      "12:30-14:30",
+      "12:30-23:00",
+      "12:30-23:00",
+      null
+    ]
   },
   {
     "id": "rocket-loreto",
@@ -1375,16 +2307,29 @@
     "address": "Via Donatello, 3",
     "description": "Bar energico vicino a Piazza Loreto. DJ set il fine settimana, spritz generosi, cocktail solidi. Un punto di riferimento per la vita notturna del quartiere.",
     "latitude": 45.4871,
-    "longitude": 9.2120,
+    "longitude": 9.212,
     "priceRange": 1,
-    "tags": ["DJ", "cocktail", "notturno", "giovane"],
+    "tags": [
+      "DJ",
+      "cocktail",
+      "notturno",
+      "giovane"
+    ],
     "instagramHandle": "rocketmilano",
     "websiteURL": null,
     "imageURL": "https://images.unsplash.com/photo-1474436527913-2c1da5a5e8a9?w=800&h=500&fit=crop&auto=format",
     "rating": 4.2,
     "reviewCount": 312,
     "isNew": false,
-    "hours": [null, "18:00-01:00", "18:00-01:00", "18:00-01:00", "18:00-02:30", "18:00-02:30", "17:00-01:00"]
+    "hours": [
+      null,
+      "18:00-01:00",
+      "18:00-01:00",
+      "18:00-01:00",
+      "18:00-02:30",
+      "18:00-02:30",
+      "17:00-01:00"
+    ]
   },
   {
     "id": "american-graffiti-loreto",
@@ -1396,14 +2341,27 @@
     "latitude": 45.4878,
     "longitude": 9.2108,
     "priceRange": 1,
-    "tags": ["hamburger", "americano", "studenti", "milkshake"],
+    "tags": [
+      "hamburger",
+      "americano",
+      "studenti",
+      "milkshake"
+    ],
     "instagramHandle": "americangraffitimilano",
     "websiteURL": null,
     "imageURL": "https://images.unsplash.com/photo-1565299507177-b0ac66763828?w=800&h=500&fit=crop&auto=format",
     "rating": 4.1,
     "reviewCount": 234,
     "isNew": false,
-    "hours": ["12:00-23:00", "12:00-23:00", "12:00-23:00", "12:00-23:00", "12:00-23:30", "12:00-23:30", "12:00-22:30"]
+    "hours": [
+      "12:00-23:00",
+      "12:00-23:00",
+      "12:00-23:00",
+      "12:00-23:00",
+      "12:00-23:30",
+      "12:00-23:30",
+      "12:00-22:30"
+    ]
   },
   {
     "id": "camparino-galleria",
@@ -1412,17 +2370,30 @@
     "categoria": "Cocktail Bar",
     "address": "Piazza del Duomo, 21 (Galleria Vittorio Emanuele II)",
     "description": "Il bar storico di Campari nella Galleria Vittorio Emanuele dal 1915. Interni Art Nouveau con intarsi di Eugenio Quarti. Aperitivo Campari con vista sul Duomo. Frequentato da Toscanini e Verdi. Un'istituzione assoluta.",
-    "latitude": 45.4660,
+    "latitude": 45.466,
     "longitude": 9.1899,
     "priceRange": 3,
-    "tags": ["storico", "campari", "galleria", "art nouveau"],
+    "tags": [
+      "storico",
+      "campari",
+      "galleria",
+      "art nouveau"
+    ],
     "instagramHandle": "camparino_in_galleria",
     "websiteURL": "https://www.camparino.com",
     "imageURL": "https://images.unsplash.com/photo-1543007630-9710e4a00a20?w=800&h=500&fit=crop&auto=format",
     "rating": 4.5,
     "reviewCount": 1234,
     "isNew": false,
-    "hours": ["08:00-00:00", "08:00-00:00", "08:00-00:00", "08:00-00:00", "08:00-01:00", "08:00-01:00", "08:00-00:00"]
+    "hours": [
+      "08:00-00:00",
+      "08:00-00:00",
+      "08:00-00:00",
+      "08:00-00:00",
+      "08:00-01:00",
+      "08:00-01:00",
+      "08:00-00:00"
+    ]
   },
   {
     "id": "terrazza-aperol",
@@ -1434,14 +2405,27 @@
     "latitude": 45.4657,
     "longitude": 9.1905,
     "priceRange": 3,
-    "tags": ["aperol", "rooftop", "aperitivo", "duomo"],
+    "tags": [
+      "aperol",
+      "rooftop",
+      "aperitivo",
+      "duomo"
+    ],
     "instagramHandle": "terrazza_aperol",
     "websiteURL": null,
     "imageURL": "https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?w=800&h=500&fit=crop&auto=format",
     "rating": 4.4,
     "reviewCount": 1567,
     "isNew": false,
-    "hours": ["11:00-23:00", "11:00-23:00", "11:00-23:00", "11:00-23:00", "11:00-00:00", "11:00-00:00", "11:00-23:00"]
+    "hours": [
+      "11:00-23:00",
+      "11:00-23:00",
+      "11:00-23:00",
+      "11:00-23:00",
+      "11:00-00:00",
+      "11:00-00:00",
+      "11:00-23:00"
+    ]
   },
   {
     "id": "backdoor43",
@@ -1451,16 +2435,29 @@
     "address": "Ripa di Porta Ticinese, 43",
     "description": "Il bar più piccolo del mondo: solo 3 posti, prenotazione obbligatoria. Un'esperienza privata e surreale con cocktail a base di whisky. Il bartender mascherato da V for Vendetta. Imperdibile.",
     "latitude": 45.4541,
-    "longitude": 9.1720,
+    "longitude": 9.172,
     "priceRange": 3,
-    "tags": ["whisky", "esclusivo", "unico", "tre posti"],
+    "tags": [
+      "whisky",
+      "esclusivo",
+      "unico",
+      "tre posti"
+    ],
     "instagramHandle": "backdoor43_milano",
     "websiteURL": "https://backdoor43.com",
     "imageURL": "https://images.unsplash.com/photo-1485921325833-c519f76c4927?w=800&h=500&fit=crop&auto=format",
     "rating": 4.8,
     "reviewCount": 203,
     "isNew": false,
-    "hours": [null, "18:00-23:00", "18:00-23:00", "18:00-23:00", "18:00-23:00", "18:00-23:00", "18:00-23:00"]
+    "hours": [
+      null,
+      "18:00-23:00",
+      "18:00-23:00",
+      "18:00-23:00",
+      "18:00-23:00",
+      "18:00-23:00",
+      "18:00-23:00"
+    ]
   },
   {
     "id": "bulgari-bar",
@@ -1472,14 +2469,27 @@
     "latitude": 45.4716,
     "longitude": 9.1893,
     "priceRange": 4,
-    "tags": ["luxury", "hotel", "aperitivo", "esclusivo"],
+    "tags": [
+      "luxury",
+      "hotel",
+      "aperitivo",
+      "esclusivo"
+    ],
     "instagramHandle": "bulgarihotels",
     "websiteURL": "https://www.bulgarihotels.com",
     "imageURL": "https://images.unsplash.com/photo-1574096079513-d8259312b785?w=800&h=500&fit=crop&auto=format",
     "rating": 4.6,
     "reviewCount": 389,
     "isNew": false,
-    "hours": ["07:00-01:00", "07:00-01:00", "07:00-01:00", "07:00-01:00", "07:00-01:00", "07:00-01:00", "07:00-01:00"]
+    "hours": [
+      "07:00-01:00",
+      "07:00-01:00",
+      "07:00-01:00",
+      "07:00-01:00",
+      "07:00-01:00",
+      "07:00-01:00",
+      "07:00-01:00"
+    ]
   },
   {
     "id": "seta-mandarin",
@@ -1491,14 +2501,27 @@
     "latitude": 45.4693,
     "longitude": 9.1902,
     "priceRange": 4,
-    "tags": ["michelin", "fine dining", "mandarin oriental", "degustazione"],
+    "tags": [
+      "michelin",
+      "fine dining",
+      "mandarin oriental",
+      "degustazione"
+    ],
     "instagramHandle": "setamilano",
     "websiteURL": "https://www.mandarinoriental.com/milan/dining/seta",
     "imageURL": "https://images.unsplash.com/photo-1550966871-3ed3cdb5ed0c?w=800&h=500&fit=crop&auto=format",
     "rating": 4.9,
     "reviewCount": 312,
     "isNew": false,
-    "hours": [null, null, "19:30-22:30", "19:30-22:30", "19:30-22:30", "19:30-22:30", "19:30-22:30"]
+    "hours": [
+      null,
+      null,
+      "19:30-22:30",
+      "19:30-22:30",
+      "19:30-22:30",
+      "19:30-22:30",
+      "19:30-22:30"
+    ]
   },
   {
     "id": "da-giacomo",
@@ -1510,14 +2533,27 @@
     "latitude": 45.4693,
     "longitude": 9.2017,
     "priceRange": 4,
-    "tags": ["pesce", "lusso", "classico", "istituzione"],
+    "tags": [
+      "pesce",
+      "lusso",
+      "classico",
+      "istituzione"
+    ],
     "instagramHandle": "dagiacomomomilano",
     "websiteURL": "https://giacomomilano.com",
     "imageURL": "https://images.unsplash.com/photo-1534482421-64566f976cfa?w=800&h=500&fit=crop&auto=format",
     "rating": 4.6,
     "reviewCount": 891,
     "isNew": false,
-    "hours": [null, "12:30-14:30", "12:30-14:30", "12:30-14:30", "12:30-23:00", "12:30-23:00", "12:30-14:30"]
+    "hours": [
+      null,
+      "12:30-14:30",
+      "12:30-14:30",
+      "12:30-14:30",
+      "12:30-23:00",
+      "12:30-23:00",
+      "12:30-14:30"
+    ]
   },
   {
     "id": "iyo-restaurant",
@@ -1529,14 +2565,27 @@
     "latitude": 45.4766,
     "longitude": 9.1766,
     "priceRange": 4,
-    "tags": ["michelin", "kaiseki", "sushi", "giapponese"],
+    "tags": [
+      "michelin",
+      "kaiseki",
+      "sushi",
+      "giapponese"
+    ],
     "instagramHandle": "iyorestaurant",
     "websiteURL": "https://www.iyo-restaurant.com",
     "imageURL": "https://images.unsplash.com/photo-1553621042-f6e147245754?w=800&h=500&fit=crop&auto=format",
     "rating": 4.8,
     "reviewCount": 512,
     "isNew": false,
-    "hours": [null, "12:30-14:00", "12:30-14:00", "12:30-14:00", "12:30-22:30", "12:30-22:30", null]
+    "hours": [
+      null,
+      "12:30-14:00",
+      "12:30-14:00",
+      "12:30-14:00",
+      "12:30-22:30",
+      "12:30-22:30",
+      null
+    ]
   },
   {
     "id": "chinatown-bon-wei",
@@ -1548,14 +2597,27 @@
     "latitude": 45.4793,
     "longitude": 9.1742,
     "priceRange": 3,
-    "tags": ["cinese", "dim sum", "cantonese", "chinatown"],
+    "tags": [
+      "cinese",
+      "dim sum",
+      "cantonese",
+      "chinatown"
+    ],
     "instagramHandle": null,
     "websiteURL": null,
     "imageURL": "https://images.unsplash.com/photo-1563245372-f21724e3856d?w=800&h=500&fit=crop&auto=format",
     "rating": 4.5,
     "reviewCount": 890,
     "isNew": false,
-    "hours": [null, "12:00-14:30", "12:00-14:30", "12:00-14:30", "12:00-14:30", "12:00-23:00", "12:00-23:00"]
+    "hours": [
+      null,
+      "12:00-14:30",
+      "12:00-14:30",
+      "12:00-14:30",
+      "12:00-14:30",
+      "12:00-23:00",
+      "12:00-23:00"
+    ]
   },
   {
     "id": "chinatown-sarpi-dumpling",
@@ -1564,17 +2626,30 @@
     "categoria": "Street Food",
     "address": "Via Paolo Sarpi, 32, Milano",
     "description": "Piccolo locale autentico specializzato in dumplings e ravioli cinesi al vapore. Ingredienti freschi, prezzi onesti e fila fuori dalla porta nei weekend.",
-    "latitude": 45.4790,
+    "latitude": 45.479,
     "longitude": 9.1748,
     "priceRange": 1,
-    "tags": ["cinese", "dumplings", "street food", "chinatown"],
+    "tags": [
+      "cinese",
+      "dumplings",
+      "street food",
+      "chinatown"
+    ],
     "instagramHandle": null,
     "websiteURL": null,
     "imageURL": "https://images.unsplash.com/photo-1496116218417-1a781b1c416c?w=800&h=500&fit=crop&auto=format",
     "rating": 4.3,
     "reviewCount": 540,
     "isNew": false,
-    "hours": ["11:00-21:00", "11:00-21:00", "11:00-21:00", "11:00-21:00", "11:00-22:00", "11:00-22:00", "11:00-21:00"]
+    "hours": [
+      "11:00-21:00",
+      "11:00-21:00",
+      "11:00-21:00",
+      "11:00-21:00",
+      "11:00-22:00",
+      "11:00-22:00",
+      "11:00-21:00"
+    ]
   },
   {
     "id": "chinatown-da-giulio",
@@ -1586,14 +2661,27 @@
     "latitude": 45.4787,
     "longitude": 9.1751,
     "priceRange": 2,
-    "tags": ["cinese", "storico", "mandarese", "chinatown"],
+    "tags": [
+      "cinese",
+      "storico",
+      "mandarese",
+      "chinatown"
+    ],
     "instagramHandle": null,
     "websiteURL": null,
     "imageURL": "https://images.unsplash.com/photo-1582878826629-29b7ad1cdc43?w=800&h=500&fit=crop&auto=format",
     "rating": 4.1,
     "reviewCount": 320,
     "isNew": false,
-    "hours": ["12:00-15:00", "12:00-15:00", "12:00-15:00", "12:00-15:00", "12:00-15:00", "12:00-23:00", "12:00-23:00"]
+    "hours": [
+      "12:00-15:00",
+      "12:00-15:00",
+      "12:00-15:00",
+      "12:00-15:00",
+      "12:00-15:00",
+      "12:00-23:00",
+      "12:00-23:00"
+    ]
   },
   {
     "id": "corvetto-trippa",
@@ -1602,17 +2690,31 @@
     "categoria": "Osteria",
     "address": "Via Giorgio Vasari, 1, Milano",
     "description": "Una delle trattorie più premiate di Milano, fuori dal circuito turistico. Offal e cucina povera lombarda elevata al massimo livello. Prenotazione indispensabile.",
-    "latitude": 45.4450,
+    "latitude": 45.445,
     "longitude": 9.2085,
     "priceRange": 3,
-    "tags": ["trattoria", "lombarda", "offal", "corvetto", "premiata"],
+    "tags": [
+      "trattoria",
+      "lombarda",
+      "offal",
+      "corvetto",
+      "premiata"
+    ],
     "instagramHandle": "trattoriatrippa",
     "websiteURL": null,
     "imageURL": "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800&h=500&fit=crop&auto=format",
     "rating": 4.8,
     "reviewCount": 1540,
     "isNew": false,
-    "hours": [null, "12:30-14:30", "12:30-14:30", "12:30-14:30", "12:30-14:30", null, null]
+    "hours": [
+      null,
+      "12:30-14:30",
+      "12:30-14:30",
+      "12:30-14:30",
+      "12:30-14:30",
+      null,
+      null
+    ]
   },
   {
     "id": "corvetto-vino-e-farinata",
@@ -1622,16 +2724,30 @@
     "address": "Via Brembo, 17, Milano",
     "description": "Piccola vineria di quartiere a Corvetto con selezione di vini naturali e farinata genovese. Taglieri, crostini e un'atmosfera informale da scoprire.",
     "latitude": 45.4438,
-    "longitude": 9.2110,
+    "longitude": 9.211,
     "priceRange": 2,
-    "tags": ["vineria", "naturale", "farinata", "corvetto", "quartiere"],
+    "tags": [
+      "vineria",
+      "naturale",
+      "farinata",
+      "corvetto",
+      "quartiere"
+    ],
     "instagramHandle": null,
     "websiteURL": null,
     "imageURL": "https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?w=800&h=500&fit=crop&auto=format",
     "rating": 4.3,
     "reviewCount": 280,
     "isNew": false,
-    "hours": ["17:00-23:00", "17:00-23:00", "17:00-23:00", "17:00-23:00", "17:00-00:00", "17:00-00:00", null]
+    "hours": [
+      "17:00-23:00",
+      "17:00-23:00",
+      "17:00-23:00",
+      "17:00-23:00",
+      "17:00-00:00",
+      "17:00-00:00",
+      null
+    ]
   },
   {
     "id": "bovisa-spontini",
@@ -1643,14 +2759,27 @@
     "latitude": 45.5025,
     "longitude": 9.1605,
     "priceRange": 1,
-    "tags": ["pizza al taglio", "studenti", "bovisa", "storico"],
+    "tags": [
+      "pizza al taglio",
+      "studenti",
+      "bovisa",
+      "storico"
+    ],
     "instagramHandle": "pizzeriaspontini",
     "websiteURL": "https://www.pizzeriaspontini.it",
     "imageURL": "https://images.unsplash.com/photo-1513104890138-7c749659a591?w=800&h=500&fit=crop&auto=format",
     "rating": 4.2,
     "reviewCount": 870,
     "isNew": false,
-    "hours": ["11:30-14:30", "11:30-14:30", "11:30-14:30", "11:30-14:30", "11:30-14:30", "11:30-14:30", null]
+    "hours": [
+      "11:30-14:30",
+      "11:30-14:30",
+      "11:30-14:30",
+      "11:30-14:30",
+      "11:30-14:30",
+      "11:30-14:30",
+      null
+    ]
   },
   {
     "id": "bovisa-bere-bene",
@@ -1662,14 +2791,27 @@
     "latitude": 45.5028,
     "longitude": 9.1582,
     "priceRange": 2,
-    "tags": ["cocktail", "studenti", "bovisa", "musica"],
+    "tags": [
+      "cocktail",
+      "studenti",
+      "bovisa",
+      "musica"
+    ],
     "instagramHandle": null,
     "websiteURL": null,
     "imageURL": "https://images.unsplash.com/photo-1470337458703-46ad1756a187?w=800&h=500&fit=crop&auto=format",
     "rating": 4.1,
     "reviewCount": 340,
     "isNew": false,
-    "hours": ["17:00-01:00", "17:00-01:00", "17:00-01:00", "17:00-01:00", "17:00-02:00", "17:00-02:00", null]
+    "hours": [
+      "17:00-01:00",
+      "17:00-01:00",
+      "17:00-01:00",
+      "17:00-01:00",
+      "17:00-02:00",
+      "17:00-02:00",
+      null
+    ]
   },
   {
     "id": "niguarda-pizzeria-tre-spighe",
@@ -1679,16 +2821,29 @@
     "address": "Via Selvanesco, 10, Milano",
     "description": "Pizzeria napoletana autentica nel quartiere Niguarda. Impasto a lunga lievitazione, mozzarella di bufala DOP e cottura in forno a legna.",
     "latitude": 45.5075,
-    "longitude": 9.1970,
+    "longitude": 9.197,
     "priceRange": 2,
-    "tags": ["pizza", "napoletana", "bufala", "niguarda"],
+    "tags": [
+      "pizza",
+      "napoletana",
+      "bufala",
+      "niguarda"
+    ],
     "instagramHandle": null,
     "websiteURL": null,
     "imageURL": "https://images.unsplash.com/photo-1574071318508-1cdbab80d002?w=800&h=500&fit=crop&auto=format",
     "rating": 4.3,
     "reviewCount": 420,
     "isNew": false,
-    "hours": ["12:00-14:30", "12:00-14:30", "12:00-14:30", "12:00-14:30", "12:00-23:30", "12:00-23:30", "12:00-23:00"]
+    "hours": [
+      "12:00-14:30",
+      "12:00-14:30",
+      "12:00-14:30",
+      "12:00-14:30",
+      "12:00-23:30",
+      "12:00-23:30",
+      "12:00-23:00"
+    ]
   },
   {
     "id": "niguarda-bar-centrale",
@@ -1700,14 +2855,27 @@
     "latitude": 45.5082,
     "longitude": 9.1992,
     "priceRange": 1,
-    "tags": ["caffè", "quartiere", "colazione", "niguarda"],
+    "tags": [
+      "caffè",
+      "quartiere",
+      "colazione",
+      "niguarda"
+    ],
     "instagramHandle": null,
     "websiteURL": null,
     "imageURL": "https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=800&h=500&fit=crop&auto=format",
     "rating": 4.0,
     "reviewCount": 210,
     "isNew": false,
-    "hours": ["06:30-20:00", "06:30-20:00", "06:30-20:00", "06:30-20:00", "06:30-20:00", "07:00-13:00", null]
+    "hours": [
+      "06:30-20:00",
+      "06:30-20:00",
+      "06:30-20:00",
+      "06:30-20:00",
+      "06:30-20:00",
+      "07:00-13:00",
+      null
+    ]
   },
   {
     "id": "greco-osteria-al-greco",
@@ -1719,14 +2887,27 @@
     "latitude": 45.5002,
     "longitude": 9.2108,
     "priceRange": 1,
-    "tags": ["osteria", "popolare", "risotto", "greco"],
+    "tags": [
+      "osteria",
+      "popolare",
+      "risotto",
+      "greco"
+    ],
     "instagramHandle": null,
     "websiteURL": null,
     "imageURL": "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=800&h=500&fit=crop&auto=format",
     "rating": 4.2,
     "reviewCount": 380,
     "isNew": false,
-    "hours": ["12:00-14:30", "12:00-14:30", "12:00-14:30", "12:00-14:30", "12:00-14:30", null, null]
+    "hours": [
+      "12:00-14:30",
+      "12:00-14:30",
+      "12:00-14:30",
+      "12:00-14:30",
+      "12:00-14:30",
+      null,
+      null
+    ]
   },
   {
     "id": "greco-craft",
@@ -1738,14 +2919,27 @@
     "latitude": 45.4998,
     "longitude": 9.2115,
     "priceRange": 2,
-    "tags": ["birra artigianale", "craft", "greco", "aperitivo"],
+    "tags": [
+      "birra artigianale",
+      "craft",
+      "greco",
+      "aperitivo"
+    ],
     "instagramHandle": null,
     "websiteURL": null,
     "imageURL": "https://images.unsplash.com/photo-1559526324-4b87b5e36e44?w=800&h=500&fit=crop&auto=format",
     "rating": 4.4,
     "reviewCount": 190,
     "isNew": true,
-    "hours": ["17:00-01:00", "17:00-01:00", "17:00-01:00", "17:00-01:00", "17:00-02:00", "15:00-02:00", "15:00-00:00"]
+    "hours": [
+      "17:00-01:00",
+      "17:00-01:00",
+      "17:00-01:00",
+      "17:00-01:00",
+      "17:00-02:00",
+      "15:00-02:00",
+      "15:00-00:00"
+    ]
   },
   {
     "id": "washington-la-latteria",
@@ -1757,14 +2951,27 @@
     "latitude": 45.4762,
     "longitude": 9.1895,
     "priceRange": 2,
-    "tags": ["storico", "casalingo", "latteria", "washington"],
+    "tags": [
+      "storico",
+      "casalingo",
+      "latteria",
+      "washington"
+    ],
     "instagramHandle": null,
     "websiteURL": null,
     "imageURL": "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=800&h=500&fit=crop&auto=format",
     "rating": 4.6,
     "reviewCount": 890,
     "isNew": false,
-    "hours": ["12:30-14:30", "12:30-14:30", "12:30-14:30", "12:30-14:30", "12:30-14:30", null, null]
+    "hours": [
+      "12:30-14:30",
+      "12:30-14:30",
+      "12:30-14:30",
+      "12:30-14:30",
+      "12:30-14:30",
+      null,
+      null
+    ]
   },
   {
     "id": "washington-toldo",
@@ -1776,14 +2983,27 @@
     "latitude": 45.4723,
     "longitude": 9.1798,
     "priceRange": 2,
-    "tags": ["gelateria", "pasticceria", "storico", "artigianale"],
+    "tags": [
+      "gelateria",
+      "pasticceria",
+      "storico",
+      "artigianale"
+    ],
     "instagramHandle": null,
     "websiteURL": null,
     "imageURL": "https://images.unsplash.com/photo-1501443762994-82bd5dace89a?w=800&h=500&fit=crop&auto=format",
     "rating": 4.5,
     "reviewCount": 670,
     "isNew": false,
-    "hours": ["08:00-20:00", "08:00-20:00", "08:00-20:00", "08:00-20:00", "08:00-20:00", "08:00-20:00", "09:00-13:00"]
+    "hours": [
+      "08:00-20:00",
+      "08:00-20:00",
+      "08:00-20:00",
+      "08:00-20:00",
+      "08:00-20:00",
+      "08:00-20:00",
+      "09:00-13:00"
+    ]
   },
   {
     "id": "artico-gelateria",
@@ -1795,14 +3015,27 @@
     "latitude": 45.4604,
     "longitude": 9.1831,
     "priceRange": 1,
-    "tags": ["gelateria", "storico", "classico", "ticinese"],
+    "tags": [
+      "gelateria",
+      "storico",
+      "classico",
+      "ticinese"
+    ],
     "instagramHandle": "articogelateria",
     "websiteURL": null,
     "imageURL": "https://images.unsplash.com/photo-1501443762994-82bd5dace89a?w=800&h=500&fit=crop&auto=format",
     "rating": 4.6,
     "reviewCount": 1450,
     "isNew": false,
-    "hours": [null, "12:00-23:30", "12:00-23:30", "12:00-23:30", "12:00-00:30", "11:00-00:30", "11:00-23:30"]
+    "hours": [
+      null,
+      "12:00-23:30",
+      "12:00-23:30",
+      "12:00-23:30",
+      "12:00-00:30",
+      "11:00-00:30",
+      "11:00-23:30"
+    ]
   },
   {
     "id": "gelateria-della-musica",
@@ -1814,14 +3047,27 @@
     "latitude": 45.4492,
     "longitude": 9.1706,
     "priceRange": 2,
-    "tags": ["gelateria", "artigianale", "navigli", "romantico"],
+    "tags": [
+      "gelateria",
+      "artigianale",
+      "navigli",
+      "romantico"
+    ],
     "instagramHandle": "gelateriadellamusica",
     "websiteURL": null,
     "imageURL": "https://images.unsplash.com/photo-1567206563114-c179706b6290?w=800&h=500&fit=crop&auto=format",
     "rating": 4.4,
     "reviewCount": 820,
     "isNew": false,
-    "hours": ["12:00-23:00", "12:00-23:00", "12:00-23:00", "12:00-23:00", "12:00-00:00", "11:00-00:00", "11:00-23:00"]
+    "hours": [
+      "12:00-23:00",
+      "12:00-23:00",
+      "12:00-23:00",
+      "12:00-23:00",
+      "12:00-00:00",
+      "11:00-00:00",
+      "11:00-23:00"
+    ]
   },
   {
     "id": "grom-brera",
@@ -1833,14 +3079,27 @@
     "latitude": 45.4657,
     "longitude": 9.1892,
     "priceRange": 2,
-    "tags": ["gelateria", "biologico", "certificato", "qualità"],
+    "tags": [
+      "gelateria",
+      "biologico",
+      "certificato",
+      "qualità"
+    ],
     "instagramHandle": "gromgelato",
     "websiteURL": "https://www.grom.it",
     "imageURL": "https://images.unsplash.com/photo-1488900128323-21503983a07e?w=800&h=500&fit=crop&auto=format",
     "rating": 4.2,
     "reviewCount": 640,
     "isNew": false,
-    "hours": ["11:00-23:00", "11:00-23:00", "11:00-23:00", "11:00-23:00", "11:00-23:30", "11:00-23:30", "11:00-23:00"]
+    "hours": [
+      "11:00-23:00",
+      "11:00-23:00",
+      "11:00-23:00",
+      "11:00-23:00",
+      "11:00-23:30",
+      "11:00-23:30",
+      "11:00-23:00"
+    ]
   },
   {
     "id": "gelateria-magica-porta-venezia",
@@ -1852,14 +3111,27 @@
     "latitude": 45.4748,
     "longitude": 9.2028,
     "priceRange": 1,
-    "tags": ["gelateria", "artigianale", "quartiere", "porta venezia"],
+    "tags": [
+      "gelateria",
+      "artigianale",
+      "quartiere",
+      "porta venezia"
+    ],
     "instagramHandle": null,
     "websiteURL": null,
     "imageURL": "https://images.unsplash.com/photo-1557142046-c704a3adf364?w=800&h=500&fit=crop&auto=format",
     "rating": 4.5,
     "reviewCount": 560,
     "isNew": false,
-    "hours": ["12:00-23:00", "12:00-23:00", "12:00-23:00", "12:00-23:00", "12:00-23:30", "11:30-23:30", "11:30-23:00"]
+    "hours": [
+      "12:00-23:00",
+      "12:00-23:00",
+      "12:00-23:00",
+      "12:00-23:00",
+      "12:00-23:30",
+      "11:30-23:30",
+      "11:30-23:00"
+    ]
   },
   {
     "id": "ciacco-lab-navigli",
@@ -1871,14 +3143,27 @@
     "latitude": 45.4505,
     "longitude": 9.1703,
     "priceRange": 2,
-    "tags": ["gelateria", "artigianale", "cioccolato", "navigli"],
+    "tags": [
+      "gelateria",
+      "artigianale",
+      "cioccolato",
+      "navigli"
+    ],
     "instagramHandle": "ciaccolab",
     "websiteURL": null,
     "imageURL": "https://images.unsplash.com/photo-1570197788417-0e82375c9371?w=800&h=500&fit=crop&auto=format",
     "rating": 4.7,
     "reviewCount": 380,
     "isNew": false,
-    "hours": [null, "14:00-23:00", "14:00-23:00", "14:00-23:00", "14:00-23:30", "12:00-23:30", "12:00-23:00"]
+    "hours": [
+      null,
+      "14:00-23:00",
+      "14:00-23:00",
+      "14:00-23:00",
+      "14:00-23:30",
+      "12:00-23:30",
+      "12:00-23:00"
+    ]
   },
   {
     "id": "pasticceria-cucchi",
@@ -1890,14 +3175,27 @@
     "latitude": 45.4565,
     "longitude": 9.1782,
     "priceRange": 2,
-    "tags": ["pasticceria", "storico", "panettone", "colazione"],
+    "tags": [
+      "pasticceria",
+      "storico",
+      "panettone",
+      "colazione"
+    ],
     "instagramHandle": "pasticceriacucchi",
     "websiteURL": null,
     "imageURL": "https://images.unsplash.com/photo-1558961363-fa8fdf82db35?w=800&h=500&fit=crop&auto=format",
     "rating": 4.5,
     "reviewCount": 970,
     "isNew": false,
-    "hours": ["07:30-20:00", "07:30-20:00", "07:30-20:00", "07:30-20:00", "07:30-20:00", "07:30-13:00", null]
+    "hours": [
+      "07:30-20:00",
+      "07:30-20:00",
+      "07:30-20:00",
+      "07:30-20:00",
+      "07:30-20:00",
+      "07:30-13:00",
+      null
+    ]
   },
   {
     "id": "sant-ambroeus-moscova",
@@ -1909,14 +3207,27 @@
     "latitude": 45.4689,
     "longitude": 9.1947,
     "priceRange": 3,
-    "tags": ["pasticceria", "storico", "colazione", "milanese"],
+    "tags": [
+      "pasticceria",
+      "storico",
+      "colazione",
+      "milanese"
+    ],
     "instagramHandle": "santambroeus",
     "websiteURL": "https://www.santambroeus.com",
     "imageURL": "https://images.unsplash.com/photo-1495147466023-ac5c588e2e94?w=800&h=500&fit=crop&auto=format",
     "rating": 4.4,
     "reviewCount": 1100,
     "isNew": false,
-    "hours": ["08:00-20:00", "08:00-20:00", "08:00-20:00", "08:00-20:00", "08:00-20:00", "08:00-20:00", "09:00-18:00"]
+    "hours": [
+      "08:00-20:00",
+      "08:00-20:00",
+      "08:00-20:00",
+      "08:00-20:00",
+      "08:00-20:00",
+      "08:00-20:00",
+      "09:00-18:00"
+    ]
   },
   {
     "id": "pasticceria-cova-duomo",
@@ -1928,14 +3239,28 @@
     "latitude": 45.4672,
     "longitude": 9.1975,
     "priceRange": 4,
-    "tags": ["pasticceria", "lusso", "storico", "panettone", "montenapoleone"],
+    "tags": [
+      "pasticceria",
+      "lusso",
+      "storico",
+      "panettone",
+      "montenapoleone"
+    ],
     "instagramHandle": "covamilano",
     "websiteURL": "https://www.covamilano.com",
     "imageURL": "https://images.unsplash.com/photo-1550617931-e17a7b70dce2?w=800&h=500&fit=crop&auto=format",
     "rating": 4.3,
     "reviewCount": 780,
     "isNew": false,
-    "hours": ["09:00-20:00", "09:00-20:00", "09:00-20:00", "09:00-20:00", "09:00-20:00", "09:00-20:00", null]
+    "hours": [
+      "09:00-20:00",
+      "09:00-20:00",
+      "09:00-20:00",
+      "09:00-20:00",
+      "09:00-20:00",
+      "09:00-20:00",
+      null
+    ]
   },
   {
     "id": "flower-burger-brera",
@@ -1944,17 +3269,31 @@
     "categoria": "Hamburgheria",
     "address": "Via Castelfidardo, 7, Milano",
     "description": "Hamburgheria plant-based con burger coloratissimi e creativi. Ingredienti vegetali di alta qualità, pane artigianale e patate fritte perfette. Il burger vegano più instagrammato di Milano.",
-    "latitude": 45.4760,
+    "latitude": 45.476,
     "longitude": 9.1912,
     "priceRange": 2,
-    "tags": ["hamburger", "vegano", "vegetariano", "colorato", "instagrammable"],
+    "tags": [
+      "hamburger",
+      "vegano",
+      "vegetariano",
+      "colorato",
+      "instagrammable"
+    ],
     "instagramHandle": "flowerburger",
     "websiteURL": "https://www.flowerburger.it",
     "imageURL": "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=800&h=500&fit=crop&auto=format",
     "rating": 4.3,
     "reviewCount": 1250,
     "isNew": false,
-    "hours": ["12:00-15:00", "12:00-15:00", "12:00-15:00", "12:00-15:00", "12:00-15:00", "12:00-22:30", "12:00-22:30"]
+    "hours": [
+      "12:00-15:00",
+      "12:00-15:00",
+      "12:00-15:00",
+      "12:00-15:00",
+      "12:00-15:00",
+      "12:00-22:30",
+      "12:00-22:30"
+    ]
   },
   {
     "id": "honest-burgers-navigli",
@@ -1966,14 +3305,27 @@
     "latitude": 45.4518,
     "longitude": 9.1721,
     "priceRange": 2,
-    "tags": ["hamburger", "artigianale", "birra artigianale", "navigli"],
+    "tags": [
+      "hamburger",
+      "artigianale",
+      "birra artigianale",
+      "navigli"
+    ],
     "instagramHandle": null,
     "websiteURL": null,
     "imageURL": "https://images.unsplash.com/photo-1586190848861-99aa4a171e90?w=800&h=500&fit=crop&auto=format",
     "rating": 4.2,
     "reviewCount": 430,
     "isNew": false,
-    "hours": ["12:00-15:00", "12:00-15:00", "12:00-15:00", "12:00-15:00", "12:00-23:00", "12:00-23:00", "12:00-23:00"]
+    "hours": [
+      "12:00-15:00",
+      "12:00-15:00",
+      "12:00-15:00",
+      "12:00-15:00",
+      "12:00-23:00",
+      "12:00-23:00",
+      "12:00-23:00"
+    ]
   },
   {
     "id": "mo-burger-isola",
@@ -1985,14 +3337,27 @@
     "latitude": 45.4878,
     "longitude": 9.1892,
     "priceRange": 2,
-    "tags": ["hamburger", "quartiere", "isola", "informale"],
+    "tags": [
+      "hamburger",
+      "quartiere",
+      "isola",
+      "informale"
+    ],
     "instagramHandle": null,
     "websiteURL": null,
     "imageURL": "https://images.unsplash.com/photo-1551615593-ef5fe247e8f7?w=800&h=500&fit=crop&auto=format",
     "rating": 4.1,
     "reviewCount": 290,
     "isNew": false,
-    "hours": ["12:00-15:00", "12:00-15:00", "12:00-15:00", "12:00-15:00", "12:00-23:00", "12:00-23:00", "12:00-22:00"]
+    "hours": [
+      "12:00-15:00",
+      "12:00-15:00",
+      "12:00-15:00",
+      "12:00-15:00",
+      "12:00-23:00",
+      "12:00-23:00",
+      "12:00-22:00"
+    ]
   },
   {
     "id": "sempione-caffe-roma",
@@ -2004,14 +3369,28 @@
     "latitude": 45.4745,
     "longitude": 9.1695,
     "priceRange": 2,
-    "tags": ["caffè", "parco", "sempione", "aperitivo", "storico"],
+    "tags": [
+      "caffè",
+      "parco",
+      "sempione",
+      "aperitivo",
+      "storico"
+    ],
     "instagramHandle": null,
     "websiteURL": null,
     "imageURL": "https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=800&h=500&fit=crop&auto=format",
     "rating": 4.0,
     "reviewCount": 310,
     "isNew": false,
-    "hours": ["07:00-22:00", "07:00-22:00", "07:00-22:00", "07:00-22:00", "07:00-23:00", "08:00-23:00", "08:00-22:00"]
+    "hours": [
+      "07:00-22:00",
+      "07:00-22:00",
+      "07:00-22:00",
+      "07:00-22:00",
+      "07:00-23:00",
+      "08:00-23:00",
+      "08:00-22:00"
+    ]
   },
   {
     "id": "sempione-trattoria-del-parco",
@@ -2023,14 +3402,28 @@
     "latitude": 45.4752,
     "longitude": 9.1718,
     "priceRange": 2,
-    "tags": ["trattoria", "milanese", "risotto", "cotoletta", "sempione"],
+    "tags": [
+      "trattoria",
+      "milanese",
+      "risotto",
+      "cotoletta",
+      "sempione"
+    ],
     "instagramHandle": null,
     "websiteURL": null,
     "imageURL": "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800&h=500&fit=crop&auto=format",
     "rating": 4.2,
     "reviewCount": 480,
     "isNew": false,
-    "hours": ["12:00-14:30", "12:00-14:30", "12:00-14:30", "12:00-14:30", "12:00-14:30", "12:00-15:00", null]
+    "hours": [
+      "12:00-14:30",
+      "12:00-14:30",
+      "12:00-14:30",
+      "12:00-14:30",
+      "12:00-14:30",
+      "12:00-15:00",
+      null
+    ]
   },
   {
     "id": "porta-romana-osteria-acquabella",
@@ -2042,14 +3435,28 @@
     "latitude": 45.4558,
     "longitude": 9.1975,
     "priceRange": 2,
-    "tags": ["osteria", "lombarda", "vini naturali", "porta romana", "autentico"],
+    "tags": [
+      "osteria",
+      "lombarda",
+      "vini naturali",
+      "porta romana",
+      "autentico"
+    ],
     "instagramHandle": null,
     "websiteURL": null,
     "imageURL": "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=800&h=500&fit=crop&auto=format",
     "rating": 4.4,
     "reviewCount": 520,
     "isNew": false,
-    "hours": ["12:30-14:30", "12:30-14:30", "12:30-14:30", "12:30-14:30", "12:30-14:30", null, null]
+    "hours": [
+      "12:30-14:30",
+      "12:30-14:30",
+      "12:30-14:30",
+      "12:30-14:30",
+      "12:30-14:30",
+      null,
+      null
+    ]
   },
   {
     "id": "porta-romana-pizzeria-centrale",
@@ -2061,14 +3468,28 @@
     "latitude": 45.4544,
     "longitude": 9.1985,
     "priceRange": 2,
-    "tags": ["pizza", "napoletana", "forno a legna", "dop", "porta romana"],
+    "tags": [
+      "pizza",
+      "napoletana",
+      "forno a legna",
+      "dop",
+      "porta romana"
+    ],
     "instagramHandle": null,
     "websiteURL": null,
     "imageURL": "https://images.unsplash.com/photo-1513104890138-7c749659a591?w=800&h=500&fit=crop&auto=format",
     "rating": 4.3,
     "reviewCount": 640,
     "isNew": false,
-    "hours": ["12:00-14:30", "12:00-14:30", "12:00-14:30", "12:00-14:30", "12:00-23:30", "12:00-23:30", "12:00-23:30"]
+    "hours": [
+      "12:00-14:30",
+      "12:00-14:30",
+      "12:00-14:30",
+      "12:00-14:30",
+      "12:00-23:30",
+      "12:00-23:30",
+      "12:00-23:30"
+    ]
   },
   {
     "id": "ticinese-bar-colonne",
@@ -2077,17 +3498,31 @@
     "categoria": "Aperitivo",
     "address": "Corso di Porta Ticinese, 52, Milano",
     "description": "Il rituale dell'aperitivo davanti alle Colonne di San Lorenzo. Spritz, Negroni e cocktail classici con vista sul monumento romano più iconico di Milano.",
-    "latitude": 45.4590,
+    "latitude": 45.459,
     "longitude": 9.1835,
     "priceRange": 2,
-    "tags": ["aperitivo", "colonne", "ticinese", "spritz", "storico"],
+    "tags": [
+      "aperitivo",
+      "colonne",
+      "ticinese",
+      "spritz",
+      "storico"
+    ],
     "instagramHandle": null,
     "websiteURL": null,
     "imageURL": "https://images.unsplash.com/photo-1536935338788-846bb9981813?w=800&h=500&fit=crop&auto=format",
     "rating": 4.1,
     "reviewCount": 390,
     "isNew": false,
-    "hours": ["09:00-01:00", "09:00-01:00", "09:00-01:00", "09:00-01:00", "09:00-02:00", "09:00-02:00", "10:00-01:00"]
+    "hours": [
+      "09:00-01:00",
+      "09:00-01:00",
+      "09:00-01:00",
+      "09:00-01:00",
+      "09:00-02:00",
+      "09:00-02:00",
+      "10:00-01:00"
+    ]
   },
   {
     "id": "terrazza-gallia",
@@ -2099,13 +3534,1049 @@
     "latitude": 45.4861,
     "longitude": 9.2046,
     "priceRange": 4,
-    "tags": ["rooftop", "panoramico", "hotel", "michelin"],
+    "tags": [
+      "rooftop",
+      "panoramico",
+      "hotel",
+      "michelin"
+    ],
     "instagramHandle": "terrazzagallia",
     "websiteURL": "https://www.galliadining.com",
     "imageURL": "https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?w=800&h=500&fit=crop&auto=format",
     "rating": 4.7,
     "reviewCount": 612,
     "isNew": false,
-    "hours": ["12:00-00:00", "12:00-00:00", "12:00-00:00", "12:00-00:00", "12:00-01:00", "12:00-01:00", "12:00-00:00"]
+    "hours": [
+      "12:00-00:00",
+      "12:00-00:00",
+      "12:00-00:00",
+      "12:00-00:00",
+      "12:00-01:00",
+      "12:00-01:00",
+      "12:00-00:00"
+    ]
+  },
+  {
+    "id": "sempione-bar-atomica",
+    "name": "Bar Atomica",
+    "zona": "Sempione",
+    "categoria": "Cocktail Bar",
+    "address": "Corso Sempione, 36, Milano",
+    "description": "Cocktail bar iconico in un locale degli anni '60 con arredi d'epoca. Negroni, Americano e Campari Spritz in un'atmosfera retrò da vera Milano borghese.",
+    "latitude": 45.4762,
+    "longitude": 9.1732,
+    "priceRange": 2,
+    "tags": [
+      "cocktail",
+      "retrò",
+      "sempione",
+      "aperitivo",
+      "anni60"
+    ],
+    "instagramHandle": "baratomicamilano",
+    "websiteURL": null,
+    "imageURL": "https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?w=800&h=500&fit=crop&auto=format",
+    "isNew": false,
+    "rating": 4.3,
+    "reviewCount": 410,
+    "hours": [
+      "18:00-01:00",
+      "18:00-01:00",
+      "18:00-01:00",
+      "18:00-01:00",
+      "18:00-02:00",
+      "18:00-02:00",
+      "17:00-01:00"
+    ]
+  },
+  {
+    "id": "sempione-latteria-canonica",
+    "name": "Latteria San Simpliciano",
+    "zona": "Sempione",
+    "categoria": "Caffè",
+    "address": "Via Canonica, 7, Milano",
+    "description": "Storica latteria-bar a due passi dall'Arco della Pace. Colazione con cornetto e cappuccino, pranzo con piatti del giorno casalinghi. Punto di ritrovo del quartiere da generazioni.",
+    "latitude": 45.4728,
+    "longitude": 9.1751,
+    "priceRange": 1,
+    "tags": [
+      "caffè",
+      "colazione",
+      "storico",
+      "quartiere",
+      "pranzo"
+    ],
+    "instagramHandle": null,
+    "websiteURL": null,
+    "imageURL": "https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=800&h=500&fit=crop&auto=format",
+    "isNew": false,
+    "rating": 4.1,
+    "reviewCount": 280,
+    "hours": [
+      "07:00-20:00",
+      "07:00-20:00",
+      "07:00-20:00",
+      "07:00-20:00",
+      "07:00-20:00",
+      "08:00-14:00",
+      null
+    ]
+  },
+  {
+    "id": "sempione-pizzeria-procaccini",
+    "name": "Pizzeria Procaccini",
+    "zona": "Sempione",
+    "categoria": "Pizza",
+    "address": "Via Procaccini, 22, Milano",
+    "description": "Pizzeria napoletana a conduzione familiare nel cuore di Sempione. Impasto a lievitazione naturale 48 ore, forno a legna artigianale. Margherita, Diavola e le specialità della casa.",
+    "latitude": 45.4771,
+    "longitude": 9.1659,
+    "priceRange": 2,
+    "tags": [
+      "pizza",
+      "napoletana",
+      "forno a legna",
+      "famiglia",
+      "sempione"
+    ],
+    "instagramHandle": null,
+    "websiteURL": null,
+    "imageURL": "https://images.unsplash.com/photo-1513104890138-7c749659a591?w=800&h=500&fit=crop&auto=format",
+    "isNew": false,
+    "rating": 4.4,
+    "reviewCount": 590,
+    "hours": [
+      null,
+      "19:00-23:30",
+      "19:00-23:30",
+      "19:00-23:30",
+      "12:00-14:30",
+      "12:00-23:30",
+      "12:00-23:30"
+    ]
+  },
+  {
+    "id": "sempione-ristorante-elvezia",
+    "name": "Ristorante Viale Elvezia",
+    "zona": "Sempione",
+    "categoria": "Ristorante",
+    "address": "Viale Elvezia, 20, Milano",
+    "description": "Ristorante elegante di cucina milanese contemporanea. Risotto al midollo, cotoletta alla milanese e una carta vini ricercata. Ideale per una cena importante nel verde di Sempione.",
+    "latitude": 45.4741,
+    "longitude": 9.1712,
+    "priceRange": 3,
+    "tags": [
+      "ristorante",
+      "milanese",
+      "risotto",
+      "elegante",
+      "sempione"
+    ],
+    "instagramHandle": null,
+    "websiteURL": null,
+    "imageURL": "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800&h=500&fit=crop&auto=format",
+    "isNew": false,
+    "rating": 4.5,
+    "reviewCount": 340,
+    "hours": [
+      null,
+      "12:30-14:30",
+      "12:30-14:30",
+      "12:30-14:30",
+      "12:30-14:30",
+      "12:30-14:30",
+      null
+    ]
+  },
+  {
+    "id": "porta-romana-trattoria-madonnina",
+    "name": "Trattoria la Madonnina",
+    "zona": "Porta Romana",
+    "categoria": "Osteria",
+    "address": "Via Gentilino, 6, Milano",
+    "description": "Una delle trattorie storiche più autentiche di Milano, aperta dal 1936. Mondeghili, cassoeula invernale e ribollita. Tovaglie a quadri, prezzi onesti, clientela di quartiere.",
+    "latitude": 45.4512,
+    "longitude": 9.1918,
+    "priceRange": 2,
+    "tags": [
+      "trattoria",
+      "storico",
+      "milanese",
+      "mondeghili",
+      "cassoeula"
+    ],
+    "instagramHandle": null,
+    "websiteURL": null,
+    "imageURL": "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=800&h=500&fit=crop&auto=format",
+    "isNew": false,
+    "rating": 4.5,
+    "reviewCount": 720,
+    "hours": [
+      "12:00-14:30",
+      "12:00-14:30",
+      "12:00-14:30",
+      "12:00-14:30",
+      "12:00-14:30",
+      "12:00-15:00",
+      null
+    ]
+  },
+  {
+    "id": "porta-romana-vineria-romana",
+    "name": "Vineria di Porta Romana",
+    "zona": "Porta Romana",
+    "categoria": "Vineria",
+    "address": "Corso di Porta Romana, 38, Milano",
+    "description": "Enoteca curata con selezione di vini naturali e biologici italiani. Taglieri di salumi e formaggi artigianali, degustazioni guidate il giovedì sera. Atmosfera intima e raccolta.",
+    "latitude": 45.4551,
+    "longitude": 9.1978,
+    "priceRange": 2,
+    "tags": [
+      "vino",
+      "naturale",
+      "enoteca",
+      "taglieri",
+      "porta romana"
+    ],
+    "instagramHandle": null,
+    "websiteURL": null,
+    "imageURL": "https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?w=800&h=500&fit=crop&auto=format",
+    "isNew": false,
+    "rating": 4.4,
+    "reviewCount": 290,
+    "hours": [
+      null,
+      "18:00-00:00",
+      "18:00-00:00",
+      "18:00-00:00",
+      "18:00-01:00",
+      "16:00-01:00",
+      "16:00-23:00"
+    ]
+  },
+  {
+    "id": "porta-romana-sushi-romana",
+    "name": "Sushi Romana",
+    "zona": "Porta Romana",
+    "categoria": "Sushi",
+    "address": "Viale Isonzo, 5, Milano",
+    "description": "Ristorante giapponese moderno con materie prime freschissime. Omakase a pranzo, menu degustazione la sera. La barra del sushi con chef in vista è il fulcro dell'esperienza.",
+    "latitude": 45.4567,
+    "longitude": 9.2012,
+    "priceRange": 3,
+    "tags": [
+      "sushi",
+      "giapponese",
+      "omakase",
+      "fresco",
+      "porta romana"
+    ],
+    "instagramHandle": null,
+    "websiteURL": null,
+    "imageURL": "https://images.unsplash.com/photo-1553621042-f6e147245754?w=800&h=500&fit=crop&auto=format",
+    "isNew": true,
+    "rating": 4.6,
+    "reviewCount": 210,
+    "hours": [
+      null,
+      "12:00-14:30",
+      "12:00-14:30",
+      "12:00-14:30",
+      "12:00-14:30",
+      "12:00-15:00",
+      "12:00-15:00"
+    ]
+  },
+  {
+    "id": "porta-romana-pasticceria-beatrice",
+    "name": "Pasticceria Beatrice",
+    "zona": "Porta Romana",
+    "categoria": "Pasticceria",
+    "address": "Viale Beatrice d'Este, 12, Milano",
+    "description": "Pasticceria artigianale con oltre 50 anni di storia a Porta Romana. Torte mignon, panettoni artigianali natalizi e colazioni con cornetti sfogliati appena sfornati.",
+    "latitude": 45.4498,
+    "longitude": 9.1985,
+    "priceRange": 2,
+    "tags": [
+      "pasticceria",
+      "artigianale",
+      "colazione",
+      "torte",
+      "porta romana"
+    ],
+    "instagramHandle": null,
+    "websiteURL": null,
+    "imageURL": "https://images.unsplash.com/photo-1549931319-a545dcf3bc73?w=800&h=500&fit=crop&auto=format",
+    "isNew": false,
+    "rating": 4.5,
+    "reviewCount": 460,
+    "hours": [
+      "07:30-20:00",
+      "07:30-20:00",
+      "07:30-20:00",
+      "07:30-20:00",
+      "07:30-20:00",
+      "07:30-21:00",
+      "08:00-13:00"
+    ]
+  },
+  {
+    "id": "ticinese-rita-cocktails",
+    "name": "Rita Cocktails",
+    "zona": "Ticinese",
+    "categoria": "Cocktail Bar",
+    "address": "Via Angelo Fumagalli, 1, Milano",
+    "description": "Tra i cocktail bar più amati di Milano, nascosto in un vicolo del Ticinese. Ambiente intimo da speakeasy, bartender creativi e cocktail originali che cambiano stagione. Prenotazione consigliata.",
+    "latitude": 45.4567,
+    "longitude": 9.1788,
+    "priceRange": 2,
+    "tags": [
+      "cocktail",
+      "speakeasy",
+      "ticinese",
+      "creativi",
+      "notturno"
+    ],
+    "instagramHandle": "ritamilano",
+    "websiteURL": null,
+    "imageURL": "https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?w=800&h=500&fit=crop&auto=format",
+    "isNew": false,
+    "rating": 4.7,
+    "reviewCount": 980,
+    "hours": [
+      null,
+      null,
+      "19:00-02:00",
+      "19:00-02:00",
+      "19:00-02:00",
+      "18:00-02:00",
+      "18:00-01:00"
+    ]
+  },
+  {
+    "id": "ticinese-osteria-piatti",
+    "name": "Osteria dei Piatti",
+    "zona": "Ticinese",
+    "categoria": "Osteria",
+    "address": "Via Amedei, 6, Milano",
+    "description": "Osteria lombarda con radici profonde nel quartiere. Mondeghili in brodo, risotto alla milanese e cotoletta autentica. Vini sfusi e atmosfera da osteria vera, lontana dal turismo.",
+    "latitude": 45.4621,
+    "longitude": 9.1842,
+    "priceRange": 2,
+    "tags": [
+      "osteria",
+      "lombarda",
+      "autentico",
+      "cotoletta",
+      "ticinese"
+    ],
+    "instagramHandle": null,
+    "websiteURL": null,
+    "imageURL": "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800&h=500&fit=crop&auto=format",
+    "isNew": false,
+    "rating": 4.3,
+    "reviewCount": 530,
+    "hours": [
+      "12:00-14:30",
+      "12:00-14:30",
+      "12:00-14:30",
+      "12:00-14:30",
+      "12:00-14:30",
+      "12:00-15:00",
+      null
+    ]
+  },
+  {
+    "id": "ticinese-cantina-ticinese",
+    "name": "Cantina Ticinese",
+    "zona": "Ticinese",
+    "categoria": "Vineria",
+    "address": "Corso di Porta Ticinese, 65, Milano",
+    "description": "Cantina storica lungo il Corso Ticinese con una selezione di oltre 300 etichette. Calice al banco, bottiglie a asporto, degustazioni a tema. Un luogo per veri appassionati.",
+    "latitude": 45.4576,
+    "longitude": 9.1821,
+    "priceRange": 2,
+    "tags": [
+      "vino",
+      "cantina",
+      "enoteca",
+      "ticinese",
+      "degustazione"
+    ],
+    "instagramHandle": null,
+    "websiteURL": null,
+    "imageURL": "https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?w=800&h=500&fit=crop&auto=format",
+    "isNew": false,
+    "rating": 4.4,
+    "reviewCount": 380,
+    "hours": [
+      null,
+      "17:00-23:00",
+      "17:00-23:00",
+      "17:00-23:00",
+      "17:00-00:00",
+      "16:00-00:00",
+      "16:00-22:00"
+    ]
+  },
+  {
+    "id": "ticinese-atomic-burger",
+    "name": "Atomic Burger",
+    "zona": "Ticinese",
+    "categoria": "Hamburgheria",
+    "address": "Via Cesare Correnti, 18, Milano",
+    "description": "Hamburgheria gourmet con prodotti a km zero e carne bovina piemontese. Brioche artigianale, salse homemade e patatine in doppia cottura. Atmosfera urban-casual, ideale per un pasto veloce ma di qualità.",
+    "latitude": 45.4598,
+    "longitude": 9.1804,
+    "priceRange": 2,
+    "tags": [
+      "burger",
+      "gourmet",
+      "km zero",
+      "ticinese",
+      "casual"
+    ],
+    "instagramHandle": "atomicburgermi",
+    "websiteURL": null,
+    "imageURL": "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=800&h=500&fit=crop&auto=format",
+    "isNew": true,
+    "rating": 4.2,
+    "reviewCount": 310,
+    "hours": [
+      "12:00-22:30",
+      "12:00-22:30",
+      "12:00-22:30",
+      "12:00-22:30",
+      "12:00-23:30",
+      "12:00-23:30",
+      "12:00-22:00"
+    ]
+  },
+  {
+    "id": "washington-trattoria-navigli-alti",
+    "name": "Trattoria dei Navigli Alti",
+    "zona": "Washington",
+    "categoria": "Ristorante",
+    "address": "Via Washington, 34, Milano",
+    "description": "Ristorante di cucina lombarda in un ambiente raccolto e familiare. Menu che cambia settimanalmente con prodotti del mercato. Clientela di quartiere, prezzo fisso a pranzo molto conveniente.",
+    "latitude": 45.4676,
+    "longitude": 9.1521,
+    "priceRange": 2,
+    "tags": [
+      "lombarda",
+      "trattoria",
+      "pranzo",
+      "mercato",
+      "washington"
+    ],
+    "instagramHandle": null,
+    "websiteURL": null,
+    "imageURL": "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800&h=500&fit=crop&auto=format",
+    "isNew": false,
+    "rating": 4.2,
+    "reviewCount": 350,
+    "hours": [
+      "12:00-14:30",
+      "12:00-14:30",
+      "12:00-14:30",
+      "12:00-14:30",
+      "12:00-14:30",
+      "12:00-15:00",
+      null
+    ]
+  },
+  {
+    "id": "washington-caffe-fiera",
+    "name": "Caffè della Fiera",
+    "zona": "Washington",
+    "categoria": "Caffè",
+    "address": "Via Gattamelata, 28, Milano",
+    "description": "Bar storico a ridosso di Fieramilanocity. Colazioni veloci per i professionisti del quartiere, pranzi da asporto durante le fiere e un'ottima selezione di caffè di origini.",
+    "latitude": 45.4712,
+    "longitude": 9.1498,
+    "priceRange": 1,
+    "tags": [
+      "caffè",
+      "fiera",
+      "colazione",
+      "quartiere",
+      "washington"
+    ],
+    "instagramHandle": null,
+    "websiteURL": null,
+    "imageURL": "https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=800&h=500&fit=crop&auto=format",
+    "isNew": false,
+    "rating": 3.9,
+    "reviewCount": 180,
+    "hours": [
+      "06:30-20:00",
+      "06:30-20:00",
+      "06:30-20:00",
+      "06:30-20:00",
+      "06:30-20:00",
+      "07:00-14:00",
+      null
+    ]
+  },
+  {
+    "id": "washington-pizzeria-biscotti",
+    "name": "Pizzeria Biscotti",
+    "zona": "Washington",
+    "categoria": "Pizza",
+    "address": "Via Giambellino, 6, Milano",
+    "description": "Pizzeria di quartiere con impasto a lievitazione naturale e ingredienti selezionati. Gestione familiare dal 1982, prezzi accessibili e porzioni generose. La pizza di Washington.",
+    "latitude": 45.4652,
+    "longitude": 9.1548,
+    "priceRange": 1,
+    "tags": [
+      "pizza",
+      "quartiere",
+      "storico",
+      "famiglia",
+      "washington"
+    ],
+    "instagramHandle": null,
+    "websiteURL": null,
+    "imageURL": "https://images.unsplash.com/photo-1513104890138-7c749659a591?w=800&h=500&fit=crop&auto=format",
+    "isNew": false,
+    "rating": 4.1,
+    "reviewCount": 420,
+    "hours": [
+      null,
+      "19:00-23:00",
+      "19:00-23:00",
+      "19:00-23:00",
+      "12:00-14:30",
+      "12:00-23:30",
+      "12:00-22:30"
+    ]
+  },
+  {
+    "id": "washington-aperitivo-ovest",
+    "name": "Bar Ovest",
+    "zona": "Washington",
+    "categoria": "Aperitivo",
+    "address": "Via Lorenteggio, 12, Milano",
+    "description": "Punto di ritrovo serale del quartiere Washington. Aperitivo con buffet abbondante, musica dal vivo il venerdì e Spritz a meno di 6 euro. L'aperitivo della Milano che lavora.",
+    "latitude": 45.4631,
+    "longitude": 9.1517,
+    "priceRange": 1,
+    "tags": [
+      "aperitivo",
+      "buffet",
+      "musica",
+      "washington",
+      "spritz"
+    ],
+    "instagramHandle": null,
+    "websiteURL": null,
+    "imageURL": "https://images.unsplash.com/photo-1536935338788-846bb9981813?w=800&h=500&fit=crop&auto=format",
+    "isNew": false,
+    "rating": 4.0,
+    "reviewCount": 290,
+    "hours": [
+      null,
+      "17:30-23:00",
+      "17:30-23:00",
+      "17:30-23:00",
+      "17:30-00:00",
+      "17:00-00:00",
+      "17:00-23:00"
+    ]
+  },
+  {
+    "id": "corvetto-pizzeria-vigentina",
+    "name": "Pizzeria Vigentina",
+    "zona": "Corvetto",
+    "categoria": "Pizza",
+    "address": "Via Meda, 2, Milano",
+    "description": "Pizzeria amatissima nel quartiere Corvetto con impasto ad alta idratazione e cottura in forno elettrico professionale. Attesa breve, pizza croccante e buonissima. Vera istituzione locale.",
+    "latitude": 45.4392,
+    "longitude": 9.2118,
+    "priceRange": 1,
+    "tags": [
+      "pizza",
+      "corvetto",
+      "quartiere",
+      "croccante",
+      "popolare"
+    ],
+    "instagramHandle": null,
+    "websiteURL": null,
+    "imageURL": "https://images.unsplash.com/photo-1513104890138-7c749659a591?w=800&h=500&fit=crop&auto=format",
+    "isNew": false,
+    "rating": 4.2,
+    "reviewCount": 310,
+    "hours": [
+      null,
+      "19:00-23:00",
+      "19:00-23:00",
+      "19:00-23:00",
+      "12:00-14:30",
+      "12:00-23:30",
+      "12:00-22:30"
+    ]
+  },
+  {
+    "id": "corvetto-osteria-ponti",
+    "name": "Osteria Ponti",
+    "zona": "Corvetto",
+    "categoria": "Osteria",
+    "address": "Via Ettore Ponti, 8, Milano",
+    "description": "Osteria popolare a Corvetto frequentata da abitué del quartiere. Cucina casalinga lombarda: minestrone, bollito e verzini. Carafa di vino sfuso e prezzi di un'altra epoca.",
+    "latitude": 45.4425,
+    "longitude": 9.2145,
+    "priceRange": 1,
+    "tags": [
+      "osteria",
+      "popolare",
+      "lombarda",
+      "casalingo",
+      "corvetto"
+    ],
+    "instagramHandle": null,
+    "websiteURL": null,
+    "imageURL": "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=800&h=500&fit=crop&auto=format",
+    "isNew": false,
+    "rating": 4.1,
+    "reviewCount": 240,
+    "hours": [
+      "12:00-14:30",
+      "12:00-14:30",
+      "12:00-14:30",
+      "12:00-14:30",
+      "12:00-14:30",
+      "12:00-15:00",
+      null
+    ]
+  },
+  {
+    "id": "corvetto-aperitivo-corvetto",
+    "name": "Spritz & Go",
+    "zona": "Corvetto",
+    "categoria": "Aperitivo",
+    "address": "Piazza Corvetto, 5, Milano",
+    "description": "Bar sull'angolo della piazza con l'aperitivo più frequentato di Corvetto. Spritz, Campari e Aperol a prezzi onesti, tavolini in piazza d'estate. Il punto di riferimento del quartiere.",
+    "latitude": 45.4413,
+    "longitude": 9.2134,
+    "priceRange": 1,
+    "tags": [
+      "aperitivo",
+      "piazza",
+      "spritz",
+      "corvetto",
+      "quartiere"
+    ],
+    "instagramHandle": null,
+    "websiteURL": null,
+    "imageURL": "https://images.unsplash.com/photo-1536935338788-846bb9981813?w=800&h=500&fit=crop&auto=format",
+    "isNew": false,
+    "rating": 3.9,
+    "reviewCount": 190,
+    "hours": [
+      "07:00-23:00",
+      "07:00-23:00",
+      "07:00-23:00",
+      "07:00-23:00",
+      "07:00-00:00",
+      "08:00-00:00",
+      "09:00-23:00"
+    ]
+  },
+  {
+    "id": "corvetto-caffe-lodi",
+    "name": "Caffè del Lodi",
+    "zona": "Corvetto",
+    "categoria": "Caffè",
+    "address": "Corso Lodi, 78, Milano",
+    "description": "Bar di quartiere lungo il Corso Lodi, punto di ritrovo per lavoratori e studenti. Colazione veloce, panini freschi a pranzo e un'ottima selezione di snack. Servizio rapido e prezzi milanesi veri.",
+    "latitude": 45.4401,
+    "longitude": 9.2102,
+    "priceRange": 1,
+    "tags": [
+      "caffè",
+      "quartiere",
+      "colazione",
+      "veloce",
+      "corvetto"
+    ],
+    "instagramHandle": null,
+    "websiteURL": null,
+    "imageURL": "https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=800&h=500&fit=crop&auto=format",
+    "isNew": false,
+    "rating": 3.8,
+    "reviewCount": 155,
+    "hours": [
+      "06:30-21:00",
+      "06:30-21:00",
+      "06:30-21:00",
+      "06:30-21:00",
+      "06:30-21:00",
+      "07:00-14:00",
+      null
+    ]
+  },
+  {
+    "id": "bovisa-birrificio-campus",
+    "name": "Birrificio Campus",
+    "zona": "Bovisa",
+    "categoria": "Cocktail Bar",
+    "address": "Via Candiani, 72, Milano",
+    "description": "Birreria artigianale nel cuore di Bovisa, a pochi passi dal PoliMi. Birre prodotte in loco con malti italiani, ambiente industrial-chic e musica dal vivo nel fine settimana. Meta studentesca per eccellenza.",
+    "latitude": 45.5042,
+    "longitude": 9.1548,
+    "priceRange": 2,
+    "tags": [
+      "birra artigianale",
+      "campus",
+      "bovisa",
+      "studenti",
+      "industrial"
+    ],
+    "instagramHandle": "birrificiocandianiMI",
+    "websiteURL": null,
+    "imageURL": "https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?w=800&h=500&fit=crop&auto=format",
+    "isNew": false,
+    "rating": 4.3,
+    "reviewCount": 540,
+    "hours": [
+      null,
+      "17:00-01:00",
+      "17:00-01:00",
+      "17:00-01:00",
+      "17:00-02:00",
+      "15:00-02:00",
+      "15:00-01:00"
+    ]
+  },
+  {
+    "id": "bovisa-pizza-studenti",
+    "name": "Pizzeria degli Studenti",
+    "zona": "Bovisa",
+    "categoria": "Pizza",
+    "address": "Via Lambruschini, 4, Milano",
+    "description": "Pizzeria low-cost amata dagli studenti del Politecnico di Milano. Pizze a trancio a 1,50€, focacce farcite e calzoni da asporto. Fila all'ora di pranzo, ma ne vale la pena.",
+    "latitude": 45.5051,
+    "longitude": 9.1572,
+    "priceRange": 1,
+    "tags": [
+      "pizza al trancio",
+      "studenti",
+      "economico",
+      "bovisa",
+      "polimi"
+    ],
+    "instagramHandle": null,
+    "websiteURL": null,
+    "imageURL": "https://images.unsplash.com/photo-1513104890138-7c749659a591?w=800&h=500&fit=crop&auto=format",
+    "isNew": false,
+    "rating": 4.0,
+    "reviewCount": 470,
+    "hours": [
+      "11:00-21:00",
+      "11:00-21:00",
+      "11:00-21:00",
+      "11:00-21:00",
+      "11:00-21:00",
+      "11:00-18:00",
+      null
+    ]
+  },
+  {
+    "id": "bovisa-osteria-baldinucci",
+    "name": "Osteria di Bovisa",
+    "zona": "Bovisa",
+    "categoria": "Osteria",
+    "address": "Via Baldinucci, 15, Milano",
+    "description": "Osteria autentica nel quartiere storico di Bovisa, rimasto quasi intatto dai tempi delle fabbriche. Cucina di recupero e tradizione, con piatti come busecca e ossobuco. Vini di piccoli produttori.",
+    "latitude": 45.5028,
+    "longitude": 9.1539,
+    "priceRange": 2,
+    "tags": [
+      "osteria",
+      "storico",
+      "tradizione",
+      "bovisa",
+      "vini"
+    ],
+    "instagramHandle": null,
+    "websiteURL": null,
+    "imageURL": "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=800&h=500&fit=crop&auto=format",
+    "isNew": false,
+    "rating": 4.3,
+    "reviewCount": 290,
+    "hours": [
+      "12:00-14:30",
+      "12:00-14:30",
+      "12:00-14:30",
+      "12:00-14:30",
+      "12:00-14:30",
+      null,
+      null
+    ]
+  },
+  {
+    "id": "bovisa-caffe-politecnico",
+    "name": "Caffè Politecnico",
+    "zona": "Bovisa",
+    "categoria": "Caffè",
+    "address": "Via Durando, 10, Milano",
+    "description": "Bar universitario frequentato da docenti e studenti del campus PoliMi Bovisa. Caffè specialty, snack salutari e colazioni con prodotti locali. Wi-Fi gratuito e tavoli da lavoro.",
+    "latitude": 45.5065,
+    "longitude": 9.1561,
+    "priceRange": 1,
+    "tags": [
+      "caffè",
+      "università",
+      "studenti",
+      "specialty coffee",
+      "bovisa"
+    ],
+    "instagramHandle": null,
+    "websiteURL": null,
+    "imageURL": "https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=800&h=500&fit=crop&auto=format",
+    "isNew": false,
+    "rating": 4.0,
+    "reviewCount": 380,
+    "hours": [
+      "07:30-20:00",
+      "07:30-20:00",
+      "07:30-20:00",
+      "07:30-20:00",
+      "07:30-20:00",
+      "08:00-14:00",
+      null
+    ]
+  },
+  {
+    "id": "niguarda-trattoria-nord",
+    "name": "Trattoria del Nord",
+    "zona": "Niguarda",
+    "categoria": "Ristorante",
+    "address": "Via Pellegrino Rossi, 52, Milano",
+    "description": "Ristorante di periferia nord con cucina casalinga lombarda. Risotto ai funghi porcini, stufato di maiale e polenta alla bergamasca. Frequentatissimo da famiglie del quartiere, ottimo rapporto qualità-prezzo.",
+    "latitude": 45.5078,
+    "longitude": 9.1812,
+    "priceRange": 2,
+    "tags": [
+      "trattoria",
+      "lombarda",
+      "famiglia",
+      "risotto",
+      "niguarda"
+    ],
+    "instagramHandle": null,
+    "websiteURL": null,
+    "imageURL": "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800&h=500&fit=crop&auto=format",
+    "isNew": false,
+    "rating": 4.2,
+    "reviewCount": 310,
+    "hours": [
+      "12:00-14:30",
+      "12:00-14:30",
+      "12:00-14:30",
+      "12:00-14:30",
+      "12:00-14:30",
+      "12:00-15:00",
+      null
+    ]
+  },
+  {
+    "id": "niguarda-pizzeria-ca-granda",
+    "name": "Pizzeria Ca' Granda",
+    "zona": "Niguarda",
+    "categoria": "Pizza",
+    "address": "Viale Ca' Granda, 15, Milano",
+    "description": "Pizzeria con forno a legna a Niguarda, frequentatissima dal personale dell'ospedale vicino. Pizze classiche e speciali, impasto fragrante e prezzi accessibili. Servizio rapido e asporto disponibile.",
+    "latitude": 45.5091,
+    "longitude": 9.1831,
+    "priceRange": 1,
+    "tags": [
+      "pizza",
+      "forno a legna",
+      "niguarda",
+      "quartiere",
+      "asporto"
+    ],
+    "instagramHandle": null,
+    "websiteURL": null,
+    "imageURL": "https://images.unsplash.com/photo-1513104890138-7c749659a591?w=800&h=500&fit=crop&auto=format",
+    "isNew": false,
+    "rating": 4.1,
+    "reviewCount": 280,
+    "hours": [
+      null,
+      "19:00-23:00",
+      "19:00-23:00",
+      "19:00-23:00",
+      "12:00-14:30",
+      "12:00-23:30",
+      "12:00-22:30"
+    ]
+  },
+  {
+    "id": "niguarda-caffe-parco-nord",
+    "name": "Caffè del Parco Nord",
+    "zona": "Niguarda",
+    "categoria": "Caffè",
+    "address": "Via Clerici, 3, Milano",
+    "description": "Bar immerso nel verde ai bordi del Parco Nord. Meta domenicale per jogger e famiglie, apre presto e chiude tardi d'estate. Cocktail analcolici e granite artigianali nella bella stagione.",
+    "latitude": 45.5065,
+    "longitude": 9.1798,
+    "priceRange": 1,
+    "tags": [
+      "caffè",
+      "parco",
+      "verde",
+      "niguarda",
+      "domenica"
+    ],
+    "instagramHandle": null,
+    "websiteURL": null,
+    "imageURL": "https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=800&h=500&fit=crop&auto=format",
+    "isNew": false,
+    "rating": 3.9,
+    "reviewCount": 195,
+    "hours": [
+      "07:00-21:00",
+      "07:00-21:00",
+      "07:00-21:00",
+      "07:00-21:00",
+      "07:00-21:00",
+      "07:00-22:00",
+      "08:00-22:00"
+    ]
+  },
+  {
+    "id": "greco-osteria-del-tram",
+    "name": "Osteria del Tram",
+    "zona": "Greco",
+    "categoria": "Osteria",
+    "address": "Via Greco, 10, Milano",
+    "description": "Osteria storica nel quartiere di Greco, accanto alla vecchia linea tranviaria. Cucina semplice e genuina: minestrone, trippa e bollito. Tavoli condivisi, vino sfuso e clientela di vecchi milanesi.",
+    "latitude": 45.4991,
+    "longitude": 9.2142,
+    "priceRange": 1,
+    "tags": [
+      "osteria",
+      "storico",
+      "tram",
+      "greco",
+      "genuino"
+    ],
+    "instagramHandle": null,
+    "websiteURL": null,
+    "imageURL": "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=800&h=500&fit=crop&auto=format",
+    "isNew": false,
+    "rating": 4.3,
+    "reviewCount": 340,
+    "hours": [
+      "12:00-14:30",
+      "12:00-14:30",
+      "12:00-14:30",
+      "12:00-14:30",
+      "12:00-14:30",
+      "12:00-15:00",
+      null
+    ]
+  },
+  {
+    "id": "greco-pizzeria-brianza",
+    "name": "Pizzeria Brianza",
+    "zona": "Greco",
+    "categoria": "Pizza",
+    "address": "Viale Brianza, 8, Milano",
+    "description": "Pizzeria a gestione familiare nel vivace Viale Brianza di Greco. Pizze napoletane con prodotti DOP, pasta fresca fatta in casa e menu fisso a pranzo. Ottima alternativa alle pizzerie del centro.",
+    "latitude": 45.5001,
+    "longitude": 9.2158,
+    "priceRange": 2,
+    "tags": [
+      "pizza",
+      "napoletana",
+      "dop",
+      "greco",
+      "famiglia"
+    ],
+    "instagramHandle": null,
+    "websiteURL": null,
+    "imageURL": "https://images.unsplash.com/photo-1513104890138-7c749659a591?w=800&h=500&fit=crop&auto=format",
+    "isNew": false,
+    "rating": 4.2,
+    "reviewCount": 390,
+    "hours": [
+      null,
+      "19:00-23:00",
+      "19:00-23:00",
+      "19:00-23:00",
+      "12:00-14:30",
+      "12:00-23:30",
+      "12:00-22:30"
+    ]
+  },
+  {
+    "id": "greco-burger-republic",
+    "name": "Burger Republic",
+    "zona": "Greco",
+    "categoria": "Hamburgheria",
+    "address": "Via Greco, 45, Milano",
+    "description": "Hamburgheria moderna nel quartiere Greco con ingredienti locali e carne di filiera tracciata. Burger personalizzabili, salse homemade e frivolezze di patate dolci. Ambiente giovane e informale.",
+    "latitude": 45.4978,
+    "longitude": 9.2131,
+    "priceRange": 2,
+    "tags": [
+      "burger",
+      "moderno",
+      "locale",
+      "giovane",
+      "greco"
+    ],
+    "instagramHandle": "burgerrepublicMI",
+    "websiteURL": null,
+    "imageURL": "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=800&h=500&fit=crop&auto=format",
+    "isNew": true,
+    "rating": 4.1,
+    "reviewCount": 220,
+    "hours": [
+      "12:00-22:30",
+      "12:00-22:30",
+      "12:00-22:30",
+      "12:00-22:30",
+      "12:00-23:30",
+      "12:00-23:30",
+      "12:00-22:00"
+    ]
+  },
+  {
+    "id": "greco-caffe-stazione",
+    "name": "Caffè della Stazione",
+    "zona": "Greco",
+    "categoria": "Caffè",
+    "address": "Via Sarca, 24, Milano",
+    "description": "Bar animato nei pressi della stazione di Greco-Pirelli. Colazioni veloci per pendolari, pranzi da asporto e caffè espresso tra i migliori del quadrante nord-est. Prezzi da bar di stazione, qualità da specialty.",
+    "latitude": 45.5008,
+    "longitude": 9.2185,
+    "priceRange": 1,
+    "tags": [
+      "caffè",
+      "stazione",
+      "pendolari",
+      "greco",
+      "espresso"
+    ],
+    "instagramHandle": null,
+    "websiteURL": null,
+    "imageURL": "https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=800&h=500&fit=crop&auto=format",
+    "isNew": false,
+    "rating": 4.0,
+    "reviewCount": 260,
+    "hours": [
+      "06:00-21:00",
+      "06:00-21:00",
+      "06:00-21:00",
+      "06:00-21:00",
+      "06:00-21:00",
+      "07:00-14:00",
+      null
+    ]
   }
 ]
