@@ -1,5 +1,4 @@
 const DATA_URL = 'https://raw.githubusercontent.com/francescadilallo-cpu/App-Milan-Restaurant/main/MilanoLocali/Resources/locali.json';
-const FSQ_URL  = 'https://raw.githubusercontent.com/francescadilallo-cpu/App-Milan-Restaurant/main/docs/foursquare-data.json';
 
 /* ── Zone config ── */
 /* `wiki` = Wikipedia page whose main image represents the zone.
@@ -100,6 +99,8 @@ let detailMap = null;
 let mainMap   = null;
 let mainMarkers = [];
 let previousScreen = 'scopri';
+let mapDirty = true;
+let _searchTimer = null;
 
 /* ── Hours helpers ── */
 function isOpenNow(locale) {
@@ -161,14 +162,8 @@ document.addEventListener('DOMContentLoaded', async () => {
   }
 
   try {
-    const [r, fsqR] = await Promise.all([
-      fetch(DATA_URL),
-      fetch(FSQ_URL).catch(() => null),
-    ]);
-    const curated = r.ok ? await r.json() : FALLBACK;
-    const fsq     = (fsqR && fsqR.ok) ? await fsqR.json() : [];
-    const names   = new Set(curated.map(l => l.name.toLowerCase()));
-    allLocali = [...curated, ...fsq.filter(l => !names.has(l.name.toLowerCase()))];
+    const r = await fetch(DATA_URL);
+    allLocali = r.ok ? await r.json() : FALLBACK;
   } catch { allLocali = FALLBACK; }
 
   // Fetch neighborhood photos from Wikipedia (uses localStorage cache).
@@ -179,7 +174,10 @@ document.addEventListener('DOMContentLoaded', async () => {
   renderScopri();
   initMainMap();
   bindTabs();
-  document.getElementById('search-input').addEventListener('input', e => { searchQuery = e.target.value.trim(); renderScopri(); });
+  document.getElementById('search-input').addEventListener('input', e => {
+    clearTimeout(_searchTimer);
+    _searchTimer = setTimeout(() => { searchQuery = e.target.value.trim(); mapDirty = true; renderScopri(); }, 150);
+  });
   document.getElementById('btn-filter').addEventListener('click', openDrawer);
   document.getElementById('filter-overlay').addEventListener('click', closeDrawer);
   document.getElementById('back-from-zona').addEventListener('click', () => showScreen('scopri'));
@@ -241,6 +239,7 @@ function buildCatBar() {
   openChip.innerHTML = '<span class="open-badge"></span> Aperto ora';
   openChip.addEventListener('click', () => {
     filterOpenNow = !filterOpenNow;
+    mapDirty = true;
     openChip.classList.toggle('active', filterOpenNow);
     renderScopri();
     if (document.getElementById('screen-mappa').classList.contains('active')) renderMapMarkers();
@@ -254,6 +253,7 @@ function buildCatBar() {
     chip.textContent = name;
     chip.addEventListener('click', () => {
       filterCat = filterCat === name ? null : name;
+      mapDirty = true;
       document.querySelectorAll('.cat-chip[data-cat]').forEach(c => c.classList.toggle('active', c.dataset.cat === filterCat));
       renderScopri();
       if (document.getElementById('screen-mappa').classList.contains('active')) renderMapMarkers();
@@ -526,6 +526,7 @@ function initMainMap() {
 }
 
 function renderMapMarkers() {
+  mapDirty = false;
   mainMarkers.forEach(m => m.remove());
   mainMarkers = [];
   filtered().forEach(locale => {
@@ -606,7 +607,7 @@ function bindTabs() {
       const name = tab.dataset.tab;
       showScreen(name);
       if (name === 'preferiti') renderFav();
-      if (name === 'mappa') renderMapMarkers();
+      if (name === 'mappa' && mapDirty) renderMapMarkers();
     });
   });
 }
@@ -633,7 +634,7 @@ function openDrawer() {
   clear.className = 'drawer-clear';
   clear.textContent = 'Azzera filtri';
   clear.addEventListener('click', () => {
-    filterZona = null; filterCat = null; filterOpenNow = false;
+    filterZona = null; filterCat = null; filterOpenNow = false; mapDirty = true;
     document.querySelectorAll('.cat-chip[data-cat]').forEach(c => c.classList.remove('active'));
     const openChip = document.getElementById('open-now-chip');
     if (openChip) openChip.classList.remove('active');
@@ -655,7 +656,7 @@ function mkDrawerItem(zona, label, color) {
       ${label}
     </div>
     ${isActive ? '<svg class="drawer-check" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>' : ''}`;
-  item.addEventListener('click', () => { filterZona = zona; closeDrawer(); renderScopri(); });
+  item.addEventListener('click', () => { filterZona = zona; mapDirty = true; closeDrawer(); renderScopri(); });
   return item;
 }
 
