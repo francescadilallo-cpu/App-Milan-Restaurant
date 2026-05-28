@@ -161,6 +161,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     document.getElementById('onboarding').classList.add('hidden');
   }
 
+  // Load curated data first → fast first paint
   try {
     const r = await fetch(DATA_URL);
     allLocali = r.ok ? await r.json() : FALLBACK;
@@ -173,6 +174,18 @@ document.addEventListener('DOMContentLoaded', async () => {
   buildCatBar();
   renderScopri();
   initMainMap();
+
+  // Load OSM data in background after first paint — merges without blocking UI
+  fetch(FSQ_URL).then(r => r.ok ? r.json() : []).then(fsq => {
+    if (!fsq.length) return;
+    const names = new Set(allLocali.map(l => l.name.toLowerCase()));
+    const extras = fsq.filter(l => !names.has(l.name.toLowerCase()));
+    if (!extras.length) return;
+    allLocali = [...allLocali, ...extras];
+    mapDirty = true;
+    renderScopri();
+    if (document.getElementById('screen-mappa').classList.contains('active')) renderMapMarkers();
+  }).catch(() => {});
   bindTabs();
   document.getElementById('search-input').addEventListener('input', e => {
     clearTimeout(_searchTimer);
