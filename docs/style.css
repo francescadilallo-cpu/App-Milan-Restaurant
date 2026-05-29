@@ -714,6 +714,38 @@ html, body {
 .hours-badge.closed { background: #FF3B3015; color: #FF3B30; }
 .hours-badge.unknown { background: var(--surface2); color: var(--label3); }
 
+/* ── Geo / Vicino a te ── */
+.geo-banner {
+  background: #FF9F0A18;
+  color: #FF9F0A;
+  font-size: 13px;
+  font-weight: 500;
+  padding: 10px 18px;
+  text-align: center;
+}
+.dist-badge {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 600;
+  color: #007AFF;
+  background: #007AFF15;
+  border-radius: 6px;
+  padding: 2px 7px;
+  margin-bottom: 3px;
+}
+.zone-label-inner {
+  font-size: 12px;
+  font-weight: 700;
+  text-align: center;
+  white-space: nowrap;
+  text-shadow: 0 1px 3px rgba(255,255,255,0.9);
+}
+.zone-label-inner small {
+  font-size: 10px;
+  font-weight: 500;
+  opacity: 0.8;
+}
+
 /* ══════════════════════════════════════════
    iPhone frame — desktop only
    ══════════════════════════════════════════ */
