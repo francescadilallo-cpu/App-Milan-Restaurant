@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <title>Milano</title>
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-  <link rel="stylesheet" href="style.css?v=13" />
+  <link rel="stylesheet" href="style.css?v=14" />
 </head>
 <body>
 
@@ -33,7 +33,7 @@
                     <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/>
                   </svg>
                 </div>
-                <span>12 zone di Milano</span>
+                <span>Locali vicino a te</span>
               </div>
               <div class="ob-feature">
                 <div class="ob-feature-icon">
@@ -59,8 +59,18 @@
 
         <div id="app">
 
+          <!-- VICINO A TE -->
+          <div id="screen-vicino" class="screen active">
+            <div class="nav-bar">
+              <span class="nav-wordmark">Milano<span class="dot">.</span></span>
+              <span class="nav-subtitle" id="vicino-subtitle">Vicino a te</span>
+            </div>
+            <div id="geo-banner" class="geo-banner hidden"></div>
+            <div class="locale-list" id="vicino-list"></div>
+          </div>
+
           <!-- SCOPRI -->
-          <div id="screen-scopri" class="screen active">
+          <div id="screen-scopri" class="screen">
             <div class="nav-bar">
               <span class="nav-wordmark">Milano<span class="dot">.</span></span>
               <button class="icon-btn" id="btn-filter">
@@ -156,11 +166,11 @@
 
           <!-- TAB BAR -->
           <nav class="tab-bar">
-            <button class="tab active" data-tab="scopri">
+            <button class="tab active" data-tab="vicino">
               <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
-                <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/>
               </svg>
-              <span>Scopri</span>
+              <span>Vicino</span>
             </button>
             <button class="tab" data-tab="mappa">
               <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
@@ -168,6 +178,12 @@
                 <line x1="8" y1="2" x2="8" y2="18"/><line x1="16" y1="6" x2="16" y2="22"/>
               </svg>
               <span>Mappa</span>
+            </button>
+            <button class="tab" data-tab="scopri">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+              </svg>
+              <span>Scopri</span>
             </button>
             <button class="tab" data-tab="preferiti">
               <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
@@ -198,6 +214,6 @@
   </div><!-- #phone-wrap -->
 
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-  <script src="app.js?v=13"></script>
+  <script src="app.js?v=14"></script>
 </body>
 </html>

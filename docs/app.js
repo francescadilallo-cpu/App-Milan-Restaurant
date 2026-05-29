@@ -1,5 +1,5 @@
 const DATA_URL = 'https://raw.githubusercontent.com/francescadilallo-cpu/App-Milan-Restaurant/main/MilanoLocali/Resources/locali.json';
-const OSM_URL  = './osm-data.json';
+const OSM_URL  = './osm-data.json?v=1';
 
 /* ── Zone config ── */
 /* `wiki` = Wikipedia page whose main image represents the zone.
@@ -102,6 +102,30 @@ let mainMarkers = [];
 let previousScreen = 'scopri';
 let mapDirty = true;
 let _searchTimer = null;
+let userLat = null, userLon = null, geoState = 'pending'; // 'pending'|'granted'|'denied'
+let osmLoaded = false; // guard against double osm merge
+let zoneCircles = []; // Leaflet circle objects for zoom < 14
+
+function haversine(lat1, lon1, lat2, lon2) {
+  const R = 6371;
+  const dLat = (lat2 - lat1) * Math.PI / 180;
+  const dLon = (lon2 - lon1) * Math.PI / 180;
+  const a = Math.sin(dLat/2)**2 + Math.cos(lat1*Math.PI/180)*Math.cos(lat2*Math.PI/180)*Math.sin(dLon/2)**2;
+  return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+}
+
+function formatDist(km) {
+  return km < 1 ? `${Math.round(km*1000)} m` : `${km.toFixed(1)} km`;
+}
+
+function renderLocaleList(el, locales, onClickFactory) {
+  el.innerHTML = '';
+  if (!locales.length) {
+    el.innerHTML = '<p style="text-align:center;color:var(--label3);padding:48px 16px;font-size:15px">Nessun risultato</p>';
+    return;
+  }
+  locales.forEach(l => el.appendChild(makeLocaleItem(l, onClickFactory(l))));
+}
 
 /* ── Hours helpers ── */
 function isOpenNow(locale) {
@@ -175,22 +199,25 @@ document.addEventListener('DOMContentLoaded', async () => {
   buildCatBar();
   renderScopri();
   initMainMap();
+  initGeolocation();
 
   // Load OSM data in background after first paint — merges without blocking UI
   fetch(OSM_URL).then(r => r.ok ? r.json() : []).then(fsq => {
-    if (!fsq.length) return;
+    if (osmLoaded || !fsq.length) return;
+    osmLoaded = true;
     const names = new Set(allLocali.map(l => l.name.toLowerCase()));
     const extras = fsq.filter(l => !names.has(l.name.toLowerCase()));
     if (!extras.length) return;
     allLocali = [...allLocali, ...extras];
     mapDirty = true;
     renderScopri();
-    if (document.getElementById('screen-mappa').classList.contains('active')) renderMapMarkers();
+    if (geoState !== 'pending') renderVicino();
+    if (document.getElementById('screen-mappa').classList.contains('active')) refreshMap();
   }).catch(() => {});
   bindTabs();
   document.getElementById('search-input').addEventListener('input', e => {
     clearTimeout(_searchTimer);
-    _searchTimer = setTimeout(() => { searchQuery = e.target.value.trim(); mapDirty = true; renderScopri(); }, 150);
+    _searchTimer = setTimeout(() => { searchQuery = e.target.value.trim(); mapDirty = true; renderScopri(); if (document.getElementById('screen-vicino').classList.contains('active')) renderVicino(); }, 150);
   });
   document.getElementById('btn-filter').addEventListener('click', openDrawer);
   document.getElementById('filter-overlay').addEventListener('click', closeDrawer);
@@ -256,7 +283,7 @@ function buildCatBar() {
     mapDirty = true;
     openChip.classList.toggle('active', filterOpenNow);
     renderScopri();
-    if (document.getElementById('screen-mappa').classList.contains('active')) renderMapMarkers();
+    if (document.getElementById('screen-mappa').classList.contains('active')) refreshMap();
   });
   bar.appendChild(openChip);
 
@@ -270,15 +297,15 @@ function buildCatBar() {
       mapDirty = true;
       document.querySelectorAll('.cat-chip[data-cat]').forEach(c => c.classList.toggle('active', c.dataset.cat === filterCat));
       renderScopri();
-      if (document.getElementById('screen-mappa').classList.contains('active')) renderMapMarkers();
+      if (document.getElementById('screen-mappa').classList.contains('active')) refreshMap();
     });
     bar.appendChild(chip);
   });
 }
 
 /* ── Zona list ── */
-function showZona(zona) {
-  previousScreen = 'scopri';
+function showZona(zona, from) {
+  previousScreen = from || 'scopri';
   document.getElementById('zona-title').textContent = zona;
 
   // Populate zona hero
@@ -520,6 +547,57 @@ function showDetail(locale, from) {
   showScreen('detail');
 }
 
+/* ── Vicino a te ── */
+function renderVicino() {
+  const list = document.getElementById('vicino-list');
+  const banner = document.getElementById('geo-banner');
+  const subtitle = document.getElementById('vicino-subtitle');
+
+  if (geoState === 'pending') {
+    list.innerHTML = '<p style="text-align:center;color:var(--label3);padding:48px 16px;font-size:15px">Sto cercando la tua posizione…</p>';
+    return;
+  }
+
+  const locales = filtered().filter(l => l.latitude != null && l.longitude != null);
+
+  if (geoState === 'granted') {
+    banner.classList.add('hidden');
+    subtitle.textContent = 'Vicino a te';
+    locales.sort((a, b) =>
+      haversine(userLat, userLon, a.latitude, a.longitude) -
+      haversine(userLat, userLon, b.latitude, b.longitude)
+    );
+    list.innerHTML = '';
+    locales.forEach(l => {
+      const dist = haversine(userLat, userLon, l.latitude, l.longitude);
+      const item = makeLocaleItem(l, () => showDetail(l, 'vicino'));
+      const distBadge = document.createElement('span');
+      distBadge.className = 'dist-badge';
+      distBadge.textContent = formatDist(dist);
+      item.querySelector('.locale-address')?.insertAdjacentElement('beforebegin', distBadge);
+      list.appendChild(item);
+    });
+  } else {
+    // denied
+    banner.className = 'geo-banner';
+    banner.textContent = '📍 Posizione non disponibile — mostriamo tutti i locali';
+    subtitle.textContent = 'Tutti i locali';
+    locales.sort((a, b) => a.name.localeCompare(b.name));
+    list.innerHTML = '';
+    locales.forEach(l => list.appendChild(makeLocaleItem(l, () => showDetail(l, 'vicino'))));
+  }
+}
+
+function initGeolocation() {
+  if (!navigator.geolocation) { geoState = 'denied'; renderVicino(); return; }
+  renderVicino(); // show spinner immediately
+  navigator.geolocation.getCurrentPosition(
+    pos => { userLat = pos.coords.latitude; userLon = pos.coords.longitude; geoState = 'granted'; renderVicino(); },
+    ()  => { geoState = 'denied'; renderVicino(); },
+    { timeout: 8000, maximumAge: 60000 }
+  );
+}
+
 /* ── Map ── */
 function makePin(color) {
   return `<div class="map-pin">
@@ -533,23 +611,61 @@ function makePin(color) {
 }
 
 function initMainMap() {
-  mainMap = L.map('main-map', { zoomControl:false, attributionControl:false }).setView([45.4654, 9.1859], 13);
+  const center = (geoState === 'granted' && userLat != null) ? [userLat, userLon] : [45.4654, 9.1859];
+  mainMap = L.map('main-map', { zoomControl:false, attributionControl:false }).setView(center, 13);
   L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png').addTo(mainMap);
   L.control.zoom({ position:'topright' }).addTo(mainMap);
-  renderMapMarkers();
+  mainMap.on('zoomend', () => { mapDirty = true; refreshMap(); });
+  refreshMap();
 }
 
-function renderMapMarkers() {
-  mapDirty = false;
-  mainMarkers.forEach(m => m.remove());
-  mainMarkers = [];
-  filtered().forEach(locale => {
-    const color = (CAT_META[locale.categoria]||{}).color || '#007AFF';
-    const icon = L.divIcon({ className:'', html: makePin(color), iconSize:[32,40], iconAnchor:[16,40] });
-    const m = L.marker([locale.latitude, locale.longitude], { icon }).addTo(mainMap);
-    m.on('click', () => showMapSheet(locale));
-    mainMarkers.push(m);
+function renderZoneCircles() {
+  zoneCircles.forEach(c => c.remove());
+  zoneCircles = [];
+  const byZona = {};
+  filtered().forEach(l => { (byZona[l.zona] = byZona[l.zona]||[]).push(l); });
+  Object.entries(byZona).forEach(([zona, items]) => {
+    const meta = ZONE_META[zona] || {};
+    const center = items.reduce((acc, l) => [acc[0]+l.latitude, acc[1]+l.longitude], [0,0]);
+    const lat = center[0] / items.length;
+    const lon = center[1] / items.length;
+    const radius = 200 + items.length * 15;
+    const c = L.circle([lat, lon], {
+      radius,
+      color: meta.color || '#007AFF',
+      fillColor: meta.color || '#007AFF',
+      fillOpacity: 0.25,
+      weight: 2,
+    }).addTo(mainMap);
+    const label = L.divIcon({
+      className: 'zone-label',
+      html: `<div class="zone-label-inner" style="color:${meta.color||'#007AFF'}">${zona}<br><small>${items.length}</small></div>`,
+      iconAnchor: [0, 0],
+    });
+    const marker = L.marker([lat, lon], { icon: label, interactive: true }).addTo(mainMap);
+    marker.on('click', () => showZona(zona, 'mappa'));
+    c.on('click', () => showZona(zona, 'mappa'));
+    zoneCircles.push(c, marker);
   });
+}
+
+function refreshMap() {
+  mapDirty = false;
+  const zoom = mainMap.getZoom();
+  if (zoom < 14) {
+    mainMarkers.forEach(m => m.remove()); mainMarkers = [];
+    renderZoneCircles();
+  } else {
+    zoneCircles.forEach(c => c.remove()); zoneCircles = [];
+    mainMarkers.forEach(m => m.remove()); mainMarkers = [];
+    filtered().forEach(locale => {
+      const color = (CAT_META[locale.categoria]||{}).color || '#007AFF';
+      const icon = L.divIcon({ className:'', html: makePin(color), iconSize:[32,40], iconAnchor:[16,40] });
+      const m = L.marker([locale.latitude, locale.longitude], { icon }).addTo(mainMap);
+      m.on('click', () => showMapSheet(locale));
+      mainMarkers.push(m);
+    });
+  }
 }
 
 function showMapSheet(locale) {
@@ -620,8 +736,9 @@ function bindTabs() {
       tab.classList.add('active');
       const name = tab.dataset.tab;
       showScreen(name);
+      if (name === 'vicino') renderVicino();
       if (name === 'preferiti') renderFav();
-      if (name === 'mappa' && mapDirty) renderMapMarkers();
+      if (name === 'mappa' && mapDirty) refreshMap();
     });
   });
 }
