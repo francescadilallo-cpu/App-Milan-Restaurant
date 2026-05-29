@@ -1,4 +1,4 @@
-const DATA_URL = 'https://raw.githubusercontent.com/francescadilallo-cpu/App-Milan-Restaurant/main/MilanoLocali/Resources/locali.json';
+const DATA_URL = './locali.json';
 const OSM_URL  = './osm-data.json?v=1';
 
 /* ── Zone config ── */
@@ -105,6 +105,8 @@ let _searchTimer = null;
 let userLat = null, userLon = null, geoState = 'pending'; // 'pending'|'granted'|'denied'
 let osmLoaded = false; // guard against double osm merge
 let zoneCircles = []; // Leaflet circle objects for zoom < 14
+let _filterVersion = 0, _filteredCache = null, _filteredCacheVer = -1;
+let _vicinoCacheVer = -1, _vicinoCacheGeoKey = null, _vicinoCached = null;
 
 function haversine(lat1, lon1, lat2, lon2) {
   const R = 6371;
@@ -209,7 +211,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     if (!extras.length) return;
     allLocali = [...allLocali, ...extras];
     osmLoaded = true;
-    mapDirty = true;
+    invalidateFilters(); mapDirty = true;
     renderScopri();
     if (geoState !== 'pending') renderVicino();
     if (document.getElementById('screen-mappa').classList.contains('active')) refreshMap();
@@ -217,7 +219,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   bindTabs();
   document.getElementById('search-input').addEventListener('input', e => {
     clearTimeout(_searchTimer);
-    _searchTimer = setTimeout(() => { searchQuery = e.target.value.trim(); mapDirty = true; renderScopri(); if (document.getElementById('screen-vicino').classList.contains('active')) renderVicino(); }, 150);
+    _searchTimer = setTimeout(() => { searchQuery = e.target.value.trim(); invalidateFilters(); mapDirty = true; renderScopri(); if (document.getElementById('screen-vicino').classList.contains('active')) renderVicino(); }, 150);
   });
   document.getElementById('btn-filter').addEventListener('click', openDrawer);
   document.getElementById('filter-overlay').addEventListener('click', closeDrawer);
@@ -226,8 +228,12 @@ document.addEventListener('DOMContentLoaded', async () => {
 });
 
 /* ── Filtering ── */
+function invalidateFilters() { _filterVersion++; }
+
 function filtered() {
-  return allLocali.filter(l => {
+  if (_filterVersion === _filteredCacheVer) return _filteredCache;
+  _filteredCacheVer = _filterVersion;
+  _filteredCache = allLocali.filter(l => {
     if (filterZona && l.zona !== filterZona) return false;
     if (filterCat  && l.categoria !== filterCat) return false;
     if (filterOpenNow && isOpenNow(l) !== true) return false;
@@ -238,6 +244,7 @@ function filtered() {
     }
     return true;
   });
+  return _filteredCache;
 }
 
 /* ── Scopri ── */
@@ -280,7 +287,7 @@ function buildCatBar() {
   openChip.innerHTML = '<span class="open-badge"></span> Aperto ora';
   openChip.addEventListener('click', () => {
     filterOpenNow = !filterOpenNow;
-    mapDirty = true;
+    invalidateFilters(); mapDirty = true;
     openChip.classList.toggle('active', filterOpenNow);
     renderScopri();
     if (document.getElementById('screen-mappa').classList.contains('active')) refreshMap();
@@ -294,7 +301,7 @@ function buildCatBar() {
     chip.textContent = name;
     chip.addEventListener('click', () => {
       filterCat = filterCat === name ? null : name;
-      mapDirty = true;
+      invalidateFilters(); mapDirty = true;
       document.querySelectorAll('.cat-chip[data-cat]').forEach(c => c.classList.toggle('active', c.dataset.cat === filterCat));
       renderScopri();
       if (document.getElementById('screen-mappa').classList.contains('active')) refreshMap();
@@ -558,15 +565,26 @@ function renderVicino() {
     return;
   }
 
-  const locales = filtered().filter(l => l.latitude != null && l.longitude != null);
+  const geoKey = `${userLat},${userLon}`;
+  if (_vicinoCacheVer !== _filterVersion || _vicinoCacheGeoKey !== geoKey) {
+    const base = filtered().filter(l => l.latitude != null && l.longitude != null);
+    if (geoState === 'granted') {
+      base.sort((a, b) =>
+        haversine(userLat, userLon, a.latitude, a.longitude) -
+        haversine(userLat, userLon, b.latitude, b.longitude)
+      );
+    } else {
+      base.sort((a, b) => a.name.localeCompare(b.name));
+    }
+    _vicinoCached = base;
+    _vicinoCacheVer = _filterVersion;
+    _vicinoCacheGeoKey = geoKey;
+  }
+  const locales = _vicinoCached;
 
   if (geoState === 'granted') {
     banner.classList.add('hidden');
     subtitle.textContent = 'Vicino a te';
-    locales.sort((a, b) =>
-      haversine(userLat, userLon, a.latitude, a.longitude) -
-      haversine(userLat, userLon, b.latitude, b.longitude)
-    );
     list.innerHTML = '';
     locales.forEach(l => {
       const dist = haversine(userLat, userLon, l.latitude, l.longitude);
@@ -582,7 +600,6 @@ function renderVicino() {
     banner.className = 'geo-banner';
     banner.textContent = '📍 Posizione non disponibile — mostriamo tutti i locali';
     subtitle.textContent = 'Tutti i locali';
-    locales.sort((a, b) => a.name.localeCompare(b.name));
     list.innerHTML = '';
     locales.forEach(l => list.appendChild(makeLocaleItem(l, () => showDetail(l, 'vicino'))));
   }
@@ -770,7 +787,7 @@ function openDrawer() {
   clear.className = 'drawer-clear';
   clear.textContent = 'Azzera filtri';
   clear.addEventListener('click', () => {
-    filterZona = null; filterCat = null; filterOpenNow = false; mapDirty = true;
+    filterZona = null; filterCat = null; filterOpenNow = false; invalidateFilters(); mapDirty = true;
     document.querySelectorAll('.cat-chip[data-cat]').forEach(c => c.classList.remove('active'));
     const openChip = document.getElementById('open-now-chip');
     if (openChip) openChip.classList.remove('active');
@@ -792,7 +809,7 @@ function mkDrawerItem(zona, label, color) {
       ${label}
     </div>
     ${isActive ? '<svg class="drawer-check" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>' : ''}`;
-  item.addEventListener('click', () => { filterZona = zona; mapDirty = true; closeDrawer(); renderScopri(); });
+  item.addEventListener('click', () => { filterZona = zona; invalidateFilters(); mapDirty = true; closeDrawer(); renderScopri(); });
   return item;
 }
 
