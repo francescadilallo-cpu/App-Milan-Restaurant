@@ -204,11 +204,11 @@ document.addEventListener('DOMContentLoaded', async () => {
   // Load OSM data in background after first paint — merges without blocking UI
   fetch(OSM_URL).then(r => r.ok ? r.json() : []).then(fsq => {
     if (osmLoaded || !fsq.length) return;
-    osmLoaded = true;
     const names = new Set(allLocali.map(l => l.name.toLowerCase()));
     const extras = fsq.filter(l => !names.has(l.name.toLowerCase()));
     if (!extras.length) return;
     allLocali = [...allLocali, ...extras];
+    osmLoaded = true;
     mapDirty = true;
     renderScopri();
     if (geoState !== 'pending') renderVicino();
@@ -221,7 +221,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   });
   document.getElementById('btn-filter').addEventListener('click', openDrawer);
   document.getElementById('filter-overlay').addEventListener('click', closeDrawer);
-  document.getElementById('back-from-zona').addEventListener('click', () => showScreen('scopri'));
+  document.getElementById('back-from-zona').addEventListener('click', () => { const f = previousScreen; showScreen(f); if (f === 'mappa' && mapDirty) refreshMap(); });
   document.getElementById('back-from-detail').addEventListener('click', () => { const f = previousScreen; showScreen(f); if (f === 'preferiti') renderFav(); });
 });
 
@@ -436,7 +436,7 @@ function showDetail(locale, from) {
   favBtn.onclick = () => toggleFav(locale, favBtn);
 
   // Share button
-  document.getElementById('detail-share-btn').addEventListener('click', () => shareLocale(locale));
+  document.getElementById('detail-share-btn').onclick = () => shareLocale(locale);
 
   // Stars helper
   function starsHtml(rating) {
@@ -615,7 +615,10 @@ function initMainMap() {
   mainMap = L.map('main-map', { zoomControl:false, attributionControl:false }).setView(center, 13);
   L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png').addTo(mainMap);
   L.control.zoom({ position:'topright' }).addTo(mainMap);
-  mainMap.on('zoomend', () => { mapDirty = true; refreshMap(); });
+  mainMap.on('zoomend', () => {
+    mapDirty = true;
+    if (document.getElementById('screen-mappa').classList.contains('active')) refreshMap();
+  });
   refreshMap();
 }
 
@@ -626,9 +629,11 @@ function renderZoneCircles() {
   filtered().forEach(l => { (byZona[l.zona] = byZona[l.zona]||[]).push(l); });
   Object.entries(byZona).forEach(([zona, items]) => {
     const meta = ZONE_META[zona] || {};
-    const center = items.reduce((acc, l) => [acc[0]+l.latitude, acc[1]+l.longitude], [0,0]);
-    const lat = center[0] / items.length;
-    const lon = center[1] / items.length;
+    const valid = items.filter(l => l.latitude != null && l.longitude != null);
+    if (!valid.length) return;
+    const center = valid.reduce((acc, l) => [acc[0]+l.latitude, acc[1]+l.longitude], [0,0]);
+    const lat = center[0] / valid.length;
+    const lon = center[1] / valid.length;
     const radius = 200 + items.length * 15;
     const c = L.circle([lat, lon], {
       radius,
@@ -658,7 +663,7 @@ function refreshMap() {
   } else {
     zoneCircles.forEach(c => c.remove()); zoneCircles = [];
     mainMarkers.forEach(m => m.remove()); mainMarkers = [];
-    filtered().forEach(locale => {
+    filtered().filter(l => l.latitude != null && l.longitude != null).forEach(locale => {
       const color = (CAT_META[locale.categoria]||{}).color || '#007AFF';
       const icon = L.divIcon({ className:'', html: makePin(color), iconSize:[32,40], iconAnchor:[16,40] });
       const m = L.marker([locale.latitude, locale.longitude], { icon }).addTo(mainMap);
