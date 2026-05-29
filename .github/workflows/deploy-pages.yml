@@ -32,6 +32,9 @@ jobs:
       - name: Setup Pages
         uses: actions/configure-pages@v5
 
+      - name: Copy locali.json to docs for same-origin serving
+        run: cp MilanoLocali/Resources/locali.json docs/locali.json
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
