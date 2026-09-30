@@ -95,6 +95,7 @@ let allLocali = [];
 let filterZona = null;
 let filterCat  = null;
 let filterOpenNow = false;
+let filterNew = false;
 let searchQuery = '';
 let favorites = new Set(JSON.parse(localStorage.getItem('mlFav') || '[]'));
 let detailMap = null;
@@ -200,6 +201,11 @@ document.addEventListener('DOMContentLoaded', async () => {
   // Don't block first paint: render now, re-render once photos resolve.
   loadZonePhotos().then(() => renderScopri());
 
+  // Restore persisted filter state
+  const _savedCat = localStorage.getItem('mlFilterCat');
+  if (_savedCat) filterCat = _savedCat;
+  if (localStorage.getItem('mlFilterOpen') === 'true') filterOpenNow = true;
+
   buildCatBar('cat-bar');
   buildCatBar('vicino-cat-bar');
   renderScopri();
@@ -244,6 +250,13 @@ document.addEventListener('DOMContentLoaded', async () => {
   document.getElementById('filter-overlay').addEventListener('click', closeDrawer);
   document.getElementById('back-from-zona').addEventListener('click', () => { const f = previousScreen; showScreen(f); if (f === 'mappa' && mapDirty) refreshMap(); });
   document.getElementById('back-from-detail').addEventListener('click', () => { const f = previousScreen; showScreen(f); if (f === 'preferiti') renderFav(); });
+
+  // Auto-refresh open/closed status every minute
+  setInterval(() => {
+    invalidateFilters();
+    if (document.getElementById('screen-scopri').classList.contains('active')) renderScopri();
+    if (document.getElementById('screen-vicino').classList.contains('active') && geoState !== 'pending') renderVicino();
+  }, 60000);
 });
 
 /* ── Filtering ── */
@@ -256,6 +269,7 @@ function filtered() {
     if (filterZona && l.zona !== filterZona) return false;
     if (filterCat  && l.categoria !== filterCat) return false;
     if (filterOpenNow && isOpenNow(l) !== true) return false;
+    if (filterNew  && !l.isNew) return false;
     if (searchQuery) {
       const q = searchQuery.toLowerCase();
       if (!l.name.toLowerCase().includes(q) && !l.description.toLowerCase().includes(q) &&
@@ -327,8 +341,10 @@ function buildCatBar(containerId) {
   const openChip = document.createElement('button');
   openChip.className = 'cat-chip open-now-chip';
   openChip.innerHTML = '<span class="open-badge"></span> Aperto ora';
+  openChip.classList.toggle('active', filterOpenNow);
   openChip.addEventListener('click', () => {
     filterOpenNow = !filterOpenNow;
+    localStorage.setItem('mlFilterOpen', filterOpenNow);
     invalidateFilters(); mapDirty = true;
     document.querySelectorAll('.open-now-chip').forEach(c => c.classList.toggle('active', filterOpenNow));
     renderScopri();
@@ -342,8 +358,10 @@ function buildCatBar(containerId) {
     chip.className = 'cat-chip';
     chip.dataset.cat = name;
     chip.textContent = name;
+    chip.classList.toggle('active', filterCat === name);
     chip.addEventListener('click', () => {
       filterCat = filterCat === name ? null : name;
+      localStorage.setItem('mlFilterCat', filterCat || '');
       invalidateFilters(); mapDirty = true;
       document.querySelectorAll('.cat-chip[data-cat]').forEach(c => c.classList.toggle('active', c.dataset.cat === filterCat));
       renderScopri();
@@ -352,6 +370,20 @@ function buildCatBar(containerId) {
     });
     bar.appendChild(chip);
   });
+
+  const newChip = document.createElement('button');
+  newChip.className = 'cat-chip new-filter-chip';
+  newChip.innerHTML = '<span class="badge-new" style="font-size:9px;padding:0 4px;line-height:16px">N</span> Nuovi';
+  newChip.classList.toggle('active', filterNew);
+  newChip.addEventListener('click', () => {
+    filterNew = !filterNew;
+    invalidateFilters(); mapDirty = true;
+    document.querySelectorAll('.new-filter-chip').forEach(c => c.classList.toggle('active', filterNew));
+    renderScopri();
+    if (document.getElementById('screen-vicino').classList.contains('active')) renderVicino();
+    if (document.getElementById('screen-mappa').classList.contains('active')) refreshMap();
+  });
+  bar.appendChild(newChip);
 }
 
 /* ── Zona list ── */
@@ -667,7 +699,8 @@ function renderVicino() {
 
   if (geoState === 'granted') {
     banner.classList.add('hidden');
-    subtitle.textContent = 'Vicino a te';
+    const openNearby = locales.filter(l => isOpenNow(l) === true).length;
+    subtitle.textContent = openNearby > 0 ? `${openNearby} aperti vicino a te` : 'Vicino a te';
     list.innerHTML = '';
     locales.forEach(l => {
       const dist = haversine(userLat, userLon, l.latitude, l.longitude);
@@ -880,10 +913,14 @@ function openDrawer() {
   clear.className = 'drawer-clear';
   clear.textContent = 'Azzera filtri';
   clear.addEventListener('click', () => {
-    filterZona = null; filterCat = null; filterOpenNow = false; invalidateFilters(); mapDirty = true;
+    filterZona = null; filterCat = null; filterOpenNow = false; filterNew = false;
+    localStorage.setItem('mlFilterCat', ''); localStorage.setItem('mlFilterOpen', 'false');
+    invalidateFilters(); mapDirty = true;
     document.querySelectorAll('.cat-chip[data-cat]').forEach(c => c.classList.remove('active'));
     document.querySelectorAll('.open-now-chip').forEach(c => c.classList.remove('active'));
+    document.querySelectorAll('.new-filter-chip').forEach(c => c.classList.remove('active'));
     closeDrawer(); renderScopri();
+    if (document.getElementById('screen-vicino').classList.contains('active')) renderVicino();
   });
   list.appendChild(clear);
 
