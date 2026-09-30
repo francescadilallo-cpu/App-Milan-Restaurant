@@ -755,7 +755,7 @@ html, body {
 /* ── Maps row ── */
 .maps-row { display: flex; gap: 10px; margin-top: 4px; }
 .maps-row .detail-maps-btn { flex: 1; margin-top: 0; }
-.maps-btn-google { background: var(--label2) !important; }
+.maps-btn-google { background: var(--label) !important; }
 
 /* ── Geo / Vicino a te ── */
 .geo-banner {
