@@ -790,6 +790,14 @@ html, body {
   padding: 16px;
   font-style: italic;
 }
+.load-more-btn {
+  display: block; width: calc(100% - 32px);
+  margin: 8px 16px 24px;
+  padding: 12px;
+  background: var(--surface); border: none; border-radius: var(--r);
+  box-shadow: var(--shadow); font-size: 14px; font-weight: 600;
+  color: var(--blue); cursor: pointer; font-family: inherit;
+}
 
 /* ── Geo / Vicino a te ── */
 .geo-banner {

@@ -109,6 +109,8 @@ let osmLoaded = false; // guard against double osm merge
 let osmLoading = false;
 let zoneCircles = []; // Leaflet circle objects for zoom < 14
 let _mapMoveTimer = null;
+let _scopriRenderKey = null;
+let _vicinoRenderKey = null;
 let _filterVersion = 0, _filteredCache = null, _filteredCacheVer = -1;
 let _vicinoCacheVer = -1, _vicinoCacheGeoKey = null, _vicinoCached = null;
 
@@ -283,6 +285,10 @@ function filtered() {
 
 /* ── Scopri ── */
 function renderScopri() {
+  const scopriKey = `${_filterVersion}:${geoState}:${userLat}:${userLon}`;
+  if (_scopriRenderKey === scopriKey) return;
+  _scopriRenderKey = scopriKey;
+
   const byZona = {};
   filtered().forEach(l => { (byZona[l.zona] = byZona[l.zona]||[]).push(l); });
   const grid = document.getElementById('zone-grid');
@@ -307,6 +313,7 @@ function renderScopri() {
       : a[0].localeCompare(b[0])
   );
   if (!zones.length) { grid.innerHTML = '<p style="grid-column:1/-1;text-align:center;color:var(--label3);padding:48px 0;font-size:15px">Nessun risultato</p>'; return; }
+  const gridFrag = document.createDocumentFragment();
   zones.forEach(([zona, items]) => {
     const meta  = ZONE_META[zona] || {};
     const color = meta.color || '#888';
@@ -330,8 +337,9 @@ function renderScopri() {
         </div>
       </div>`;
     card.addEventListener('click', () => showZona(zona));
-    grid.appendChild(card);
+    gridFrag.appendChild(card);
   });
+  grid.appendChild(gridFrag);
 }
 
 /* ── Category bar ── */
@@ -677,7 +685,9 @@ function renderVicino() {
   const subtitle = document.getElementById('vicino-subtitle');
 
   if (geoState === 'pending') {
-    list.innerHTML = '<p style="text-align:center;color:var(--label3);padding:48px 16px;font-size:15px">Sto cercando la tua posizione…</p>';
+    if (!list.querySelector('.geo-pending-msg')) {
+      list.innerHTML = '<p class="geo-pending-msg" style="text-align:center;color:var(--label3);padding:48px 16px;font-size:15px">Sto cercando la tua posizione…</p>';
+    }
     return;
   }
 
@@ -698,11 +708,17 @@ function renderVicino() {
   }
   const locales = _vicinoCached;
 
+  // Skip DOM rebuild if key unchanged
+  const domKey = `${_filterVersion}:${geoKey}:${geoState}:${osmLoading}`;
+  if (_vicinoRenderKey === domKey) return;
+  _vicinoRenderKey = domKey;
+
   if (geoState === 'granted') {
     banner.classList.add('hidden');
     const openNearby = locales.filter(l => isOpenNow(l) === true).length;
     subtitle.textContent = openNearby > 0 ? `${openNearby} aperti vicino a te` : 'Vicino a te';
     list.innerHTML = '';
+    const frag = document.createDocumentFragment();
     locales.forEach(l => {
       const dist = haversine(userLat, userLon, l.latitude, l.longitude);
       const item = makeLocaleItem(l, () => showDetail(l, 'vicino'));
@@ -710,17 +726,33 @@ function renderVicino() {
       distBadge.className = 'dist-badge';
       distBadge.textContent = formatDist(dist);
       item.querySelector('.locale-address')?.insertAdjacentElement('beforebegin', distBadge);
-      list.appendChild(item);
+      frag.appendChild(item);
     });
+    list.appendChild(frag);
   } else {
-    // denied
+    // denied — show banner + first 100 locales, lazy-load the rest
     banner.className = 'geo-banner';
     banner.innerHTML = '📍 Posizione non disponibile — <button class="retry-geo-btn" id="retry-geo">riprova</button>';
     const retryBtn = document.getElementById('retry-geo');
-    if (retryBtn) retryBtn.onclick = () => { geoState = 'pending'; renderVicino(); initGeolocation(); };
+    if (retryBtn) retryBtn.onclick = () => { geoState = 'pending'; _vicinoRenderKey = null; renderVicino(); initGeolocation(); };
     subtitle.textContent = 'Tutti i locali';
     list.innerHTML = '';
-    locales.forEach(l => list.appendChild(makeLocaleItem(l, () => showDetail(l, 'vicino'))));
+    const frag = document.createDocumentFragment();
+    const LIMIT = 100;
+    locales.slice(0, LIMIT).forEach(l => frag.appendChild(makeLocaleItem(l, () => showDetail(l, 'vicino'))));
+    list.appendChild(frag);
+    if (locales.length > LIMIT) {
+      const moreBtn = document.createElement('button');
+      moreBtn.className = 'load-more-btn';
+      moreBtn.textContent = `Mostra tutti (${locales.length})`;
+      moreBtn.onclick = () => {
+        moreBtn.remove();
+        const frag2 = document.createDocumentFragment();
+        locales.slice(LIMIT).forEach(l => frag2.appendChild(makeLocaleItem(l, () => showDetail(l, 'vicino'))));
+        list.appendChild(frag2);
+      };
+      list.appendChild(moreBtn);
+    }
   }
 
   if (osmLoading) {
@@ -895,10 +927,10 @@ function bindTabs() {
       tab.classList.add('active');
       const name = tab.dataset.tab;
       showScreen(name);
-      if (name === 'vicino') renderVicino();
-      if (name === 'scopri') renderScopri();
-      if (name === 'preferiti') renderFav();
-      if (name === 'mappa' && mapDirty) refreshMap();
+      if (name === 'vicino') requestAnimationFrame(renderVicino);
+      if (name === 'scopri') requestAnimationFrame(renderScopri);
+      if (name === 'preferiti') requestAnimationFrame(renderFav);
+      if (name === 'mappa' && mapDirty) requestAnimationFrame(refreshMap);
     });
   });
 }
