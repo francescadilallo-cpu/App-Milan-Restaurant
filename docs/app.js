@@ -108,6 +108,7 @@ let userLat = null, userLon = null, geoState = 'pending'; // 'pending'|'granted'
 let osmLoaded = false; // guard against double osm merge
 let osmLoading = false;
 let zoneCircles = []; // Leaflet circle objects for zoom < 14
+let _mapMoveTimer = null;
 let _filterVersion = 0, _filteredCache = null, _filteredCacheVer = -1;
 let _vicinoCacheVer = -1, _vicinoCacheGeoKey = null, _vicinoCached = null;
 
@@ -761,6 +762,12 @@ function initMainMap() {
     mapDirty = true;
     if (document.getElementById('screen-mappa').classList.contains('active')) refreshMap();
   });
+  mainMap.on('moveend', () => {
+    if (mainMap.getZoom() >= 14 && document.getElementById('screen-mappa').classList.contains('active')) {
+      clearTimeout(_mapMoveTimer);
+      _mapMoveTimer = setTimeout(refreshMap, 150);
+    }
+  });
   refreshMap();
 }
 
@@ -805,13 +812,18 @@ function refreshMap() {
   } else {
     zoneCircles.forEach(c => c.remove()); zoneCircles = [];
     mainMarkers.forEach(m => m.remove()); mainMarkers = [];
-    filtered().filter(l => l.latitude != null && l.longitude != null).forEach(locale => {
-      const color = (CAT_META[locale.categoria]||{}).color || '#007AFF';
-      const icon = L.divIcon({ className:'', html: makePin(color), iconSize:[32,40], iconAnchor:[16,40] });
-      const m = L.marker([locale.latitude, locale.longitude], { icon }).addTo(mainMap);
-      m.on('click', () => showMapSheet(locale));
-      mainMarkers.push(m);
-    });
+    const bounds = mainMap.getBounds().pad(0.15);
+    filtered()
+      .filter(l => l.latitude != null && l.longitude != null)
+      .filter(l => bounds.contains([l.latitude, l.longitude]))
+      .slice(0, 150)
+      .forEach(locale => {
+        const color = (CAT_META[locale.categoria]||{}).color || '#007AFF';
+        const icon = L.divIcon({ className:'', html: makePin(color), iconSize:[32,40], iconAnchor:[16,40] });
+        const m = L.marker([locale.latitude, locale.longitude], { icon }).addTo(mainMap);
+        m.on('click', () => showMapSheet(locale));
+        mainMarkers.push(m);
+      });
   }
 }
 
