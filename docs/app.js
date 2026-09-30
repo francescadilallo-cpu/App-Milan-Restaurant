@@ -233,8 +233,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     _searchTimer = setTimeout(() => {
       searchQuery = e.target.value.trim();
       document.getElementById('search-input').value = e.target.value;
-      invalidateFilters(); mapDirty = true; renderVicino();
-      if (document.getElementById('screen-scopri').classList.contains('active')) renderScopri();
+      invalidateFilters(); mapDirty = true; renderVicino(); renderScopri();
     }, 150);
   });
   document.getElementById('btn-filter').addEventListener('click', openDrawer);
@@ -552,6 +551,7 @@ function showDetail(locale, from) {
       </a>` : ''}
     </div>
 
+    ${locale.latitude != null ? `
     <button class="map-toggle-btn" id="d-map-toggle">
       <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"/><line x1="8" y1="2" x2="8" y2="18"/><line x1="16" y1="6" x2="16" y2="22"/></svg>
       Mostra sulla mappa
@@ -559,7 +559,6 @@ function showDetail(locale, from) {
     <div class="map-collapsible" id="d-map-wrap">
       <div id="detail-map"></div>
     </div>
-
     <div class="maps-row">
       <button class="detail-maps-btn" id="d-maps-apple">
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"/></svg>
@@ -569,11 +568,12 @@ function showDetail(locale, from) {
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"/></svg>
         Google Maps
       </button>
-    </div>`;
+    </div>` : ''}`;
 
-  // Map toggle
+  // Map toggle (only for locales with coordinates)
   let mapOpen = false;
-  document.getElementById('d-map-toggle').addEventListener('click', () => {
+  const mapToggleBtn = document.getElementById('d-map-toggle');
+  if (mapToggleBtn) mapToggleBtn.addEventListener('click', () => {
     mapOpen = !mapOpen;
     const wrap = document.getElementById('d-map-wrap');
     wrap.classList.toggle('open', mapOpen);
@@ -591,10 +591,12 @@ function showDetail(locale, from) {
     }
   });
 
-  document.getElementById('d-maps-apple').addEventListener('click', () =>
+  const mapsAppleBtn = document.getElementById('d-maps-apple');
+  if (mapsAppleBtn) mapsAppleBtn.addEventListener('click', () =>
     window.open(`https://maps.apple.com/?q=${encodeURIComponent(locale.name)}&ll=${locale.latitude},${locale.longitude}`,'_blank')
   );
-  document.getElementById('d-maps-google').addEventListener('click', () =>
+  const mapsGoogleBtn = document.getElementById('d-maps-google');
+  if (mapsGoogleBtn) mapsGoogleBtn.addEventListener('click', () =>
     window.open(`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(locale.name + ' Milano')}`,'_blank')
   );
   const schedTog = document.getElementById('d-schedule-toggle');
@@ -812,6 +814,7 @@ function bindTabs() {
       const name = tab.dataset.tab;
       showScreen(name);
       if (name === 'vicino') renderVicino();
+      if (name === 'scopri') renderScopri();
       if (name === 'preferiti') renderFav();
       if (name === 'mappa' && mapDirty) refreshMap();
     });
