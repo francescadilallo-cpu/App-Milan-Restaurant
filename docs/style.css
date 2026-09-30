@@ -757,6 +757,40 @@ html, body {
 .maps-row .detail-maps-btn { flex: 1; margin-top: 0; }
 .maps-btn-google { background: var(--label) !important; }
 
+/* Zone card enhancements */
+.zone-open-pill {
+  font-size: 10px; font-weight: 600;
+  color: #34C759;
+  background: rgba(52,199,89,.22);
+  border-radius: 6px;
+  padding: 1px 5px;
+  margin-left: 2px;
+}
+.zone-dist-badge {
+  font-size: 10px; font-weight: 600;
+  color: rgba(255,255,255,.9);
+  background: rgba(255,255,255,.22);
+  border-radius: 6px;
+  padding: 1px 5px;
+  margin-left: 2px;
+}
+
+/* Retry geolocation button */
+.retry-geo-btn {
+  background: none; border: none; cursor: pointer;
+  color: inherit; font: inherit; font-weight: 700;
+  text-decoration: underline; padding: 0;
+}
+
+/* OSM background load footer */
+.osm-loading-footer {
+  text-align: center;
+  color: var(--label3);
+  font-size: 12px;
+  padding: 16px;
+  font-style: italic;
+}
+
 /* ── Geo / Vicino a te ── */
 .geo-banner {
   background: #FF9F0A18;
