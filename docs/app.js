@@ -105,6 +105,7 @@ let mapDirty = true;
 let _searchTimer = null;
 let userLat = null, userLon = null, geoState = 'pending'; // 'pending'|'granted'|'denied'
 let osmLoaded = false; // guard against double osm merge
+let osmLoading = false;
 let zoneCircles = []; // Leaflet circle objects for zoom < 14
 let _filterVersion = 0, _filteredCache = null, _filteredCacheVer = -1;
 let _vicinoCacheVer = -1, _vicinoCacheGeoKey = null, _vicinoCached = null;
@@ -206,18 +207,21 @@ document.addEventListener('DOMContentLoaded', async () => {
   initGeolocation();
 
   // Load OSM data in background after first paint — merges without blocking UI
+  osmLoading = true;
+  if (geoState !== 'pending') renderVicino();
   fetch(OSM_URL).then(r => r.ok ? r.json() : []).then(fsq => {
-    if (osmLoaded || !fsq.length) return;
+    osmLoading = false;
+    if (osmLoaded || !fsq.length) { if (geoState !== 'pending') renderVicino(); return; }
     const names = new Set(allLocali.map(l => l.name.toLowerCase()));
     const extras = fsq.filter(l => !names.has(l.name.toLowerCase()));
-    if (!extras.length) return;
+    if (!extras.length) { if (geoState !== 'pending') renderVicino(); return; }
     allLocali = [...allLocali, ...extras];
     osmLoaded = true;
     invalidateFilters(); mapDirty = true;
     renderScopri();
     if (geoState !== 'pending') renderVicino();
     if (document.getElementById('screen-mappa').classList.contains('active')) refreshMap();
-  }).catch(() => {});
+  }).catch(() => { osmLoading = false; if (geoState !== 'pending') renderVicino(); });
   bindTabs();
   document.getElementById('search-input').addEventListener('input', e => {
     clearTimeout(_searchTimer);
@@ -268,12 +272,34 @@ function renderScopri() {
   filtered().forEach(l => { (byZona[l.zona] = byZona[l.zona]||[]).push(l); });
   const grid = document.getElementById('zone-grid');
   grid.innerHTML = '';
-  const zones = Object.entries(byZona).sort((a,b)=>a[0].localeCompare(b[0]));
+
+  // Compute zone centers and distances when location is known
+  const zoneDist = {};
+  if (geoState === 'granted' && userLat != null) {
+    Object.entries(byZona).forEach(([zona, items]) => {
+      const valid = items.filter(l => l.latitude != null && l.longitude != null);
+      if (!valid.length) return;
+      const lat = valid.reduce((s, l) => s + l.latitude, 0) / valid.length;
+      const lon = valid.reduce((s, l) => s + l.longitude, 0) / valid.length;
+      zoneDist[zona] = haversine(userLat, userLon, lat, lon);
+    });
+  }
+
+  // Sort by distance when location is known, otherwise alphabetical
+  const zones = Object.entries(byZona).sort((a, b) =>
+    (zoneDist[a[0]] != null && zoneDist[b[0]] != null)
+      ? zoneDist[a[0]] - zoneDist[b[0]]
+      : a[0].localeCompare(b[0])
+  );
   if (!zones.length) { grid.innerHTML = '<p style="grid-column:1/-1;text-align:center;color:var(--label3);padding:48px 0;font-size:15px">Nessun risultato</p>'; return; }
   zones.forEach(([zona, items]) => {
     const meta  = ZONE_META[zona] || {};
     const color = meta.color || '#888';
     const photo = meta.photo || '';
+    const openCount = items.filter(l => isOpenNow(l) === true).length;
+    const distHtml = zoneDist[zona] != null
+      ? `<span class="zone-dist-badge">${formatDist(zoneDist[zona])}</span>`
+      : '';
     const card  = document.createElement('div');
     card.className = 'zone-card';
     card.style.setProperty('--zone-color', color);
@@ -284,6 +310,8 @@ function renderScopri() {
         <div class="zone-count">
           <span class="zone-count-pill">${items.length}</span>
           ${items.length === 1 ? 'locale' : 'locali'}
+          ${openCount ? `<span class="zone-open-pill">${openCount} aperti</span>` : ''}
+          ${distHtml}
         </div>
       </div>`;
     card.addEventListener('click', () => showZona(zona));
@@ -653,10 +681,19 @@ function renderVicino() {
   } else {
     // denied
     banner.className = 'geo-banner';
-    banner.textContent = '📍 Posizione non disponibile — mostriamo tutti i locali';
+    banner.innerHTML = '📍 Posizione non disponibile — <button class="retry-geo-btn" id="retry-geo">riprova</button>';
+    const retryBtn = document.getElementById('retry-geo');
+    if (retryBtn) retryBtn.onclick = () => { geoState = 'pending'; renderVicino(); initGeolocation(); };
     subtitle.textContent = 'Tutti i locali';
     list.innerHTML = '';
     locales.forEach(l => list.appendChild(makeLocaleItem(l, () => showDetail(l, 'vicino'))));
+  }
+
+  if (osmLoading) {
+    const footer = document.createElement('div');
+    footer.className = 'osm-loading-footer';
+    footer.textContent = 'Caricamento locali in corso…';
+    list.appendChild(footer);
   }
 }
 
