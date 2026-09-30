@@ -88,6 +88,7 @@ const CAT_META = {
 };
 
 const PRICE = ['', '€', '€€', '€€€', '€€€€'];
+const DAYS_IT = ['Lunedì','Martedì','Mercoledì','Giovedì','Venerdì','Sabato','Domenica'];
 
 /* ── State ── */
 let allLocali = [];
@@ -198,7 +199,8 @@ document.addEventListener('DOMContentLoaded', async () => {
   // Don't block first paint: render now, re-render once photos resolve.
   loadZonePhotos().then(() => renderScopri());
 
-  buildCatBar();
+  buildCatBar('cat-bar');
+  buildCatBar('vicino-cat-bar');
   renderScopri();
   initMainMap();
   initGeolocation();
@@ -219,7 +221,21 @@ document.addEventListener('DOMContentLoaded', async () => {
   bindTabs();
   document.getElementById('search-input').addEventListener('input', e => {
     clearTimeout(_searchTimer);
-    _searchTimer = setTimeout(() => { searchQuery = e.target.value.trim(); invalidateFilters(); mapDirty = true; renderScopri(); if (document.getElementById('screen-vicino').classList.contains('active')) renderVicino(); }, 150);
+    _searchTimer = setTimeout(() => {
+      searchQuery = e.target.value.trim();
+      document.getElementById('vicino-search-input').value = e.target.value;
+      invalidateFilters(); mapDirty = true; renderScopri();
+      if (document.getElementById('screen-vicino').classList.contains('active')) renderVicino();
+    }, 150);
+  });
+  document.getElementById('vicino-search-input').addEventListener('input', e => {
+    clearTimeout(_searchTimer);
+    _searchTimer = setTimeout(() => {
+      searchQuery = e.target.value.trim();
+      document.getElementById('search-input').value = e.target.value;
+      invalidateFilters(); mapDirty = true; renderVicino();
+      if (document.getElementById('screen-scopri').classList.contains('active')) renderScopri();
+    }, 150);
   });
   document.getElementById('btn-filter').addEventListener('click', openDrawer);
   document.getElementById('filter-overlay').addEventListener('click', closeDrawer);
@@ -277,24 +293,24 @@ function renderScopri() {
 }
 
 /* ── Category bar ── */
-function buildCatBar() {
-  const bar = document.getElementById('cat-bar');
+function buildCatBar(containerId) {
+  const bar = document.getElementById(containerId || 'cat-bar');
+  if (!bar) return;
 
-  // "Aperto ora" chip first
   const openChip = document.createElement('button');
   openChip.className = 'cat-chip open-now-chip';
-  openChip.id = 'open-now-chip';
   openChip.innerHTML = '<span class="open-badge"></span> Aperto ora';
   openChip.addEventListener('click', () => {
     filterOpenNow = !filterOpenNow;
     invalidateFilters(); mapDirty = true;
-    openChip.classList.toggle('active', filterOpenNow);
+    document.querySelectorAll('.open-now-chip').forEach(c => c.classList.toggle('active', filterOpenNow));
     renderScopri();
+    if (document.getElementById('screen-vicino').classList.contains('active')) renderVicino();
     if (document.getElementById('screen-mappa').classList.contains('active')) refreshMap();
   });
   bar.appendChild(openChip);
 
-  Object.entries(CAT_META).forEach(([name, meta]) => {
+  Object.entries(CAT_META).forEach(([name]) => {
     const chip = document.createElement('button');
     chip.className = 'cat-chip';
     chip.dataset.cat = name;
@@ -304,6 +320,7 @@ function buildCatBar() {
       invalidateFilters(); mapDirty = true;
       document.querySelectorAll('.cat-chip[data-cat]').forEach(c => c.classList.toggle('active', c.dataset.cat === filterCat));
       renderScopri();
+      if (document.getElementById('screen-vicino').classList.contains('active')) renderVicino();
       if (document.getElementById('screen-mappa').classList.contains('active')) refreshMap();
     });
     bar.appendChild(chip);
@@ -314,6 +331,8 @@ function buildCatBar() {
 function showZona(zona, from) {
   previousScreen = from || 'scopri';
   document.getElementById('zona-title').textContent = zona;
+  const BACK_LABELS = { mappa: 'Mappa', vicino: 'Vicino', scopri: 'Scopri', preferiti: 'Preferiti' };
+  document.getElementById('back-zona-label').textContent = BACK_LABELS[previousScreen] || 'Scopri';
 
   // Populate zona hero
   const zonaMeta = ZONE_META[zona] || {};
@@ -471,6 +490,23 @@ function showDetail(locale, from) {
     hoursLine = `<div style="margin-bottom:14px"><span class="hours-badge closed">Chiuso oggi</span></div>`;
   }
 
+  const todayIdx = (new Date().getDay() + 6) % 7;
+  const scheduleHtml = (locale.hours && locale.hours.some(Boolean)) ? `
+    <div class="schedule-section">
+      <button class="schedule-toggle" id="d-schedule-toggle">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        Orari settimanali
+        <svg class="chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="schedule-body" id="d-schedule-body">
+        ${DAYS_IT.map((day, i) => `
+          <div class="schedule-row${i === todayIdx ? ' today' : ''}">
+            <span class="schedule-day">${day}</span>
+            <span class="schedule-hours${!locale.hours[i] ? ' schedule-closed' : ''}">${locale.hours[i] || 'Chiuso'}</span>
+          </div>`).join('')}
+      </div>
+    </div>` : '';
+
   document.getElementById('detail-body').innerHTML = `
     ${locale.rating ? `
     <div class="rating-row">
@@ -480,6 +516,8 @@ function showDetail(locale, from) {
     </div>` : ''}
 
     ${hoursLine}
+
+    ${scheduleHtml}
 
     ${(locale.tags||[]).length ? `<div class="tag-row">${locale.tags.map(t=>`<span class="tag-chip">${t}</span>`).join('')}</div>` : ''}
 
@@ -522,10 +560,16 @@ function showDetail(locale, from) {
       <div id="detail-map"></div>
     </div>
 
-    <button class="detail-maps-btn" id="d-maps">
-      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"/></svg>
-      Apri in Maps
-    </button>`;
+    <div class="maps-row">
+      <button class="detail-maps-btn" id="d-maps-apple">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"/></svg>
+        Apple Maps
+      </button>
+      <button class="detail-maps-btn maps-btn-google" id="d-maps-google">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"/></svg>
+        Google Maps
+      </button>
+    </div>`;
 
   // Map toggle
   let mapOpen = false;
@@ -547,9 +591,18 @@ function showDetail(locale, from) {
     }
   });
 
-  document.getElementById('d-maps').addEventListener('click', () =>
+  document.getElementById('d-maps-apple').addEventListener('click', () =>
     window.open(`https://maps.apple.com/?q=${encodeURIComponent(locale.name)}&ll=${locale.latitude},${locale.longitude}`,'_blank')
   );
+  document.getElementById('d-maps-google').addEventListener('click', () =>
+    window.open(`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(locale.name + ' Milano')}`,'_blank')
+  );
+  const schedTog = document.getElementById('d-schedule-toggle');
+  if (schedTog) schedTog.addEventListener('click', () => {
+    const body = document.getElementById('d-schedule-body');
+    const isOpen = body.classList.toggle('open');
+    schedTog.classList.toggle('open', isOpen);
+  });
 
   showScreen('detail');
 }
@@ -789,8 +842,7 @@ function openDrawer() {
   clear.addEventListener('click', () => {
     filterZona = null; filterCat = null; filterOpenNow = false; invalidateFilters(); mapDirty = true;
     document.querySelectorAll('.cat-chip[data-cat]').forEach(c => c.classList.remove('active'));
-    const openChip = document.getElementById('open-now-chip');
-    if (openChip) openChip.classList.remove('active');
+    document.querySelectorAll('.open-now-chip').forEach(c => c.classList.remove('active'));
     closeDrawer(); renderScopri();
   });
   list.appendChild(clear);
