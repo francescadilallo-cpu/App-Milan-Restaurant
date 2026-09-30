@@ -714,6 +714,49 @@ html, body {
 .hours-badge.closed { background: #FF3B3015; color: #FF3B30; }
 .hours-badge.unknown { background: var(--surface2); color: var(--label3); }
 
+/* ── Schedule ── */
+.schedule-section { margin-bottom: 12px; }
+.schedule-toggle {
+  width: 100%; padding: 13px 16px;
+  background: var(--surface); border: none;
+  border-radius: var(--r); box-shadow: var(--shadow);
+  font-size: 14px; font-weight: 600; color: var(--label);
+  cursor: pointer; font-family: inherit; letter-spacing: -.1px;
+  display: flex; align-items: center; gap: 8px;
+  transition: background .1s, border-radius .2s;
+}
+.schedule-toggle:active { background: var(--surface2); }
+.schedule-toggle.open { border-radius: var(--r) var(--r) 0 0; }
+.schedule-toggle .chevron { margin-left: auto; color: var(--label3); transition: transform .2s ease; }
+.schedule-toggle.open .chevron { transform: rotate(180deg); }
+.schedule-body {
+  background: var(--surface);
+  border-radius: 0 0 var(--r) var(--r);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height .3s ease;
+}
+.schedule-body.open { max-height: 300px; }
+.schedule-row {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 10px 16px;
+  border-bottom: 1px solid var(--sep);
+  font-size: 14px;
+}
+.schedule-row:last-child { border-bottom: none; }
+.schedule-row.today { background: #007AFF08; }
+.schedule-day { color: var(--label2); font-weight: 500; }
+.schedule-row.today .schedule-day { color: var(--blue); font-weight: 600; }
+.schedule-hours { color: var(--label); font-weight: 500; }
+.schedule-row.today .schedule-hours { color: var(--blue); font-weight: 600; }
+.schedule-closed { color: var(--label3) !important; font-weight: 400 !important; }
+
+/* ── Maps row ── */
+.maps-row { display: flex; gap: 10px; margin-top: 4px; }
+.maps-row .detail-maps-btn { flex: 1; margin-top: 0; }
+.maps-btn-google { background: var(--label2) !important; }
+
 /* ── Geo / Vicino a te ── */
 .geo-banner {
   background: #FF9F0A18;

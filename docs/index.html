@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <title>Milano</title>
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-  <link rel="stylesheet" href="style.css?v=14" />
+  <link rel="stylesheet" href="style.css?v=15" />
 </head>
 <body>
 
@@ -66,6 +66,15 @@
               <span class="nav-subtitle" id="vicino-subtitle">Vicino a te</span>
             </div>
             <div id="geo-banner" class="geo-banner hidden"></div>
+            <div class="search-wrap">
+              <div class="search-bar">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="color:var(--label3);flex-shrink:0">
+                  <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+                </svg>
+                <input type="text" id="vicino-search-input" placeholder="Cerca locale, zona, tag…" />
+              </div>
+            </div>
+            <div class="cat-scroll" id="vicino-cat-bar"></div>
             <div class="locale-list" id="vicino-list"></div>
           </div>
 
@@ -96,7 +105,7 @@
             <div class="nav-bar">
               <button class="back-btn" id="back-from-zona">
                 <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
-                Scopri
+                <span id="back-zona-label">Scopri</span>
               </button>
               <h1 class="nav-title" id="zona-title"></h1>
             </div>
@@ -214,6 +223,6 @@
   </div><!-- #phone-wrap -->
 
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-  <script src="app.js?v=14"></script>
+  <script src="app.js?v=15"></script>
 </body>
 </html>
