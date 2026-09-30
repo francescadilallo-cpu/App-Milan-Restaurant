@@ -611,7 +611,7 @@ function showDetail(locale, from) {
         if (detailMap) { detailMap.remove(); detailMap = null; }
         detailMap = L.map('detail-map', { zoomControl:false, attributionControl:false, dragging:false, scrollWheelZoom:false, touchZoom:false })
           .setView([locale.latitude, locale.longitude], 15);
-        L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png').addTo(detailMap);
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 19 }).addTo(detailMap);
         const icon = L.divIcon({ className:'', html: makePin(meta.color), iconSize:[32,40], iconAnchor:[16,40] });
         L.marker([locale.latitude, locale.longitude], { icon }).addTo(detailMap);
         detailMap.invalidateSize();
@@ -722,7 +722,7 @@ function makePin(color) {
 function initMainMap() {
   const center = (geoState === 'granted' && userLat != null) ? [userLat, userLon] : [45.4654, 9.1859];
   mainMap = L.map('main-map', { zoomControl:false, attributionControl:false }).setView(center, 13);
-  L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png').addTo(mainMap);
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 19 }).addTo(mainMap);
   L.control.zoom({ position:'topright' }).addTo(mainMap);
   mainMap.on('zoomend', () => {
     mapDirty = true;
