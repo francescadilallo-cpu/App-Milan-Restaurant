@@ -676,14 +676,14 @@ function showDetail(locale, from) {
       <div id="detail-map"></div>
     </div>
     <div class="maps-row">
-      <button class="detail-maps-btn" id="d-maps-apple">
+      <a class="detail-maps-btn" href="https://maps.apple.com/?q=${encodeURIComponent(locale.name)}&ll=${locale.latitude},${locale.longitude}" target="_blank" rel="noopener">
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"/></svg>
         Apple Maps
-      </button>
-      <button class="detail-maps-btn maps-btn-google" id="d-maps-google">
+      </a>
+      <a class="detail-maps-btn maps-btn-google" href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(locale.name + ' Milano')}" target="_blank" rel="noopener">
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"/></svg>
         Google Maps
-      </button>
+      </a>
     </div>` : ''}`;
 
   // Map toggle (only for locales with coordinates)
@@ -706,15 +706,6 @@ function showDetail(locale, from) {
       }, 60);
     }
   });
-
-  const mapsAppleBtn = document.getElementById('d-maps-apple');
-  if (mapsAppleBtn) mapsAppleBtn.addEventListener('click', () =>
-    window.open(`https://maps.apple.com/?q=${encodeURIComponent(locale.name)}&ll=${locale.latitude},${locale.longitude}`,'_blank')
-  );
-  const mapsGoogleBtn = document.getElementById('d-maps-google');
-  if (mapsGoogleBtn) mapsGoogleBtn.addEventListener('click', () =>
-    window.open(`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(locale.name + ' Milano')}`,'_blank')
-  );
   const schedTog = document.getElementById('d-schedule-toggle');
   if (schedTog) schedTog.addEventListener('click', () => {
     const body = document.getElementById('d-schedule-body');
