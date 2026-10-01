@@ -766,17 +766,31 @@ function renderVicino() {
     const openNearby = locales.filter(l => isOpenNow(l) === true).length;
     subtitle.textContent = openNearby > 0 ? `${openNearby} aperti vicino a te` : 'Vicino a te';
     list.innerHTML = '';
-    const frag = document.createDocumentFragment();
-    locales.forEach(l => {
+    const LIMIT = 200;
+    const makeDistItem = l => {
       const dist = haversine(userLat, userLon, l.latitude, l.longitude);
       const item = makeLocaleItem(l, () => showDetail(l, 'vicino'));
       const distBadge = document.createElement('span');
       distBadge.className = 'dist-badge';
       distBadge.textContent = formatDist(dist);
       item.querySelector('.locale-address')?.insertAdjacentElement('beforebegin', distBadge);
-      frag.appendChild(item);
-    });
+      return item;
+    };
+    const frag = document.createDocumentFragment();
+    locales.slice(0, LIMIT).forEach(l => frag.appendChild(makeDistItem(l)));
     list.appendChild(frag);
+    if (locales.length > LIMIT) {
+      const moreBtn = document.createElement('button');
+      moreBtn.className = 'load-more-btn';
+      moreBtn.textContent = `Mostra tutti (${locales.length})`;
+      moreBtn.onclick = () => {
+        moreBtn.remove();
+        const frag2 = document.createDocumentFragment();
+        locales.slice(LIMIT).forEach(l => frag2.appendChild(makeDistItem(l)));
+        list.appendChild(frag2);
+      };
+      list.appendChild(moreBtn);
+    }
   } else {
     // denied — show banner + first 100 locales, lazy-load the rest
     banner.className = 'geo-banner';
