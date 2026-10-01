@@ -101,6 +101,7 @@ let favorites = new Set(JSON.parse(localStorage.getItem('mlFav') || '[]'));
 let detailMap = null;
 let mainMap   = null;
 let mainMarkers = [];
+let userLocationMarker = null;
 let previousScreen = 'scopri';
 let mapDirty = true;
 let _searchTimer = null;
@@ -180,9 +181,15 @@ function formatHoursToday(locale) {
 
 /* ── Boot ── */
 document.addEventListener('DOMContentLoaded', async () => {
-  // Onboarding
+  // Register service worker for offline support
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('./sw.js').catch(() => {});
+  }
+
+  // Onboarding — skip if deep link present
   const obSeen = localStorage.getItem('mlObSeen');
-  if (!obSeen) {
+  const _deepLink = window.location.hash.startsWith('#locale=');
+  if (!obSeen && !_deepLink) {
     document.getElementById('onboarding').classList.remove('hidden');
   } else {
     document.getElementById('onboarding').classList.add('hidden');
@@ -200,6 +207,13 @@ document.addEventListener('DOMContentLoaded', async () => {
     const r = await fetch(DATA_URL);
     allLocali = r.ok ? await r.json() : FALLBACK;
   } catch { allLocali = FALLBACK; }
+
+  // Handle deep link (e.g. #locale=el-brellin) — open detail view directly
+  if (_deepLink) {
+    const _linkId = decodeURIComponent(window.location.hash.slice(8));
+    const _linked = allLocali.find(l => l.id === _linkId);
+    if (_linked) requestAnimationFrame(() => showDetail(_linked, 'scopri'));
+  }
 
   // Fetch neighborhood photos from Wikipedia (uses localStorage cache).
   // Don't block first paint: render now, re-render once photos resolve.
@@ -259,7 +273,9 @@ document.addEventListener('DOMContentLoaded', async () => {
     if (f === 'mappa' && mapDirty) refreshMap();
   });
   document.getElementById('back-from-detail').addEventListener('click', () => {
-    const f = previousScreen; showScreen(f);
+    const f = previousScreen;
+    try { history.replaceState(null, '', location.pathname + location.search); } catch(e) {}
+    showScreen(f);
     requestAnimationFrame(() => restoreScroll(f));
     if (f === 'preferiti') renderFav();
   });
@@ -706,6 +722,7 @@ function showDetail(locale, from) {
     schedTog.classList.toggle('open', isOpen);
   });
 
+  try { history.replaceState(null, '', '#locale=' + encodeURIComponent(locale.id)); } catch(e) {}
   showScreen('detail');
 }
 
@@ -798,10 +815,21 @@ function initGeolocation() {
   if (!navigator.geolocation) { geoState = 'denied'; renderVicino(); return; }
   renderVicino(); // show spinner immediately
   navigator.geolocation.getCurrentPosition(
-    pos => { userLat = pos.coords.latitude; userLon = pos.coords.longitude; geoState = 'granted'; renderVicino(); },
+    pos => {
+      userLat = pos.coords.latitude; userLon = pos.coords.longitude; geoState = 'granted';
+      renderVicino();
+      if (mainMap) showUserLocation();
+    },
     ()  => { geoState = 'denied'; renderVicino(); },
     { timeout: 8000, maximumAge: 60000 }
   );
+}
+
+function showUserLocation() {
+  if (!mainMap || geoState !== 'granted' || userLat == null) return;
+  if (userLocationMarker) { userLocationMarker.remove(); userLocationMarker = null; }
+  const icon = L.divIcon({ className: '', html: '<div class="user-pin"></div>', iconSize: [20, 20], iconAnchor: [10, 10] });
+  userLocationMarker = L.marker([userLat, userLon], { icon, zIndexOffset: 1000, interactive: false }).addTo(mainMap);
 }
 
 /* ── Map ── */
@@ -831,7 +859,17 @@ function initMainMap() {
       _mapMoveTimer = setTimeout(refreshMap, 150);
     }
   });
+  document.getElementById('map-locate-btn').addEventListener('click', () => {
+    if (geoState === 'granted' && userLat != null) {
+      mainMap.flyTo([userLat, userLon], Math.max(mainMap.getZoom(), 15), { duration: 0.5 });
+    } else if (geoState === 'denied') {
+      showToast('Attiva la posizione nelle impostazioni del browser');
+    } else {
+      initGeolocation();
+    }
+  });
   refreshMap();
+  showUserLocation();
 }
 
 function renderZoneCircles() {
@@ -962,7 +1000,7 @@ function bindTabs() {
       if (name === 'vicino') requestAnimationFrame(renderVicino);
       if (name === 'scopri') requestAnimationFrame(renderScopri);
       if (name === 'preferiti') requestAnimationFrame(renderFav);
-      if (name === 'mappa' && mapDirty) requestAnimationFrame(refreshMap);
+      if (name === 'mappa') requestAnimationFrame(() => { if (mapDirty) refreshMap(); showUserLocation(); });
     });
   });
 }

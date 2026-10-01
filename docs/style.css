@@ -996,6 +996,37 @@ html, body {
 }
 .tab-fav-badge:empty { display: none; }
 
+/* ── User location pin ── */
+.user-pin {
+  width: 16px; height: 16px;
+  background: #007AFF;
+  border: 3px solid white;
+  border-radius: 50%;
+  box-shadow: 0 1px 4px rgba(0,0,0,.3);
+  animation: user-pin-pulse 2s ease-in-out infinite;
+}
+@keyframes user-pin-pulse {
+  0%, 100% { box-shadow: 0 1px 4px rgba(0,0,0,.25), 0 0 0 0 rgba(0,122,255,.35); }
+  50%       { box-shadow: 0 1px 4px rgba(0,0,0,.25), 0 0 0 8px rgba(0,122,255,0); }
+}
+
+/* ── Map locate button ── */
+.map-locate-btn {
+  position: absolute;
+  bottom: 24px; right: 12px;
+  z-index: 500;
+  width: 40px; height: 40px;
+  background: white;
+  border: none;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,.2);
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer;
+  color: #007AFF;
+  transition: opacity .15s;
+}
+.map-locate-btn:active { opacity: .7; }
+
 /* ── Dark mode ── */
 @media (prefers-color-scheme: dark) {
   :root {
@@ -1021,6 +1052,7 @@ html, body {
   .schedule-row.today { background: rgba(10,132,255,.1); }
 
   .ob-feature-icon { background: var(--surface2); }
+  .map-locate-btn { background: var(--surface); color: var(--blue); }
 }
 
 @media (prefers-color-scheme: dark) and (min-width: 700px) {
