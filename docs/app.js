@@ -111,6 +111,7 @@ let zoneCircles = []; // Leaflet circle objects for zoom < 14
 let _mapMoveTimer = null;
 let _scopriRenderKey = null;
 let _vicinoRenderKey = null;
+const _scrollPos = {}; // { screenName: scrollTop }
 let _filterVersion = 0, _filteredCache = null, _filteredCacheVer = -1;
 let _vicinoCacheVer = -1, _vicinoCacheGeoKey = null, _vicinoCached = null;
 
@@ -209,6 +210,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   if (_savedCat) filterCat = _savedCat;
   if (localStorage.getItem('mlFilterOpen') === 'true') filterOpenNow = true;
 
+  updateFavBadge();
   buildCatBar('cat-bar');
   buildCatBar('vicino-cat-bar');
   renderScopri();
@@ -251,8 +253,16 @@ document.addEventListener('DOMContentLoaded', async () => {
   });
   document.getElementById('btn-filter').addEventListener('click', openDrawer);
   document.getElementById('filter-overlay').addEventListener('click', closeDrawer);
-  document.getElementById('back-from-zona').addEventListener('click', () => { const f = previousScreen; showScreen(f); if (f === 'mappa' && mapDirty) refreshMap(); });
-  document.getElementById('back-from-detail').addEventListener('click', () => { const f = previousScreen; showScreen(f); if (f === 'preferiti') renderFav(); });
+  document.getElementById('back-from-zona').addEventListener('click', () => {
+    const f = previousScreen; showScreen(f);
+    requestAnimationFrame(() => restoreScroll(f));
+    if (f === 'mappa' && mapDirty) refreshMap();
+  });
+  document.getElementById('back-from-detail').addEventListener('click', () => {
+    const f = previousScreen; showScreen(f);
+    requestAnimationFrame(() => restoreScroll(f));
+    if (f === 'preferiti') renderFav();
+  });
 
   // Auto-refresh open/closed status every minute
   setInterval(() => {
@@ -397,6 +407,7 @@ function buildCatBar(containerId) {
 
 /* ── Zona list ── */
 function showZona(zona, from) {
+  saveScroll(from || 'scopri');
   previousScreen = from || 'scopri';
   document.getElementById('zona-title').textContent = zona;
   const BACK_LABELS = { mappa: 'Mappa', vicino: 'Vicino', scopri: 'Scopri', preferiti: 'Preferiti' };
@@ -501,7 +512,23 @@ function showToast(msg) {
 }
 
 /* ── Detail ── */
+const _SCROLL_ELS = { vicino:'vicino-list', scopri:'zone-grid', zona:'zona-list', preferiti:'fav-list' };
+function saveScroll(screen) {
+  const id = _SCROLL_ELS[screen];
+  if (id) _scrollPos[screen] = document.getElementById(id)?.scrollTop ?? 0;
+}
+function restoreScroll(screen) {
+  const id = _SCROLL_ELS[screen];
+  if (id && _scrollPos[screen] != null) document.getElementById(id).scrollTop = _scrollPos[screen];
+}
+
+function updateFavBadge() {
+  const b = document.getElementById('fav-badge');
+  if (b) b.textContent = favorites.size || '';
+}
+
 function showDetail(locale, from) {
+  saveScroll(from);
   previousScreen = from;
   const meta = CAT_META[locale.categoria] || { color:'#888', icon:'' };
   const isFav = favorites.has(locale.id);
@@ -920,6 +947,7 @@ function toggleFav(locale, btn) {
       if (svg) svg.setAttribute('fill', filled ? 'currentColor' : 'none');
     }
   });
+  updateFavBadge();
   if (document.getElementById('screen-preferiti').classList.contains('active')) renderFav();
 }
 
