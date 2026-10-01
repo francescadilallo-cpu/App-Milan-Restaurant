@@ -979,3 +979,55 @@ html, body {
     border-radius: 42px 42px 0 0;
   }
 }
+
+/* ── Favorites badge ── */
+.tab { position: relative; }
+.tab-fav-badge {
+  position: absolute;
+  top: 4px; right: 10px;
+  min-width: 16px; height: 16px;
+  background: var(--blue);
+  color: #fff;
+  font-size: 9px; font-weight: 800;
+  border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  padding: 0 4px;
+  line-height: 1;
+}
+.tab-fav-badge:empty { display: none; }
+
+/* ── Dark mode ── */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg:        #000000;
+    --surface:   #1C1C1E;
+    --surface2:  #2C2C2E;
+    --surface3:  #3A3A3C;
+    --label:     #FFFFFF;
+    --label2:    rgba(235,235,245,.6);
+    --label3:    rgba(235,235,245,.3);
+    --sep:       rgba(255,255,255,.12);
+    --shadow:    0 2px 12px rgba(0,0,0,.5);
+    --shadow-md: 0 4px 24px rgba(0,0,0,.6);
+    --blue:      #0A84FF;
+  }
+
+  .nav-bar,
+  .search-wrap,
+  .cat-scroll { background: rgba(28,28,30,.95); }
+
+  .tab-bar { background: rgba(18,18,18,.92); }
+
+  .schedule-row.today { background: rgba(10,132,255,.1); }
+
+  .ob-feature-icon { background: var(--surface2); }
+}
+
+@media (prefers-color-scheme: dark) and (min-width: 700px) {
+  html, body {
+    background: #111113;
+    background-image:
+      radial-gradient(ellipse at 30% 20%, rgba(40,40,60,.5) 0%, transparent 60%),
+      radial-gradient(ellipse at 80% 80%, rgba(30,30,50,.5) 0%, transparent 60%);
+  }
+}
