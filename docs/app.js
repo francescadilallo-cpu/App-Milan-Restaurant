@@ -418,8 +418,12 @@ function showZona(zona, from) {
 
   const list = document.getElementById('zona-list');
   list.innerHTML = '';
-  filtered().filter(l=>l.zona===zona).forEach(l => list.appendChild(makeLocaleItem(l, ()=>showDetail(l,'zona'))));
-  showScreen('zona');
+  showScreen('zona'); // start CSS transition immediately
+  requestAnimationFrame(() => {
+    const frag = document.createDocumentFragment();
+    filtered().filter(l => l.zona === zona).forEach(l => frag.appendChild(makeLocaleItem(l, () => showDetail(l, 'zona'))));
+    list.appendChild(frag);
+  });
 }
 
 function makeLocaleItem(locale, onClick) {
